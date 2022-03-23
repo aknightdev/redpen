@@ -1,0 +1,596 @@
+@media screen and (min-width:992px) {
+
+
+}
+@media screen and (max-width:1700px) {
+
+	.page_wrapper:before {
+    left: 5%;
+    width: 100px;
+    height: 122px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 11%;
+	}
+	.page_body2 .page_wrapper:after {
+    right: 0;
+    width: 165px;
+    height: 81px;
+    background-size: contain;
+	}
+	.projects_item {
+    	padding: 0 30px;
+	}
+	.all_projects_list {
+    	margin: 0 -30px;
+	}
+	.pricingpage .page_wrapper:after{
+		    bottom: 40px;
+	}
+}
+@media screen and (max-width:1600px) {
+
+	.page_body2 .page_wrapper:after{
+		    width: 135px;
+    height: 65px;
+	}
+	.project-header{
+		margin-bottom: 70px;
+	}
+	.pricingpage .page_wrapper:before {
+    	top: 0;
+	}
+	.ourprc_welcome p{
+		font-size: 33px;
+    line-height: 50px;max-width: 1023px;
+	}
+	.ourprc_welcome {
+    margin-bottom: 40px;
+    margin-top: 50px;
+	} 
+}
+@media screen and (max-width:1500px){
+	
+	html {
+    	--container2: 1300px;
+	}
+
+	.page_wrapper:before {
+       width: 80px;
+	}
+	.page_wrapper:after { 
+    width: 188px;
+    height: 91px; 
+    bottom: 45px;
+    right: 46px;
+    background-size: contain;
+    background-repeat: no-repeat;
+	}
+	.no_design h2{ font-size: 38px; }
+	.page_body2 .page_wrapper:before{
+    	left: 0%;    width: 60px;
+	}
+	.project-header{
+		padding: 24px 27px;
+	}
+	.prplan_row {
+    	padding: 40px 0 120px;
+	}
+
+}
+@media screen and (max-width:1400px) {
+
+	html {
+    	--container2: 1250px;
+	}
+	.pricingpage .page_wrapper:after {
+    bottom: 14px;
+	}
+ 
+
+}
+@media screen and (max-width:1300px) {
+
+	html {
+    	--container2: 1170px;
+	}
+	.pricingpage .page_wrapper:before{
+		left: 2%;
+	}
+
+}
+@media screen and (max-width:1200px){
+
+	.no_design_row {    height: calc(100vh - 104px);}
+	.no_design img {
+    	width: 120px;
+	}
+	.no_design h2 {
+    font-size: 34px;
+    margin-top: 13px;
+	}
+	.no_design p{ font-size: 17px; }
+	.no_design a.link_btn {
+    padding: 8.5px 38px;
+    margin-top: 25px;
+    font-size: 17px;
+	}
+	.page_wrapper:before {
+       left: 3%;
+    width: 60px;
+    top: 4%;
+	}
+	.page_wrapper:after {
+    width: 125px;
+    height: 55px;}
+   .project-header textarea.title {
+    font-size: 20px;
+    height: 40px;
+    line-height: 40px;
+	}
+    .project-header {
+    	padding: 20px 23px;
+	}
+	.crtitle_lt {
+    	padding-left: 10px;
+	}
+	.collaborators-container .collaborator-container .collaborator{
+		    font-size: 16px;    width: 50px;
+    height: 50px;
+	}
+	.project-header {
+    	margin-bottom: 50px;
+	}
+	.projects_item {
+    padding: 0 20px;
+	}
+	.all_projects_list {
+    	margin: 0 -20px;
+	}
+	.projects_grid{
+		margin-bottom: 40px;
+	}
+	.prj_meta{
+		    padding: 0 13px;
+	}
+	.actions span {
+    margin-left: 10px;}
+    .collaborators-container .add-new{
+    	font-size: 17px;padding: 10px 32px;
+    }
+    .collaborators>ul{
+    	    margin-right: 10px;
+    }
+    .projects_grid .drag-add-more img {
+    	width: 64px;
+	}
+	.prplan_grid{
+		padding: 40px 0;
+	}
+	.prplan_grid h3{
+		    margin: 30px 0 18px 0;
+	}
+	.pkg_price {
+    font-size: 32px;}
+    .pkg_price .dollar{
+    	top: -16px;
+    }
+    .prplan_item{
+    	padding: 0 7px;
+    }
+    .prplan_row {
+    	margin: 0 -7px;    padding: 40px 0 55px;
+	}
+	.prplan_grid a.link_btn2{
+		    padding: 9.5px 40px;font-size: 17px;
+	}
+	.mst_label{
+		    margin-bottom: 20px;
+	}
+	.page_wrapper{
+		    min-height: 700px;
+	}
+}
+@media (min-width:992px) and (max-width:1200px) {
+
+	html {
+    	--container2: 970px;
+	}
+
+	.container {width: 970px;}
+	.prcefea_box{    margin-right: 25px;width: 31.6%;}
+	 .ourprc_welcome p {
+    font-size: 28px;
+    line-height: 46px;
+    max-width: 870px;
+	}
+	.whyfb_outer h2{    font-size: 29px;    margin: 45px 0 20px 0;}
+	.whyfb_outer{padding-bottom: 60px;}
+	.pricefea_outer {    padding-bottom: 70px;}
+	.prcefea_box{    padding: 35px;    min-height: 305px;}
+	.free_feed{    padding: 65px 0 75px;}
+	.free_feed h2{    font-size: 39px;    line-height: 47px;}
+	.free_feed a {
+    font-size: 19px;
+    padding: 14px 32px;
+    margin-top: 30px;
+	}	 
+	.prs_newsletter{    padding-top: 65px;    padding-bottom: 75px;}
+	.prs_newsletter h3{font-size: 35px;    line-height: 50px;}
+	.newsleter_subcribe{margin: 35px auto 0;}
+	.newsleter_subcribe button{padding: 15px 0;    font-size: 17px;}
+	.newsleter_subcribe input{    padding: 15px 15px;}
+	.footer{    padding: 25px 0;}
+	.plans_grid{    margin: 40px auto 0;}
+
+	
+
+}
+@media screen and (max-width:991px) {
+	html {
+    	--container2: 720px;
+	}
+	.container {width: 720px;}
+	.main_header{    padding: 20px 0;} 
+	.ourprc_right {
+    float: none;
+    width: 100%;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 50px;
+	}
+	.ourprc_left {
+    width: 100%;
+    float: none;
+	}
+	.ourprc_welcome p{    font-size:27px;    line-height: 45px;}
+	.plans_grid{margin: 35px auto 0;}
+	.pr_plans button{padding: 10px 16px;} 
+	.tkfeed{    margin-top: 45px;}
+	.whyfb_right {
+    width: 100%;
+    float: none;
+    margin-top: 45px;
+	}
+	.whyfb_left {
+    width: 100%;
+    float: none;
+    max-width: 500px;
+    margin: auto;
+	}
+	.whyfb_outer h2 {
+    font-size: 34px;
+    margin: 0px 0 21px 0;
+    }
+    .whyfb_outer{padding-bottom: 40px;}
+    .prcefea_box {
+    width: 100%;
+    float: none;
+    padding:40px 30px;
+    margin-right: 0;
+   	margin: 0 auto 30px;
+    max-width: 500px;
+    min-height:auto;
+	}
+	.prcefea_box:nth-child(3){margin: 0 auto;}
+	.pricefea_outer {
+    	padding-bottom: 70px;
+	}
+	.free_feed{    padding: 55px 0 75px;}
+	.free_feed h2{    font-size: 38px;    line-height: 50px;}
+	.free_feed a {
+    font-size: 18px;
+    padding: 15px 34px;
+    margin-top: 26px;
+	}
+	.prs_newsletter{    padding-top: 65px;    padding-bottom: 60px;}
+	.prs_newsletter h3{    font-size: 31px;    line-height: 45px;}
+	.newsle_user{    margin-top: 20px;}
+	.newsleter_subcribe input{    padding: 15px 15px;}
+	.newsleter_subcribe button{    padding: 15px 0;    font-size: 17px;}
+	.newsleter_subcribe{    margin: 35px auto 0;}
+	.he_share a{    padding: 10.5px 20px;}
+	.footer{    padding: 25px 0;}
+
+	.no_design_row {
+    	height: calc(100vh - 80px);
+	}
+	.page_wrapper:before {
+    
+    width: 50px; 
+	}
+	.no_design img {
+    width: 98px;
+	}
+	.no_design h2 {
+    font-size: 30px;
+    }	
+    .no_design p {
+    	font-size: 16px;
+	}
+	.page_wrapper:after {
+    width: 110px;}
+
+    .head_profile {
+    float: right;
+    position: relative;
+    display: inline-block;
+    margin-right: 55px;
+	}
+	.user_nm button {
+    width: 38px;
+    height: 38px;font-size: 17px;}
+    .page_wrapper{
+    	    background-size: auto 700px;
+    }
+    .project-header {
+    	margin-bottom: 35px;
+	}
+	.crtitle_lt {
+    	padding-left: 0;
+	}
+	.project-header {
+    	padding: 15px 20px;
+	}
+	.collaborators-container .add-new {
+    font-size: 16px;
+    padding: 8px 26px;
+	}
+	.collaborators-container .collaborator-container .collaborator {
+    font-size: 16px;
+    width: 47px;
+    height: 47px;
+    line-height: 45px;
+	}
+	.projects_item {
+    padding: 0 10px;
+    width: 50%;
+	}
+	.projects_grid{margin-bottom: 25px;}
+	.all_projects_list {
+    	margin: 0 -10px;
+	}
+	.all_projects_row {
+    	padding-bottom: 50px;
+	}
+	.prplan_item{ width: 50%; }
+	.pkg_price {
+    	font-size: 28px;
+	}
+	.many_title{
+		font-size: 17px;
+	}
+	.prplan_grid h3 {
+    	margin: 20px 0 16px 0;
+	}
+	 
+	button.share_button {
+    float: none;
+    clear: both;
+    display: block;
+    width: auto;
+    margin-top: 14px;
+        padding: 8px 15px;
+	}
+	.all_projects_row .share-link-container .share-link-text {
+    width: 100%;
+	}
+	.sharethum_drop {
+    width: 95%;
+    padding: 15px;
+    right: 0;
+    left: 0;
+    margin: auto;
+	}
+	.share-link-container label	{    margin-bottom: 12px;}
+	.share-link-container label {
+    line-height: 22px;
+	}
+	.share_modalmain h2{
+		    font-size: 18px;
+	}
+	.share_oremail .share-link-text input {
+    	padding: 0 9px;
+	}
+
+}
+@media screen and (max-width:768px) {}
+
+@media screen and (max-width:767px) {
+
+	html {
+    	--container2:96%;
+	}
+	.container {width: 100%;  padding:0 20px;}
+	.container:after{ clear: both;content: ""; display: table; }
+	
+	.pr_plans {
+    float: left;
+    margin: 0 20px 20px 0;
+    width: 48%;
+	}
+
+	.pr_plans:nth-child(2n) {
+    	margin-right: 0;
+	}
+	.tkfeed {
+    	margin-top: 35px;
+	}
+	.whyfb_outer p{    font-size: 17px;}
+	.logo {
+    float: none;
+    margin: 0 auto 13px;
+    text-align: center;
+	}
+	.he_share a {
+    	padding: 8px 13px;
+	}
+	.prs_newsletter h3 {
+    	font-size: 29px;
+    	line-height: 39px;
+	}
+	.page_wrapper:before { 
+    width: 48px; 
+    height: 79px;
+	}
+
+	.page_wrapper:after {
+    width: 84px;
+    bottom: 20px;
+    right: 28px;
+	}
+	.no_design h2 {
+    	font-size: 28px;
+	}
+	.page_body2 .page_wrapper:before {
+    	display: none;
+	}
+	.project-header {
+    padding: 8px 15px 7px;
+	}
+	.crtitle_lt {
+    	padding-top: 5px;
+	}
+	.project-header textarea.title {
+    font-size: 18px;}
+    .ourprc_welcome p {
+    font-size: 24px;
+    line-height: 41px;
+	}
+	.share_modalmain{
+		padding: 25px 25px;
+	} 
+	.new-button.light.primary {
+    	font-size: 17px;
+	}
+	.share_orlink span.share-link-text {
+    width: 100%;
+    margin-bottom: 9px;
+    margin-right: 0;
+	}
+}
+@media screen and (max-width:667px) {}
+
+@media screen and (max-width:640px) {}
+
+@media screen and (max-width:568px) {}
+
+@media screen and (max-width:533px) {
+
+	.dash_header .logo_lt {
+	    width: auto;
+	    float: left;
+	    margin-bottom: 0;
+	}
+	.page_body {
+    	padding-top: 80px;
+	}
+
+	.crtitle_rt {
+    width: 100%;
+    float: none;
+    text-align: center;
+	}
+	.crtitle_lt {
+    padding-top: 0;
+    width: 100%;
+    float: none;
+	}
+	.project-header .collaborators-container {
+    	float: none;
+	}
+	.project-header {
+    	padding: 13px 20px;
+	}
+
+	.sharethum_drop{
+		max-width: 400px;
+	}	
+	
+
+}
+@media screen and (max-width:480px){
+
+	.projects_item {
+    padding: 0;
+    width: 100%;
+    float: none;
+    clear: both;
+	}
+	.all_projects_list {
+    	margin: 0;
+	}
+	.ourprc_welcome{
+		    margin-top: 23px;margin-bottom: 28px;
+	}
+	.ourprc_welcome p {
+    font-size: 21px;
+    line-height: 34px;
+	}
+	.prplan_item {
+    width: 100%;
+    float: none;
+    clear: both;
+	}
+	.prplan_grid {
+    	padding: 24px 0;
+	}
+	.share-link-container .new-button.light.primary {
+    width: auto;
+    padding: 6px 27px;
+	    font-size: 16px;
+	}
+
+	.share-link{ padding: 15px; }
+	.share_modalmain {
+    	padding: 20px 20px;
+	}
+	.share_modalmain h2 {
+    font-size: 17px;
+    line-height: 25px;
+	}
+}
+
+@media screen and (max-width:440px) {
+
+	html {
+    	--container2: 90%;
+	}
+	.page_wrapper:before {
+    left: 5%;
+    top: 2%;
+	}
+	.no_design img {
+    	width: 84px;
+	}
+	.no_design h2 {
+    	font-size: 25px;
+	}
+	.no_design a.link_btn {
+    padding: 7.5px 30px;
+    margin-top: 21px;
+    font-size: 16px;
+	}
+	.projects_grid{
+		    padding-top: 94%;
+	}
+	.ourprc_welcome p {
+    font-size: 19px;
+    line-height: 31px;
+	}
+	.prplan_row {
+    	padding: 0px 0 55px;
+	}
+	.prplan_grid a.link_btn2{font-size: 16px;}
+	.many_title {
+    	font-size: 16px;
+	}
+}
+
+@media screen and (max-width:414px) {}
+
+@media screen and (max-width:375px) {}
+
+@media screen and (max-width:360px) {}
+
+@media screen and (max-width:320px) {}
