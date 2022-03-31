@@ -46,6 +46,7 @@ export default class Screen extends React.Component {
     	this.onEnterPress = this.onEnterPress.bind(this);
     	this.hideComments = this.hideComments.bind(this);
     	this.toggleComments = this.toggleComments.bind(this);
+    	this.loadComments = this.loadComments.bind(this);
     	this.currentComment = '';
     }
     toggleComments(){
@@ -476,7 +477,7 @@ export default class Screen extends React.Component {
 				        </Modal>
 				        <Share reloadProject={this.reloadImage} userId={this.authUser.id} showShare={this.state.showShare} handleClose={this.closeModal} imageId={this.state.image_id} projectId={this.state.project_id}>
 				        </Share>
-				        <Commentsidebar hideComments={this.hideComments} showComments={this.showComments} showCommentsidebar={this.state.showCommentsidebar} comments={this.state.comments} commentId={this.state.commentId}></Commentsidebar>
+				        <Commentsidebar hideComments={this.hideComments} showComments={this.showComments} showCommentsidebar={this.state.showCommentsidebar} comments={this.state.comments} commentId={this.state.commentId} projectId={this.state.project_id} loadComments={this.loadComments}></Commentsidebar>
 				        <HotKeys keyMap={keyMap} handlers={this.handlersParent}></HotKeys>
 				        <Hotkeys keyName="control+c" onKeyUp={this.toggleComments.bind(this)}></Hotkeys>
 						<input id="fileInput" {...getInputProps()} />

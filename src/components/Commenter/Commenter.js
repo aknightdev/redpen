@@ -13,7 +13,7 @@ class Commenter extends React.Component {
     	this.state = {showCommenter:false, UI:{
 		    theme: 'yellow',
 		    image: this.props.image,
-		 },isModalOpen:false,color:'red',size:2,isStraightMode:0,polylines:[[{}]],polylineCount:0,x_pos:0,y_pos:0,attachment:''};
+		 },isModalOpen:false,color:'red',size:2,isStraightMode:0,polylines:[[{}]],polylineCount:0,x_pos:0,y_pos:0,attachment:'',attfile:null,replies:[]};
     	this.authUser = window.localStorage.getItem('auth_user')==null?{id:null,name:null}:JSON.parse(window.localStorage.getItem('auth_user'));
     	this.openCommenter = this.openCommenter.bind(this);
 		this.setUI = this.setUI.bind(this);
@@ -32,7 +32,7 @@ class Commenter extends React.Component {
     }
     setAttachment = (e) =>{
     	if(e.target.files[0].name){
-    		this.setState({attachment:e.target.files[0].name})
+    		this.setState({attachment:e.target.files[0].name,attfile:e.target.files[0]});
     	}
     }
     setXY = (x,y) =>{
@@ -58,8 +58,31 @@ class Commenter extends React.Component {
 	        	window.localStorage.setItem('replies_'+this.props.commentId,JSON.stringify(this.state.replies));
 	        }
 	        document.getElementById('comment').value='';
+	        if (this.state.attachment!='') {
+		        const formData = new FormData();
+				formData.append('project_id', this.props.projectId);
+		    	formData.append('user_id', this.authUser.id);
+		    	formData.append('file', this.state.attfile);
+		    	formData.append('parent', this.props.imageId);
+		    	formData.append('comment_id', result._id);
+		    	formData.append('reply_id', result.replies[0]._id);
+		    	fetch(config.url.API_URL+"uploadattachment", {
+				  	method: "POST",
+			  		body: formData
+				}).then(function (response) {
+		            return response.json();
+			    }).then( (resp) => {
+			    	setTimeout(()=>{
+			    		let replies = this.state.replies;
+				    	replies[replies.length-1].attachment = resp.image
+				    	this.setState({replies:replies});
+			    	}, 10);
+			    	
+			    });
+		    }
 	        this.setState({polylines:[[{}]]});
-	        this.setState({polylineCount:0});
+	        this.setState({polylineCount:0,attachment:''});
+	        document.getElementById('attach').value='';
 	    });
     }
     setUI(data){

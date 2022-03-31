@@ -2,7 +2,8 @@ import React from 'react';
 import { config } from 'Constants.js';
 import $ from 'jquery';
 import Like from 'components/Like/Like.js';
-import { FaPen,FaTrash } from 'react-icons/fa';
+import { FaPen,FaTrash,FaFolder } from 'react-icons/fa';
+import TimeAgo from 'timeago-react';
 
 export default class Cmenu extends React.Component {
 	constructor(props) {
@@ -116,7 +117,7 @@ export default class Cmenu extends React.Component {
         }
     }
 	render() {
-		var editlink=null, menuDd=null, editblock=null;
+		var editlink=null, menuDd=null, editblock=null, attachDiv=null;
 		if (this.state.editMode) {
 			editblock = <div className="edit-mode"><textarea className="replytextarea" onBlur={this.handleReplyChange} defaultValue={this.state.name}  onKeyDown={this.onEnterPress}></textarea></div>;
 		}
@@ -155,12 +156,16 @@ export default class Cmenu extends React.Component {
 		if (this.state.confirm) {
 			menuDd = <button onClick={this.deleteReply} className={this.props.isThread?'delete-comment thread confirm':'delete-comment confirm'} title="Delete Thread"><i className="trash"></i></button>
 		}
+		if(this.props.reply.attachment!='' && this.props.reply.attachment!=undefined){
+			attachDiv = <div className="attach"><FaFolder /><a href={config.url.IMAGE_URL+this.props.reply.attachment} target="_blank">Download</a></div>
+		}
 			return <article className={'comment comment-'+this.props.reply._id}>
 						<span className="prof_pic"><span>{this.props.reply.user?this.props.reply.user.name:'Annon'}</span></span>
 						{menuDd}
 						{editblock}
+						{attachDiv}
 						<div className="p byline">
-							
+							<TimeAgo datetime={this.props.reply.created}></TimeAgo>
 							<span>
 								<span className="likes-container ">
 									{this.props.reply.agree!==undefined && this.props.reply.agree.map((agree,key) => (

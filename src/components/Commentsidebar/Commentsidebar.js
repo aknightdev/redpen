@@ -1,6 +1,7 @@
 import React from 'react';
+import { config } from 'Constants.js';
 import onClickOutside from "react-onclickoutside";
-import Cmenu from 'components/Cmenu/Cmenu.js';
+import Sidecomment from 'components/Comment/Sidecomment.js';
 import $ from 'jquery';
 
 class Commentsidebar extends React.Component {
@@ -15,7 +16,7 @@ class Commentsidebar extends React.Component {
 	render() {
 		if($(".comment-group.active").length){console.log('')
     		$('#commentSidebar').animate({
-		        scrollTop: $(".comment-group.active").offset().top
+		        // scrollTop: $(".comment-group.active").offset().top
 		    }, 200);
     	}
 		if (this.props.showCommentsidebar) {
@@ -30,14 +31,7 @@ class Commentsidebar extends React.Component {
 						</div>
 					</div>
 					{this.props.comments.map((comment,key) => (
-						<section key={'comment'+key} className={this.props.commentId==comment._id?'sidebar-annotation comment-group active':'sidebar-annotation comment-group'} onClick={()=>this.props.showComments(comment._id)}>
-							<Cmenu isThread={true} canEdit={comment.replies[0].user._id===this.authUser.id} commentId={comment._id} reply={comment.replies[0]} ></Cmenu>
-							<div className="replies">
-								{comment.replies.slice(1, comment.replies.length).map((reply,key1) => (
-									<Cmenu isThread={false} key={'reply'+key} canEdit={reply.user._id===this.authUser.id} showEdit={this.showEdit} iAgree={this.iAgree} commentId={comment._id} reply={reply} ></Cmenu>
-								))}
-							</div>
-						</section>
+						<Sidecomment key={'comment'+key} showComments={this.props.showComments} commentId={this.props.commentId} comment={comment} projectId={this.props.projectId}></Sidecomment>
 					))}
 				</section>);
 		}
