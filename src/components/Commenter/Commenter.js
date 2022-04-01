@@ -50,14 +50,7 @@ class Commenter extends React.Component {
 	    }).then( (result) => {
 	    	this.setState({comment: ''});
 	    	this.setState({showCommentButton: false});
-	    	if(this.props.commentId===0){
-	        	this.props.appendComment(result);
-	        }
-	        else{
-	        	this.setState({replies: [...this.state.replies,result.replies[result.replies.length-1]]});  
-	        	window.localStorage.setItem('replies_'+this.props.commentId,JSON.stringify(this.state.replies));
-	        }
-	        document.getElementById('comment').value='';
+	    	document.getElementById('comment').value='';
 	        if (this.state.attachment!='') {
 		        const formData = new FormData();
 				formData.append('project_id', this.props.projectId);
@@ -69,16 +62,27 @@ class Commenter extends React.Component {
 		    	fetch(config.url.API_URL+"uploadattachment", {
 				  	method: "POST",
 			  		body: formData
-				}).then(function (response) {
+				}).then( (response)=> {
 		            return response.json();
 			    }).then( (resp) => {
-			    	setTimeout(()=>{
-			    		let replies = this.state.replies;
-				    	replies[replies.length-1].attachment = resp.image
-				    	this.setState({replies:replies});
-			    	}, 10);
-			    	
+			    	result.replies[0].attachment = resp.image;
+			    	if(this.props.commentId===0){
+			        	this.props.appendComment(result);
+			        }
+			        else{
+			        	this.setState({replies: [...this.state.replies,result.replies[result.replies.length-1]]});  
+			        	window.localStorage.setItem('replies_'+this.props.commentId,JSON.stringify(this.state.replies));
+			        }
 			    });
+		    }
+		    else{
+		    	if(this.props.commentId===0){
+		        	this.props.appendComment(result);
+		        }
+		        else{
+		        	this.setState({replies: [...this.state.replies,result.replies[result.replies.length-1]]});  
+		        	window.localStorage.setItem('replies_'+this.props.commentId,JSON.stringify(this.state.replies));
+		        }
 		    }
 	        this.setState({polylines:[[{}]]});
 	        this.setState({polylineCount:0,attachment:''});
