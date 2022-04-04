@@ -10,7 +10,8 @@ const Canvas = ({
   setPolylines,
   polylineCount,
   setPolylineCount,
-  setXY
+  setXY,
+  showCommenter
 }) => {
   const canvasRef = useRef(null);
   const ctxRef = useRef(null);
@@ -55,7 +56,7 @@ const Canvas = ({
 
   useEffect(() => {
     clearAndDraw();
-  }, [polylineCount,polylines]);
+  }, [polylineCount]);
 
   const clearAndDraw = () =>{
     if (ctxRef.current) {
@@ -174,7 +175,7 @@ const Canvas = ({
       ctxRef.current.moveTo(offsetX, offsetY);
     }
 
-    setIsDrawing(true);
+    if(showCommenter) setIsDrawing(true);
   };
 
   const finishDrawing = ({ nativeEvent }) => {
@@ -256,7 +257,6 @@ const Canvas = ({
     }
     setPolylines(polylines.filter((item, index) => index < polylineCount));
   };
-
   return (
     <div
       className="Canvas"

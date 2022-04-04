@@ -126,6 +126,7 @@ class Commenter extends React.Component {
 							        polylineCount={this.props.activePolilynes.length>0?this.props.activePolilynes.length:this.state.polylineCount}
 							        setPolylineCount={this.setPolylineCount}
 							        setXY={this.setXY}
+							        showCommenter={this.state.showCommenter}
 							      />
 							      {this.state.showCommenter?(<div className="commenter">
 							      	  <div className="inpbox">
