@@ -190,7 +190,7 @@ const Canvas = ({
       setPolylineCount(polylineCount+1);
 
       setStraightPoint({ start: {}, finish: {} });
-      setXY(((polylines[0][0].x + polylines[0][1].x)/2),((polylines[0][0].y + polylines[0][1].y)/2));
+      updateXY(((polylines[0][0].x + polylines[0][1].x)/2),((polylines[0][0].y + polylines[0][1].y)/2));
     } else if (isStraightMode===2) {
       polylines.push([
           { x: straightPoint.start.x, y: straightPoint.start.y, size, color, isStraight: 2, w: offsetX-straightPoint.start.x, h:offsetY-straightPoint.start.y },
@@ -199,7 +199,7 @@ const Canvas = ({
       setPolylineCount(polylineCount+1);
 
       setStraightPoint({ start: {}, finish: {} });
-      setXY(polylines[0][0].x + (polylines[0][0].w/2),polylines[0][0].y + (polylines[0][0].h/2));
+      updateXY(polylines[0][0].x + (polylines[0][0].w/2),polylines[0][0].y + (polylines[0][0].h/2));
     } else if (isStraightMode===1) {
       polylines.push([
           straightPoint.start,
@@ -209,17 +209,25 @@ const Canvas = ({
       setPolylineCount(polylineCount+1);
 
       setStraightPoint({ start: {}, finish: {} });
-      setXY(((polylines[0][0].x + polylines[0][1].x)/2),((polylines[0][0].y + polylines[0][1].y)/2));
+      updateXY(((polylines[0][0].x + polylines[0][1].x)/2),((polylines[0][0].y + polylines[0][1].y)/2));
     } else {
       polylines.push(drawnArray)
       setPolylines(polylines);
       setPolylineCount(polylineCount+1);
       setDrawnArray([]);
-      setXY(polylines[0][Math.floor((polylines[0].length-1)/2)].x,polylines[0][Math.floor((polylines[0].length-1)/2)].y);
+      updateXY(polylines[0][Math.floor((polylines[0].length-1)/2)].x,polylines[0][Math.floor((polylines[0].length-1)/2)].y);
     }
     ctxRef.current.closePath();
     setIsDrawing(false);
   };
+
+  const updateXY = (x,y) => {
+    let index=x+(y*canvasRef.current.width);
+    let x1 = index % canvasRef.current.width;
+    let y1 = index / canvasRef.current.height;
+    console.log(x1+' - '+y1);
+    setXY(x1,y1);
+  }
 
   const draw = ({ nativeEvent }) => {
     if (!isDrawing) return;

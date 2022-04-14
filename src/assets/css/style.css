@@ -1169,7 +1169,7 @@ ul.breadcrumb li a:hover {
 }
 .comments-sidebar{position:fixed;z-index:200;top:0;width:300px;bottom:0;right:0;background-color:#2d4957;/*padding:30px 20px;*/overflow-y:auto;-moz-box-shadow:0 -5px 10px rgba(0,0,0,0.1);-webkit-box-shadow:0 -5px 10px rgba(0,0,0,0.1);box-shadow:0 -5px 10px rgba(0,0,0,0.1);color: white;}
 .comments-sidebar.transition-enter{opacity:0}
-.comments-sidebar.transition-enter-active{-moz-animation:sidebar-slide-in 1200ms linear 1 both;-webkit-animation:sidebar-slide-in 1200ms linear 1 both;animation:sidebar-slide-in 1200ms linear 1 both;opacity:1}
+.comments-sidebar.transition-enter-active{/*-moz-animation:sidebar-slide-in 1200ms linear 1 both;-webkit-animation:sidebar-slide-in 1200ms linear 1 both;animation:sidebar-slide-in 1200ms linear 1 both;*/opacity:1}
 .comments-sidebar.transition-leave{-moz-transition:-moz-transform 0.15s ease-in;-o-transition:-o-transform 0.15s ease-in;-webkit-transition:-webkit-transform 0.15s ease-in;transition:transform 0.15s ease-in}
 .comments-sidebar.transition-leave-active{-moz-transform:translateX(-390px);-ms-transform:translateX(-390px);-webkit-transform:translateX(-350px);transform:translateX(-390px)}
 .comments-sidebar .sidebar-annotation{border-bottom:solid 1px #697f89}
