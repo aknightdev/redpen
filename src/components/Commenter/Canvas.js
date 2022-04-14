@@ -11,7 +11,8 @@ const Canvas = ({
   polylineCount,
   setPolylineCount,
   setXY,
-  showCommenter
+  showCommenter,
+  activePolilynes
 }) => {
   const canvasRef = useRef(null);
   const ctxRef = useRef(null);
@@ -56,7 +57,7 @@ const Canvas = ({
 
   useEffect(() => {
     clearAndDraw();
-  }, [polylineCount]);
+  }, [polylineCount,activePolilynes]);
 
   const clearAndDraw = () =>{
     if (ctxRef.current) {

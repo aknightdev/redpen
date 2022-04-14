@@ -38,7 +38,7 @@ export default class Sidecomment extends React.Component {
 	    });
     }
 	render() {
-		return (<section className={this.props.commentId==this.state.comment._id?'sidebar-annotation comment-group active':'sidebar-annotation comment-group'} onClick={()=>this.props.showComments(this.state.comment._id)}>
+		return (<section className={this.props.commentId==this.state.comment._id?'sidebar-annotation comment-group active':'sidebar-annotation comment-group'} onClick={()=>this.props.showComments(this.state.comment._id,0)}>
 					<Cmenu isThread={true} canEdit={this.state.comment.replies[0].user._id===this.authUser.id} commentId={this.state.comment._id} reply={this.state.comment.replies[0]} ></Cmenu>
 					<div className="replies">
 						{this.state.comment.replies.slice(1, this.state.comment.replies.length).map((reply,key1) => (

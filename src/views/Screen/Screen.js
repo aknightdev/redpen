@@ -315,9 +315,10 @@ export default class Screen extends React.Component {
 			}
 		},10);
 	}
-	showComments(commentId){
+	showComments(commentId,ck){
 		let cc = this.state.comments.filter(a=>a._id==commentId);
 		this.setState({showCommentsidebar:true,commentId:commentId, activePolilynes:cc[0].polylines});
+		if(!ck) window.scrollTo(cc[0].x_pos-100,cc[0].y_pos);
 		// $('.image').addClass('showing-comments-sidebar');
 		// setTimeout(()=>{
 		// 	$('#commentSidebar').removeClass('transition-enter').removeClass('transition-enter-active');
