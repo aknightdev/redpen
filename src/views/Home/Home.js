@@ -357,16 +357,16 @@ export default class Home extends React.Component {
 				
 			</div></div>
 		</div>
-<div class="hw_headblock au_headblock"><h2>ABOUT US</h2><div class="web_container"><div class="hw_midtitle"><h3>About Feedback Tool</h3><p>Get Your Point across Click and comment.</p></div></div></div>
-<div class="ab_cols">
-	<div class="web_container">
-		<div class="ab_left">
+<div className="hw_headblock au_headblock"><h2>ABOUT US</h2><div className="web_container"><div className="hw_midtitle"><h3>About Feedback Tool</h3><p>Get Your Point across Click and comment.</p></div></div></div>
+<div className="ab_cols">
+	<div className="web_container">
+		<div className="ab_left">
 			<img src={require('assets/images/about-img.png')}/>
 		</div>
-		<div class="ab_right">
+		<div className="ab_right">
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-			<div class="ab_btn"><a href="#">Get Started Today</a></div>
+			<div className="ab_btn"><a href="#">Get Started Today</a></div>
 		</div>
 	</div>
 </div>
@@ -378,12 +378,12 @@ export default class Home extends React.Component {
 
 		<div className="drp_row">
 			<div className="drp_col">
-				<div class="dc_img"><img src={require('assets/images/people_icon.png')}/></div>
+				<div className="dc_img"><img src={require('assets/images/people_icon.png')}/></div>
 				<h3>Unlimited collaborators</h3>
 				<p>You shouldn't question who you want to invite. We want you to get everyone involved. There are no limitations to invites.</p>
 			</div>
 			<div className="drp_col drp_line">
-				<div class="dc_img"><img src={require('assets/images/people_icon2.png')}/></div>
+				<div className="dc_img"><img src={require('assets/images/people_icon2.png')}/></div>
 				<h3>Highly praised support</h3>
 				<p>As a feedback company, we pride ourselves on giving the best support; and being responsive lightning-fast. <Link to='#'>Drop us a line.</Link></p>
 			</div>

@@ -53,6 +53,7 @@ export default class Login extends Component {
   }
   render() {
     const responseGoogle = (response) => {
+      console.log(response.profileObj)
       if(response.profileObj){
         fetch(config.url.API_URL+'googlelogin', {
         method: 'POST',
@@ -103,7 +104,7 @@ export default class Login extends Component {
                 <GoogleLogin
                   clientId="582471345809-dctc10pa2bnl3ft128d6kngnme1s4a9d.apps.googleusercontent.com"
                   render={renderProps => (
-                    <div className="gngo_link"><Link onClick={renderProps.onClick} disabled={renderProps.disabled}>Sign up with Google</Link></div>
+                    <div className="gngo_link"><Link to="#" onClick={renderProps.onClick} disabled={renderProps.disabled}>Sign up with Google</Link></div>
                   )}
 
                   buttonText="Login"
@@ -143,7 +144,7 @@ export default class Login extends Component {
               </form>
          </div>
             
-            <div className="frg_link"><Link>Forgot password?</Link></div>
+            <div className="frg_link"><Link to='/forgot'>Forgot password?</Link></div>
          </div>
            
          </div>
