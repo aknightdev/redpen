@@ -53,7 +53,6 @@ export default class Login extends Component {
   }
   render() {
     const responseGoogle = (response) => {
-      console.log(response.profileObj)
       if(response.profileObj){
         fetch(config.url.API_URL+'googlelogin', {
         method: 'POST',

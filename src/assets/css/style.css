@@ -3286,7 +3286,7 @@ background-color: #031a27;
   cursor: pointer;
 }
 .cmtbtn{
-  position: absolute;
+  position: fixed;
   right: 10%;
   bottom: 10%;
   font-size: 30px;
@@ -3307,11 +3307,10 @@ background-color: #031a27;
   max-width: 800px;
   border-radius: 8px;
   overflow: hidden;
-  position: relative;
   background-color: #031a27;
   transition: background-color 0.15s ease-in-out 0s;
   box-shadow: 0px 0px 10px 0px #2d4957;
-  position: absolute;
+  position: fixed;
   bottom: 10px;
 }
 .commenter .input{
@@ -3350,6 +3349,7 @@ background-color: #031a27;
 .commenter .tools{
   padding: 10px;
   display: flex;
+  height: 40px;
 }
 .commenter .tools .left{
   width: 48%;

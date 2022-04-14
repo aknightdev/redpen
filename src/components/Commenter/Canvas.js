@@ -39,14 +39,14 @@ const Canvas = ({
       canvas.style.left = '0';
 
       ctx.lineCap = 'round';
-      if (userImage.width > 700 || userImage.height > 500) {
-        canvas.style.transform = `scale(${Math.min(
-          700 / userImage.width,
-          500 / userImage.height
-        )})`;
-        ctx.lineWidth =
-          size * Math.max(userImage.width / 700, userImage.height / 500);
-      }
+      // if (userImage.width > 700 || userImage.height > 500) {
+      //   canvas.style.transform = `scale(${Math.min(
+      //     700 / userImage.width,
+      //     500 / userImage.height
+      //   )})`;
+      //   ctx.lineWidth =
+      //     size * Math.max(userImage.width / 700, userImage.height / 500);
+      // }
 
       ctx.drawImage(userImage, 0, 0);
 
@@ -222,11 +222,12 @@ const Canvas = ({
   };
 
   const updateXY = (x,y) => {
-    let index=x+(y*canvasRef.current.width);
-    let x1 = index % canvasRef.current.width;
-    let y1 = index / canvasRef.current.height;
-    console.log(x1+' - '+y1);
-    setXY(x1,y1);
+    // let index=x+(y*canvasRef.current.width);
+    // let x1 = index % canvasRef.current.width;
+    // let y1 = index / canvasRef.current.height;
+    // console.log(x+' - '+y+' - '+x1+' - '+y1+' - '+canvasRef.current.width+' - '+canvasRef.current.height);
+    // setXY(x1,y1);
+    setXY(x,y);
   }
 
   const draw = ({ nativeEvent }) => {
@@ -269,18 +270,12 @@ const Canvas = ({
     <div
       className="Canvas"
       style={
-        isModalOpen
+        showCommenter
           ? {
-              width: '700px',
-              height: '500px',
-              transition: 'all 0.2s',
               cursor: 'crosshair',
             }
           : {
-              width: '700px',
-              height: '500px',
-              transition: 'all 0.2s',
-              cursor: 'crosshair',
+              cursor: 'pointer',
             }
       }
     >
