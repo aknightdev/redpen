@@ -399,18 +399,18 @@ export default class Screen extends React.Component {
 		}
 		let next=null, prev=null, title=null;
 		if (this.image.project!==undefined) {
-			if(this.prev){
-				prev = <button><FaArrowLeft/><Link onClick={this.reloadImage} to={'/'+this.prev._id}>Previous design </Link></button>
-			}
-			else{
-				prev = <button><FaArrowLeft/><span>Previous design  </span></button>
-			}
-			if(this.next){
-				next = <button><Link onClick={this.reloadImage} to={'/'+this.next._id}>Next design<FaArrowRight/></Link></button>
-			}
-			else{
-				next = <button><span>Next design<FaArrowRight/></span></button>
-			}
+			// if(this.prev){
+			// 	prev = <button><FaArrowLeft/><Link onClick={this.reloadImage} to={'/'+this.prev._id}>Previous design </Link></button>
+			// }
+			// else{
+			// 	prev = <button><FaArrowLeft/><span>Previous design  </span></button>
+			// }
+			// if(this.next){
+			// 	next = <button><Link onClick={this.reloadImage} to={'/'+this.next._id}>Next design<FaArrowRight/></Link></button>
+			// }
+			// else{
+			// 	next = <button><span>Next design<FaArrowRight/></span></button>
+			// }
 		}
 		if (this.state.editTitle) {
 			title = <textarea id="imageName" onKeyDown={this.onEnterPress} defaultValue={this.state.name} className="title not-empty" placeholder="Image name" onBlur={this.handleImgTitleChange}></textarea>

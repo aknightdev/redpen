@@ -1,6 +1,8 @@
 import React from 'react';
 import onClickOutside from "react-onclickoutside";
 import $ from 'jquery';
+import { FaRedo, FaTrash } from 'react-icons/fa';
+import { TiTick } from 'react-icons/ti';
 
 class Sdropdown extends React.Component {
     constructor(props) {
@@ -22,7 +24,7 @@ class Sdropdown extends React.Component {
         this.setState({showDrop:!this.state.showDrop});
     }
     render() {
-        let shrinkButton, copyButton, delButton, updateButton, delVersions=[];
+        let shrinkButton, copyButton, delButton, updateButton, delVersions=[], cmpBtn;
         if(this.props.user===this.authUser.id || this.props.canUpload){
             if(this.props.versions.length>1){
                 delButton = <li className="danger" onClick={this.props.deleteScreen}>Delete screen and all versions</li>;
@@ -31,7 +33,7 @@ class Sdropdown extends React.Component {
                 });
             }
             else{
-                delButton = <li className="danger" onClick={this.props.deleteScreen}>Delete screen</li>;
+                delButton = <li className="danger" onClick={this.props.deleteScreen}><FaTrash /></li>;
             }
             if(this.props.shrink){
                 shrinkButton = <li onClick={this.props.shrinkScreen}>Enlarge by 150%</li>;
@@ -46,11 +48,13 @@ class Sdropdown extends React.Component {
                 else{
                     copyButton = <li className="disabled">Clone comments from previous version </li>;
                 }
-                updateButton = <li onClick={this.props.updateScreen}>Update to a new version</li>;
+                updateButton = <li onClick={this.props.updateScreen}><FaRedo /></li>;
+                cmpBtn = <li className="approve" onClick={this.props.updateScreen}><TiTick /></li>
             }
             else{
                 copyButton = null;
                 updateButton = null;
+                cmpBtn = <li className="approve" onClick={this.props.updateScreen}><TiTick /></li>
             }
         }
         else{
@@ -58,20 +62,27 @@ class Sdropdown extends React.Component {
             shrinkButton = null;
             copyButton = null;
             updateButton = null;
+            cmpBtn = null;
         }
-        if(this.state.showDrop)
-    	    return  <div id="screenOptions"><i className="gear" onClick={this.gearClick}></i><ul className="dropdown-menu on-light project-thumb-dropdown segmented checkable">
-    				<li onClick={this.props.showComments}>See all comments (experimental!) (Press Control–c)</li>
-                    {shrinkButton}
-                    {copyButton}
+        // if(this.state.showDrop)
+    	    return  <div id="screenOptions">
+                    <ul>
                     {updateButton}
-    				{delButton}
-                    {delVersions.map((version,key) => (
-                        <li key={key} className="danger" onClick={()=>this.props.deleteVersion(key)}>Delete version {key+1}</li>
-                    ))}
-    			</ul></div>;
-        else
-            return <div><i className="gear" onClick={this.gearClick}></i></div>;
+                    {delButton}
+                    {cmpBtn}
+                    </ul>
+                    </div>
+       //              <i className="gear" onClick={this.gearClick}></i><ul className="dropdown-menu on-light project-thumb-dropdown segmented checkable">
+    			// 	<li onClick={this.props.showComments}>See all comments (experimental!) (Press Control–c)</li>
+       //              {shrinkButton}
+       //              {copyButton}
+                    
+       //              {delVersions.map((version,key) => (
+       //                  <li key={key} className="danger" onClick={()=>this.props.deleteVersion(key)}>Delete version {key+1}</li>
+       //              ))}
+    			// </ul>;
+        // else
+        //     return <div><i className="gear" onClick={this.gearClick}></i></div>;
 	}				
 }
 export default onClickOutside(Sdropdown);

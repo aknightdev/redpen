@@ -3471,3 +3471,25 @@ background-color: #031a27;
   bottom: 0;
   width: 100%;
 }
+#screenOptions{
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+#screenOptions ul{
+  display: flex;
+}
+#screenOptions ul li{
+  padding: 5px;
+  background: #b6ff9b;
+  margin-right: 5px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 25px;
+  font-size: 12px;
+}
+#screenOptions ul li.approve{
+  font-size: 20px;
+}
