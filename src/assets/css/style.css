@@ -926,7 +926,7 @@ border: 1px solid #95ffda;
     
     top: 47px;
     right:10px;
-    width: 90%;
+    width: 260px;
     margin: auto;
 
 }
@@ -3476,10 +3476,10 @@ background-color: #031a27;
   top: 10px;
   right: 20px;
 }
-#screenOptions ul{
+#screenOptions>ul{
   display: flex;
 }
-#screenOptions ul li{
+#screenOptions>ul>li{
   padding: 5px;
   background: #b6ff9b;
   margin-right: 5px;

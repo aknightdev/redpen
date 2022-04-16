@@ -37,6 +37,7 @@ export default class Screen extends React.Component {
     	this.editToggle = this.editToggle.bind(this);
     	this.handleImgTitleChange = this.handleImgTitleChange.bind(this);
     	this.handleImgDescChange = this.handleImgDescChange.bind(this);
+    	this.approveScreen = this.approveScreen.bind(this);
     	this.updateScreen = this.updateScreen.bind(this);
     	this.deleteScreen = this.deleteScreen.bind(this);
     	this.deleteVersion = this.deleteVersion.bind(this);
@@ -338,6 +339,19 @@ export default class Screen extends React.Component {
 	    });
 		
 	}
+	approveScreen = (ind) => {alert(ind)
+		fetch(config.url.API_URL+"approvescreen", {
+		  	method: "POST",
+	  		body: JSON.stringify({id:this.props.match.params.id, approved:!this.image.versions[ind].approved, version: this.props.match.params.version, version_id: this.state.version_id}),
+	  		headers: {
+		        'Content-Type': 'application/json'
+		    }
+		}).then(function (response) {
+            return response.json();
+	    }).then( (result) => { 
+	    	
+	    });
+	}
 	handleImgTitleChange = (event) => {
 		this.setState({editTitle:false});
 		if(this.state.name!==event.target.value){
@@ -434,7 +448,7 @@ export default class Screen extends React.Component {
 							
 							<header className="shot-header">
 								<section className="editable">
-									<Sdropdown user={this.user_id} updateScreen={this.updateScreen} deleteScreen={this.deleteScreen} deleteVersion={this.deleteVersion} shrinkScreen={this.shrinkScreen} showComments={this.showComments} copyComments={this.copyComments} version={this.state.version} versions={this.state.versions} shrink={this.state.shrink} project={this.state.project_id} canUpload={this.state.canUpload}></Sdropdown>
+									<Sdropdown user={this.user_id} updateScreen={this.updateScreen} deleteScreen={this.deleteScreen} deleteVersion={this.deleteVersion} shrinkScreen={this.shrinkScreen} showComments={this.showComments} copyComments={this.copyComments} version={this.state.version} versions={this.state.versions} shrink={this.state.shrink} project={this.state.project_id} canUpload={this.state.canUpload} approveScreen={this.approveScreen}></Sdropdown>
 									<div className="title-container">
 										{title}
 										{this.state.showMenu?(
