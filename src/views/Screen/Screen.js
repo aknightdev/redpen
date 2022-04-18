@@ -18,7 +18,7 @@ import Commenter from 'components/Commenter/Commenter.js';
 export default class Screen extends React.Component {
 	constructor(props) {
     	super(props);
-    	this.state = {ballonOpen:false, image_id:props.match.params.id, name: '', description:'', version:1, path: '', parent:0, project_id:0,project_name:'',comments:[],versions:[],isHidden:true, top:0, left:0, x_pos:0, y_pos:0, showModal:false, showMenu:false, prominent:false, version_id:'', showShare: false, editTitle: false, canEdit:false, shrink:false, showCommentsidebar: false, nlist:[], canUpload:false, commentId:'', activePolilynes:[]};
+    	this.state = {ballonOpen:false, image_id:props.match.params.id, name: '', description:'', version:1, path: '', parent:0, project_id:0,project_name:'',comments:[],versions:[],isHidden:true, top:0, left:0, x_pos:0, y_pos:0, showModal:false, showMenu:false, prominent:false, version_id:'', showShare: false, editTitle: false, canEdit:false, shrink:false, showCommentsidebar: false, nlist:[], canUpload:false, commentId:'', activePolilynes:[], approved:false};
     	this.image = {};
     	this.prev = {};
     	this.next = {};
@@ -48,7 +48,41 @@ export default class Screen extends React.Component {
     	this.hideComments = this.hideComments.bind(this);
     	this.toggleComments = this.toggleComments.bind(this);
     	this.loadComments = this.loadComments.bind(this);
+    	this.sortComments = this.sortComments.bind(this);
     	this.currentComment = '';
+    }
+    sortComments(s){
+    	let sortedCommentsDsc;
+		if (s.target.value=='asc') {console.log('a')
+		    sortedCommentsDsc= this.state.comments.sort((a,b)=>{
+				  if (a.updated  < b.updated) {
+				    return 1;
+				  }
+				  if (a.updated > b.updated) {
+				    return -1;
+				  }
+				  return 0;
+		    });
+		    this.setState({
+		        comments:sortedCommentsDsc
+		    });
+		    console.log(sortedCommentsDsc)
+	    }
+	    else{console.log('b')
+	    	sortedCommentsDsc= this.state.comments.sort((a,b)=>{
+				  if (a.updated  > b.updated) {
+				    return 1;
+				  }
+				  if (a.updated < b.updated) {
+				    return -1;
+				  }
+				  return 0;
+		    });
+		    this.setState({
+		        comments:sortedCommentsDsc
+		    });
+		    console.log(sortedCommentsDsc)
+	    }
     }
     toggleComments(){
     	if(!this.state.showCommentsidebar){
@@ -257,7 +291,7 @@ export default class Screen extends React.Component {
 		setTimeout(()=>{
 			//this.loadImage(); , name: v.name
 			let v = this.image.versions[this.props.match.params.version-1];
-			this.setState({image_id: this.image._id, description: v.description, version: parseInt(this.props.match.params.version), path: config.url.IMAGE_URL+v.image, ballonOpen:false, version_id: v._id});
+			this.setState({image_id: this.image._id, description: v.description, version: parseInt(this.props.match.params.version), path: config.url.IMAGE_URL+v.image, ballonOpen:false, version_id: v._id, approved: v.approved});
 			this.loadComments();
 		},500);
 		setTimeout(()=>{
@@ -339,7 +373,7 @@ export default class Screen extends React.Component {
 	    });
 		
 	}
-	approveScreen = (ind) => {alert(ind)
+	approveScreen = (ind) => {
 		fetch(config.url.API_URL+"approvescreen", {
 		  	method: "POST",
 	  		body: JSON.stringify({id:this.props.match.params.id, approved:!this.image.versions[ind].approved, version: this.props.match.params.version, version_id: this.state.version_id}),
@@ -349,7 +383,8 @@ export default class Screen extends React.Component {
 		}).then(function (response) {
             return response.json();
 	    }).then( (result) => { 
-	    	
+	    	console.log(this.state.approved)
+	    	this.setState({approved:!this.state.approved})
 	    });
 	}
 	handleImgTitleChange = (event) => {
@@ -448,7 +483,7 @@ export default class Screen extends React.Component {
 							
 							<header className="shot-header">
 								<section className="editable">
-									<Sdropdown user={this.user_id} updateScreen={this.updateScreen} deleteScreen={this.deleteScreen} deleteVersion={this.deleteVersion} shrinkScreen={this.shrinkScreen} showComments={this.showComments} copyComments={this.copyComments} version={this.state.version} versions={this.state.versions} shrink={this.state.shrink} project={this.state.project_id} canUpload={this.state.canUpload} approveScreen={this.approveScreen}></Sdropdown>
+									<Sdropdown user={this.user_id} updateScreen={this.updateScreen} deleteScreen={this.deleteScreen} deleteVersion={this.deleteVersion} shrinkScreen={this.shrinkScreen} showComments={this.showComments} copyComments={this.copyComments} version={this.state.version} versions={this.state.versions} shrink={this.state.shrink} project={this.state.project_id} canUpload={this.state.canUpload} approveScreen={this.approveScreen} approved={this.state.approved}></Sdropdown>
 									<div className="title-container">
 										{title}
 										{this.state.showMenu?(
@@ -492,7 +527,7 @@ export default class Screen extends React.Component {
 				        </Modal>
 				        <Share reloadProject={this.reloadImage} userId={this.authUser.id} showShare={this.state.showShare} handleClose={this.closeModal} imageId={this.state.image_id} projectId={this.state.project_id}>
 				        </Share>
-				        <Commentsidebar hideComments={this.hideComments} showComments={this.showComments} showCommentsidebar={this.state.showCommentsidebar} comments={this.state.comments} commentId={this.state.commentId} projectId={this.state.project_id} loadComments={this.loadComments}></Commentsidebar>
+				        <Commentsidebar sortComments={this.sortComments} hideComments={this.hideComments} showComments={this.showComments} showCommentsidebar={this.state.showCommentsidebar} comments={this.state.comments} commentId={this.state.commentId} projectId={this.state.project_id} loadComments={this.loadComments}></Commentsidebar>
 				        <HotKeys keyMap={keyMap} handlers={this.handlersParent}></HotKeys>
 				        <Hotkeys keyName="control+c" onKeyUp={this.toggleComments.bind(this)}></Hotkeys>
 						<input id="fileInput" {...getInputProps()} />

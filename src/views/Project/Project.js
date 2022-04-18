@@ -12,7 +12,6 @@ import Notifications from 'components/Notifications/Notifications.js';
 import $ from 'jquery';
 
 
-
 export default class Project extends React.Component {
 	constructor(props) {
     	super(props);
@@ -27,7 +26,7 @@ export default class Project extends React.Component {
     	this.closeModal = this.closeModal.bind(this);
     	this.uploadNewVersion = this.uploadNewVersion.bind(this);
     	this.uploadNewDesign = this.uploadNewDesign.bind(this);
-    	
+    	this.reloadProject = this.reloadProject.bind(this);
     	
     	this.showSharepopup = this.showSharepopup.bind(this);
     	this.onEnterPress = this.onEnterPress.bind(this);
@@ -365,6 +364,38 @@ export default class Project extends React.Component {
 		    	else {this.imagenames[val.name]=1;this.imageids[val.name]=val._id;}
 		    });
 	    }*/
+	}
+	reloadProject(pid){
+		fetch(config.url.API_URL+"project", {
+		  	method: "POST",
+	  		body: JSON.stringify({id:pid, user_id: this.authUser.id}),
+	  		headers: {
+		        'Content-Type': 'application/json'
+		    }
+		}).then(function (response) {
+            return response.json();
+	    }).then((result)=>{
+	    	//window.localStorage.setItem('project_'+this.props.match.params.id,JSON.stringify(result));
+	        this.setState({title: result.name}); 
+		    this.setState({description: result.description});
+		    this.setState({user_id: result.user}); 
+		    this.setState({shared: result.shared}); 
+		    this.setState({invite: result.invite}); 
+		    this.setState({images: result.images}); 
+		    this.setState({allimgs: result.images});
+		    result.images.forEach(val=>{
+		    	if (this.imagenames[val.name]!==undefined) {this.imagenames[val.name]++;}
+		    	else {this.imagenames[val.name]=1;this.imageids[val.name]=val._id;}
+		    });
+		    result.shared.forEach((v,k)=>{
+		    	if (this.authUser.id===v.user._id && v.access===true) {
+	    			this.setState({canUpload:true});
+	    		}
+	    	});
+	    	if (result.user===this.authUser.id || this.state.canUpload) {
+		    	this.setState({canEdit: true}); 
+		    } 
+	    });
 	}
 
 	render() {

@@ -1,5 +1,6 @@
 import React from 'react';
 import onClickOutside from "react-onclickoutside";
+import {getRandomColor,createImageFromInitials} from 'components/Utils.js'
 
 class Collab extends React.Component {
 	constructor(props) {
@@ -43,15 +44,15 @@ class Collab extends React.Component {
 		}
 		if (this.state.menuOpen) {
 			menudiv = <menu className="collaborator-dropdown " style={{backgroundColor:'#2d4957'}}>
-						<li className="admin" onClick={()=>this.calltoAction('power')}>{this.props.share.access?'Strip of upload powers':'Give upload powers for this project'}</li>
-						<li className="remove" onClick={()=>this.calltoAction('remove')}>Kick out of project</li>
+						<li className="admin" onClick={()=>this.calltoAction('power')}>{this.props.share.access?'Remove access to this project':'Give full access to this project'}</li>
+						<li className="remove" onClick={()=>this.calltoAction('remove')}>Remove from the project</li>
 					</menu>;
 		}
 
 	  	return (
 	  	<div className="collaborator-container">
 			<span className={cls} title={this.props.share.user.email} onClick={this.toggleMenu}>
-				<span>{this.props.share.user?this.props.share.user._id===this.authUser.id?'You':this.props.share.user.name:''}</span>
+				<span><img className='pfpic' src={createImageFromInitials(500, this.props.share.user.name, getRandomColor())} alt='profile-pic' />{/*this.props.share.user?this.props.share.user._id===this.authUser.id?'You':this.props.share.user.name:''*/}</span>
 			    {dpdown}
 				{adminIcon}
 			</span>

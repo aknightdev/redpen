@@ -49,12 +49,12 @@ class Sdropdown extends React.Component {
                     copyButton = <li className="disabled">Clone comments from previous version </li>;
                 }
                 updateButton = <li onClick={this.props.updateScreen}><FaRedo /></li>;
-                cmpBtn = <li className="approve" onClick={()=>this.props.approveScreen(this.props.version-1)}><TiTick /></li>
+                cmpBtn = <li className={this.props.approved?'active approve':'approve'} onClick={()=>this.props.approveScreen(this.props.version-1)}><TiTick /></li>
             }
             else{
                 copyButton = null;
                 updateButton = null;
-                cmpBtn = <li className="approve" onClick={()=>this.props.approveScreen(this.props.version-1)}><TiTick /></li>
+                cmpBtn = <li className={this.props.approved?'active approve':'approve'} onClick={()=>this.props.approveScreen(this.props.version-1)}><TiTick /></li>
             }
         }
         else{

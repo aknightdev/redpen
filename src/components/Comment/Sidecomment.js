@@ -12,7 +12,11 @@ export default class Sidecomment extends React.Component {
     	this.postComment = this.postComment.bind(this);
     	this.toggleReplyBox = this.toggleReplyBox.bind(this);
     }
-
+    static getDerivedStateFromProps(nextProps, prevState) {
+		return {
+		  comment: nextProps.comment,
+		}
+	}
     toggleReplyBox = () =>{
     	this.setState({showReplyBox:!this.state.showReplyBox});
     }
@@ -42,7 +46,7 @@ export default class Sidecomment extends React.Component {
 					<Cmenu isThread={true} canEdit={this.state.comment.replies[0].user._id===this.authUser.id} commentId={this.state.comment._id} reply={this.state.comment.replies[0]} ></Cmenu>
 					<div className="replies">
 						{this.state.comment.replies.slice(1, this.state.comment.replies.length).map((reply,key1) => (
-							<Cmenu isThread={false} key={'reply'+this.props.key} canEdit={reply.user._id===this.authUser.id} showEdit={this.showEdit} iAgree={this.iAgree} commentId={this.state.comment._id} reply={reply} ></Cmenu>
+							<Cmenu isThread={false} key={'reply'+this.state.comment._id} canEdit={reply.user._id===this.authUser.id} showEdit={this.showEdit} iAgree={this.iAgree} commentId={this.state.comment._id} reply={reply} ></Cmenu>
 						))}
 					</div>
 					<FaReply onClick={this.toggleReplyBox} />

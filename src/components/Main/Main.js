@@ -7,6 +7,8 @@ import Single from 'views/Single/Single.js';
 import Screen from 'views/Screen/Screen.js';
 import Login from 'views/Login/Login.js';
 import Register from 'views/Register/Register.js';
+import Forgot from 'views/Forgot/Forgot.js';
+import Reset from 'views/Reset/Reset.js';
 import Account from 'views/Account/Account.js';
 import Team from 'views/Team/Team.js';
 import Sitemap from 'views/Sitemap/Sitemap.js';
@@ -26,6 +28,8 @@ export default function Main() {
         <Route path='/projects' component={Home}/>
         <Route path='/archived' component={Archived}/>
         <Route path='/login' component={Login}/>
+        <Route path='/forgot' component={Forgot}/>
+        <Route path='/reset/:hash' component={Reset}/>
         <Route path='/register' component={Register}/>
         <Route path='/team' component={Team}/>
         <Route path='/sitemap' component={Sitemap}/>

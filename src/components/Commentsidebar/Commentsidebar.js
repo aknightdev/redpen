@@ -24,7 +24,7 @@ class Commentsidebar extends React.Component {
 					<div className="sectionhead">
 						<div className="left">{this.props.comments.length} Comments</div>
 						<div className="right">
-							<select name="commentSort">
+							<select name="commentSort" onChange={(e)=>this.props.sortComments(e)}>
 							 <option value="desc">Newest</option>
 							 <option value="asc">Old</option>
 							</select>

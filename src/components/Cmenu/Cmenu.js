@@ -4,11 +4,12 @@ import $ from 'jquery';
 import Like from 'components/Like/Like.js';
 import { FaPen,FaTrash,FaFolder } from 'react-icons/fa';
 import TimeAgo from 'timeago-react';
+import { TiTick } from 'react-icons/ti';
 
 export default class Cmenu extends React.Component {
 	constructor(props) {
     	super(props);
-    	this.state = {menuOpen:false, editMode:false, name:this.props.reply.reply, confirm:false};
+    	this.state = {menuOpen:false, editMode:false, name:this.props.reply.reply, confirm:false, completed:this.props.reply.completed};
     	this.commentmenuLeave = this.commentmenuLeave.bind(this);
     	this.commentmenuHover = this.commentmenuHover.bind(this);
     	this.showEdit = this.showEdit.bind(this);
@@ -81,27 +82,38 @@ export default class Cmenu extends React.Component {
     }
     iAgree(comment_id,reply_id){
     	if (comment_id && reply_id) {
-    		this.setState({menuOpen: false});
-    		$('.comment-'+reply_id).find('.likes-container').append('<span class="like-container selected"><i class="like"></i><i class="big-like"><i class="happy-face"></i><i class="thumb-outer-bg"></i><i class="thumb-container"><i class="thumb"></i><i class="thumb-stroke"></i></i></i></span>');
-    		$('.comment-'+reply_id).find('.likes-container').children('.like-container:last').hover((t)=>{
-    			$('.comment-'+reply_id).find('.likes-container').children('.like-container:last').append('<span class="informative-tip like-tip" style="margin-left:-40px;">'+this.authUser.name+' agrees</span>');
-    		},(t)=>{
-    			$('.comment-'+reply_id).find('.likes-container').children('.like-container:last').children('.like-tip').remove();
-    		});
-	    	fetch(config.url.API_URL+"iagree", {
-	              method: "POST",
-	              body: JSON.stringify({id:comment_id, user_id: this.authUser.id, reply_id: reply_id}),
-	              headers: {
+    		// this.setState({menuOpen: false});
+    		// $('.comment-'+reply_id).find('.likes-container').append('<span class="like-container selected"><i class="like"></i><i class="big-like"><i class="happy-face"></i><i class="thumb-outer-bg"></i><i class="thumb-container"><i class="thumb"></i><i class="thumb-stroke"></i></i></i></span>');
+    		// $('.comment-'+reply_id).find('.likes-container').children('.like-container:last').hover((t)=>{
+    		// 	$('.comment-'+reply_id).find('.likes-container').children('.like-container:last').append('<span class="informative-tip like-tip" style="margin-left:-40px;">'+this.authUser.name+' agrees</span>');
+    		// },(t)=>{
+    		// 	$('.comment-'+reply_id).find('.likes-container').children('.like-container:last').children('.like-tip').remove();
+    		// });
+	    	// fetch(config.url.API_URL+"iagree", {
+		    //          method: "POST",
+		    //          body: JSON.stringify({id:comment_id, user_id: this.authUser.id, reply_id: reply_id}),
+		    //          headers: {
+		    //            'Content-Type': 'application/json'
+		    //        }
+		    //    }).then(function (response) {
+		    //        return response.json();
+		    //    }).then((result)=>{
+		            
+		    //    });
+		    //    setTimeout(()=>{
+		    //    	$('.like-container').removeClass('selected');
+		    //    },2000)
+		    fetch(config.url.API_URL+"iagree", {
+	            method: "POST",
+	            body: JSON.stringify({id:comment_id, user_id: this.authUser.id, reply_id: reply_id, completed:!this.state.completed}),
+	            headers: {
 	                'Content-Type': 'application/json'
 	            }
 	        }).then(function (response) {
 	            return response.json();
 	        }).then((result)=>{
-	            
+	            this.setState({completed:!this.state.completed});
 	        });
-	        setTimeout(()=>{
-	        	$('.like-container').removeClass('selected');
-	        },2000)
         }
     }
     commentmenuLeave(){
@@ -161,19 +173,20 @@ export default class Cmenu extends React.Component {
 		}
 			return <article className={'comment comment-'+this.props.reply._id}>
 						<span className="prof_pic"><span>{this.props.reply.user?this.props.reply.user.name:'Annon'}</span></span>
+						<span className={this.state.completed?'active markcmp':'markcmp'} onClick={() => this.iAgree(this.props.commentId,this.props.reply._id)}><TiTick /></span>
 						{menuDd}
 						{editblock}
 						{attachDiv}
 						<div className="p byline">
 							<TimeAgo datetime={this.props.reply.created}></TimeAgo>
-							<span>
+							{/*<span>
 								<span className="likes-container ">
 									{this.props.reply.agree!==undefined && this.props.reply.agree.map((agree,key) => (
 										<Like key={'agree'+key} agree={agree} ></Like>
 									))}	
 								</span>
-								{/*<span className="meta clickable" onClick={()=>this.iAgree(this.props.commentId,this.props.reply._id)}>Agree</span>*/}
-							</span>
+								<span className="meta clickable" onClick={()=>this.iAgree(this.props.commentId,this.props.reply._id)}>Agree</span>
+							</span>*/}
 						</div>
 					</article>;
 	}

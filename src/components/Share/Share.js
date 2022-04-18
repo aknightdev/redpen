@@ -20,7 +20,7 @@ export default class Share extends React.Component {
             return response.json();
 	    }).then( (result) => { 
 			this.setState({success: true, validEmail: false, email:''}); 
-			this.props.reloadProject();
+			this.props.reloadProject(this.props.projectId);
 	    });
 	}
 	validateEmail = (event) => {

@@ -2,22 +2,24 @@ import React from 'react';
 import onClickOutside from "react-onclickoutside";
 import { config } from 'Constants.js';
 import { Link } from 'react-router-dom';
+import {getRandomColor,createImageFromInitials} from 'components/Utils.js'
 
 class Userdropdown extends React.Component {
     constructor(props) {
-    		super(props);
-    		this.state = {showDrop: false, isLoggedIn: false};
-    		this.gearClick = this.gearClick.bind(this);
-            this.handleLogoutClick = this.handleLogoutClick.bind(this);
-    	}	
-    	gearClick(){ 
-        	this.setState({showDrop:!this.state.showDrop});
-    	}
-        componentDidMount() {
-        if (window.localStorage.getItem('auth_user')!=null) {this.setState({ isLoggedIn: true });}
-        }
-    	handleClickOutside = evt => {
-         if(evt.target.innerHTML==='Logout' || evt.target.innerHTML==='Login' || evt.target.innerHTML==='Archive project for everyone' || evt.target.innerHTML==='Delete project for everyone' || evt.target.innerHTML==='Leave project'){
+		super(props);
+		this.state = {showDrop: false, isLoggedIn: false};
+        this.authUser = window.localStorage.getItem('auth_user')==null?{id:null,name:null}:JSON.parse(window.localStorage.getItem('auth_user'));
+		this.gearClick = this.gearClick.bind(this);
+        this.handleLogoutClick = this.handleLogoutClick.bind(this);
+	}	
+	gearClick(){ 
+    	this.setState({showDrop:!this.state.showDrop});
+	}
+    componentDidMount() {
+    if (window.localStorage.getItem('auth_user')!=null) {this.setState({ isLoggedIn: true });}
+    }
+	handleClickOutside = evt => {
+        if(evt.target.innerHTML==='Logout' || evt.target.innerHTML==='Login' || evt.target.innerHTML==='Archive project for everyone' || evt.target.innerHTML==='Delete project for everyone' || evt.target.innerHTML==='Leave project'){
             return false;
         }
         this.setState({showDrop:false});
@@ -46,7 +48,7 @@ class Userdropdown extends React.Component {
         let button;
 
         if (isLoggedIn) {
-          button= <div><div className="user_nm" onClick={this.gearClick}><button>JD</button></div>
+          button= <div><div className="user_nm" onClick={this.gearClick}><button><img className='pfpic' src={createImageFromInitials(500, this.authUser.name, getRandomColor())} alt='profile-pic' /></button></div>
                     <ul className="dropdown-menu">
                         <li><Link className="App-link" to='/login'>Account details</Link> </li>
                         <li><Link className="App-link" to='/login'>Our Team</Link></li>
@@ -61,7 +63,7 @@ class Userdropdown extends React.Component {
         if(this.state.showDrop)
     	    return  button;
         else
-            return <div className="user_nm" onClick={this.gearClick}><button>JD</button></div>;
+            return <div className="user_nm" onClick={this.gearClick}><button><img className='pfpic' src={createImageFromInitials(500, this.authUser.name, getRandomColor())} alt='profile-pic' /></button></div>;
 	}				
 }
 export default onClickOutside(Userdropdown);	

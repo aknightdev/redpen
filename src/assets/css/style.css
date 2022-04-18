@@ -1060,7 +1060,7 @@ border: 1px solid #95ffda;
          line-height: 50px;
 
       border: 3px solid #032335;
-background-color: #b4ff9f;
+/*background-color: #b4ff9f;*/
 text-align: center;
     margin-left: -11px; 
 }
@@ -3481,7 +3481,7 @@ background-color: #031a27;
 }
 #screenOptions>ul>li{
   padding: 5px;
-  background: #b6ff9b;
+  background: #c1dbda;
   margin-right: 5px;
   border-radius: 50%;
   width: 30px;
@@ -3489,7 +3489,34 @@ background-color: #031a27;
   text-align: center;
   line-height: 25px;
   font-size: 12px;
+  color: #068466;
 }
 #screenOptions ul li.approve{
   font-size: 20px;
+}
+#screenOptions ul li.approve.active{
+  background: #068466;
+  color: white;
+}
+.comment .markcmp{
+  border: 1px solid #068466;
+  color: #068466;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+}
+.comment .active.markcmp{
+  background: #068466;
+  color: #fff;
+}
+.collaborator .pfpic{
+  border-radius: 50%;
+}
+.user_nm button{
+  padding: 0;
+}
+.user_nm button img{
+  border-radius: 50%;
 }
