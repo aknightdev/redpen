@@ -470,6 +470,7 @@ export default class Project extends React.Component {
 						          name="keyword"
 						          placeholder="Search"
 						          id="keyword"
+						          onKeyUp={this.searchDesigns}
 						          />
 						    </form>
 							</div>

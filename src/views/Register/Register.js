@@ -48,66 +48,42 @@ export default class Register extends Component {
   }
   render() {
     return (<div>
-      <div className="loginouter">
+      <div className="loginouter loginonly">
         <div className="log_wrapper log_col1">
-        <div className="logo_login">
-         <Link className="App-link" to='/'> <img src={require('assets/images/logo-main.png')} alt="logo"/></Link>
-        </div>
-        <div className="log_inwrap">
-          <h2>Already have<br/> 
-an account?</h2>
-        <Link className="link_btn" to={'/login'}>Log in now</Link>
-        </div> </div>
-        <div className="log_wrapper log_col2">
-
-         <div className="login_block">
-         <div className="login_box">
-            <form onSubmit={this.onSubmit}>
+          <div className="logo_login">
+           <Link className="App-link" to='/'> <img src={require('assets/images/logo-main.png')} alt="logo"/></Link>
+          </div>
+          <div className="login_block">
+            <div className="login_box">
+              <form onSubmit={this.onSubmit}>
                 <h2>Create An Account</h2>
                 <p className="sub_text">You’re about to experience the fastest way to get feedback. But first...</p>
                 <ul>
-                  <li><input
-          type="text"
-          name="name"
-          placeholder="What's your name?"
-          value={this.state.name}
-          onChange={this.handleInputChange}
-          required
-        /></li>
-                  <li>  <input
-          type="email"
-          name="email"
-          placeholder="What's your email?"
-          value={this.state.email}
-          onChange={this.handleInputChange}
-          required
-        />
-        <span className="error">{this.state.error}</span></li>
-                  <li><input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={this.state.password}
-          onChange={this.handleInputChange}
-          required
-        /><span className="pskeep">This will keep things secure.</span> 
-        </li>
-        <li> <input type="submit" value="Let’s get in there!"/></li>
+                  <li>
+                    <label>Name</label>
+                    <input type="text" name="name" placeholder="What's your name?" value={this.state.name} onChange={this.handleInputChange} required /></li>
+                  <li>
+                    <label>Email Address</label>
+                    <input type="email" name="email" placeholder="What's your email?" value={this.state.email} onChange={this.handleInputChange} required />
+                    <span className="error">{this.state.error}</span>
+                  </li>
+                  <li>
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleInputChange} required /><span className="pskeep">This will keep things secure.</span> 
+                  </li>
+                  <li>
+                    <input type="submit" value="Let’s get in there!"/>
+                  </li>
                 </ul>
-
-                
-               
-               
-                
               </form>
-         </div>
-            
-            
-         </div>
-           
+            </div>
+            <div className="log_inwrap">
+              <p>Already have an account?</p>
+              <div className="frg_link"><Link to={'/login'}>Log in</Link></div>
+            </div>
+          </div>
          </div>
         </div>
-       
       </div>
     );
   }

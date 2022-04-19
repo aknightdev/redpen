@@ -83,24 +83,16 @@ export default class Login extends Component {
     }
     return (<div>
 
-      <div className="loginouter">
+      <div className="loginouter loginonly">
         <div className="log_wrapper log_col1">
         <div className="logo_login">
          <Link className="App-link" to='/'> <img src={require('assets/images/logo-main.png')} alt="logo"/></Link>
-        </div>
-        <div className="log_inwrap">
-          <h2>Don't<br/> 
-      have an <br/>
-      account?</h2>
-        <Link className="link_btn" to={'/register'}>Create Account</Link>
-        </div> </div>
-        <div className="log_wrapper log_col2">
-
+        </div> 
          <div className="login_block">
          <div className="login_box">
             <form onSubmit={this.onSubmit}>
                 <h2>Log In</h2>
-                <GoogleLogin
+                {/*<GoogleLogin
                   clientId="582471345809-dctc10pa2bnl3ft128d6kngnme1s4a9d.apps.googleusercontent.com"
                   render={renderProps => (
                     <div className="gngo_link"><Link to="#" onClick={renderProps.onClick} disabled={renderProps.disabled}>Sign up with Google</Link></div>
@@ -114,25 +106,16 @@ export default class Login extends Component {
 
                 <div className="or_line">
                 <span>or</span>
-                </div>
+                </div>*/}
 
                 <ul>
-                  <li><input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={this.state.email}
-                  onChange={this.handleInputChange}
-                  required
-                /> </li>
-                  <li> <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  value={this.state.password}
-                  onChange={this.handleInputChange}
-                  required
-                /> </li>
+                  <li>
+                    <label>Email Address</label>
+                    <input type="email" name="email" placeholder="Email" value={this.state.email} onChange={this.handleInputChange} required /> 
+                  </li>
+                  <li>
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleInputChange} required /> </li>
                   <li><input type="submit" value="Log In"/> </li>
                 </ul>
 
@@ -141,9 +124,13 @@ export default class Login extends Component {
                
                 
               </form>
+              <div className="frg_link"><Link to='/forgot'>Forgot password?</Link></div>
          </div>
+         <div className="log_inwrap">
+          <p>Don't have an  account?</p>
+          <div className="frg_link"><Link to={'/register'}>Create Account</Link></div>
+         </div>     
             
-            <div className="frg_link"><Link to='/forgot'>Forgot password?</Link></div>
          </div>
            
          </div>

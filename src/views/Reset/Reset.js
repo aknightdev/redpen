@@ -56,14 +56,14 @@ export default class Reset extends Component {
           <div className="logo_login">
             <Link className="App-link" to='/'> <img src={require('assets/images/logo-main.png')} alt="logo"/></Link>
           </div>
-        </div>
-        <div className="log_wrapper log_col2">
+        
          <div className="login_block">
          <div className="login_box">
             <form onSubmit={this.onSubmit}>
-                <h2>Reset Password</h2>
+                <h2>New Password</h2>
                
                 <ul>
+                  <label>Enter your new password</label>
                   <li><input
                   type="password"
                   name="password"
@@ -72,7 +72,7 @@ export default class Reset extends Component {
                   onChange={this.handleInputChange}
                   required
                 /> </li>
-                  <li><input type="submit" value="Submit"/> </li>
+                  <li><input type="submit" value="Save password"/> </li>
                 </ul>
 
                 
@@ -80,9 +80,10 @@ export default class Reset extends Component {
                
                 
               </form>
+              {/*<div className="frg_link"><Link to='/login'>Back to login?</Link></div>*/}
          </div>
             
-            <div className="frg_link"><Link to='/login'>Back to login?</Link></div>
+            
          </div>
            
          </div>

@@ -49,49 +49,34 @@ export default class Forgot extends Component {
   }
   render() {
     return (<div>
-
-      <div className="loginouter">
-        <div className="log_wrapper log_col1">
-        <div className="logo_login">
-         <Link className="App-link" to='/'> <img src={require('assets/images/logo-main.png')} alt="logo"/></Link>
-        </div> </div>
-        <div className="log_wrapper log_col2">
-
-         <div className="login_block">
-         <div className="login_box">
-            <form onSubmit={this.onSubmit}>
-                <h2>Forgot Password</h2>
-               
-                <ul>
-                  <li><input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={this.state.email}
-                  onChange={this.handleInputChange}
-                  required
-                /> </li>
-                  
-                  <li><input type="submit" value="Submit"/> </li>
-                </ul>
-
-                
-               
-               
-                
-              </form>
-         </div>
-            
-            <div className="frg_link"><Link to='/login'>Back to Login?</Link></div>
-         </div>
-           
-         </div>
+        <div className="loginouter">
+          <div className="log_wrapper log_col1">
+            <div className="logo_login">
+              <Link className="App-link" to='/'> <img src={require('assets/images/logo-main.png')} alt="logo"/></Link>
+            </div> 
+            <div className="login_block">
+              <div className="login_box">
+                <form onSubmit={this.onSubmit}>
+                  <h2>Forgot Password</h2>
+                  <ul>
+                    <li>
+                      <label>Email Address</label>
+                      <input type="email" name="email" placeholder="Email" value={this.state.email} onChange={this.handleInputChange} required />
+                    </li>
+                    <li>
+                      <input type="submit" value="Send me reset instructions"/>
+                    </li>
+                  </ul>
+                </form>
+                <div className="frg_link">
+                  <p>We'll send you an email further instructions on <br /> how to reset your password.</p>
+                  <Link to='/register'>Signup</Link> <span> | </span> <Link to='/login'>Login</Link>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-       
-
-     
       </div>
-    );
+      );
   }
 }

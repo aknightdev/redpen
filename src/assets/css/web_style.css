@@ -717,7 +717,7 @@ li.suplink a {
 .loginouter {
     overflow: hidden;
     height: 100vh;
-        background: #031b29;
+        /*background: #031b29;*/
         position: relative;
         
 } 
@@ -728,13 +728,13 @@ li.suplink a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url(../../assets/images/wave3.png);
+    /*background: url(../../assets/images/wave3.png);*/
         background-size: 100% auto;
     background-position: bottom center;
     background-repeat: no-repeat;
 }
 .log_wrapper {
-    width: 50%;
+    width: 100%;
     float: left;
     position: relative;
     height: 100%;
@@ -773,10 +773,10 @@ li.suplink a {
 
 }
 .log_wrapper {
-         display: -webkit-box;
+        /* display: -webkit-box;
             display: -webkit-flex;
             display: -ms-flexbox;
-            display: flex;
+            display: flex;*/
             -webkit-box-pack: center;
             -webkit-justify-content: center;
                 -ms-flex-pack: center;
@@ -792,19 +792,21 @@ li.suplink a {
 
 .login_box {
     box-shadow: 0 0 177px rgba(149, 255, 217, 0.25);
-    border-radius: 39px;
-    border: 1px solid #95ffda;
-    background-color: #02141e;
+    border-radius: 10px;
+    border: 1px solid #cfe1dd;
+    background-color: #cfe1dd;
         padding: 50px;
     
 }
 .login_block {
-    max-width: 472px;
+    max-width: 490px;
     width: 100%;
+    margin: 0 auto;
+    display: grid;
 }
 .login_box h2 {
-    color: #ffffff;
-    font-size: 32px;
+    color: #03504e;
+    font-size: 47px;
     margin: 0 0 32px 0;
     letter-spacing: -0.64px;
     text-align: center;
@@ -872,24 +874,24 @@ li.suplink a {
   transform: scaleX(-1);
 }
 .login_box input:not([type="submit"]) {
-    border-radius: 50px;
-    background-color: #2d4957;
+    border-radius: 5px;
+    background-color: #fff;
     border: 0;
     width: 100%;
     font-weight: 300;
     font-family: 'Inter', sans-serif;
-    color: #a2c3d3;
+    color: #2d4957;
     font-size: 16px;
     letter-spacing: 0.16px;
     padding: 23px;
+    margin-top: 5px;
 }
 span.pskeep {
     font-size: 12px;
-    color: #9ea8ac;
     letter-spacing: 0.24px;
     display: block;
     margin-top: 8px;
-    margin-left: 25px;
+    /*margin-left: 25px;*/
       font-weight: 300;
     font-family: 'Inter', sans-serif;
 }
@@ -909,16 +911,17 @@ span.pskeep {
   color: #a2c3d3;
 }
 .login_box input[type="submit"] {
-    background: var(--moz-linear-btnbg);
+    /*background: var(--moz-linear-btnbg);
     background: var(--webkit-btnbg);
-    background: var(--btnbg);
+    background: var(--btnbg);*/
+    background: #068466;
     font-size: 18px;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     text-align: center;
     padding: 19.5px 0;
-    border-radius: 50px;
-    color: #031b29;
+    border-radius: 5px;
+    color: #fff;
     cursor: pointer;
     display: inline-block;
     width: 100%;
@@ -928,10 +931,10 @@ span.pskeep {
     text-align: center;
     margin-top: 45px;
 }
-.frg_link a {
-    color: #b5ff9c;
+.frg_link a, .frg_link span {
+    color: #068466;
     font-size: 18px;
-    text-decoration: underline;
+    text-decoration: none;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
 }
@@ -963,6 +966,11 @@ span.pskeep {
     background-repeat: no-repeat;
      
 }
+.logo_login{
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 40px;
+}
 .logo_login img {
     width: 125px;
 }
@@ -993,7 +1001,6 @@ span.pskeep {
 }
 
 .login_box p.sub_text {
-    color: #9ea8ac;
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 0.16px;
@@ -1118,4 +1125,22 @@ span.pskeep {
     right: inherit;
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
+}
+.loginonly .login_box{
+    border-radius: 10px 10px 0 0;
+}
+.loginonly .log_inwrap{
+    background: #b5d0ca;
+    border-radius: 0 0 10px 10px;
+    text-align: center;
+}
+.loginonly .log_inwrap p{
+    font-weight: bold;
+    padding-top: 10px;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+.loginonly .log_inwrap .frg_link{
+    margin-top: 5px;
+    margin-bottom: 20px;
 }

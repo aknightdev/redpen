@@ -171,6 +171,7 @@ export default class Home extends React.Component {
 						          name="keyword"
 						          placeholder="Search"
 						          id="keyword"
+						          onKeyUp={this.searchProjects}
 						          />
 						    </form>
 							</div>

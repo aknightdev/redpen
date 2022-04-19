@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url(../../assets/images/bg-repeat.jpg);
+  color: #414344;
 }
 html{
   --container2:1400px;
@@ -3086,9 +3087,9 @@ button.close_pop {
     display: none;
 }
 .logo_login {
-    position: absolute;
+    /*position: absolute;
     top: 49px;
-    left: 40px;
+    left: 40px;*/
 }
 .ourprc_welcome p b {
     color: #b5ff9d;
