@@ -68,7 +68,7 @@ export default class Subscribe extends Component {
            </div>
 
         </div>
-        <StripeProvider apiKey="pk_test_oIGVYGLSu6VvgVCSmK3Xwhma00I8TFn1vY">
+        <StripeProvider apiKey="pk_test_Bsz9UH6A2AZNWQ8gv2K94wWV006ppRsssE">
           <div className="example">
             <Elements>
               <CheckoutForm />
