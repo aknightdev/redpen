@@ -42,17 +42,18 @@ export default class Subscribe extends Component {
           {this.state.packages.map((pkg,key) => (
           <div key={key} className="pr_plans">
             <div>
+              <h3>{pkg.name}</h3>
               <strong className="big">{pkg.projects} projects</strong>
               <div className="pkg_price">
-                from <span className="dollar">$ {pkg.amount}</span> /Mo
+                from <span className="dollar">$ {pkg.price}</span> /Mo
                 
               </div>
                 <button onClick={()=>this.showStripe(pkg.stripe_plan_id)}>
-                  downgrade
+                  Signup
                 </button>
 
                 <div className="pkg_list">
-                <p>You and your team have used 24 projects so far.</p>
+                <p>You and your team have used {pkg.projects} projects so far.</p>
                 <ul>
                 <li><Link to='/'>Upgrade/downgrade</Link></li>
                 <li><Link to='/'>Change card</Link></li>
