@@ -1655,7 +1655,7 @@ ul.breadcrumb li a:hover {
     background: white;
     padding: 54px 64px;
     position: fixed;
-    top: 10%;
+    top: 100px;
     left: 50%;
     width: 470px;
     -moz-border-radius: 3px;
@@ -1663,6 +1663,11 @@ ul.breadcrumb li a:hover {
     border-radius: 3px;
     margin: 0;
     margin-left: -235px;
+    height: 200px;
+    -moz-box-shadow: inset 0px -4px 0px 0px #068466;
+    -webkit-box-shadow: inset 0px -4px 0px 0px #068466;
+    box-shadow: inset 0px -4px 0px 0px #068466;
+    border: 1px solid #068466;
 }
 .CardField-number{
   border: 1px solid black;
@@ -2385,7 +2390,6 @@ button.share_button {
 
 .pr_plans strong.big {
     display: block;
-    color: #1292ee;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1.68px;
@@ -2401,7 +2405,6 @@ button.share_button {
  
 
 .pr_plans button {
-    background-color: #1292ee;
     font-size: 15px;
     color: #ffffff;
     border: 0;
@@ -3124,6 +3127,11 @@ box-shadow: 0 0 177px rgba(149, 255, 217, 0.19);
 border: 1px solid #95ffda;
 background-color: #031a27;
 }
+.prplan_grid.active{
+box-shadow: 0 0 177px rgba(149, 255, 217, 0.19);
+border: 1px solid #95ffda;
+background-color: #109779;
+}
 .prplan_grid h2 {
     color: #ffffff;
     font-size: 18px;
@@ -3520,4 +3528,45 @@ background-color: #031a27;
 }
 .user_nm button img{
   border-radius: 50%;
+}
+.payment-balloon .close{
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  cursor: pointer;
+  color: #068466;
+  font-size: 20px;
+}
+.loading:before{
+  content: " ";
+  background: url(../../assets/images/loading.gif) no-repeat center center;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 30px;
+  top: 86px;
+}
+.StripeElement{
+  border: 1px solid #068466;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.button{
+  background: #068466;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  text-align: center;
+  padding: 19.5px 0;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  border: 0;
+}
+.payment-balloon .button{
+  padding: 8px 0;
+  margin-top: 10px;
 }

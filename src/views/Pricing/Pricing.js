@@ -34,7 +34,7 @@ export default class Pricing extends Component {
 				{this.state.packages.map((pkg,key) => (
           <div key={key} className="prplan_item">
 						<div className="prplan_grid">
-							<div className="mst_label">{pkg.is_popular?'MOST POPULAR':'&nbsp;'}</div>
+							<div className="mst_label">{pkg.is_popular?'MOST POPULAR':null}</div>
 							<h2>{pkg.name}</h2>
 							<p>{pkg.subtitle}</p>
 							<h3><span>{pkg.projects}</span> projects</h3>

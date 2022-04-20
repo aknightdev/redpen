@@ -8,16 +8,21 @@ import $ from 'jquery';
 export default class Subscribe extends Component {
   constructor(props) {
     super(props);
-    this.state = {packages:[]};
+    this.state = {packages:[],openStripe:false,selectedPlan:null};
     this.authUser = window.localStorage.getItem('auth_user')==null?{id:null,name:null}:JSON.parse(window.localStorage.getItem('auth_user'));
     this.showStripe = this.showStripe.bind(this);
+    this.closeStripe = this.closeStripe.bind(this);
   }
   componentDidMount() {
     this.loadPackages();
   }
+  closeStripe(){
+    this.setState({openStripe:false,selectedPlan:''});
+  }
   showStripe(plan_id){
-    $('.payment-balloon').show();
-    $('#plan_id').val(plan_id);
+    this.setState({openStripe:true,selectedPlan:plan_id});
+    // $('.payment-balloon').show();
+    // $('#plan_id').val(plan_id);
   }
   loadPackages(){
     fetch(config.url.API_URL+"packages").then(function (response) {
@@ -32,49 +37,29 @@ export default class Subscribe extends Component {
       
         <div className="pritable_row">
 
-          <div className="plan_img">
-            <img src={require('assets/images/paying_vector.jpg')} alt=""/>
-          </div>
+          <div class="many_title">All that matters is how many projects you run at once:</div>
 
-          <h1>Here’s what you’re paying.</h1>
-
-          <div className="plans_grid light_blue yellow voilet">
+          <div className="prplan_row">
           {this.state.packages.map((pkg,key) => (
-          <div key={key} className="pr_plans">
-            <div>
-              <h3>{pkg.name}</h3>
-              <strong className="big">{pkg.projects} projects</strong>
-              <div className="pkg_price">
-                from <span className="dollar">$ {pkg.price}</span> /Mo
-                
-              </div>
-                <button onClick={()=>this.showStripe(pkg.stripe_plan_id)}>
-                  Signup
-                </button>
-
-                <div className="pkg_list">
-                <p>You and your team have used {pkg.projects} projects so far.</p>
-                <ul>
-                <li><Link to='/'>Upgrade/downgrade</Link></li>
-                <li><Link to='/'>Change card</Link></li>
-                <li><Link to='/'>Cancel plan</Link></li>
-                 </ul> 
-                </div>
-
-
+          <div key={key} className="prplan_item">
+            <div className={this.authUser.stripe_plan_id==pkg.stripe_plan_id?'active prplan_grid':'prplan_grid'}>
+              <div className="mst_label">{pkg.is_popular?'MOST POPULAR':null}</div>
+              <h2>{pkg.name}</h2>
+              <p>{pkg.subtitle}</p>
+              <h3><span>{pkg.projects}</span> projects</h3>
+              <div className="pkg_price"><span className="dollar">$</span> {pkg.price}<span className="mth">/month</span></div>
+              {this.authUser.stripe_plan_id==pkg.stripe_plan_id?<Link to="#" className="link_btn2" onClick={()=>this.cancelStripe(pkg.stripe_plan_id)}>Cancel</Link>:<Link to="#" className="link_btn2" onClick={()=>this.showStripe(pkg.stripe_plan_id)}>Change Plan</Link>}
             </div>
           </div>
           ))}
            </div>
 
         </div>
-        <StripeProvider apiKey="pk_test_Bsz9UH6A2AZNWQ8gv2K94wWV006ppRsssE">
-          <div className="example">
+        {this.state.openStripe?<StripeProvider apiKey="pk_test_Bsz9UH6A2AZNWQ8gv2K94wWV006ppRsssE">
             <Elements>
-              <CheckoutForm />
+              <CheckoutForm closeStripe={this.closeStripe} selectedPlan={this.state.selectedPlan} />
             </Elements>
-          </div>
-        </StripeProvider>
+        </StripeProvider>:null}
       </div>
     );
   }
