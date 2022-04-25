@@ -15,7 +15,7 @@ import $ from 'jquery';
 export default class Project extends React.Component {
 	constructor(props) {
     	super(props);
-    	this.state = {id:props.match.params.id, title: '', description:'', user_id:'', images:[], showModal:false, showShare:false, imagename:'', shared:[], invite:[], canEdit: false, canUpload: false, nlist:[], nlists:[], allimgs:[]};
+    	this.state = {id:props.match.params.id, title: '', description:'', user_id:'', images:[], showModal:false, showShare:false, imagename:'', shared:[], invite:[], canEdit: false, canUpload: false, nlist:[], nlists:[], allimgs:[], is_expired:true};
     	this.handleTitleChange = this.handleTitleChange.bind(this);
     	this.handleDescChange = this.handleDescChange.bind(this);
     	this.handleClick = this.handleClick.bind(this);
@@ -339,6 +339,7 @@ export default class Project extends React.Component {
 			    this.setState({invite: result.invite}); 
 			    this.setState({images: result.images}); 
 			    this.setState({allimgs: result.images});
+			    this.setState({is_expired: result.is_expired});
 			    result.images.forEach(val=>{
 			    	if (this.imagenames[val.name]!==undefined) {this.imagenames[val.name]++;}
 			    	else {this.imagenames[val.name]=1;this.imageids[val.name]=val._id;}
@@ -418,6 +419,8 @@ export default class Project extends React.Component {
 						</div>;
 			dragbool = false;
 		}
+		if(this.state.is_expired) return <div>Expired</div>
+		else	
 		return (
 			<Dropzone noClick={true} noDrag={dragbool} onDragEnter={this.handleDragEnter} onDragLeave={this.handleDragLeave} onDrop={this.handleDrop}>
 				{({getRootProps, getInputProps}) => (

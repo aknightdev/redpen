@@ -57,7 +57,7 @@ export default class Subscribe extends Component {
       
         <div className="pritable_row">
 
-          <div class="many_title">All that matters is how many projects you run at once:</div>
+          <div className="many_title">All that matters is how many projects you run at once:</div>
 
           <div className="prplan_row">
           {this.state.packages.map((pkg,key) => (

@@ -186,13 +186,13 @@ export default class Home extends React.Component {
 					 	{button}
 					 
 				      {this.state.projects.map((project,key) => (
-				      	<div className="projects_item" key={key} style={!this.state.showMore && key>7?{display:'none'}:{}}>
+				      	<div className={project.is_expired?'expired projects_item':'projects_item'} key={key} style={!this.state.showMore && key>7?{display:'none'}:{}}>
 				        <div className="projects_grid" >
 				        	{/*<Dropdown updateProjects={this.updateProjects} project={project}></Dropdown>*/}
 				        	<div className="projs_itminner">
 				        	
 				        	<div className="project-image">
-				        		<Link to={'/p/'+project._id}><img alt="" src={project.designs[0]!==undefined?config.url.IMAGE_URL+project.designs[0].image:defaultimage} /></Link>
+				        		<Link to={project.is_expired?'/pro/new_plans':'/p/'+project._id}><img alt="" src={project.designs[0]!==undefined?config.url.IMAGE_URL+project.designs[0].image:defaultimage} /></Link>
 				        		{this.state.nlist[project._id]?(
 					        	<div className="unseen_thum">
 					        			<div className="inner_unseen_thum"> 
@@ -206,7 +206,7 @@ export default class Home extends React.Component {
 
 				        		<div className="prt_info">
 				        			<div className="prttitle_left">
-				        				<Link to={'/p/'+project._id}><h2>{project.name}</h2>
+				        				<Link to={project.is_expired?'/pro/new_plans':'/p/'+project._id}><h2>{project.name}</h2>
 				        				<p><Moment format="DD MMM YY hh:mma">{project.updated}</Moment></p>
 					        			{/*<p> with {project.shared.map((share,key1) => (
 								        		<span key={key1}>{share.user?share.user._id===this.authUser.id?'You':share.user.name:''}{key1===(project.shared.length-2)?' and ':key1===(project.shared.length-1)?'':', '}</span>
@@ -220,7 +220,7 @@ export default class Home extends React.Component {
 				        			<div className="prt_right">
 				        			 
 				        			 {/*<Sharedropdown projectId={project._id} updateProjects={this.updateProjects} project={project}></Sharedropdown>*/}
-				        			 <Protrash updateProjects={this.updateProjects} project={project}></Protrash>
+				        			 {!project.is_expired?<Protrash updateProjects={this.updateProjects} project={project}></Protrash>:null}
 
 				        			</div>
 				        		</div>	</div>
