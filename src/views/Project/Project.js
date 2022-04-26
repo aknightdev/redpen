@@ -164,6 +164,9 @@ export default class Project extends React.Component {
     		this.loadProject();
     		this.loadNotify();
     	}
+    	else{
+    		this.setState({is_expired:false});
+    	}
     }
     onEnterPress = (e) => {
     	if(e.keyCode === 13 && e.shiftKey === false) {
@@ -419,8 +422,8 @@ export default class Project extends React.Component {
 						</div>;
 			dragbool = false;
 		}
-		// if(this.state.is_expired) return <div>Expired</div>
-		// else	
+		if(this.state.is_expired) return <div>Expired</div>
+		else	
 		return (
 			<Dropzone noClick={true} noDrag={dragbool} onDragEnter={this.handleDragEnter} onDragLeave={this.handleDragLeave} onDrop={this.handleDrop}>
 				{({getRootProps, getInputProps}) => (

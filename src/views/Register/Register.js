@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { config } from 'Constants.js';
+import { toast } from 'react-toastify';
 
 export default class Register extends Component {
   constructor(props) {
@@ -36,6 +37,7 @@ export default class Register extends Component {
     .then(res => {
       if (res.status === 200) {
         this.props.history.push('/');
+        toast.success('You have registered successfully!');
       } else {
         const error = new Error(res.error);
         throw error;
@@ -43,7 +45,7 @@ export default class Register extends Component {
     })
     .catch(err => {
       console.log(err);
-      this.setState({error:'Email address already exists'});
+      toast.error('Email address already exists');
     });
   }
   render() {

@@ -6,9 +6,13 @@ import 'assets/css/responsive.css';
 import Main from 'components/Main/Main.js';
 import Header from 'components/Header/Header.js';
 import Footer from 'components/Footer/Footer.js';
-import fontawesome from '@fortawesome/fontawesome'
-import { faCheckSquare, faCoffee } from '@fortawesome/fontawesome-free-solid'
+import fontawesome from '@fortawesome/fontawesome';
+import { faCheckSquare, faCoffee } from '@fortawesome/fontawesome-free-solid';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 fontawesome.library.add(faCheckSquare, faCoffee);
+toast.configure()
 
 function App() {
   return (

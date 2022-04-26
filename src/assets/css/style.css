@@ -3584,3 +3584,6 @@ background-color: #109779;
   height: 100%;
   z-index: 9;
 }
+.Toastify__toast{
+  border-radius: 5px !important;
+}
