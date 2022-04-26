@@ -50,10 +50,10 @@ class Userdropdown extends React.Component {
         if (isLoggedIn) {
           button= <div><div className="user_nm" onClick={this.gearClick}><button><img className='pfpic' src={createImageFromInitials(500, this.authUser.name, getRandomColor())} alt='profile-pic' /></button></div>
                     <ul className="dropdown-menu">
-                        <li><Link className="App-link" to='/login'>Account details</Link> </li>
-                        <li><Link className="App-link" to='/login'>Our Team</Link></li>
-                        <li><Link className="App-link" to='/login'>Upgrade</Link></li>
-                        <li><Link className="App-link" to='/login'>Support</Link></li>
+                        <li><Link className="App-link" to='/account'>Account details</Link> </li>
+                        <li><Link className="App-link" to='/team'>Our Team</Link></li>
+                        <li><Link className="App-link" to='/pro/new_plans'>Billing</Link></li>
+                        <li><Link className="App-link" to='/support'>Support</Link></li>
                         <li><button onClick={this.handleLogoutClick} className="App-link" >Logout</button></li>
                     </ul></div>;
         } else {

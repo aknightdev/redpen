@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { config } from 'Constants.js'; 
 import { GoogleLogin } from 'react-google-login';
+import { toast } from 'react-toastify';
 
 export default class Login extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ export default class Login extends Component {
     })
     .catch(err => {
       console.error(err);
-      alert('Error logging in please try again');
+      toast.error('Invalid details!');
     });
   }
   render() {
@@ -77,7 +78,7 @@ export default class Login extends Component {
       })
       .catch(err => {
         console.error(err);
-        alert('Error logging in please try again');
+        toast.error('Invalid details!');
       });
       }
     }

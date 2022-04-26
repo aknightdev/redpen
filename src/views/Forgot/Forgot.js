@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { config } from 'Constants.js'; 
+import { toast } from 'react-toastify';
 
 export default class Forgot extends Component {
   constructor(props) {
@@ -34,7 +35,7 @@ export default class Forgot extends Component {
       if (res.status === 200) {
         res.json().then(json => {
           this.setState({email:''});
-          alert('Reset password link has been sent to you email address!');
+          toast.success('Reset password link has been sent to you email address!');
         });
         //this.props.history.push('/');
       } else {
@@ -44,7 +45,7 @@ export default class Forgot extends Component {
     })
     .catch(err => {
       console.error(err);
-      alert('Error logging in please try again');
+      toast.error('Your email address does not exist!');
     });
   }
   render() {

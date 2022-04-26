@@ -63,7 +63,8 @@ export default class Register extends Component {
                 <ul>
                   <li>
                     <label>Name</label>
-                    <input type="text" name="name" placeholder="What's your name?" value={this.state.name} onChange={this.handleInputChange} required /></li>
+                    <input type="text" name="name" placeholder="What's your name?" value={this.state.name} onChange={this.handleInputChange} required />
+                  </li>
                   <li>
                     <label>Email Address</label>
                     <input type="email" name="email" placeholder="What's your email?" value={this.state.email} onChange={this.handleInputChange} required />

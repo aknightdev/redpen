@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { config } from 'Constants.js'; 
+import { toast } from 'react-toastify';
 
 export default class Reset extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ export default class Reset extends Component {
       if (res.status === 200) {
         res.json().then(json => {
           this.setState({password:''});
-          alert('Password updated successfully!');
+          toast.success('Password updated successfully!');
         });
         //this.props.history.push('/');
       } else {
@@ -45,7 +46,7 @@ export default class Reset extends Component {
     })
     .catch(err => {
       console.error(err);
-      alert('Error logging in please try again');
+      toast.error('Reset password link expired/invalid!');
     });
   }
   render() {

@@ -2843,14 +2843,15 @@ button.share_button {
 
 .page_wrapper {
     position: relative;
-    background: url(../images/wave3.png);
+    /*background: url(../images/wave3.png);*/
+    background: white;
     background-size: 100% auto;
     background-position: bottom center;
-        background-repeat: no-repeat;
-            min-height: 800px;
+    background-repeat: no-repeat;
+    min-height: 800px;
 }
 
-.page_wrapper:before{
+/*.page_wrapper:before{
   content: "";
   position: absolute;
 
@@ -2870,7 +2871,7 @@ button.share_button {
     z-index: 1;
     bottom:107px;
     right: 84px;
-}
+}*/
 .no_design a.link_btn:hover{
    background: var(--moz-linear-btnbghover);
     background: var(--webkit-btnbghover);

@@ -89,16 +89,14 @@ export default class Single extends React.Component {
     render() {
     	let dragbool=false;
     	return (
+    		<div className="page_body">
+			<div className="page_wrapper">
+			<div className="container2">
 			<Dropzone noClick={true} noDrag={dragbool} onDragEnter={this.handleDragEnter} onDragLeave={this.handleDragLeave} onDrop={this.handleDrop} mutliple={false}>
 				{({getRootProps, getInputProps}) => (
 					<div className="container projects" {...getRootProps()}>
-						<ul className="breadcrumb">
-						  <li><Link to="/">React APP</Link></li>
-						  <li><Link to="/">Dashboard</Link></li>
-						  <li>Singles</li>
-						</ul>
 						<div className="content">
-						<h2><Link to={'/'}>Projects</Link> &nbsp; Singles</h2>
+						<h1>Singles</h1>
 						<ul className="list">
 							<li>
 								<div className="drag-add-more" onClick={this.fileClick}>
@@ -126,6 +124,9 @@ export default class Single extends React.Component {
 				    </div>
 			    )}
 			</Dropzone>
+			</div>
+			</div>
+			</div>
 		);
 	}
 }
