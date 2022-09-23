@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { config } from 'Constants.js';
 import { toast } from 'react-toastify';
-
+import { TiTick } from 'react-icons/ti';
 export default class Register extends Component {
   constructor(props) {
     super(props)
@@ -10,7 +10,8 @@ export default class Register extends Component {
       name : '',
       email : '',
       password: '',
-      error: ''
+      error: '',
+      success: false
     };
   }
   componentDidMount() {
@@ -36,8 +37,7 @@ export default class Register extends Component {
     })
     .then(res => {
       if (res.status === 200) {
-        this.props.history.push('/');
-        toast.success('You have registered successfully!');
+        this.setState({success:true});
       } else {
         const error = new Error(res.error);
         throw error;
@@ -87,6 +87,21 @@ export default class Register extends Component {
           </div>
          </div>
         </div>
+        {this.state.success?<div className="regpop">
+          <div className="popcontent">
+          <div className="poptop">
+            <TiTick />
+            <h2>Congratulations!</h2>
+          </div>
+          <div className="popmiddle">
+            <p>Your account has been successfully created. Please check your mailbox. You are going to receive a verification email.</p>
+          </div>
+          <div className="popbottom">
+            <Link to={'/'}><button>Ok</button></Link>
+          </div>
+          </div>
+          <div className="popoverlay"></div>
+        </div>:null}
       </div>
     );
   }

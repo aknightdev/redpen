@@ -18,6 +18,7 @@ import Pricing from 'views/Pricing/Pricing.js';
 import Features from 'views/Features/Features.js';
 import withAuth from 'components/withAuth/withAuth.js';
 import Support from 'views/Support/Support.js';
+import Invoices from 'views/Invoices/Invoices.js';
 
 export default function Main() {
   return (
@@ -40,6 +41,7 @@ export default function Main() {
         <Route path='/features' component={Features}/>
         <Route path='/account' component={Account}/>
         <Route path='/support' component={Support}/>
+        <Route path='/invoices' component={Invoices}/>
         <Route path='/:id/:version' component={Screen}/>
         <Route path='/:id' component={Screen}/>
         

@@ -415,7 +415,7 @@ export default class Project extends React.Component {
 								<b className="three"></b>
 								<b className="four"></b>
 								<div className="centre-aligned">
-								 Click here or Drop <br/>your files here <img src={require('assets/images/upload_icon.png')} alt=""/> 
+								 Click here or drag <br/>design here to upload <img src={require('assets/images/upload_icon.png')} alt=""/> 
 								</div>
 							 
 						</div></div>
@@ -447,13 +447,13 @@ export default class Project extends React.Component {
 								<div className="collaborators">
 									<ul>
 									{this.state.shared.map((share,key1) => (
-					        		<li><span key={key1}>
+					        		<li key={key1}><span>
 										<Collab removeAccess={this.removeAccess} togglePowers={this.togglePowers} share={share} author={this.state.user_id}></Collab>
 									</span></li>
 					        		))}
 									
 									{this.state.invite.map((share,key1) => (
-					        		<li><span key={key1}>
+					        		<li key={key1}><span>
 					        			<Collabi removeAccess={this.removeAccessi} togglePowers={this.togglePowersi} share={share} author={this.state.user_id}></Collabi>
 									</span></li>
 					        		))}

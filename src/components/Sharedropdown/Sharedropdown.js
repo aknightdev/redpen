@@ -141,12 +141,14 @@ class Sharedropdown extends React.Component {
             arcButton = null;
         }
         if(this.state.showDrop)
-    	    return  <div><div className="prshr_btn"  onClick={this.gearClick}>
-                                        Share
-                                     </div><div className="sharethum_drop">
-
-
-    				 <div className="share-link-container">
+    	    return  <div>
+                        <div className="prshr_btn"  onClick={this.gearClick}>Share</div><div className="sharethum_drop">
+                            <ul>
+                            {this.props.project.shared.map((share,key1) => (
+                                <li key={key1}>{share.user.name}</li>
+                            ))}
+                            </ul>           
+    				 {/*<div className="share-link-container">
                      <ul>
                      <li><label>Give colleagues this link to click:</label>
 
@@ -181,7 +183,7 @@ class Sharedropdown extends React.Component {
                      </li>
 
                      </ul> 
-            </div>
+            </div>*/}
             
     			</div></div>;
         else

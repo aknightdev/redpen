@@ -5,6 +5,7 @@ import 'react-bootstrap-typeahead/css/Typeahead.css';
 import Modal from 'components/Modal/Modal.js';
 import $ from 'jquery';
 import { config } from 'Constants.js';
+import {getRandomColor,createImageFromInitials} from 'components/Utils.js'
 
 export default class Team extends React.Component {
 	constructor(props) {
@@ -76,6 +77,18 @@ export default class Team extends React.Component {
 			this.setState({usernames: [...this.state.usernames,this.authUser.name]});
 			this.setState({users: [...this.state.users,{id:this.authUser.id, name: this.authUser.name, email: this.authUser.email}]});
 			//this.setState({users: [...this.state.users,{id:'1', name: 'Test', email: 'test@gmail.com'}]});
+			fetch(config.url.API_URL+"users", {
+			  	method: "GET",
+		  		headers: {
+			        'Content-Type': 'application/json'
+			    }
+			}).then(function (response) {
+	            return response.json();
+		    }).then( (resp) => {
+		    	resp.forEach((usr)=>{
+		    		this.setState({users: [...this.state.users,{id:usr.id, name: usr.name, email: usr.email}]});
+		    	});
+		    });
 			this.getTeam();
 		}
 		$(document).mouseup(e => {
@@ -120,25 +133,54 @@ export default class Team extends React.Component {
 			success = <aside className="success-balloon "><span>Okay then. We’ve emailed them the good news. </span><strong>Add another?</strong></aside>;
 		}
 		if (this.state.validEmail) {
-			button = <button className="new-button primary light email-button" onClick={this.addTeammate}>Add</button>;
+			button = <button className="new-button primary light email-button" onClick={this.addTeammate}>Invite team member</button>;
 		}
 		return (
-			<div className="container">
-				 
+			<div className="page_body">
+			<div className="page_wrapper">
+			<div className="container2 home">
 				<div className="team_row">
-					<div className="teamleft">
-						<img src={require('assets/images/teammate.jpg')} alt=""/>
+					<div className="team">
+					<h2>Team members</h2>
+					<p>Collaborate with others in your workspace</p>
+					<div className="contains-input">
+						<Typeahead
+						  id='dpusers'
+						  filterBy={this.filterBy}
+						  placeholder='bob@buraerinc.com'
+						  labelKey='name'
+						  onChange={this.addSelected}
+						  onInputChange={this.showAddButton}
+						  options={this.state.users}
+						  renderMenuItemChildren={(option, props) => (
+						    <div>
+						      <div className="author">{option.name}</div>
+						      <small className="meta">{option.email}</small>
+						    </div>
+						  )}
+						  ref={(typeahead) => this.typeahead = typeahead}
+						/>
+						{button}
+						{success}
 					</div>
-					<div className="teamright">
-
-					<h2>Your teammates</h2>
-					<p>
-						Add teammates here! Teammates are granted the power to create new projects.<br />
-						They share in the project quota for your subscription.
-					</p>
 					<div className="teammates-list">
-						<strong className="heading">People who can create projects:</strong>
-						<ul>
+						<table>
+							<thead>
+								<tr>
+									<th width="70%">Member</th>
+									<th>Role</th>
+								</tr>
+							</thead>
+							<tbody>
+								{this.state.teammates.map((teammate,key) => (
+								<tr key={key}>
+									<td><img className='pfpic' src={createImageFromInitials(500, teammate.user.name, getRandomColor())} alt='profile-pic' align="left" />{teammate.user.name}<br />{teammate.user.email}</td>
+									<td>{this.authUser.id===teammate.user._id?'Admin':'User'}</td>
+								</tr>
+								))}
+							</tbody>
+						</table>
+						{/*<ul>
 						{this.state.teammates.map((teammate,key) => (
 						<li key={key} onClick={()=>this.removeTeammate(key)}>
 							<span className="large author removable teammate" title={teammate.email}>
@@ -146,26 +188,7 @@ export default class Team extends React.Component {
 							</span>
 						</li>
 						))}
-						<li className="contains-input">
-							<Typeahead
-							  id='dpusers'
-							  filterBy={this.filterBy}
-							  placeholder='bob@buraerinc.com'
-							  labelKey='name'
-							  onChange={this.addSelected}
-							  onInputChange={this.showAddButton}
-							  options={this.state.users}
-							  renderMenuItemChildren={(option, props) => (
-							    <div>
-							      <div className="author">{option.name}</div>
-							      <small className="meta">{option.email}</small>
-							    </div>
-							  )}
-							  ref={(typeahead) => this.typeahead = typeahead}
-							/>
-							{button}
-							{success}
-						</li></ul>
+						</ul>*/}
 					</div>
 					</div>
 				</div>
@@ -181,6 +204,8 @@ export default class Team extends React.Component {
 		          	</p>
 		          	<button onClick={this.removePeople}>Remove {this.state.teammates[this.state.dindex]?this.state.teammates[this.state.dindex].name:''}</button>
 		        </Modal>
+			</div>
+			</div>
 			</div>
 		);
 	}

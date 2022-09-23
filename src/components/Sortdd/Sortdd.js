@@ -1,6 +1,7 @@
 import React from 'react';
 import onClickOutside from "react-onclickoutside";
 import { config } from 'Constants.js';
+import { BiSort } from 'react-icons/bi';
 
 class Sortdd extends React.Component {
     constructor(props) {
@@ -24,15 +25,15 @@ class Sortdd extends React.Component {
     }
     render() {
         if(this.state.showDrop)
-    	    return  <div><div className="link_btn" onClick={this.gearClick}>Sort</div><div className="dropdown-menu project-thumb-dropdown">
+    	    return  <div className="sort-opt"><div className="link_btn sortby" onClick={this.gearClick}><BiSort /> Sort</div><div className="dropdown-menu project-thumb-dropdown">
 				<ul>
-                    {this.props.page=='home'?<li onClick={()=>this.sortClick('updated')}>Recently Updated</li>:''}
+                    {this.props.page=='home'?<li onClick={()=>this.sortClick('updated')}>Date updated</li>:''}
     				<li onClick={()=>this.sortClick('name')}>Name</li>
-                    <li onClick={()=>this.sortClick('commented')}>Recent Commmented</li>
+                    <li onClick={()=>this.sortClick('commented')}>Latest commments</li>
                 </ul>
     			</div></div>;
         else
-            return <div className="link_btn" onClick={this.gearClick}>Sort</div>;
+            return <div className="link_btn sortby" onClick={this.gearClick}><BiSort /> Sort</div>;
 	}				
 }
 export default onClickOutside(Sortdd);

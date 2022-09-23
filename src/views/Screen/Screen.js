@@ -14,11 +14,12 @@ import { HotKeys } from 'react-keyboard';
 import Hotkeys from 'react-hot-keys';
 import { FaPen,FaArrowRight,FaArrowLeft,FaAngleDown } from 'react-icons/fa';
 import Commenter from 'components/Commenter/Commenter.js';
+import Moment from 'react-moment';
 
 export default class Screen extends React.Component {
 	constructor(props) {
     	super(props);
-    	this.state = {ballonOpen:false, image_id:props.match.params.id, name: '', description:'', version:1, path: '', parent:0, project_id:0,project_name:'',comments:[],versions:[],isHidden:true, top:0, left:0, x_pos:0, y_pos:0, showModal:false, showMenu:false, prominent:false, version_id:'', showShare: false, editTitle: false, canEdit:false, shrink:false, showCommentsidebar: false, nlist:[], canUpload:false, commentId:'', activePolilynes:[], approved:false};
+    	this.state = {ballonOpen:false, image_id:props.match.params.id, name: '', description:'', version:1, path: '', parent:0, project_id:0,project_name:'',comments:[],versions:[],isHidden:true, top:0, left:0, x_pos:0, y_pos:0, showModal:false, showMenu:false, prominent:false, version_id:'', showShare: false, editTitle: false, canEdit:false, shrink:false, showCommentsidebar: false, nlist:[], canUpload:false, commentId:'', activePolilynes:[], approved:false,updated:new Date()};
     	this.image = {};
     	this.prev = {};
     	this.next = {};
@@ -291,7 +292,7 @@ export default class Screen extends React.Component {
 		setTimeout(()=>{
 			//this.loadImage(); , name: v.name
 			let v = this.image.versions[this.props.match.params.version-1];
-			this.setState({image_id: this.image._id, description: v.description, version: parseInt(this.props.match.params.version), path: config.url.IMAGE_URL+v.image, ballonOpen:false, version_id: v._id, approved: v.approved});
+			this.setState({image_id: this.image._id, description: v.description, version: parseInt(this.props.match.params.version), path: config.url.IMAGE_URL+v.image, ballonOpen:false, version_id: v._id, approved: v.approved, updated:v.created});
 			this.loadComments();
 		},500);
 		setTimeout(()=>{
@@ -476,7 +477,7 @@ export default class Screen extends React.Component {
 					<div className="screen fullscreen_view" {...getRootProps()}>
 						 
 						 
-						<div className="content">
+						<div className="content" style={{"background":"white"}}>
 							<div className="pagenation">
 								{prev} {next}
 							</div>
@@ -503,10 +504,11 @@ export default class Screen extends React.Component {
 										</menu>
 										):''}
 									</div>
-									<div className="description-container">
+									<p><Moment format="DD MMM YY hh:mma">{this.state.updated}</Moment></p>
+									{/*<div className="description-container">
 										<textarea disabled={!this.state.canEdit} className="description" placeholder="Add a description — the purpose, context, objectives..." style={{resize: 'none', overflowY: 'hidden', height: '32px'}} onBlur={this.handleImgDescChange} defaultValue={this.state.description}>
 										</textarea>
-									</div>
+									</div>*/}
 								</section>
 							</header>
 							<div className="image">

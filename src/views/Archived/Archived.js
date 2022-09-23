@@ -38,11 +38,8 @@ export default class Archived extends React.Component {
 
 		return (
 			<div className="container home">
-				<ul className="breadcrumb">
-				  <li><Link to="/">React APP</Link></li>
-				</ul>
 				<div className="content">
-					<h1 className="monty-h1">Archived Projects</h1>
+					<h1 className="monty-h1">Trash</h1>
 					
 					<section className="simple-rows archived-projects">
 				      {this.state.projects.map((project,key) => (

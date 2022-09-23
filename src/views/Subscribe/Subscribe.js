@@ -53,8 +53,20 @@ export default class Subscribe extends Component {
   }
   render() {
     return (
-      <div className="container">
-      
+      <div className="page_body">
+      <div className="page_wrapper">
+      <div className="container2 home">
+        <div className="billhead">
+          <div className="inner">
+            <div className="lt">
+              <h2>Invoices</h2>
+              <p>View your payment history</p>
+            </div>
+            <div className="rt">
+              <Link to="/invoices"><button>View billing history</button></Link>
+            </div>
+          </div>
+        </div>
         <div className="pritable_row">
 
           <div className="many_title">All that matters is how many projects you run at once:</div>
@@ -80,6 +92,8 @@ export default class Subscribe extends Component {
               <CheckoutForm closeStripe={this.closeStripe} setCurrentPlan={this.setCurrentPlan} selectedPlan={this.state.selectedPlan} />
             </Elements>
         </StripeProvider>:null}
+      </div>
+      </div>
       </div>
     );
   }

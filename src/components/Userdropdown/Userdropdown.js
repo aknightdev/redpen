@@ -54,6 +54,7 @@ class Userdropdown extends React.Component {
                         <li><Link className="App-link" to='/team'>Our Team</Link></li>
                         <li><Link className="App-link" to='/pro/new_plans'>Billing</Link></li>
                         <li><Link className="App-link" to='/support'>Support</Link></li>
+                        <li><Link className="App-link" to='/archived'>Trash</Link></li>
                         <li><button onClick={this.handleLogoutClick} className="App-link" >Logout</button></li>
                     </ul></div>;
         } else {

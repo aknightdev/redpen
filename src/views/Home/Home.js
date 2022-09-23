@@ -8,7 +8,6 @@ import Sharedropdown from 'components/Sharedropdown/Sharedropdown.js';
 import Protrash from 'components/Protrash/Protrash.js';
 const defaultimage = require('assets/images/default.jpg');
 
-
 export default class Home extends React.Component {
 	constructor(props) {
 	    super(props);
@@ -162,10 +161,9 @@ export default class Home extends React.Component {
 					 
 
 						<div className="prjs_srch_outer">
-							{this.state.projects.length} Projects
-							<Sortdd className="link_btn" filterProjects={this.filterProjects} page="home"></Sortdd>
+							<Link className="link_btn" to='/p/create'>Create Project</Link>
 							<div className="prjs_serch">
-							<form method="post" onSubmit={this.searchProjects}>
+								<form method="post" onSubmit={this.searchProjects}>
 								 <input
 						          type="search"
 						          name="keyword"
@@ -175,7 +173,8 @@ export default class Home extends React.Component {
 						          />
 						    </form>
 							</div>
-							<Link className="link_btn" to='/p/create'>Create Project</Link>
+							<Sortdd className="link_btn" filterProjects={this.filterProjects} page="home"></Sortdd>
+							<div className="cnt">{this.state.projects.length} Projects</div>
 						</div>
 
 						
@@ -219,7 +218,7 @@ export default class Home extends React.Component {
 				        			</div>
 				        			<div className="prt_right">
 				        			 
-				        			 {/*<Sharedropdown projectId={project._id} updateProjects={this.updateProjects} project={project}></Sharedropdown>*/}
+				        			 <Sharedropdown projectId={project._id} updateProjects={this.updateProjects} project={project}></Sharedropdown>
 				        			 {!project.is_expired?<Protrash updateProjects={this.updateProjects} project={project}></Protrash>:null}
 
 				        			</div>

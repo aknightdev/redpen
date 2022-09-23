@@ -15,7 +15,7 @@ export default class Protrash extends React.Component {
     	this.setState({showDrop:false});
     }
     confirmDelete(){
-    	fetch(config.url.API_URL+"deleteproject", {
+    	fetch(config.url.API_URL+"archiveproject", {
               method: "POST",
               body: JSON.stringify({id:this.props.project._id}),
               headers: {

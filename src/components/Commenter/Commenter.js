@@ -27,6 +27,14 @@ class Commenter extends React.Component {
 		this.setXY = this.setXY.bind(this);
 		this.setAttachment = this.setAttachment.bind(this);
     }
+    componentDidUpdate(prevProps) {
+	  if (prevProps.image !== this.props.image) {
+	    this.setState({UI:{
+		    theme: 'yellow',
+		    image: this.props.image,
+		 }})
+	  }
+	}
     handleClickOutside = evt => {
         this.setState({showCommenter:false, polylineCount:0})
     }

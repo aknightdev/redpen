@@ -751,25 +751,22 @@ li.suplink a {
     font-weight: 600;
 }
 .link_btn{
-    background: var(--moz-linear-btnbg);
-    background: var(--webkit-btnbg);
-    background: var(--btnbg);
-    font-size: 18px;
+    border-radius: 2px;
+    background-color: #068466;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 35px;
+    display: inline-block;
     font-family: 'Poppins', sans-serif;
-    font-weight: 500; 
-    display: block;
-    text-align: center;
-    padding: 11.5px 0;
-    border-radius: 25px;
-    color: #031b29;
-    cursor: pointer;
-        display: inline-block;
+    border: 0;
+    text-transform: uppercase;
 }
 .link_btn:hover{
-     background: var(--moz-linear-btnbghover);
+   /*  background: var(--moz-linear-btnbghover);
     background: var(--webkit-btnbghover);
     background: var(--btnbghover);
-    color: #000;
+    color: #000;*/
 
 }
 .log_wrapper {
