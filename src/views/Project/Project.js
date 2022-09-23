@@ -15,7 +15,7 @@ import $ from 'jquery';
 export default class Project extends React.Component {
 	constructor(props) {
     	super(props);
-    	this.state = {id:props.match.params.id, title: '', description:'', user_id:'', images:[], showModal:false, showShare:false, imagename:'', shared:[], invite:[], canEdit: false, canUpload: false, nlist:[], nlists:[], allimgs:[], is_expired:true};
+    	this.state = {id:props.match.params.id, title: '', description:'', user_id:'', images:[], showModal:false, showShare:false, imagename:'', shared:[], invite:[], canEdit: false, canUpload: false, nlist:[], nlists:[], allimgs:[], is_expired:true, secret_mode:false};
     	this.handleTitleChange = this.handleTitleChange.bind(this);
     	this.handleDescChange = this.handleDescChange.bind(this);
     	this.handleClick = this.handleClick.bind(this);
@@ -34,12 +34,28 @@ export default class Project extends React.Component {
     	this.removeAccess = this.removeAccess.bind(this);
     	this.togglePowersi = this.togglePowersi.bind(this);
     	this.removeAccessi = this.removeAccessi.bind(this);
+    	this.updateSecretMode = this.updateSecretMode.bind(this);
     	this.imagenames = [];
     	this.imageids = [];
     	this.file = [];
     	this.authUser = window.localStorage.getItem('auth_user')==null?{id:null,name:null}:JSON.parse(window.localStorage.getItem('auth_user'));
     	this.filterDesigns = this.filterDesigns.bind(this);
 	    this.searchDesigns = this.searchDesigns.bind(this);
+    }
+    updateSecretMode(){
+    	let status = !this.state.secretMode;
+    	this.setState({secretMode:status});
+    	fetch(config.url.API_URL+"togglesecretmode", {
+		  	method: "POST",
+	  		body: JSON.stringify({id:this.props.match.params.id, secret_mode:status}),
+	  		headers: {
+		        'Content-Type': 'application/json'
+		    }
+		}).then(function (response) {
+            return response.json();
+	    }).then( (result) => { 
+			//console.log(result);
+	    });
     }
     filterDesigns(sortby){
 		let sortedImagesDsc;
@@ -343,6 +359,7 @@ export default class Project extends React.Component {
 			    this.setState({images: result.images}); 
 			    this.setState({allimgs: result.images});
 			    this.setState({is_expired: result.is_expired});
+			    this.setState({secret_mode: result.secret_mode});
 			    result.images.forEach(val=>{
 			    	if (this.imagenames[val.name]!==undefined) {this.imagenames[val.name]++;}
 			    	else {this.imagenames[val.name]=1;this.imageids[val.name]=val._id;}
@@ -538,7 +555,7 @@ export default class Project extends React.Component {
 				          	<button onClick={this.uploadNewVersion}>Update as new version</button>
 				          	<button onClick={this.uploadNewDesign}>Add as new design</button>
 				        </Modal>
-				        <Share reloadProject={this.reloadProject} userId={this.authUser.id} showShare={this.state.showShare} handleClose={this.closeModal} projectId={this.props.match.params.id}>
+				        <Share reloadProject={this.reloadProject} userId={this.authUser.id} showShare={this.state.showShare} handleClose={this.closeModal} projectId={this.props.match.params.id} updateSecretMode={this.updateSecretMode} secretMode={this.state.secretMode}>
 				        </Share>
 				        
 						

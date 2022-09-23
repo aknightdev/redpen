@@ -36,7 +36,7 @@ export default class Login extends Component {
     .then(res => {
       if (res.status === 200) {
         res.json().then(json => {
-          window.localStorage.setItem('auth_user',JSON.stringify({id:json._id,name:json.name,email:json.email,expiry_date:json.expiry_date,stripe_subscription_id:json.stripe_subscription_id}));
+          window.localStorage.setItem('auth_user',JSON.stringify({id:json._id,name:json.name,email:json.email,expiry_date:json.expiry_date,stripe_subscription_id:json.stripe_subscription_id,stripe_plan_id:json.stripe_plan_id}));
           setTimeout(()=>{
             window.location.replace('/');
           },200);
