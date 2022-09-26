@@ -112,7 +112,9 @@ export default class Cmenu extends React.Component {
 	        }).then(function (response) {
 	            return response.json();
 	        }).then((result)=>{
-	            this.setState({completed:!this.state.completed});
+	        	let st = !this.state.completed;
+	            this.setState({completed:st});
+	            this.props.toggleCompleted(this.props.replyIndex,st);
 	        });
         }
     }
