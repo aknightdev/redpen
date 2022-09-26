@@ -54,7 +54,7 @@ export default class Screen extends React.Component {
     }
     sortComments(s){
     	let sortedCommentsDsc;
-		if (s.target.value=='asc') {
+		if (s.target.value=='desc') {
 		    sortedCommentsDsc= this.state.comments.sort((a,b)=>{
 				  if (a.updated  < b.updated) {
 				    return 1;
@@ -234,6 +234,7 @@ export default class Screen extends React.Component {
 	            return response.json();
 		    }).then( (resp) => {
 		    	this.setState({comments: resp});  
+		    	this.sortComments({target:{value:'desc'}});
 		    	//window.localStorage.setItem('comments_'+this.state.version_id,JSON.stringify(resp));
 		    	// resp.forEach(val=>{
 			    // 	this.setState({comments: [...this.state.comments,val]});  
