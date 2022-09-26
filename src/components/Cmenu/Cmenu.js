@@ -67,6 +67,7 @@ export default class Cmenu extends React.Component {
     	},100);
         if(this.props.reply.reply!==event.target.value){
             this.setState({name: event.target.value});   
+            this.props.updateComment(this.props.replyIndex,event.target.value);
             fetch(config.url.API_URL+"updatereply", {
                   method: "POST",
                   body: JSON.stringify({id:this.props.commentId, reply:event.target.value, reply_id: this.props.reply._id}),
@@ -133,15 +134,15 @@ export default class Cmenu extends React.Component {
 	render() {
 		var editlink=null, menuDd=null, editblock=null, attachDiv=null;
 		if (this.state.editMode) {
-			editblock = <div className="edit-mode"><textarea className="replytextarea" onBlur={this.handleReplyChange} defaultValue={this.state.name}  onKeyDown={this.onEnterPress}></textarea></div>;
+			editblock = <div className="edit-mode"><textarea className="replytextarea" onBlur={this.handleReplyChange} defaultValue={this.props.reply.reply}  onKeyDown={this.onEnterPress}></textarea></div>;
 		}
 		else{
 			if (this.props.canEdit) {
 				/*onDoubleClick={()=>this.showEdit(this.props.commentId,this.props.reply._id)}*/
-				editblock = <div><p>{this.state.name}</p><FaPen onClick={()=>this.showEdit(this.props.commentId,this.props.reply._id)} /> <FaTrash onClick={this.confirmDelete} /></div>;
+				editblock = <div><p>{this.props.reply.reply}</p><FaPen onClick={()=>this.showEdit(this.props.commentId,this.props.reply._id)} /> <FaTrash onClick={this.confirmDelete} /></div>;
 			}
 			else{
-				editblock = <div><p>{this.state.name}</p></div>;
+				editblock = <div><p>{this.props.reply.reply}</p></div>;
 			}
 		}
 		if (this.props.canEdit) {editlink=<li onClick={() => this.showEdit(this.props.commentId,this.props.reply._id)}>Edit</li>}

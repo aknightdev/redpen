@@ -54,7 +54,7 @@ export default class Screen extends React.Component {
     }
     sortComments(s){
     	let sortedCommentsDsc;
-		if (s.target.value=='asc') {console.log('a')
+		if (s.target.value=='asc') {
 		    sortedCommentsDsc= this.state.comments.sort((a,b)=>{
 				  if (a.updated  < b.updated) {
 				    return 1;
@@ -67,9 +67,8 @@ export default class Screen extends React.Component {
 		    this.setState({
 		        comments:sortedCommentsDsc
 		    });
-		    console.log(sortedCommentsDsc)
 	    }
-	    else{console.log('b')
+	    else{
 	    	sortedCommentsDsc= this.state.comments.sort((a,b)=>{
 				  if (a.updated  > b.updated) {
 				    return 1;
@@ -82,7 +81,6 @@ export default class Screen extends React.Component {
 		    this.setState({
 		        comments:sortedCommentsDsc
 		    });
-		    console.log(sortedCommentsDsc)
 	    }
     }
     toggleComments(){

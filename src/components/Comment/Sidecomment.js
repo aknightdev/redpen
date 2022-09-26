@@ -12,6 +12,7 @@ export default class Sidecomment extends React.Component {
     	this.postComment = this.postComment.bind(this);
     	this.toggleReplyBox = this.toggleReplyBox.bind(this);
     	this.toggleCompleted = this.toggleCompleted.bind(this);
+    	this.updateComment = this.updateComment.bind(this);
     }
     static getDerivedStateFromProps(nextProps, prevState) {
 		return {
@@ -27,6 +28,11 @@ export default class Sidecomment extends React.Component {
     toggleCompleted(replyIndex,st){
     	let comment = this.state.comment;
     	comment.replies[replyIndex].completed = st;
+    	this.setState({comment:comment});
+    }
+    updateComment(replyIndex,reply){
+    	let comment = this.state.comment;
+    	comment.replies[replyIndex].reply = reply;
     	this.setState({comment:comment});
     }
     postComment = () =>{
@@ -49,10 +55,10 @@ export default class Sidecomment extends React.Component {
     }
 	render() {
 		return (<section className={this.props.commentId==this.state.comment._id?'sidebar-annotation comment-group active':'sidebar-annotation comment-group'} onClick={()=>this.props.showComments(this.state.comment._id,0)}>
-					<Cmenu isThread={true} canEdit={this.state.comment.replies[0].user._id===this.authUser.id} commentId={this.state.comment._id} replyIndex="0" toggleCompleted={this.toggleCompleted} reply={this.state.comment.replies[0]} ></Cmenu>
+					<Cmenu isThread={true} canEdit={this.state.comment.replies[0].user._id===this.authUser.id} commentId={this.state.comment._id} replyIndex="0" toggleCompleted={this.toggleCompleted} updateComment={this.updateComment} reply={this.state.comment.replies[0]} ></Cmenu>
 					<div className="replies">
 						{this.state.comment.replies.slice(1, this.state.comment.replies.length).map((reply,key1) => (
-							<Cmenu isThread={false} key={'reply'+this.state.comment._id} canEdit={reply.user._id===this.authUser.id} showEdit={this.showEdit} iAgree={this.iAgree} commentId={this.state.comment._id} replyIndex={key1} toggleCompleted={this.toggleCompleted} reply={reply} ></Cmenu>
+							<Cmenu isThread={false} key={'reply'+this.state.comment._id} canEdit={reply.user._id===this.authUser.id} showEdit={this.showEdit} iAgree={this.iAgree} commentId={this.state.comment._id} replyIndex={key1} toggleCompleted={this.toggleCompleted} updateComment={this.updateComment} reply={reply} ></Cmenu>
 						))}
 					</div>
 					<FaReply onClick={this.toggleReplyBox} />
