@@ -15,7 +15,7 @@ import $ from 'jquery';
 export default class Project extends React.Component {
 	constructor(props) {
     	super(props);
-    	this.state = {id:props.match.params.id, title: '', description:'', user_id:'', images:[], showModal:false, showShare:false, imagename:'', shared:[], invite:[], canEdit: false, canUpload: false, nlist:[], nlists:[], allimgs:[], is_expired:true, secret_mode:false};
+    	this.state = {id:props.match.params.id, title: '', description:'', user_id:'', images:[], showModal:false, showShare:false, imagename:'', shared:[], invite:[], canEdit: false, canUpload: false, nlist:[], nlists:[], allimgs:[], is_expired:true, secret_mode:false, canAccess:false};
     	this.handleTitleChange = this.handleTitleChange.bind(this);
     	this.handleDescChange = this.handleDescChange.bind(this);
     	this.handleClick = this.handleClick.bind(this);
@@ -43,8 +43,8 @@ export default class Project extends React.Component {
 	    this.searchDesigns = this.searchDesigns.bind(this);
     }
     updateSecretMode(){
-    	let status = !this.state.secretMode;
-    	this.setState({secretMode:status});
+    	let status = !this.state.secret_mode;
+    	this.setState({secret_mode:status});
     	fetch(config.url.API_URL+"togglesecretmode", {
 		  	method: "POST",
 	  		body: JSON.stringify({id:this.props.match.params.id, secret_mode:status}),
@@ -360,6 +360,7 @@ export default class Project extends React.Component {
 			    this.setState({allimgs: result.images});
 			    this.setState({is_expired: result.is_expired});
 			    this.setState({secret_mode: result.secret_mode});
+			    if (!result.secret_mode) {this.setState({canAccess: true});}
 			    result.images.forEach(val=>{
 			    	if (this.imagenames[val.name]!==undefined) {this.imagenames[val.name]++;}
 			    	else {this.imagenames[val.name]=1;this.imageids[val.name]=val._id;}
@@ -368,6 +369,7 @@ export default class Project extends React.Component {
 			    	if (this.authUser.id===v.user._id && v.access===true) {
 		    			this.setState({canUpload:true});
 		    		}
+		    		if (result.secret_mode && this.authUser.id===v.user._id) {this.setState({canAccess:true});}
 		    	});
 		    	if (result.user===this.authUser.id || this.state.canUpload) {
 			    	this.setState({canEdit: true}); 
@@ -439,7 +441,8 @@ export default class Project extends React.Component {
 						</div>;
 			dragbool = false;
 		}
-		if(this.state.is_expired) return <div>Expired</div>
+		if(!this.state.canAccess) return <div className="page_body page_body2"><div className="page_wrapper"><div className="container2"><p>No access</p></div></div></div>
+		else if(this.state.is_expired) return <div className="page_body page_body2"><div className="page_wrapper"><div className="container2"><p>Expired</p></div></div></div>
 		else	
 		return (
 			<Dropzone noClick={true} noDrag={dragbool} onDragEnter={this.handleDragEnter} onDragLeave={this.handleDragLeave} onDrop={this.handleDrop}>
@@ -555,7 +558,7 @@ export default class Project extends React.Component {
 				          	<button onClick={this.uploadNewVersion}>Update as new version</button>
 				          	<button onClick={this.uploadNewDesign}>Add as new design</button>
 				        </Modal>
-				        <Share reloadProject={this.reloadProject} userId={this.authUser.id} showShare={this.state.showShare} handleClose={this.closeModal} projectId={this.props.match.params.id} updateSecretMode={this.updateSecretMode} secretMode={this.state.secretMode}>
+				        <Share reloadProject={this.reloadProject} userId={this.authUser.id} showShare={this.state.showShare} handleClose={this.closeModal} projectId={this.props.match.params.id} updateSecretMode={this.updateSecretMode} secretMode={this.state.secret_mode}>
 				        </Share>
 				        
 						

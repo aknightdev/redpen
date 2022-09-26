@@ -48,7 +48,7 @@ class CheckoutForm extends Component {
         <div className={this.state.loading?'second-pane js-second-pane loading':'second-pane js-second-pane'}>
           <strong className="heading">Good choice. What are your details?</strong>
           <input type="hidden" id="plan_id" value="0" />
-          <CardElement options={{ hidePostalCode: true }} />
+          <CardElement options={{hidePostalCode: true}} />
           <button className="button" onClick={this.submit}>Subscribe Now</button>
         </div>
       </aside>

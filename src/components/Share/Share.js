@@ -78,7 +78,7 @@ export default class Share extends React.Component {
 			        	 
 			        	{successpop}
 			        </div>
-			        <div className="secretmode"><input type="checkbox" name="secretmode" checked={this.props.secretMode} onClick={()=>this.props.updateSecretMode()} id="secretmode" /> <label for="secretmode">Secret mode: disable the link; only allow people I Invite</label></div>
+			        <div className="secretmode"><input type="checkbox" name="secretmode" checked={this.props.secretMode} onChange={()=>this.props.updateSecretMode()} id="secretmode" /> <label htmlFor="secretmode">Secret mode: disable the link; only allow people I Invite</label></div>
 		        </div>
 	        ):''}
 	      </section>
