@@ -48,7 +48,7 @@ class Userdropdown extends React.Component {
         let button;
 
         if (isLoggedIn) {
-          button= <div><div className="user_nm" onClick={this.gearClick}><button><img className='pfpic' src={createImageFromInitials(500, this.authUser.name, getRandomColor())} alt='profile-pic' /></button></div>
+          button= <div><div className="user_nm" onClick={this.gearClick}><button><img className='pfpic' src={createImageFromInitials(500, this.authUser.name, this.authUser.color)} alt='profile-pic' /></button></div>
                     <ul className="dropdown-menu">
                         <li><Link className="App-link" to='/account'>Account details</Link> </li>
                         <li><Link className="App-link" to='/team'>Our Team</Link></li>
@@ -64,7 +64,7 @@ class Userdropdown extends React.Component {
         if(this.state.showDrop)
     	    return  button;
         else
-            return <div className="user_nm" onClick={this.gearClick}><button><img className='pfpic' src={createImageFromInitials(500, this.authUser.name, getRandomColor())} alt='profile-pic' /></button></div>;
+            return <div className="user_nm" onClick={this.gearClick}><button><img className='pfpic' src={createImageFromInitials(500, this.authUser.name, this.authUser.color)} alt='profile-pic' /></button></div>;
 	}				
 }
 export default onClickOutside(Userdropdown);	

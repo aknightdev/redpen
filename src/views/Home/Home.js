@@ -166,7 +166,7 @@ export default class Home extends React.Component {
 
 						<div className="prjs_srch_outer">
 							<Link className="link_btn crate_btn" to='/p/create'>Create new project</Link>
-							<div className="prjs_serch_icon">
+							{/*<div className="prjs_serch_icon">
 							    <div className="ser_icon" onClick={this.toggleSearch}>
 							   		<img src={require('assets/images/search_1.svg')}/>
 							    </div>
@@ -181,7 +181,7 @@ export default class Home extends React.Component {
 							          />
 							    </form>
 								</div>
-							</div>
+							</div>*/}
 							<div className="prjs_serch">
 								<form method="post" onSubmit={this.searchProjects}>
 								 <input

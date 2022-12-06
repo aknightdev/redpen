@@ -178,7 +178,7 @@ export default class Team extends React.Component {
 							<tbody>
 								{this.state.teammates.map((teammate,key) => (
 								<tr key={key}>
-									<td><img className='pfpic' src={createImageFromInitials(500, teammate.user.name, getRandomColor())} alt='profile-pic'/>
+									<td><img className='pfpic' src={createImageFromInitials(500, teammate.user.name, teammate.user.color)} alt='profile-pic'/>
 									<span>{teammate.user.name}<br /><span>{teammate.user.email}</span></span></td>
 									<td>{this.authUser.id===teammate.user._id?'Admin':'User'}</td>
 								</tr>

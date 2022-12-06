@@ -505,7 +505,7 @@ export default class Project extends React.Component {
 							<Sortdd className="link_btn" filterProjects={this.filterDesigns} page="project"></Sortdd>
 							</div>
 
-							<div className="prjs_serch_icon">
+							{/*<div className="prjs_serch_icon">
 							    <div className="ser_icon" onClick={this.toggleSearch}>
 							   		<img src={require('assets/images/search_1.svg')}/>
 							    </div>
@@ -520,18 +520,18 @@ export default class Project extends React.Component {
 							          />
 							    </form>
 								</div>
-							</div>
+							</div>*/}
 
 							<div className="prjs_serch">
-							<form method="post" onSubmit={this.searchDesigns}>
-								 <input
-						          type="search"
-						          name="keyword"
-						          placeholder="Search"
-						          id="keyword"
-						          onKeyUp={this.searchDesigns}
-						          />
-						    </form>
+								<form method="post" onSubmit={this.searchDesigns}>
+									 <input
+							          type="search"
+							          name="keyword"
+							          placeholder="Search"
+							          id="keyword"
+							          onKeyUp={this.searchDesigns}
+							          />
+							    </form>
 							</div>
 						</div>
 							

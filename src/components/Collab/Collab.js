@@ -52,7 +52,7 @@ class Collab extends React.Component {
 	  	return (
 	  	<div className="collaborator-container">
 			<span className={cls} title={this.props.share.user.email} onClick={this.toggleMenu}>
-				<span><img className='pfpic' src={createImageFromInitials(500, this.props.share.user.name, getRandomColor())} alt='profile-pic' />{/*this.props.share.user?this.props.share.user._id===this.authUser.id?'You':this.props.share.user.name:''*/}</span>
+				<span><img className='pfpic' src={createImageFromInitials(500, this.props.share.user.name, this.props.share.user.color)} alt='profile-pic' />{/*this.props.share.user?this.props.share.user._id===this.authUser.id?'You':this.props.share.user.name:''*/}</span>
 			    {dpdown}
 				{adminIcon}
 			</span>
