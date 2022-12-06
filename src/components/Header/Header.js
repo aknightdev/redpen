@@ -138,7 +138,7 @@ export default class Header extends React.Component {
 									<Link className="App-link" to='/'>Home</Link>
 								</li>
 								<li>
-									<Link className="App-link" to='/features/'>Features</Link>
+									<Link className="App-link" to='/about-us/'>About Us</Link>
 								</li>
 								<li>
 									<Link className="App-link" to='/pro/pricing'>Pricing</Link>

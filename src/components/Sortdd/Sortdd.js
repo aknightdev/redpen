@@ -25,7 +25,7 @@ class Sortdd extends React.Component {
     }
     render() {
         if(this.state.showDrop)
-    	    return  <div className="sort-opt"><div className="link_btn sortby" onClick={this.gearClick}><BiSort /> Sort</div><div className="dropdown-menu project-thumb-dropdown">
+    	    return  <div className="sort-opt"><div className="link_btn sortby" onClick={this.gearClick}><img src={require('assets/images/sort.svg')}/> Sort</div><div className="dropdown-menu project-thumb-dropdown">
 				<ul>
                     {this.props.page=='home'?<li onClick={()=>this.sortClick('updated')}>Date updated</li>:''}
     				<li onClick={()=>this.sortClick('name')}>Name</li>
@@ -33,7 +33,7 @@ class Sortdd extends React.Component {
                 </ul>
     			</div></div>;
         else
-            return <div className="link_btn sortby" onClick={this.gearClick}><BiSort /> Sort</div>;
+            return <div className="link_btn sortby" onClick={this.gearClick}><img src={require('assets/images/sort.svg')}/> Sort</div>;
 	}				
 }
 export default onClickOutside(Sortdd);

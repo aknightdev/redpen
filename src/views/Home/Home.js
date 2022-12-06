@@ -11,12 +11,16 @@ const defaultimage = require('assets/images/default.jpg');
 export default class Home extends React.Component {
 	constructor(props) {
 	    super(props);
-	    this.state = {isLoggedIn: false, projects:[], nlist:[], archived:0, availprojects:0, keyword:'', sortby:'', allpros:[], showMore:false};
+	    this.state = {isLoggedIn: false, projects:[], nlist:[], archived:0, availprojects:0, keyword:'', sortby:'', allpros:[], showMore:false, togSear:false};
 	    this.authUser = window.localStorage.getItem('auth_user')==null?{id:null,name:null}:JSON.parse(window.localStorage.getItem('auth_user'));
 	    this.updateProjects = this.updateProjects.bind(this);
 	    this.filterProjects = this.filterProjects.bind(this);
 	    this.searchProjects = this.searchProjects.bind(this);
 			this.clickShowmore = this.clickShowmore.bind(this);
+			this.toggleSearch = this.toggleSearch.bind(this);
+	}
+	toggleSearch(){
+		this.setState({togSear:!this.state.togSear});
 	}
 	async getProjects() {
 		//if(window.localStorage.getItem('projects')==null){
@@ -153,15 +157,31 @@ export default class Home extends React.Component {
 		}
 		else*/
 			return (
-				<div className="page_body">
+				<div className="pg_boxwrapper">
 			<div className="page_wrapper">
-			<div className="container2 home">
+			<div className="container home">
 				 
 				<div className="all_projects_outer">
 					 
 
 						<div className="prjs_srch_outer">
-							<Link className="link_btn" to='/p/create'>Create Project</Link>
+							<Link className="link_btn crate_btn" to='/p/create'>Create new project</Link>
+							<div className="prjs_serch_icon">
+							    <div className="ser_icon" onClick={this.toggleSearch}>
+							   		<img src={require('assets/images/search_1.svg')}/>
+							    </div>
+								<div className={this.state.togSear?'show prjs_serch':'prjs_serch'}>
+									<form method="post" onSubmit={this.searchProjects}>
+									 <input
+							          type="search"
+							          name="keyword"
+							          placeholder="Search"
+							          id="keyword"
+							          onKeyUp={this.searchProjects}
+							          />
+							    </form>
+								</div>
+							</div>
 							<div className="prjs_serch">
 								<form method="post" onSubmit={this.searchProjects}>
 								 <input
@@ -203,7 +223,7 @@ export default class Home extends React.Component {
 					        	):''}
 				        	</div></div>
 
-				        		<div className="prt_info">
+				        		<div className="prt_info dash_1">
 				        			<div className="prttitle_left">
 				        				<Link to={project.is_expired?'/pro/new_plans':'/p/'+project._id}><h2>{project.name}</h2>
 				        				<p><Moment format="DD MMM YY hh:mma">{project.updated}</Moment></p>
@@ -219,8 +239,8 @@ export default class Home extends React.Component {
 				        			<div className="prt_right">
 				        			 
 				        			 <Sharedropdown projectId={project._id} updateProjects={this.updateProjects} project={project}></Sharedropdown>
-				        			 {!project.is_expired?<Protrash updateProjects={this.updateProjects} project={project}></Protrash>:null}
-
+				        			 <div className="delete_bg">{!project.is_expired?<Protrash updateProjects={this.updateProjects} project={project}></Protrash>:null}</div>
+				        			 <div></div>
 				        			</div>
 				        		</div>	</div>
 
@@ -242,7 +262,7 @@ export default class Home extends React.Component {
 						{/*<li>{this.state.archived>0?(
 						 <Link to='/archived'>Archived projects..</Link> 
 						):''}</li>*/}
-						<li> {this.state.projects.length>8?(<Link onClick={this.clickShowmore}>Show {this.state.showMore?'Less':'More'}</Link>):""} </li>
+						<li> {this.state.projects.length>8?(<Link onClick={this.clickShowmore}>Load {this.state.showMore?'Less':'More'}</Link>):""} </li>
 						</ul>
 						
 				</div></div>

@@ -89,44 +89,68 @@ export default class Single extends React.Component {
     render() {
     	let dragbool=false;
     	return (
-    		<div className="page_body">
-			<div className="page_wrapper">
-			<div className="container2">
-			<Dropzone noClick={true} noDrag={dragbool} onDragEnter={this.handleDragEnter} onDragLeave={this.handleDragLeave} onDrop={this.handleDrop} mutliple={false}>
-				{({getRootProps, getInputProps}) => (
-					<div className="container projects" {...getRootProps()}>
-						<div className="content">
-						<h1>Singles</h1>
-						<ul className="list">
-							<li>
-								<div className="drag-add-more" onClick={this.fileClick}>
-									<div className="container">
-										<b className="one"></b>
-										<b className="two"></b>
-										<b className="three"></b>
-										<b className="four"></b>
-										<div className="centre-aligned">
-										Drop Here
+    		<div className="page_body page_body2">
+				<div className="page_wrapper light_bg singles_page">
+					<div className="container1">
+						<div className="project_ct_outer">
+							<div className="all_projects_row">
+							
+						<Dropzone noClick={true} noDrag={dragbool} onDragEnter={this.handleDragEnter} onDragLeave={this.handleDragLeave} onDrop={this.handleDrop} mutliple={false}>
+							{({getRootProps, getInputProps}) => (
+								<div className="all_projects_list" {...getRootProps()}>
+								 
+								 
+								<div className="projects_item dropfile">
+									 <div className="projects_grid prjupd_grid">
+									 	<div className="projs_itminner">
+											 <div className="drag-add-more" onClick={this.fileClick}>
+											 	<b className="one"></b>
+													<b className="two"></b>
+													<b className="three"></b>
+													<b className="four"></b>
+													<div className="centre-aligned">
+													Click here or drag <br/>design here to upload <img src={require('assets/images/upload_icon.png')} alt=""/> 
+													</div>
 										</div>
-									</div>
+								
+									 </div>
 								</div>
-					        </li>
+
+									 
+						        </div>
 					        {this.state.images.map((image,key) => (
-						        <li key={key}>
-						        	<Trash reloadProject={this.reloadSingles} image={image} user={this.authUser.id}></Trash>
-						        	<div className="project-image"><img alt="" onClick={() => this.handleClick(image._id)} src={config.url.IMAGE_URL+image.image} /></div>
-						        	<h3 className="project-title">{image.name.replace('.jpg','').replace('_',' ')}</h3>
-						        </li>
+						        <div className="projects_item" key={key}>
+						        		 <div className="projects_grid">
+						        		 <div className="projs_itminner">
+						        		 	<div className="project-image">
+						        		 		<img alt="" onClick={() => this.handleClick(image._id)} src={config.url.IMAGE_URL+image.image} />
+						        		 	</div>
+
+						        		 </div>
+							        	
+							        	 <div className="prj_meta prt_info dash_1"> 
+							        	 	<div className="prttitle_left"> 
+							        	 		<h3 className="project-title">{image.name.replace('.jpg','').replace('_',' ')}</h3>
+								        	 </div>
+								        	 <div className="prt_right"> 
+												 <span className="delete_bg"><Trash reloadProject={this.reloadSingles} image={image} user={this.authUser.id}></Trash></span>
+								        	 </div>
+							        	 </div>
+							        	 
+						        	</div>
+						    	</div>
 					        ))}
-						</ul>
-						</div>
+						 
+						 
 						<input id="fileInput" {...getInputProps()} />
 				    </div>
 			    )}
 			</Dropzone>
+					</div>
+				</div>
 			</div>
-			</div>
-			</div>
+		 </div>
+	 </div>
 		);
 	}
 }

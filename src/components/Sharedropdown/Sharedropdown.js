@@ -142,7 +142,7 @@ class Sharedropdown extends React.Component {
         }
         if(this.state.showDrop)
     	    return  <div>
-                        <div className="prshr_btn"  onClick={this.gearClick}>Share</div><div className="sharethum_drop">
+                        <div className="prshr_btn share share_hov"  onClick={this.gearClick}></div><div className="sharethum_drop">
                             <ul>
                             {this.props.project.shared.map((share,key1) => (
                                 <li key={key1}>{share.user.name}</li>
@@ -187,8 +187,8 @@ class Sharedropdown extends React.Component {
             
     			</div></div>;
         else
-            return <div className="prshr_btn"  onClick={this.gearClick}>
-                                        Share
+            return <div className="prshr_btn share"  onClick={this.gearClick}>
+                                        
                                      </div>;
 	}				
 }

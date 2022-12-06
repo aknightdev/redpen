@@ -2,9 +2,10 @@ import React from 'react';
 import { config } from 'Constants.js';
 import $ from 'jquery';
 import Like from 'components/Like/Like.js';
-import { FaPen,FaTrash,FaFolder } from 'react-icons/fa';
+import { FaPen,FaTrash,FaFolderOpen } from 'react-icons/fa';
 import TimeAgo from 'timeago-react';
 import { TiTick } from 'react-icons/ti';
+import { BsFillTrashFill } from 'react-icons/bs';
 
 export default class Cmenu extends React.Component {
 	constructor(props) {
@@ -139,10 +140,27 @@ export default class Cmenu extends React.Component {
 		else{
 			if (this.props.canEdit) {
 				/*onDoubleClick={()=>this.showEdit(this.props.commentId,this.props.reply._id)}*/
-				editblock = <div><p>{this.props.reply.reply}</p><FaPen onClick={()=>this.showEdit(this.props.commentId,this.props.reply._id)} /> <FaTrash onClick={this.confirmDelete} /></div>;
+				if(this.props.reply.attachment!='' && this.props.reply.attachment!=undefined){
+					editblock = <div><p>{this.props.reply.reply}</p><div className="attach">
+						<div className="lt_attach">
+						<p>Image 2</p>
+						<span>60 MB</span>
+						</div>
+						<div className="rt_attach"><a href={config.url.IMAGE_URL+this.props.reply.attachment} target="_blank">Download</a></div>
+					</div><div className="edt_del_buttons"><span><FaPen onClick={()=>this.showEdit(this.props.commentId,this.props.reply._id)} /></span> <span><BsFillTrashFill onClick={this.confirmDelete} /></span></div></div>;
+
+				}
+				else{
+					editblock = <div><p>{this.props.reply.reply}</p> <div className="edt_del_buttons"><div className="edt_del_buttons_inner"><span><FaPen onClick={()=>this.showEdit(this.props.commentId,this.props.reply._id)} /></span> <span><BsFillTrashFill onClick={this.confirmDelete} /></span></div></div></div>;
+				}
 			}
 			else{
-				editblock = <div><p>{this.props.reply.reply}</p></div>;
+				if(this.props.reply.attachment!='' && this.props.reply.attachment!=undefined){
+					editblock = <div><p>{this.props.reply.reply}</p><div className="attach"><FaFolderOpen /><a href={config.url.IMAGE_URL+this.props.reply.attachment} target="_blank">Download</a></div></div>;
+				}
+				else{
+					editblock = <div><p>{this.props.reply.reply}</p></div>;
+				}
 			}
 		}
 		if (this.props.canEdit) {editlink=<li onClick={() => this.showEdit(this.props.commentId,this.props.reply._id)}>Edit</li>}
@@ -172,16 +190,34 @@ export default class Cmenu extends React.Component {
 			menuDd = <button onClick={this.deleteReply} className={this.props.isThread?'delete-comment thread confirm':'delete-comment confirm'} title="Delete Thread"><i className="trash"></i></button>
 		}
 		if(this.props.reply.attachment!='' && this.props.reply.attachment!=undefined){
-			attachDiv = <div className="attach"><FaFolder /><a href={config.url.IMAGE_URL+this.props.reply.attachment} target="_blank">Download</a></div>
+			// attachDiv = <div className="attach"><FaFolderOpen /><a href={config.url.IMAGE_URL+this.props.reply.attachment} target="_blank">Download</a></div>
 		}
+		 
 			return <article className={'comment comment-'+this.props.reply._id}>
-						<span className="prof_pic"><span>{this.props.reply.user?this.props.reply.user.name:'Annon'}</span></span>
-						<span className={this.state.completed?'active markcmp':'markcmp'} onClick={() => this.iAgree(this.props.commentId,this.props.reply._id)}><TiTick /></span>
+							<div className="pro_meta">
+
+								<div className="ltpr_meta">
+									<span className="prof_pic">
+									<span>{this.props.reply.user?this.props.reply.user.name:'Annon'}</span></span>
+									<span className="prof_name">
+									{this.props.reply.user?this.props.reply.user.name:'Annon'}</span> &nbsp;
+									<TimeAgo datetime={this.props.reply.created}></TimeAgo>
+								</div>
+								<div className="rtpr_meta">
+									<span className={this.state.completed?'active markcmp':'markcmp'} onClick={() => this.iAgree(this.props.commentId,this.props.reply._id)}><span className="mc_text">Mark complete</span> <span className="mc_icon"><TiTick /></span></span>
+								</div>
+
+
+						
+							</div>
+						
+
 						{menuDd}
-						{editblock}
 						{attachDiv}
-						<div className="p byline">
-							<TimeAgo datetime={this.props.reply.created}></TimeAgo>
+						{editblock}
+						
+						<div className="byline">
+							
 							{/*<span>
 								<span className="likes-container ">
 									{this.props.reply.agree!==undefined && this.props.reply.agree.map((agree,key) => (

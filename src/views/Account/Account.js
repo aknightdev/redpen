@@ -48,14 +48,32 @@ export default class Account extends Component {
 
   render() {
     return (
-      <div className="page_body">
-        <div className="page_wrapper">
+      <div className="pg_boxwrapper">
+        <div className="page_wrapper light_bg">
           <div className="container2">
-            <h1>Account</h1>
-            <p><strong>Name</strong>: {this.authUser.name}</p>
-            <p><strong>Email</strong>: {this.authUser.email}</p>
-            <h2>Change Password</h2>
-            <form onSubmit={this.onSubmit}>
+          
+          <div className="mya_row">
+            <div className="mya_col1">
+                <div className="mya_item">
+                   <h1>Account</h1>
+                   <table width="100%">
+                     <tr>
+                       <td width="20%"><strong>Name  </strong> </td>
+                        <td width="80%">{this.authUser.name} </td>
+                     </tr>
+                      <tr>
+                       <td><strong>Email  </strong> </td>
+                        <td>{this.authUser.email}</td>
+                     </tr>
+                   </table>
+                  
+
+                </div>
+            </div>
+             <div className="mya_col1">
+                <div className="mya_item">
+                   <h2>Change Password</h2>
+                   <form onSubmit={this.onSubmit}>
               <ul>
                 <li>
                 <label>Enter your new password</label>
@@ -63,6 +81,15 @@ export default class Account extends Component {
                 <li><input type="submit" value="Save password"/> </li>
               </ul>
             </form>
+
+                </div>
+            </div>
+          </div>
+
+           
+            
+           
+           
           </div>
         </div>
       </div>

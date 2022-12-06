@@ -38,12 +38,11 @@ export default class Invoices extends React.Component {
 			button = <button className="new-button primary light email-button" onClick={this.addTeammate}>Invite team member</button>;
 		}
 		return (
-			<div className="page_body">
-			<div className="page_wrapper">
+			<div className="pg_boxwrapper inv_page">
+			<div className="page_wrapper light_bg">
 			<div className="container2 home">
-				<div className="team_row">
-					<div className="team">
-					<h2>Invoices</h2>
+				<div className="inv_row">
+					 <h2>Invoices</h2>
 					<div className="teammates-list">
 						<table>
 							<thead>
@@ -56,14 +55,13 @@ export default class Invoices extends React.Component {
 							<tbody>
 								{this.state.payments.map((payment,key) => (
 								<tr key={key}>
-									<td>{payment.transaction_id}</td>
-									<td>$ {parseFloat(payment.amount).toFixed(2)}</td>
-									<td><Moment format="DD MMM YY hh:mma">{payment.created}</Moment></td>
+									<td data-label="Transaction ID">{payment.transaction_id}</td>
+									<td data-label="Amount">$ {parseFloat(payment.amount).toFixed(2)}</td>
+									<td data-label="Date"><Moment format="DD MMM YY hh:mma">{payment.created}</Moment></td>
 								</tr>
 								))}
 							</tbody>
 						</table>
-					</div>
 					</div>
 				</div>
 			</div>

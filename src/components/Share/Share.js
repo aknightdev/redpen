@@ -53,11 +53,10 @@ export default class Share extends React.Component {
 		let successpop = null;
 		if (this.state.success) {successpop=<div className="success-balloon"><span>OK. We just emailed them. </span><strong>Invite another?</strong></div>;}
 	  return (
-	    <div className={this.props.showShare ? "modal display-block" : "modal display-none"} id="modalWrapper">
+	    <div className={this.props.showShare ? "display-block" : "display-none"} id="modalWrapper">
 	      <section className="share_modalmain" id="modalMain">
-	      <button className="close_pop" onClick={this.props.handleClose}>X</button>
-	        <div className="share-link-container share_orlink">
-				<h2>Give colleagues this link to click:</h2>
+	      <div className="share-link-container share_orlink">
+				<h2>Share below link to your mates</h2>
 				<div className="share-link"><span className="share-link-text">{this.props.projectId!==undefined && this.props.projectId!==0?config.url.BASE_URL+'p/'+this.props.projectId:config.url.BASE_URL+this.props.imageId}</span>
 				<CopyToClipboard text={config.url.BASE_URL+'p/'+this.props.projectId}
 		          onCopy={() => this.setState({copied: true})}>
@@ -68,7 +67,7 @@ export default class Share extends React.Component {
 			{this.props.projectId!==undefined && this.props.projectId!==0?(
 				 <div className="share-link-container share_oremail">
 			        <div>
-						<h2 className="not-first-of-type">Or, we’ll email them an invitation</h2>
+						<h2 className="not-first-of-type">Or, send invitation to their email</h2>
 						<div className="share-link">
 						<span className="share-link-text">
 						<input placeholder="Enter email address" value={this.state.email} onKeyUp={this.validateEmail} onChange={this.validateEmail} />

@@ -466,16 +466,20 @@ export default class Screen extends React.Component {
 		}
 		else{
 			title = <h1 className="title">
-											<span onClick={this.editToggle}>{this.state.name}</span>{this.state.versions.length>0?(<button onClick={this.toggleMenu} id="versionButton" className={'version '+ (this.state.prominent?'prominent':'')}>,&nbsp;v{this.state.version}<FaAngleDown/></button>):''}
+									<span className="ver_bg2">{this.state.versions.length>0?(<button onClick={this.toggleMenu} id="versionButton" className={'version '+ (this.state.prominent?'prominent':'')}>v{this.state.version}</button>):''}</span> <span onClick={this.editToggle}>{this.state.name} <div className="dat_time"><Moment format="DD MMM YY hh:mma">{this.state.updated}</Moment></div></span>
+
 										</h1>
 		}
 		return (
 			<Dropzone noClick={true} multiple={false} onDragEnter={this.handleDragEnter} onDragLeave={this.handleDragLeave} onDrop={this.handleDrop} noDrag={this.state.project_id===0 || this.authUser.id!==this.user_id}>
 				{({getRootProps, getInputProps}) => (
-						<div className="page_body">
+						<div className="page_body page_body2 view_fullpage">
+						<div className="page_wrapper ">
+							<div className="container1">
+
 					<div className="screen fullscreen_view" {...getRootProps()}>
 						 
-						 
+						
 						<div className="content" style={{"background":"white"}}>
 							<div className="pagenation">
 								{prev} {next}
@@ -503,7 +507,7 @@ export default class Screen extends React.Component {
 										</menu>
 										):''}
 									</div>
-									<p><Moment format="DD MMM YY hh:mma">{this.state.updated}</Moment></p>
+									
 									{/*<div className="description-container">
 										<textarea disabled={!this.state.canEdit} className="description" placeholder="Add a description — the purpose, context, objectives..." style={{resize: 'none', overflowY: 'hidden', height: '32px'}} onBlur={this.handleImgDescChange} defaultValue={this.state.description}>
 										</textarea>
@@ -521,6 +525,8 @@ export default class Screen extends React.Component {
 								<Comment imageId={this.state.image_id} versionId={this.state.version_id} isHidden = {this.state.isHidden} ballonOpen = {true} top = {this.state.top} left = {this.state.left} replies = {[]} commentId={0} appendComment={this.appendComment} projectId={this.state.project_id}/> 
 								</div>
 							</div>
+							</div>
+						</div>
 						</div>
 						</div>
 						<Modal showModal={this.state.showModal} handleClose={this.handleDragLeave}>

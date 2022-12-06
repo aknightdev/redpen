@@ -53,7 +53,7 @@ export default class Subscribe extends Component {
   }
   render() {
     return (
-      <div className="page_body">
+      <div className="pg_boxwrapper">
       <div className="page_wrapper">
       <div className="container2 home">
         <div className="billhead">
@@ -71,20 +71,33 @@ export default class Subscribe extends Component {
 
           <div className="many_title">All that matters is how many projects you run at once:</div>
 
-          <div className="prplan_row">
-          {this.state.packages.map((pkg,key) => (
-          <div key={key} className="prplan_item">
-            <div className={this.state.currentPlan==pkg.stripe_plan_id?'active prplan_grid':'prplan_grid'}>
-              <div className="mst_label">{pkg.is_popular?'MOST POPULAR':null}</div>
-              <h2>{pkg.name}</h2>
-              <p>{pkg.subtitle}</p>
-              <h3><span>{pkg.projects}</span> projects</h3>
-              <div className="pkg_price"><span className="dollar">$</span> {pkg.price}<span className="mth">/month</span></div>
-              {this.state.currentPlan==pkg.stripe_plan_id?<Link to="#" className="link_btn2" onClick={this.cancelStripe}>Cancel</Link>:<Link to="#" className="link_btn2" onClick={()=>this.showStripe(pkg.stripe_plan_id)}>Change Plan</Link>}
+          <div className="price prplan_row">
+            {this.state.packages.map((pkg,key) => (
+              <div key={key} className="prplan_item">
+                <div className={pkg.is_popular?'prplan_grid pop_active':'prplan_grid'}>
+                  <div className={pkg.is_popular?'mst_label':'mst_label hide'}>{pkg.is_popular?'Most popular':null}</div>
+                  <h2>{pkg.name}</h2>
+                  <p>{pkg.subtitle}</p>
+                    <div className="pkg_price"><span className="dollar">$</span>{pkg.price}<span className="mth">Per month</span></div>
+
+                    {this.state.currentPlan==pkg.stripe_plan_id?<Link to="#" className="link_btn2 link_btn" onClick={this.cancelStripe}>Cancel</Link>:<Link to="#" className="link_btn2 link_btn" onClick={()=>this.showStripe(pkg.stripe_plan_id)}>Change Plan</Link>}
+
+                    
+                    <h3>What’s included:</h3>
+                   <ul>
+                     <li><span>{pkg.projects}</span> projects</li>
+                     <li>Unlimited free shares</li>
+                     <li>Version management</li>
+                     <li>Industry-leading security</li>
+                  </ul>        
+                  
+                </div>
             </div>
+            ))}
+
           </div>
-          ))}
-           </div>
+
+           
 
         </div>
         {this.state.openStripe?<StripeProvider apiKey="pk_test_Bsz9UH6A2AZNWQ8gv2K94wWV006ppRsssE">

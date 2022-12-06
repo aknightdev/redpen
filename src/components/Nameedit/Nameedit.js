@@ -57,12 +57,16 @@ export default class Nameedit extends React.Component {
     render() {
         let imgTitle;
         if(this.props.user===this.authUser.id || this.props.canUpload){
-            imgTitle =<div className="prj_meta"> <h3 onClick={this.toggleEdit} className="project-title">{this.props.image.name}{this.props.image.versions.length>1?(<span className="version">,&nbsp;v{this.props.image.versions.length}</span>):''}</h3>
+            imgTitle =<div className="prj_meta prt_info dash_1">
+
+            <div className="prttitle_left"> <h3 onClick={this.toggleEdit} className="project-title">{this.props.image.name}</h3>
                 <p><Moment format="DD MMM YY hh:mma">{this.props.image.updated}</Moment></p>
-                <div className="actions">
-                 {/*<span onClick={this.toggleEdit} ><FaPen/></span>*/}
-               <span> <Trash reloadProject={this.reloadProject} image={this.props.image} user={this.state.user_id} canUpload={this.props.canUpload}></Trash></span>
                 </div>
+                <div className="prt_right">
+                 {/*<span onClick={this.toggleEdit} ><FaPen/></span>*/}
+                 <span className="ver_bg">{this.props.image.versions.length>1?(<span className="version">V{this.props.image.versions.length}</span>):''}</span>
+               <span className="delete_bg"> <Trash reloadProject={this.reloadProject} image={this.props.image} user={this.state.user_id} canUpload={this.props.canUpload}></Trash></span>
+                </div> 
                
                 </div>;
         }

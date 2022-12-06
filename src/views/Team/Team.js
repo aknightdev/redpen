@@ -136,33 +136,37 @@ export default class Team extends React.Component {
 			button = <button className="new-button primary light email-button" onClick={this.addTeammate}>Invite team member</button>;
 		}
 		return (
-			<div className="page_body">
-			<div className="page_wrapper">
+			<div className="pg_boxwrapper team_page">
+			<div className="page_wrapper light_bg">
 			<div className="container2 home">
 				<div className="team_row">
 					<div className="team">
 					<h2>Team members</h2>
-					<p>Collaborate with others in your workspace</p>
-					<div className="contains-input">
-						<Typeahead
-						  id='dpusers'
-						  filterBy={this.filterBy}
-						  placeholder='bob@buraerinc.com'
-						  labelKey='name'
-						  onChange={this.addSelected}
-						  onInputChange={this.showAddButton}
-						  options={this.state.users}
-						  renderMenuItemChildren={(option, props) => (
-						    <div>
-						      <div className="author">{option.name}</div>
-						      <small className="meta">{option.email}</small>
-						    </div>
-						  )}
-						  ref={(typeahead) => this.typeahead = typeahead}
-						/>
-						{button}
-						{success}
-					</div>
+						<div className="tm_inrow">
+							<p>Collaborate with others in your workspace</p>
+							<div className="contains-input">
+								<Typeahead
+								  id='dpusers'
+								  filterBy={this.filterBy}
+								  placeholder='bob@buraerinc.com'
+								  labelKey='name'
+								  onChange={this.addSelected}
+								  onInputChange={this.showAddButton}
+								  options={this.state.users}
+								  renderMenuItemChildren={(option, props) => (
+								    <div>
+								      <div className="author">{option.name}</div>
+								      <small className="meta">{option.email}</small>
+								    </div>
+								  )}
+								  ref={(typeahead) => this.typeahead = typeahead}
+								/>
+								{button}
+								{success}
+							</div>
+						</div>
+					
+					
 					<div className="teammates-list">
 						<table>
 							<thead>
@@ -174,7 +178,8 @@ export default class Team extends React.Component {
 							<tbody>
 								{this.state.teammates.map((teammate,key) => (
 								<tr key={key}>
-									<td><img className='pfpic' src={createImageFromInitials(500, teammate.user.name, getRandomColor())} alt='profile-pic' align="left" />{teammate.user.name}<br />{teammate.user.email}</td>
+									<td><img className='pfpic' src={createImageFromInitials(500, teammate.user.name, getRandomColor())} alt='profile-pic'/>
+									<span>{teammate.user.name}<br /><span>{teammate.user.email}</span></span></td>
 									<td>{this.authUser.id===teammate.user._id?'Admin':'User'}</td>
 								</tr>
 								))}

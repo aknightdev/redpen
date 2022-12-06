@@ -2,6 +2,9 @@ import React from 'react';
 import { config } from 'Constants.js';
 import { FaReply } from 'react-icons/fa';
 import Cmenu from 'components/Cmenu/Cmenu.js';
+import { FiSend } from 'react-icons/fi';
+
+
 
 export default class Sidecomment extends React.Component {
 	constructor(props) {
@@ -56,23 +59,33 @@ export default class Sidecomment extends React.Component {
 	render() {
 		return (<section className={this.props.commentId==this.state.comment._id?'sidebar-annotation comment-group active':'sidebar-annotation comment-group'} onClick={()=>this.props.showComments(this.state.comment._id,0)}>
 					<Cmenu isThread={true} canEdit={this.state.comment.replies[0].user._id===this.authUser.id} commentId={this.state.comment._id} replyIndex="0" toggleCompleted={this.toggleCompleted} updateComment={this.updateComment} reply={this.state.comment.replies[0]} ></Cmenu>
+
+					<div class="reply_1"><div onClick={this.toggleReplyBox} class="in_reply"><span><FaReply/></span> Reply</div></div>
+					{ (this.state.showReplyBox)?
+					<article className="comment-editing-container new-comment  permanently-uncollapsed">
+						<div className="taggable-textarea-container">
+							<div className="beautifier1"><div className="content1"><span className="regular1"> </span></div></div>
+							<div className="recmt_input">
+								<textarea value={this.state.commentText} onChange={this.setComment} placeholder="Write comment or @mention…" className="comment-textarea"></textarea>
+								<button type="button"title="Or press Command–Enter to post" onClick={()=>this.postComment()}>
+									<FiSend />
+								</button>
+							</div>
+							
+							<div className="tag-list" style={{display: 'none'}}></div>
+						</div>
+						
+						<aside className="informative-tip comment-button-tip" style={{display: 'none'}}>Or press Command-Enter</aside>
+					</article>:null
+					}
+
 					<div className="replies">
 						{this.state.comment.replies.slice(1, this.state.comment.replies.length).map((reply,key1) => (
 							<Cmenu isThread={false} key={'reply'+this.state.comment._id} canEdit={reply.user._id===this.authUser.id} showEdit={this.showEdit} iAgree={this.iAgree} commentId={this.state.comment._id} replyIndex={key1} toggleCompleted={this.toggleCompleted} updateComment={this.updateComment} reply={reply} ></Cmenu>
 						))}
 					</div>
-					<FaReply onClick={this.toggleReplyBox} />
-					{ (this.state.showReplyBox)?
-					<article className="comment-editing-container new-comment  permanently-uncollapsed">
-						<div className="taggable-textarea-container">
-							<div className="beautifier"><div className="content"><span className="regular">­</span></div></div>
-							<textarea value={this.state.commentText} onChange={this.setComment} placeholder="Write comment or @mention…" className="comment-textarea"></textarea>
-							<div className="tag-list" style={{display: 'none'}}></div>
-						</div>
-						<button type="button" className="old-button post-comment bottom-stuck primary" title="Or press Command–Enter to post" onClick={()=>this.postComment()}>Post this comment</button>
-						<aside className="informative-tip comment-button-tip" style={{display: 'none'}}>Or press Command-Enter</aside>
-					</article>:null
-					}
+					
+					
 				</section>);
 	}
 }

@@ -15,7 +15,7 @@ import $ from 'jquery';
 export default class Project extends React.Component {
 	constructor(props) {
     	super(props);
-    	this.state = {id:props.match.params.id, title: '', description:'', user_id:'', images:[], showModal:false, showShare:false, imagename:'', shared:[], invite:[], canEdit: false, canUpload: false, nlist:[], nlists:[], allimgs:[], is_expired:true, secret_mode:false, canAccess:false};
+    	this.state = {id:props.match.params.id, title: '', description:'', user_id:'', images:[], showModal:false, showShare:false, togSear:false, imagename:'', shared:[], invite:[], canEdit: false, canUpload: false, nlist:[], nlists:[], allimgs:[], is_expired:true, secret_mode:false, canAccess:false};
     	this.handleTitleChange = this.handleTitleChange.bind(this);
     	this.handleDescChange = this.handleDescChange.bind(this);
     	this.handleClick = this.handleClick.bind(this);
@@ -41,7 +41,14 @@ export default class Project extends React.Component {
     	this.authUser = window.localStorage.getItem('auth_user')==null?{id:null,name:null}:JSON.parse(window.localStorage.getItem('auth_user'));
     	this.filterDesigns = this.filterDesigns.bind(this);
 	    this.searchDesigns = this.searchDesigns.bind(this);
+	    
     }
+    	toggleSearch(){
+		this.setState({togSear:!this.state.togSear});
+	}
+		clickShowmore(){
+		this.setState({showMore:!this.state.showMore});
+	}
     updateSecretMode(){
     	let status = !this.state.secret_mode;
     	this.setState({secret_mode:status});
@@ -101,7 +108,7 @@ export default class Project extends React.Component {
     		if (v._id===share_id) {
     			shareData[k].access=access;
     		}
-    	});
+    	}); 
     	this.setState({shared:shareData});
     	fetch(config.url.API_URL+"toggleaccess", {
 		  	method: "POST",
@@ -439,17 +446,17 @@ export default class Project extends React.Component {
 							 
 						</div></div>
 						</div>;
-			dragbool = false;
+			dragbool = false; 
 		}
-		if(!this.state.canAccess) return <div className="page_body page_body2"><div className="page_wrapper"><div className="container2"><p>No access</p></div></div></div>
-		else if(this.state.is_expired) return <div className="page_body page_body2"><div className="page_wrapper"><div className="container2"><p>Expired</p></div></div></div>
+		if(!this.state.canAccess) return <div className="page_body2"><div className="page_wrapper"><div className="container2"><p>No access</p></div></div></div>
+		else if(this.state.is_expired) return <div className="page_body2"><div className="page_wrapper"><div className="container2"><p>Expired</p></div></div></div>
 		else	
 		return (
 			<Dropzone noClick={true} noDrag={dragbool} onDragEnter={this.handleDragEnter} onDragLeave={this.handleDragLeave} onDrop={this.handleDrop}>
 				{({getRootProps, getInputProps}) => (
-					<div className="page_body page_body2">
-						<div className="page_wrapper">
-							<div className="container2">
+					<div className="pg_boxwrapper">
+						<div className="page_wrapper light_bg">
+							<div className="container1">
 					<div {...getRootProps()}>
 
 
@@ -482,13 +489,39 @@ export default class Project extends React.Component {
 
 									
 					        		
-									<span className="add-new" onClick={this.showSharepopup}>+ Share</span>
+									<span className="add-new" onClick={this.showSharepopup}>+ Share
+
+									<Share reloadProject={this.reloadProject} userId={this.authUser.id} showShare={this.state.showShare} handleClose={this.closeModal} projectId={this.props.match.params.id} updateSecretMode={this.updateSecretMode} secretMode={this.state.secret_mode}>
+				        			</Share>
+									</span>
+									
 								</div>
 							</div>
 						</div>
-						<div className="searchbox">
-							{this.state.images.length} Designs
+						<div className="searchbox prjs_srch_outer ">
+
+						   <div className="left_design">
+							<div className="designs">{this.state.images.length} Designs </div>
 							<Sortdd className="link_btn" filterProjects={this.filterDesigns} page="project"></Sortdd>
+							</div>
+
+							<div className="prjs_serch_icon">
+							    <div className="ser_icon" onClick={this.toggleSearch}>
+							   		<img src={require('assets/images/search_1.svg')}/>
+							    </div>
+								<div className={this.state.togSear?'show prjs_serch':'prjs_serch'}>
+									<form method="post" onSubmit={this.searchProjects}>
+									 <input
+							          type="search"
+							          name="keyword"
+							          placeholder="Search"
+							          id="keyword"
+							          onKeyUp={this.searchProjects}
+							          />
+							    </form>
+								</div>
+							</div>
+
 							<div className="prjs_serch">
 							<form method="post" onSubmit={this.searchDesigns}>
 								 <input
@@ -558,8 +591,7 @@ export default class Project extends React.Component {
 				          	<button onClick={this.uploadNewVersion}>Update as new version</button>
 				          	<button onClick={this.uploadNewDesign}>Add as new design</button>
 				        </Modal>
-				        <Share reloadProject={this.reloadProject} userId={this.authUser.id} showShare={this.state.showShare} handleClose={this.closeModal} projectId={this.props.match.params.id} updateSecretMode={this.updateSecretMode} secretMode={this.state.secret_mode}>
-				        </Share>
+				        
 				        
 						
 

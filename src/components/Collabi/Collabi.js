@@ -38,7 +38,7 @@ class Collabi extends React.Component {
 			adminIcon = <i className="angled-crown"></i>;
 		}
 		if (this.state.menuOpen) {
-			menudiv = <menu className="collaborator-dropdown " style={{backgroundColor:'#2d4957'}}>
+			menudiv = <menu className="collaborator-dropdown " style={{backgroundColor:'#cfe1dd'}}>
 						<li className="admin" onClick={()=>this.calltoAction('power')}>{this.props.share.access?'Remove access to this project':'Give full access to this project'}</li>
 						<li className="remove" onClick={()=>this.calltoAction('remove')}>Remove from the project</li>
 					</menu>;

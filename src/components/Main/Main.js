@@ -16,9 +16,12 @@ import Sitemapedit from 'views/Sitemapedit/Sitemapedit.js';
 import Subscribe from 'views/Subscribe/Subscribe.js';
 import Pricing from 'views/Pricing/Pricing.js';
 import Features from 'views/Features/Features.js';
+import About from 'views/About/About.js';
 import withAuth from 'components/withAuth/withAuth.js';
 import Support from 'views/Support/Support.js';
 import Invoices from 'views/Invoices/Invoices.js';
+import Faq from 'views/Faq/Faq.js';
+import Termsofuse from 'views/Termsofuse/Termsofuse.js';
 
 export default function Main() {
   return (
@@ -39,9 +42,12 @@ export default function Main() {
         <Route path='/pro/new_plans' component={Subscribe}/>
         <Route path='/pro/pricing' component={Pricing}/>
         <Route path='/features' component={Features}/>
+        <Route path='/about-us' component={About}/>
         <Route path='/account' component={Account}/>
         <Route path='/support' component={Support}/>
         <Route path='/invoices' component={Invoices}/>
+        <Route path='/faq' component={Faq}/>
+        <Route path='/termsofuse' component={Termsofuse}/>
         <Route path='/:id/:version' component={Screen}/>
         <Route path='/:id' component={Screen}/>
         

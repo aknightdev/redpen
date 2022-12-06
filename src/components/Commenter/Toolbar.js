@@ -80,7 +80,7 @@ const Toolbar = ({
           >
             <FaPaperclip />
             <input type="file" name="attach" onChange={setAttachment} id="attach" />
-          </div>{attachment}
+          </div><span className="atc_name">{attachment}</span>
           <div className="btn"><button type="button" onClick={postComment}>Send</button></div>
           {/*<div className="reset" onClick={() => setPolylineCount(0)}>
             <svg className="svg-icon" viewBox="0 0 20 20" style={svgIconStyle}>

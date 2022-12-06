@@ -19,13 +19,16 @@
     background-size: contain;
 	}
 	.projects_item {
-    	padding: 0 30px;
+    	padding: 0 20px;
 	}
 	.all_projects_list {
     	margin: 0 -30px;
 	}
 	.pricingpage .page_wrapper:after{
 		    bottom: 40px;
+	}
+	.project-header{
+		padding: 75px 62px 10px 62px;
 	}
 }
 @media screen and (max-width:1600px) {
@@ -35,7 +38,7 @@
     height: 65px;
 	}
 	.project-header{
-		margin-bottom: 70px;
+		margin-bottom: 40px;
 	}
 	.pricingpage .page_wrapper:before {
     	top: 0;
@@ -76,6 +79,14 @@
 	.prplan_row {
     	padding: 40px 0 120px;
 	}
+	.team_page .page_wrapper, .inv_page .page_wrapper {
+    	padding-top: 60px;
+	}
+	.mya_item h1, .mya_item h2{
+		font-size: 35px;
+	}
+	.mya_row {    padding-top: 67px;}
+
 
 }
 @media screen and (max-width:1400px) {
@@ -96,6 +107,17 @@
 	}
 	.pricingpage .page_wrapper:before{
 		left: 2%;
+	}
+	
+	.prjs_srch_outer .link_btn{
+		padding: 13px 30px;
+	}
+	.prjs_serch{
+		width: 260px;
+	}
+	.project_ct_outer {
+	    margin: 0 auto;
+	    max-width: 1050px;
 	}
 
 }
@@ -160,6 +182,7 @@
     }
     .collaborators>ul{
     	    margin-right: 10px;
+    	    padding-left: 0px;
     }
     .projects_grid .drag-add-more img {
     	width: 64px;
@@ -190,6 +213,56 @@
 	.page_wrapper{
 		    min-height: 700px;
 	}
+	.projects_item {
+    	padding: 0 15px;
+	}
+	.prt_info{
+		    padding: 16px 10px;
+	}
+	.project_ct_outer {
+	    margin: 0 auto;
+	    max-width: 960px;
+	}
+	.pg_boxwrapper {
+    margin-top: 104px;
+	}
+	.team_page .page_wrapper, .inv_page .page_wrapper {
+    	padding-top: 45px;
+	}
+	.tm_inrow p{
+		font-size: 20px;
+	}
+	.team_page h2, .inv_page h2{
+		    font-size: 35px;
+	}
+	.tm_inrow input.rbt-input-main{
+		    padding: 16px 25px;
+	}
+	.mya_item{
+		    padding: 40px 35px;    min-height: 350px;
+	}
+	.mya_item h1, .mya_item h2 {
+    	font-size: 32px;    margin: 0 0 20px 0;
+	}
+	.mya_row {
+    	padding-top: 50px;
+	}
+	.mya_item td{
+		    font-size: 17px;
+	}
+	.mya_col1{
+		    padding: 0 15px;
+	}
+	.mya_row{
+		    margin: 0 -15px;
+	}
+	.mya_item input:not([type="submit"]){
+		padding: 19px 20px;
+	}
+	.mya_item input[type="submit"]{
+		padding: 15.5px 0;
+	}
+
 }
 @media (min-width:992px) and (max-width:1200px) {
 
@@ -222,6 +295,7 @@
 	.newsleter_subcribe input{    padding: 15px 15px;}
 	.footer{    padding: 25px 0;}
 	.plans_grid{    margin: 40px auto 0;}
+
 
 	
 
@@ -326,9 +400,7 @@
     .project-header {
     	margin-bottom: 35px;
 	}
-	.crtitle_lt {
-    	padding-left: 0;
-	}
+	
 	.project-header {
     	padding: 15px 20px;
 	}
@@ -383,14 +455,125 @@
     margin: auto;
 	}
 	.share-link-container label	{    margin-bottom: 12px;}
-	.share-link-container label {
-    line-height: 22px;
+	 .share-link{
+	 	    margin-bottom: 17px;
+	 }
+	 
+	 
+	.prjs_srch_outer .link_btn.sortby{
+		padding: 10px;
+
+
 	}
-	.share_modalmain h2{
-		    font-size: 18px;
+	.prjs_serch input{
+		padding: 16px 20px 14px 15px;
 	}
-	.share_oremail .share-link-text input {
-    	padding: 0 9px;
+	.prjs_srch_outer .link_btn {
+   	 	padding: 13px 20px;
+   	 	height: 50px;
+	}	
+	.prjs_serch {
+   		width: 205px;
+	}
+	.prttitle_left {
+    	width: 75%;    
+	}
+	.prt_right {
+    	width: 22%;
+	}
+	.page_body.bg_light {
+   		 padding-top: 40px;
+	}
+	.project_ct_outer{
+		width: 720px;
+
+	}
+	.page_body2 {
+   	 padding-top: 50px;
+	}
+
+	.crtitle_rt {
+    width: 100%;
+    float: none;
+    display: block;
+	}
+	.project-header .collaborators-container {
+    float: none;
+    display: block;
+	}
+	.project-header .searchbox {
+    float: none;}
+    .project_ct_outer .prjs_srch_outer {
+    	margin-bottom: 0;   margin-top: 25px;
+	}
+	.pg_boxwrapper {
+    	margin-top: 78px;
+	}
+	.crtitle_lt{
+		    padding: 6px 30px;
+	}
+	.share_modalmain{
+		    padding: 30px 26px;    max-width: 500px;
+	}
+	.share-link-container .share-link-text{
+		margin-right: 1%;
+	}
+	.team_page h2, .inv_page h2 {
+    font-size: 33px;
+    line-height: normal;
+    margin-bottom: 9px;
+	}
+	.teammates-list {
+    margin-top: 5px;}
+    .teammates-list table th{
+    	    font-size: 18px;
+    }
+
+     .inv_page table tr:nth-child(1){ display:none; }
+    .inv_page table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+	  }
+	  
+	  .inv_page table td {
+	    border-bottom: 1px solid #ddd;
+	    display: block; 
+	    text-align: right;
+	  }
+	  
+	  .inv_page table td::before {
+	    /*
+	    * aria-label has no advantage, it won't be read inside a table
+	    content: attr(aria-label);
+	    */
+	    content: attr(data-label);
+	    float: left;
+	    font-weight: bold; 
+	    margin-right: 10px;
+	    color: #01544f;
+	  }
+	  
+	  .inv_page table td:last-child {
+	    border-bottom: 0;
+	  }
+
+	  .mya_item {
+    	padding: 30px 25px;
+    	min-height: 320px;
+	}
+	.mya_item h1, .mya_item h2 {
+    font-size: 29px;
+    margin: 0 0 11px 0;
+	}
+	.mya_item td{
+		    word-break: break-word;
+	}
+	.mya_item input:not([type="submit"]) {
+    	padding: 15px 20px;
+	}
+	.mya_item input[type="submit"] {
+    	padding: 12.5px 0;
 	}
 
 }
@@ -460,20 +643,206 @@
 	.share_modalmain{
 		padding: 25px 25px;
 	} 
-	.new-button.light.primary {
-    	font-size: 17px;
-	}
+	 
 	.share_orlink span.share-link-text {
     width: 100%;
     margin-bottom: 9px;
     margin-right: 0;
 	}
+	.prjs_serch {
+    	width: 184px;
+	}
+	.prjs_srch_outer .link_btn.sortby {
+   	 padding: 11px 10px;
+   	     height: 46px;
+	}
+	.prjs_serch input{
+		padding: 15px 20px 14px 15px;
+	}
+	.prjs_srch_outer .link_btn.crate_btn{
+		 font-size: 16px;
+	}
+	.prjs_srch_outer{
+		 padding-top: 55px;
+		 margin-bottom: 50px;
+	}
+	.prjs_srch_outer .link_btn {
+    	padding: 12px 15px;
+	}
+	.prttitle_left {
+   		 width: 73%;
+	}
+	.prt_right {
+    	width: 75px;
+	}
+	.all_projects_row {
+    	padding-bottom: 15px;
+	}
+	.arc_btns_row {
+    	margin-top: 35px;
+	}
+	.prjs_srch_outer .link_btn{
+		margin-right: 10px;
+	}
+	.project-thumb-dropdown li{
+		padding: 12px 15px;
+	}
+	.project_ct_outer{
+		max-width: 100%;
+		padding: 10px 25px;
+	}
+	.collaborators-container .add-new {
+	    font-size: 15px;
+    	padding: 8px 25px;
+	}
+	.project-thumb-dropdown li {
+    	padding: 10px 20px;
+	}
+	.crtitle_rt{
+		width: 36%;
+	}
+	.page_body2 {
+   	 padding-top:80px;
+	}
+	.singles_page {
+    	padding-top: 50px;
+	}
+	.project_ct_outer .project-header{
+		    margin-top: 18px;
+	}
+	.left_design .designs{
+		margin-left: 0;
+	}
+	.project_ct_outer .project-header {
+    padding-left: 0;
+    padding-right: 0;
+	}
+
+	.project_ct_outer .crtitle_rt {
+    	width: 100%;
+	}
+	.project_ct_outer .collaborators {
+    display: block;
+	}
+	.project_ct_outer .share_modalmain{
+		    max-width: 400px;
+	}
+	.new-button.light.primary{
+		    width: 120px;
+	}
+	.team_page .page_wrapper, .inv_page .page_wrapper {
+    padding-top: 30px;
+	}
+	.teammates-list table td span {
+    display: block;
+    margin-top: 9px;
+	}
+	.teammates-list{
+		    word-break: break-word;
+	}
+	.mya_col1 {
+    width: 100%;
+    float: none;
+    padding: 0 15px;
+    max-width: 550px;
+    margin: 0 auto 26px;
+	}
+	.mya_item{
+		    min-height: auto;
+	}
+	.mya_item h1, .mya_item h2 {
+    	font-size: 26px;
+	}
+	.mya_item input[type="submit"] {
+    	padding: 11.5px 0;
+	}
+	.mya_row {
+    	padding-top: 40px;
+	}
+
 }
-@media screen and (max-width:667px) {}
+@media screen and (max-width:667px) {
+	.prjs_serch {
+    	width: 166px;
+	}
+}
 
-@media screen and (max-width:640px) {}
+@media screen and (max-width:640px) {
+	.prjs_serch_icon{
+		display: block;
+		float: left;		 
+	}
+	.crtitle_rt {
+		 width: 48%;
+	}
+	.prjs_serch{
+		display: none;
+	}
+	.prjs_serch_icon .show.prjs_serch{
+        display: block;        
+    	position: absolute;
+    	top: 88px;
+    	right: 10px;
+    	z-index: 999;
+    	background-color: #fff;
+    	width: 245px;
+    	box-shadow: 0px 5px 9px #999;
 
-@media screen and (max-width:568px) {}
+	}
+	.prjs_serch_icon .show.prjs_serch:before{
+		width: 0;
+    	height: 0;
+    	border-left: 6px solid transparent;
+	    border-right: 6px solid transparent;
+	    border-bottom: 9px solid #068466;
+	    content: "";
+	    position: absolute;
+	    top: -9px;
+	    left: 10px;
+	    z-index:999;
+
+	}
+	.ser_icon{
+		padding: 10px 15px;
+		background: #fff;
+		border: 1px solid #e9eef1;
+		border-radius: 5px;
+		margin-right: 10px;
+	}
+	.prjs_srch_outer {
+    padding-top: 35px;
+    margin-bottom: 40px;
+	}
+	.left_design .designs {
+    	 margin: 12px 10px;
+	}
+
+}
+
+@media screen and (max-width:570px) {
+	.crtitle_rt {
+		 width: 100%;
+		 text-align: center;
+		 margin-bottom: 15px;
+	}
+	.project-header .collaborators-container{
+		float: none;
+	}
+	.searchbox.prjs_srch_outer{
+		width: 260px;
+		margin: 0 auto;		
+		float: none;
+	}
+	.left_design .designs {    
+   		margin: 8px 15px;
+	}
+	.share_modalmain{
+		    left: -150%;
+	}
+	.share_modalmain:before{
+		left: 47%;
+	}
+}
 
 @media screen and (max-width:533px) {
 
@@ -482,7 +851,6 @@
 	    float: left;
 	    margin-bottom: 0;
 	}
-	
 
 	.crtitle_rt {
     width: 100%;
@@ -490,7 +858,7 @@
     text-align: center;
 	}
 	.crtitle_lt {
-    padding-top: 0;
+   	padding: 0px 10px;
     width: 100%;
     float: none;
 	}
@@ -535,18 +903,64 @@
 	}
 	.share-link-container .new-button.light.primary {
     width: auto;
-    padding: 6px 27px;
-	    font-size: 16px;
+    padding: 6px 27px; 
 	}
-
-	.share-link{ padding: 15px; }
+ 
 	.share_modalmain {
     	padding: 20px 20px;
 	}
-	.share_modalmain h2 {
-    font-size: 17px;
-    line-height: 25px;
+	 
+	.prjs_srch_outer .link_btn.crate_btn {
+	    font-size: 16px;
+	    position: absolute;
+	    top: 80px;
+	    padding: 8px;
+	    width: 89%;
+	    text-align: center;
+	    margin-right: 0;
 	}
+	.prjs_srch_outer {
+	    padding-top: 25px;
+	    margin-bottom: 90px;
+	}
+	.prjs_srch_outer .link_btn.sortby {
+	    padding: 5px 10px;
+	    height: 40px;
+	}
+	.ser_icon{
+		padding: 8px;
+		margin-right: 0;
+	}
+	.prjs_srch_outer .cnt{
+		padding-top: 12px;
+	}
+	.project-thumb-dropdown{
+		top: 39px;
+		left: -86px;
+    	width: 200px;
+	}
+	.project-thumb-dropdown:before{
+		left: 108px
+	}
+	.prttitle_left {
+	    width: 75%;
+	}
+	.prt_right {
+	    width: 80px;
+	    padding-right: 10px;
+	}
+	.prjs_serch_icon .show.prjs_serch{
+		top: 72px;
+    	right: 0px;
+	}
+
+	.project_ct_outer .share_modalmain {
+    	max-width: 300px;
+	}
+	.share_modalmain:before {
+    	left: 75%;
+	}	
+	
 }
 
 @media screen and (max-width:440px) {
@@ -583,11 +997,35 @@
 	.many_title {
     	font-size: 16px;
 	}
+	.share_modalmain {
+    	padding: 18px 16px;
+	}
+	
+	.team_page h2, .inv_page h2 {
+    font-size: 29px;}
+    .tm_inrow p {
+    font-size: 17px;
+    line-height: 1.1;
+	}
+	.tm_inrow{
+		    padding: 22px 20px;
+	}
+	.teammates-list table th {
+    	font-size: 17px;    padding: 16px 15px;
+	}
+	.teammates-list table td {
+    padding: 16px 15px;}
+
+    .mya_item h1, .mya_item h2 {
+    	font-size: 24px;
+	}
 }
 
 @media screen and (max-width:414px) {}
 
-@media screen and (max-width:375px) {}
+@media screen and (max-width:375px) {
+	
+}
 
 @media screen and (max-width:360px) {}
 

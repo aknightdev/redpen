@@ -61,8 +61,15 @@
 	.au_headblock .hw_midtitle {
 	    top: 123px;
 	}
+	.inner_banner h1{
+		font-size: 64px;
+	}
+
 }
 @media screen and (max-width:1600px) {
+	html{
+		--heading2-size: 60px;
+	}
 
 	.home_banner h1{font-size: 60px;
     line-height: 68px;}
@@ -147,6 +154,35 @@
 	.hw_midtitle {
 		top: 104px;
 	}
+	.inner_banner h1 {
+    	font-size: 62px;
+	}
+	.inner_banner:before{
+		width: 422px;
+    	height: 236px;
+    	background-size: contain;
+	    background-repeat: no-repeat;
+	}
+	.inner_banner:after{
+		width: 310px;
+    	height:185px;
+    	background-size: contain;
+	    background-repeat: no-repeat;
+	}
+	.abt_sec1{
+		padding-top: 90px;
+        padding-bottom: 90px;
+	}
+	.abt_sec1.faq {
+    	padding-top:75px;
+	}
+	.abt_sec1.terms {
+   		padding-top: 40px;
+	}
+	.abt_sec1.terms h3{
+		    font-size: 28px;
+	}
+
 }
 @media screen and (max-width:1500px){
 	.step_sec4 {
@@ -207,27 +243,26 @@
 	}
 	
     .step_sec3:before { 
-    width: 100px;
-    height: 106px;
-    right: 1.5%;
+	    width: 100px;
+	    height: 106px;
+	    right: 1.5%;
 	}
 	.step_sec4 .step_imgwrap {
     	margin-left: -69px;
 	}
 	
 	.abt_sec:before {
-    width: 85px;
-    background-repeat: no-repeat;
-    background-size: contain;
+	    width: 85px;
+	    background-repeat: no-repeat;
+	    background-size: contain;
 	}
 	.drp_row:before { 
-    width: 82px;
-    height: 112px;
-     
-    top: -174px;
-    right: -70px;
-    background-size: contain;
-    background-repeat: no-repeat;
+	    width: 82px;
+	    height: 112px;     
+	    top: -174px;
+	    right: -70px;
+	    background-size: contain;
+	    background-repeat: no-repeat;
 	}
 	.web_col1 h2, .convi_sec h2 {
     	font-size: 43px;
@@ -271,6 +306,19 @@
 	.convi_sec {
 		padding-bottom: 50px;
 	}
+	.inner_banner h1 {
+    	font-size: 60px;
+	}
+	html{
+		--heading2-size: 58px;
+		--heading3-size: 44px;	
+	}	
+
+	.abtool_sec .col:not(.abtool_sec .col:nth-child(4),.abtool_sec .col:nth-child(5),.abtool_sec .col:nth-child(6)) {
+    	min-height: 330px;
+	}
+	
+
 }
 @media screen and (max-width:1400px) {
 
@@ -333,6 +381,33 @@
 	.ftr_menu li a, .ftr_copy {
 		font-size: 16px;
 	}
+	.inner_banner h1 {
+   		font-size: 58px;
+	}
+	html {
+    	--heading2-size: 56px;
+    	--heading3-size: 42px;	
+	}	
+	
+	.grid_1350{
+		max-width: 1200px;
+	}
+	.abt_sec1{
+		padding-top: 80px;
+		padding-bottom: 80px;
+	}
+	.abtool_sec .col:not(.abtool_sec .col:nth-child(4),.abtool_sec .col:nth-child(5),.abtool_sec .col:nth-child(6)) {
+    	min-height: 320px;
+	}
+	.price .pkg_price, .price .pkg_price .dollar{
+		font-size: 42px;
+	}
+	.price.prplan_row {
+    	padding: 60px 0 80px;
+	}
+	.abt_sec1.faq {
+    	padding-top: 70px;
+	}
 }
 @media screen and (max-width:1300px){
 
@@ -381,6 +456,41 @@
 	.drp_col {
 		padding-bottom: 50px;
 	}
+	.inner_banner h1 {
+   		font-size: 56px;
+	}
+	html {
+    	--heading2-size: 54px;
+    	--heading3-size: 40px;	
+	}	
+	.grid_1350{
+		max-width: 1100px;
+	}
+	.abt_sec1{
+		padding-top: 75px;
+		padding-bottom:75px;
+	}
+	.abtool_sec .col:not(.abtool_sec .col:nth-child(4),.abtool_sec .col:nth-child(5),.abtool_sec .col:nth-child(6)) {
+    	min-height: 300px;
+	}
+	.inner_banner p{
+		padding: 0px 160px;
+	}
+	.inner_banner p br{
+		display: none;
+	}
+	.abt_sec2 {
+	    padding-top: 50px;
+	    padding-bottom: 60px;
+	}
+	.price .prplan_item{
+		width: 33% ;
+		padding: 0 15px;
+	}
+	.abt_sec1.terms h3{
+		    font-size: 26px;
+	}
+
 
 }
 @media screen and (max-width:1200px){
@@ -391,7 +501,7 @@
 	.top_menu li{
 		    margin-right: 50px;
 	}
-	.frnt_header {
+	.frnt_header, .frnt_header.dash_header {
     	padding: 30px 0;
 	}
 	.usermenu li a{
@@ -624,6 +734,59 @@
 	    width: 300px;
 	    height: 179px;
 	}
+	.inner_banner h1 {
+   		font-size: 54px;
+	}
+	.abt_sec2 h2{
+		margin: 0 45px 55px 45px;
+	}
+	html {
+    	--heading2-size: 50px;
+    	--heading3-size: 36px;	
+	}	
+	.grid_1350{
+		max-width: 950px;
+	}
+	.abt_sec1{
+		padding-top: 70px;
+		padding-bottom:70px;
+	}
+	.abt_sec1 .col7 {
+    	padding-left: 40px;
+	}
+	.inner_banner:before {
+	    width: 400px;
+	    height: 224px;
+	}
+	.inner_banner:after {
+	    width: 318px;
+	    height: 190px;
+	}
+	.abt_sec2 .col7{
+		margin-bottom: 30px;
+	}
+	.accordion a{
+		font-size: 18px;
+	}
+	.accordion-content{
+		padding: 15px 50px 13px 0;
+	}
+	[id*="open-accordion"]{
+		    padding: 15px 0px;
+	}
+	[id*="open-accordion"]:after, [id*="close-accordion"]:after{
+		right: 30px;
+    	top: 32px;
+	}
+	.abt_sec1.faq_section .col7{
+		    padding-left: 50px;
+		    padding-right: 0px;
+	}
+	.abt_sec1 .grid_1000 h2 {
+	    margin-bottom: 25PX;
+	    padding-left: 15px;
+	}
+	
 }
 @media (min-width:992px) and (max-width:1200px) {}
 
@@ -736,7 +899,7 @@
         -o-transform: rotate(45deg);
     	}
 
-    	.frnt_header {
+    	.frnt_header, .frnt_header.dash_header {
     		padding: 20px 0;
 		}
 		.usermenu {
@@ -840,14 +1003,15 @@
 	.step_rt,.step_lt{ width: 100%; float: none; text-align: center; }
 	.step_sec h2 {    font-size: 105px;    margin: 0 0 -86px 0;}
 	.inv_box {
-    margin: auto;
-    padding: 25px 20px}
+	    margin: auto;
+	    padding: 25px 20px
+	}
     .inv_box h4 {
     	font-size: 28px;
 	}
 	.inv_box a {
-    font-size: 16px;
-    padding: 8.5px 25px;
+	    font-size: 16px;
+	    padding: 8.5px 25px;
 	}
 	.step_sec2 .step_wrapper {
     	margin-left: 0;
@@ -856,13 +1020,13 @@
     	padding-right: 0;
 	}
 	.step_sec3 .step_wrapper {
-    margin-right: 0;
-    margin-top: 0;
+	    margin-right: 0;
+	    margin-top: 0;
 	}
 	.step_sec1 img {
-    max-width: 400px;
-    width: 100%;
-    margin-bottom: -30px;
+	    max-width: 400px;
+	    width: 100%;
+	    margin-bottom: -30px;
 	}
 	.step_sec1 {
 	    padding-bottom: 50px;
@@ -871,22 +1035,22 @@
 		width: 350px;
 	}
 	.step_sec4 .step_wrapper {
-    margin-top: 0;
-    margin-left: 0;
+	    margin-top: 0;
+	    margin-left: 0;
 	}
 	.step_sec.step_sec4 p {
 	    padding-right: 0;
 	}
 	.step_sec4 img {
-    max-width: 225px;
-    margin: 0 auto;
-    display: block;
-    width: 100%;
+	    max-width: 225px;
+	    margin: 0 auto;
+	    display: block;
+	    width: 100%;
 	}
 	.step_sec4 .step_lt:before {
-    top: 0;
-    width: 100px;
-    height: 50px;
+	    top: 0;
+	    width: 100px;
+	    height: 50px;
 	}
 	.au_headblock .hw_midtitle {
 	    top: 40px;
@@ -901,43 +1065,47 @@
 		font-size: 16px;
 	}
 	.web_col1 {
-    width: 100%;
-    float: none;
+	    width: 100%;
+	    float: none;
 	}
 	.web_col2 {
-    float: none;
-    width: 100%;
+	    float: none;
+	    width: 100%;
 	}
 	.web_col1 h2, .convi_sec h2 {
-    font-size: 32px;
+    	font-size: 32px;
 	}
 	.web_col1 h2 {
-    line-height: 1.2;
-    text-align: left;
-    margin-bottom: 20px;
+	    line-height: 1.2;
+	    text-align: left;
+	    margin-bottom: 20px;
 	}
 	.abt_sec:before {
-    width: 56px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    left: 1%;
-    top: 14%;
+	    width: 56px;
+	    background-repeat: no-repeat;
+	    background-size: contain;
+	    left: 1%;
+	    top: 14%;
 	}
 	.web_col2 a {
-    font-size: 16px;}
+    	font-size: 16px;
+    }
     .convi_sec h2 {
-    margin: 0 0 25px 0;}
-    .drp_row{ display: block; }
+    	margin: 0 0 25px 0;
+    }
+    .drp_row{ 
+    	display: block; 
+    }
     .drp_col {
-    min-height: auto;
-    margin-bottom: 30px;
+	    min-height: auto;
+	    margin-bottom: 30px;
 	}
 	.drp_col:last-of-type {
 		margin-bottom: 0;
 	}
 	.drp_col h3 {
-    margin: 18px 0 9px 0;
-    font-size: 22px;
+	    margin: 18px 0 9px 0;
+	    font-size: 22px;
 	}
 	.footer_sec:before, .footer_sec:after {
 		display: none;
@@ -950,13 +1118,14 @@
 	}
 	
 	.footer_sec{
-		    padding-top: 35px;
-    padding-bottom: 35px;
+		padding-top: 35px;
+    	padding-bottom: 35px;
 	}
 	.step_sec h3 {
-    font-size: 32px;}
+    	font-size: 32px;
+    }
     .step_sec2 .step_lt:before{
-    	    left: -2%;
+    	 left: -2%;
     }
     .step_sec3:before{
     	top: 78px;
@@ -968,20 +1137,26 @@
 	.frnt_header{
 		z-index: 99;
 	}
-	.loginouter{ height: 100%; }
+	.loginouter{ 
+		height: 100%; 
+	}
 	.log_wrapper {
-    width: 100%;
-    float: none;
-    padding: 75px 0;}
-    .log_col1{ padding: 125px 0; }
+	    width: 100%;
+	    float: none;
+	    padding: 75px 0;
+	}
+    .log_col1{ 
+    	padding: 125px 0;
+    }
     .log_col2:before {
-    width: 60px;
-    height: 89px;
-    bottom: 1%;
+	    width: 60px;
+	    height: 89px;
+	    bottom: 1%;
 	}
 	.log_col1 h2 {
-    font-size: 38px;
-    line-height: 40px;}
+	    font-size: 38px;
+	    line-height: 40px;
+	}
     .login_box p.sub_text {
     	margin: -9px 0 21px 0;
 	}
@@ -989,6 +1164,125 @@
 		margin-left: auto;
 		margin-right: auto;
 	}
+	.inner_banner h1 {
+    	font-size: 32px;
+	}
+	.inner_banner p {
+    	padding: 0px 10px;
+	}
+	.grid_1350 {
+	    max-width: 100%;
+	    padding: 0px 40px;
+	}
+	.abt_sec1 .col5, .abt_sec1 .col7{
+		width: 100%;
+	}
+	.abt_sec1 .col7 {
+    	padding-left: 10px;
+	}
+	.abt_sec1 h2{
+		margin-bottom: 20px;		
+	}
+
+	.abtool_sec .col:not(.abtool_sec .col:nth-child(4),.abtool_sec .col:nth-child(5),.abtool_sec .col:nth-child(6)) {
+    	    min-height: auto!important;
+	}
+	.abtool_sec .col4{
+		width: 50%;
+	}
+	.abtool_sec .col4 p{
+		min-height: 110px;
+	}
+	html {
+    	--heading2-size: 40px;
+    	--heading3-size: 32px;	
+	}
+	.abtool_sec h3{
+		font-size: 20px;
+	}
+	.inner_banner:before {
+	    width: 285px;
+	    height: 160px;
+	   
+	}
+	.inner_banner:after {
+	    width: 250px;
+	    height: 150px;	    
+	}
+	.abt_sec1 p ,.abt_sec2 p{
+		 font-size: 16px;
+		 line-height: 26px;
+	}
+	.abtool_sec {
+    	padding-top: 50px;
+	}
+	.abt_sec2 p{
+		font-size: 16px;
+		margin: 0 0 25px 0;
+	}
+	.abt_sec2 h2 {
+    	margin: 0 30px 40px 30px;
+	}
+	.abt_sec2 {
+	    padding-top: 55px;
+	    padding-bottom: 55px;
+	}
+	.price_inner h1 {
+    	line-height: 1.1!important;
+	}
+	.price .prplan_item {
+	    max-width: 450px;
+	    width: 100%;
+	    padding: 0 0px 35px 0px!important;
+	    float: none;
+	    margin: 0 auto;
+	}
+	.abt_sec1.faq_section .col5{
+ 		text-align: center;
+	}
+	.faq_section .col5 h2 {
+    	padding-bottom: 0px;
+	}
+	.faq_section .ab_btn {
+	    padding-top: 0px;
+	    margin-bottom: 50px;
+	}
+	.abt_sec1.faq_section .col7 {
+	    padding-left: 00px;
+	    padding-right: 0px;
+	}
+	.price.prplan_row {
+    	padding: 35px 0 25px;
+	}
+	.price .pkg_price, .price .pkg_price .dollar {
+   		 font-size: 38px;
+	}
+	.price .mth{
+		margin-bottom: 35px;
+	}
+	.price .prplan_item .prplan_grid{
+		padding: 30px 30px 20px 30px;
+	}
+	.price .mst_label{
+	   margin-top: -50px;
+       margin-bottom: 25px
+	}
+	.abt_sec1.faq {
+    	padding-top:60px;
+	}
+	.abt_sec1.terms p{
+		font-size: 16px;
+		 margin: 0 0 15px 0;
+	}
+	.abt_sec1.terms h3 {
+    	font-size: 24px;
+	}
+	.termsofuse .inner_banner h1 {
+    	margin: 0 0 15px 0;
+	}
+	
+	.prplan_row {    margin-left:0px; margin-right: 0;}
+
 }
 @media screen and (max-width:768px) {}
 
@@ -1008,9 +1302,12 @@
     	font-size: 31px;
 	}
 	.step_sec2 .step_lt:before {
-    width: 58px;
-    height: 92px;}
-    .step_sec h2 {    font-size: 95px;}
+	    width: 58px;
+	    height: 92px;
+	}
+    .step_sec h2 {    
+    	font-size: 95px;
+    }
     /*.web_col2 p,.step_sec p,.drp_col p {
     font-size: 16px;
     line-height: 26px;
@@ -1019,13 +1316,13 @@
     	font-size: 30px;
 	}
 	.abt_sec {
-    padding-top: 45px;
-    padding-bottom: 50px;
+	    padding-top: 45px;
+	    padding-bottom: 50px;
 	}
 	.abt_sec:before {
-    width: 45px;
-    left: 1%;
-    top: 1%;
+	    width: 45px;
+	    left: 1%;
+	    top: 1%;
 	}
 	
 	/*.shapes_img1 {
@@ -1055,9 +1352,9 @@
     	padding: 18px 29px;
 	}
 	.log_col1:after {
-    width: 85px;
-    top: 6%;
-    right: 3%;
+	    width: 85px;
+	    top: 6%;
+	    right: 3%;
 	}
 	.ab_left {
 	    width: 100%;
@@ -1074,6 +1371,91 @@
 	}
 	.hw_headblock.au_headblock {
 		padding-bottom: 30px;
+	}
+	.abtool_sec .col4{
+		width: 100%;		
+		text-align: center;
+
+	}
+	.tl_box,.tl_box p {
+	   	 max-width: 100%;
+	   	 text-align: center;
+	}
+	.abtool_sec .col4 p {
+	    min-height: auto;
+	    margin-bottom: 25px;
+	}
+	.abt_sec2 .col5 {
+	    width: 100%;
+	    text-align: center;
+	}
+	.abt_sec2 .col5 img{
+		max-width: 450px;
+	}
+	.abt_sec2 {
+	    padding-top: 50px;
+	    padding-bottom: 55px;
+	}
+
+	.abt_sec2 .col7{
+		width: 100%;
+	    padding-left: 10px;
+	    margin-bottom: 30px;
+	    padding-top: 45px;
+	}
+	.abt_sec2 h2 {
+    	margin: 0 45px 20px 45px;    	
+	}	
+	.abt_sec1 h2 {
+	    margin-bottom: 20px;
+	}
+	.abt_sec1 {
+	    padding-top: 50px;
+	    padding-bottom: 40px;
+	}
+	.inner_banner{
+		padding-bottom: 100px;
+	}
+	.inner_banner:before {
+	    width: 300px;
+	    height: 168px;
+	}
+	.inner_banner:after {
+	    width: 228px;
+	    height: 136px;
+	}
+	.inner_banner h1 {
+    	font-size: 30px;
+    	line-height: 1.1;
+	}
+	html {
+    	--heading2-size: 36px;
+    	--heading3-size: 31px;	
+	}	
+	.accordion a {
+	    font-size: 16px;
+	 }
+	 .price .pkg_price, .price .pkg_price .dollar {
+   		 font-size: 36px;
+	}
+	.price.prplan_row {
+    	padding: 20px 0 10px;
+	}
+	.faq_section .ab_btn{
+		margin-bottom: 35px;
+	}
+	.abt_sec1.faq {
+   		 padding-top: 50px;
+	}
+	.abt_sec1 .grid_1000 h2 {
+    	margin-bottom: 25PX;
+        padding-left: 12px;
+	}
+	.abt_sec1.terms {
+    	padding-top: 20px;
+	}
+	.abt_sec1.terms h3 {
+    	font-size: 22px;
 	}
 }
 @media screen and (max-width:667px) {
@@ -1105,6 +1487,23 @@
 	.step_sec4 img {
 	    max-width: 150px;
 	}
+	.inner_banner:before {
+	    width: 260px;
+	    height: 146px;
+	}
+	.inner_banner:after {
+	    width: 203px;
+	    height: 122px;
+	}
+	.abt_sec1 {
+	    padding-top: 45px;
+	    padding-bottom: 25px;
+	}
+	.abt_sec2 {
+	    padding-top: 35px;
+	    padding-bottom: 50px;
+	}
+	
 }
 
 @media screen and (max-width:640px) {
@@ -1127,6 +1526,39 @@
 	    padding-top: 40px;
 	    padding-bottom: 40px;
 	}
+	.inner_banner p{
+		font-size: 15px;   
+		line-height: 24px;
+	}
+	.inner_banner {
+    	padding-bottom: 70px;
+	}
+	.grid_1350 {   
+    	padding: 0px 20px;
+	}
+
+	.price .prplan_item{
+		width: 90%;
+	}
+	.faq_section .ab_btn a{
+		width: auto;
+		padding: 10px 30px;
+	}
+	.accordion a {
+	   line-height: 24px;
+	   padding-right: 55px;
+	}
+	[id*="open-accordion"]:after, [id*="close-accordion"]:after{
+		top: 24px;
+		right: 25px
+	}
+	.accordion-content {
+   		padding: 15px 10px 13px 0;
+	}
+	.price .prplan_item .prplan_grid{
+		padding: 30px 20px 20px 20px;
+	}
+
 }
 
 @media screen and (max-width:568px) {
@@ -1139,6 +1571,20 @@
 	.web_col1 h2, .convi_sec h2 {
 	    font-size: 28px;
 	}
+	.abt_sec2 .col5 img{
+		max-width: 90%;
+	}
+	.abt_sec2 h2{
+		margin: 0 0px 20px 0px;
+	}
+	html {
+    	--heading2-size: 32px;
+    	--heading3-size: 28px;	
+	}
+	.abt_sec1 .grid_1000 h2 {
+	    margin-bottom: 25PX;
+	    padding-left: 0;
+	}
 }
 
 @media screen and (max-width:533px) {
@@ -1150,23 +1596,23 @@
     	font-size: 77px;
 	}
 	.nav_rt {
-    float: none;
-    width: 100%;
+	    float: none;
+	    width: 100%;
 	}
 	.logo_lt {
-    width: 100%;
-    float: none;
-    text-align: center;
-    margin-bottom: 20px;
+	    width: 100%;
+	    float: none;
+	    text-align: center;
+	    margin-bottom: 20px;
 	}
 	.main_logo img {
-    width: 170px;
-    image-rendering: -webkit-optimize-contrast;
+	    width: 170px;
+	    image-rendering: -webkit-optimize-contrast;
 	}
 	.usermenu {
-    margin-right: 0;
-    float: none;
-    text-align: center;
+	    margin-right: 0;
+	    float: none;
+	    text-align: center;
 	}
 	.ftr_menu li {
     	margin: 5px;
@@ -1207,6 +1653,12 @@
 	.step_sec1 {
 	    padding-bottom: 40px;
 	}
+	.abt_sec1.terms {
+    	padding-top: 15px;
+	}
+	.abt_sec1.terms h3 {    
+    	line-height: 1.1;
+	}
 }
 
 @media screen and (max-width:480px) {
@@ -1216,7 +1668,7 @@
 	.hw_headblock h2 {
     	font-size: 66px;
 	}
-	.home_banner h1 {
+	.home_banner h1,.inner_banner h1 {    
 	    font-size: 28px;
 	}
 	.shapes_img2 {
@@ -1233,6 +1685,27 @@
 	}
 	.step_sec h2 {
 	    font-size: 90px;
+	}
+	html {
+    	--heading2-size: 28px;
+    	--heading3-size: 27px;	
+	}
+	.inner_banner:before {
+	    width: 230px;
+	    height: 129px;
+	}
+	.inner_banner:after {
+	    width: 175px;
+    	height: 105px
+	}
+	.abtool_sec h3 {
+    	font-size: 18px;
+	}
+	.price .prplan_item {
+    	width: 96% ;
+	}
+	.price_inner h1 br{
+		display: none;
 	}
 }
 
@@ -1251,11 +1724,11 @@
     	top: 29px;
 	}
 	.step_sec1:before {
-    width: 45px;
-    height: 91px;
-    top: -128px;
-    left: 0;
-    background-size: contain;
+	    width: 45px;
+	    height: 91px;
+	    top: -128px;
+	    left: 0;
+	    background-size: contain;
 	}
 	.step_sec h3 {
     	font-size: 27px;
@@ -1264,16 +1737,17 @@
     	font-size: 24px;
 	}
 	.step_sec2 .step_lt:before {
-    width: 45px;
-    height: 80px;
+	    width: 45px;
+	    height: 80px;
         top: 1%;
 	}
 	.step_sec3:before {
-    width: 61px;
-    height: 64px;}
+	    width: 61px;
+	    height: 64px;
+	}
 	.step_sec h2 {
-    font-size: 89px;
-    margin: 0 0 -75px 0;
+	    font-size: 89px;
+	    margin: 0 0 -75px 0;
 	}
     .web_col1 h2, .convi_sec h2 {
     	font-size: 27px;
@@ -1285,10 +1759,10 @@
     	line-height: 1.33;
 	}
 	.drp_row:before {
-    width: 46px;
-    height: 112px;
-    top: -24%;
-    right: 0;
+	    width: 46px;
+	    height: 112px;
+	    top: -24%;
+	    right: 0;
 	}
 	.drp_col h3 {
     	font-size: 19px;
@@ -1312,26 +1786,26 @@
     	margin: 14px auto 21px;
 	}
 	.footer_sec:after {
-    width: 100%;
-    height: 1005px;
-    bottom: 0;
-    left: 0;
-    background-size: auto 100%;
-    background-position: bottom center;
-    background-repeat: no-repeat;
+	    width: 100%;
+	    height: 1005px;
+	    bottom: 0;
+	    left: 0;
+	    background-size: auto 100%;
+	    background-position: bottom center;
+	    background-repeat: no-repeat;
 	}
 	.logo_login {
-    /*top: 22px;
-    left: 20px;*/
-    margin-top: 100px;
+	    /*top: 22px;
+	    left: 20px;*/
+    	margin-top: 100px;
 	}
 	.log_col1 h2 {
-    font-size: 31px;
-    line-height: 33px;
+	    font-size: 31px;
+	    line-height: 33px;
 	}
 	.log_col1 a.link_btn {
-    padding: 10.5px 30px;
-    font-size: 16px;
+	    padding: 10.5px 30px;
+	    font-size: 16px;
 	}
 	.login_block {
     	width: 85%;
@@ -1340,24 +1814,25 @@
     	width: 36px;
 	}
 	.log_col2:before {
-    width: 41px;
-    height: 75px;
-    bottom: 1%;
-    left: 3%;
+	    width: 41px;
+	    height: 75px;
+	    bottom: 1%;
+	    left: 3%;
 	}
 	.login_box input[type="submit"] {
-    padding: 10.5px 0;
-    font-size: 16px;
+	    padding: 10.5px 0;
+	    font-size: 16px;
 	}
 	.login_box h2 {
-    margin: 0 0 12px 0;
-    font-size: 26px;
+	    margin: 0 0 12px 0;
+	    font-size: 26px;
 	}
 	.login_box input:not([type="submit"]) {
-    padding: 13px 19px;
+    	padding: 13px 19px;
 	}
 	.gngo_link a {
-    font-size: 16px;}
+    	font-size: 16px;
+    }
     .log_col1 {
     	padding: 89px 0;
 	}
@@ -1377,6 +1852,13 @@
 	.usermenu li, .usermenu li:first-child {
 		margin: 0 7px;
 	}
+	.abt_sec1.terms h3 {
+      font-size: 20px;   	
+	}	
+	.abt_sec1.terms p {
+    	font-size: 15px;
+    }
+
 }
 
 
@@ -1389,14 +1871,31 @@
     	font-size: 26px;
 	}
 	.shapes_img1{
-		 width: 70px;
+		width: 70px;
 	}
 	.shapes_img2 {
-    width: 34px;}
-    .shapes_img3 {
-    left: 21px;
-    width: 39px;
+       width: 34px;
 	}
+    .shapes_img3 {
+	    left: 21px;
+	    width: 39px;
+	}
+	.faq_section .grid_1350 {
+    	padding: 0px 10px;
+	}
+	.accordion a {  
+      
+    padding-right: 40px;
+	}
+	
+	[id*="open-accordion"]:after, [id*="close-accordion"]:after{
+		right: 18px;
+	}
+	.abt_sec1 .grid_1000 h2 {
+    	margin-bottom: 20PX;
+        padding-left: 5px;
+	}
+
 
 
 }
@@ -1405,7 +1904,7 @@
 
 @media screen and (max-width:320px) {
 
-	.home_banner h1 {
+	.home_banner h1,.inner_banner h1 {
     	font-size: 24px;
 	}
 	.hw_midtitle h3 {
@@ -1417,6 +1916,16 @@
 	.step_sec h3 {
     	font-size: 24px;
 	}
+	.accordion a {
+	    font-size: 14px;
+	    line-height: 22px;    
+	    padding-right: 35px;
+	}
+
+	[id*="open-accordion"]:after, [id*="close-accordion"]:after{
+		right: 15px;
+	}
+	
 
 }
 @media screen and (max-height:1024px) {
