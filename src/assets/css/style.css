@@ -95,6 +95,11 @@ a, a:active, a:visited {
   cursor: pointer;
   text-decoration: none;
 }
+input[type="search"]{
+  -webkit-appearance: none;
+   -moz-appearance:    none;
+   appearance:         none;
+   }
 textarea{font-family: "Graphik-Regular";}
 input[type="submit"], input[type="button"], button {-webkit-appearance: none; -moz-appearance: none; appearance: none; font-family: "Graphik-Regular";}
 img {
@@ -629,8 +634,7 @@ box-shadow:         -12px 22px 45px 0px rgba(0, 0, 0, 0.13);
 .screen .image{
   width: 100%;
   text-align: center;
-  position: relative;
-  overflow-x: auto;
+  position: relative; 
 }
 .Toolbar .redo-container svg{
   color: #015350;
@@ -3586,6 +3590,7 @@ background-color: #109779;
   line-height: 40px;
   text-align: center;
   cursor: pointer;
+  padding: 0;
 }
 .commenter{
   width:90%;
@@ -3673,6 +3678,7 @@ background-color: #109779;
   width: 12px;
   height: 12px;
   border-radius: 50%;
+  padding: 0;
 }
 .commenter .tools ul li button.red{
   background-color: red;
@@ -3691,8 +3697,8 @@ background-color: #109779;
   padding: 4px 10px 3px 10px;
   border-radius: 50%;
   position: relative;
-  left: -10px;
-  top: -1px;
+     left: -4px;
+    top: 0px;
   content: " ";
   position: relative;
 }

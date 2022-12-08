@@ -341,6 +341,9 @@
     vertical-align: middle;
     display: block;
 	}
+	.screen .image{
+		overflow: scroll;
+	}
 }
 @media screen and (max-width:991px) {
 	html {
@@ -1242,7 +1245,23 @@
 	.comments-sidebar {
     	width: 90%;
 	}
-
+	.redo-container {
+		    width: 100%;
+    	display: block;
+	}
+	.redo-container .opt{
+		display: inline-block;
+    vertical-align: middle;
+	}
+	.toolbar-container .redo-container .btn {
+    margin-left: 0;
+	}
+	.toolbar-container .redo-container .btn button {
+    
+    margin: 10px auto 0;
+    
+    width: 100px;
+	}
 }
 
 @media screen and (max-width:414px) {}
