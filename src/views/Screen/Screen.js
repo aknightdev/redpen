@@ -487,8 +487,7 @@ export default class Screen extends React.Component {
 							
 							<header className="shot-header">
 								<section className="editable">
-									<Sdropdown user={this.user_id} updateScreen={this.updateScreen} deleteScreen={this.deleteScreen} deleteVersion={this.deleteVersion} shrinkScreen={this.shrinkScreen} showComments={this.showComments} copyComments={this.copyComments} version={this.state.version} versions={this.state.versions} shrink={this.state.shrink} project={this.state.project_id} canUpload={this.state.canUpload} approveScreen={this.approveScreen} approved={this.state.approved}></Sdropdown>
-									<div className="title-container">
+								<div className="title-container">
 										{title}
 										{this.state.showMenu?(
 										<menu className="dropdown-menu on-dark version-menu column-reverse">
@@ -507,6 +506,8 @@ export default class Screen extends React.Component {
 										</menu>
 										):''}
 									</div>
+									<Sdropdown user={this.user_id} updateScreen={this.updateScreen} deleteScreen={this.deleteScreen} deleteVersion={this.deleteVersion} shrinkScreen={this.shrinkScreen} showComments={this.showComments} copyComments={this.copyComments} version={this.state.version} versions={this.state.versions} shrink={this.state.shrink} project={this.state.project_id} canUpload={this.state.canUpload} approveScreen={this.approveScreen} approved={this.state.approved}></Sdropdown>
+									
 									
 									{/*<div className="description-container">
 										<textarea disabled={!this.state.canEdit} className="description" placeholder="Add a description — the purpose, context, objectives..." style={{resize: 'none', overflowY: 'hidden', height: '32px'}} onBlur={this.handleImgDescChange} defaultValue={this.state.description}>

@@ -37,19 +37,42 @@ export default class Archived extends React.Component {
 	render() {
 
 		return (
-			<div className="container home">
-				<div className="content">
-					<h1 className="monty-h1">Trash</h1>
-					
-					<section className="simple-rows archived-projects">
-				      {this.state.projects.map((project,key) => (
-						<article key={key} className="simple-row">
-							<strong>{project.name}</strong> <span className="meta">— <Moment format="DD MMM">{project.created}</Moment></span>
-							<button className="action" onClick={()=>this.revivedProjects(project._id)} rel="nofollow" data-method="put">Revive</button>
-						</article>
-				      ))}
-				    </section>
-				</div>
+			<div className="pg_boxwrapper team_page suprt_page">
+			<div className="page_wrapper light_bg">
+			<div className="container2 home">
+
+					<div className="team_row">
+							<div className="team">
+							<h2>Trash</h2>
+								 
+							
+								 
+							<div className="teammates-list">
+								<table>
+									<thead>
+										<tr>
+											<th width="10%">Date</th>
+											<th width="70%">Project Title</th>
+											<th width="20%">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										  {this.state.projects.map((project,key) => (
+										<tr key={key}>
+										<td data-label="Date"><span className="meta"> <Moment format="DD MMM">{project.created}</Moment></span></td>
+										<td data-label="Project Title"> {project.name}  </td>
+										<td data-label="Action"><button className="action btn" onClick={()=>this.revivedProjects(project._id)} rel="nofollow" data-method="put">Restore</button> </td>
+										</tr>
+										 ))}
+									</tbody>
+								</table>
+								 
+							</div>
+							</div>
+						</div>
+				 
+		    </div>
+		    </div>
 		    </div>
 		);
 	}

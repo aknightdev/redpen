@@ -22,6 +22,8 @@ import Support from 'views/Support/Support.js';
 import Invoices from 'views/Invoices/Invoices.js';
 import Faq from 'views/Faq/Faq.js';
 import Termsofuse from 'views/Termsofuse/Termsofuse.js';
+import Privacypolicy from 'views/Privacypolicy/Privacypolicy.js';
+import Contactus from 'views/Contactus/Contactus.js';
 
 export default function Main() {
   return (
@@ -48,8 +50,11 @@ export default function Main() {
         <Route path='/invoices' component={Invoices}/>
         <Route path='/faq' component={Faq}/>
         <Route path='/termsofuse' component={Termsofuse}/>
+        <Route path='/privacypolicy' component={Privacypolicy}/>
+        <Route path='/contactus' component={Contactus}/>
         <Route path='/:id/:version' component={Screen}/>
         <Route path='/:id' component={Screen}/>
+        
         
       </Switch>
     </main>

@@ -130,7 +130,8 @@ img {
 .home_banner .bnr_btn:hover,
 .ab_btn a:hover,
 .inv_box a:hover,
-.web_col2 a:hover{
+.web_col2 a:hover,
+.surp_page .bnr_btn:hover{
         /*background: var(--moz-linear-btnbghover);
     background: var(--webkit-btnbghover);
     background: var(--btnbghover);
@@ -152,7 +153,8 @@ img {
 .usermenu li:first-child {
     margin-left: 0;
 }
-.top_menu li a:hover {
+.top_menu li a:hover,
+.top_menu li.active a{
     color: #fff;
 }
 li.suplink a {
@@ -213,7 +215,7 @@ li.suplink a {
     line-height: 30px;
 
 }
-.home_banner .bnr_btn, .ab_btn a {
+.home_banner .bnr_btn, .ab_btn a, .surp_page .bnr_btn {
     /*background: var(--moz-linear-btnbg);
     background: var(--webkit-btnbg);
     background: var(--btnbg);*/
@@ -765,10 +767,8 @@ li.suplink a {
     text-transform: uppercase;
 }
 .link_btn:hover{
-   /*  background: var(--moz-linear-btnbghover);
-    background: var(--webkit-btnbghover);
-    background: var(--btnbghover);
-    color: #000;*/
+     background:#ffc776; 
+    color: #000;
 
 }
 .log_wrapper {

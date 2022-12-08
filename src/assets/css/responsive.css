@@ -79,7 +79,8 @@
 	.prplan_row {
     	padding: 40px 0 120px;
 	}
-	.team_page .page_wrapper, .inv_page .page_wrapper {
+	.team_page .page_wrapper, .inv_page .page_wrapper,
+	.surp_page .page_wrapper {
     	padding-top: 60px;
 	}
 	.mya_item h1, .mya_item h2{
@@ -226,7 +227,8 @@
 	.pg_boxwrapper {
     margin-top: 104px;
 	}
-	.team_page .page_wrapper, .inv_page .page_wrapper {
+	.team_page .page_wrapper, .inv_page .page_wrapper,
+	.surp_page .page_wrapper {
     	padding-top: 45px;
 	}
 	.tm_inrow p{
@@ -296,9 +298,49 @@
 	.footer{    padding: 25px 0;}
 	.plans_grid{    margin: 40px auto 0;}
 
+	.shot-header{
+		width: 90%;
+		    max-width: 700px;
+		        margin-top: 0;
+		        padding-bottom: 70px;
+	}
+	.shot-header .title, .shot-header .editable textarea.title{
+		    font-size: 22px;
+		    padding-right:0;
+	}
+ 	.shot-header .editable textarea.title{ width:100%; }
+ 	.shot-header #screenOptions{
+ 		    width: 20%;
+ 	}
+ 	.shot-header .title-container {
+    	width: 70%;
+	}
+	.title .version{
+		    font-size: 20px;
+	}
+	.comments-sidebar{
+		    top: 104px;
+	}
+}
+@media screen and (max-width:1200px){
 
-	
+	.commenter .inpbox{
+		padding: 12px 15px
+	}
 
+	.commenter .pf_pic {
+    width: 35px;
+    padding: 7px 0 0 0;
+    margin-right: 1.5%;
+	}
+	.commenter .pf_pic span {
+     
+    padding: 4px 6px;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    display: block;
+	}
 }
 @media screen and (max-width:991px) {
 	html {
@@ -466,7 +508,7 @@
 
 	}
 	.prjs_serch input{
-		padding: 16px 20px 14px 15px;
+		padding: 16px 40px 14px 15px;
 	}
 	.prjs_srch_outer .link_btn {
    	 	padding: 13px 20px;
@@ -489,7 +531,7 @@
 
 	}
 	.page_body2 {
-   	 padding-top: 50px;
+   	 padding-top: 78px;
 	}
 
 	.crtitle_rt {
@@ -576,6 +618,85 @@
     	padding: 12.5px 0;
 	}
 
+	.surp_page .row {
+    display: block;}
+    .surp_page .col7{ width:100%; float:none; }
+	.surp_page .col5{ width:100%; float:none;margin-top: 45px; }
+	.surp_page h1{
+		    margin: 0 0 18px 0;
+	}
+	.surp_page img {
+    max-width: 450px;
+    margin: auto;
+    display: block;
+	}
+	.suprt_page .teammates-list thead {
+    	display: none;
+	}
+	.suprt_page .teammates-list td {
+    width: 100%;
+    display: block;
+        text-align: right;
+	}
+	.suprt_page .teammates-list td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+	}	
+	.suprt_page .teammates-list td span {
+    display: inline-block;
+    margin: 0;
+	}
+	.teammates-list .btn{
+		    font-size: 17px; 
+    padding: 10px 15px;
+	}
+	.suprt_page .teammates-list tr {
+	    border-bottom: 15px solid transparent;
+	}
+
+	.shot-header{
+		width: 90%;
+		    max-width: 700px;
+		        margin-top: 0;
+		        padding-bottom: 70px;
+	}
+	.shot-header .title, .shot-header .editable textarea.title{
+		    font-size: 22px;
+		    padding-right:0;
+	}
+ 	.shot-header .editable textarea.title{ width:100%; }
+ 	.shot-header #screenOptions{
+ 		    width: 20%;
+ 	}
+ 	.shot-header .title-container {
+    	width: 70%;
+	}
+	.title .version{
+		    font-size: 20px;
+	}
+	.comments-sidebar{
+		    top: 78px;
+	}
+	.frnt_header.fixed_header{
+		    padding: 10px 0;
+	}
+	.fixed_body .comments-sidebar {
+    	top: 58px;
+	}
+	.billhead .inner {
+    	display: block;
+	}
+	.payment-balloon {
+    
+    top: 40%;
+    left: 0;
+    max-width: 470px;
+        padding: 40px 20px;
+    width: 90%;
+    right: 0;	
+	}
+
 }
 @media screen and (max-width:768px) {}
 
@@ -657,7 +778,7 @@
    	     height: 46px;
 	}
 	.prjs_serch input{
-		padding: 15px 20px 14px 15px;
+		padding: 15px 40px 14px 15px;
 	}
 	.prjs_srch_outer .link_btn.crate_btn{
 		 font-size: 16px;
@@ -730,7 +851,8 @@
 	.new-button.light.primary{
 		    width: 120px;
 	}
-	.team_page .page_wrapper, .inv_page .page_wrapper {
+	.team_page .page_wrapper, .inv_page .page_wrapper,
+	.surp_page .page_wrapper {
     padding-top: 30px;
 	}
 	.teammates-list table td span {
@@ -759,12 +881,59 @@
 	.mya_row {
     	padding-top: 40px;
 	}
+	.contpg_sec textarea{
+		    height: 100px;
+	}
+	.title .version {
+    	font-size: 18px;
+	}
+	.title .version {
+    font-size: 18px;
+    width: 50px;
+    height: 50px;
+	}
+	.shot-header .editable {
+    	padding: 22px 17px 5px 17px;
+	}
+	.shot-header .ver_bg2 button:after {
+    
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 6px solid #ffc776;
+    
+    top: 23px;
+    left: 37px; 
+	}
+	.shot-header .title, .shot-header .editable textarea.title {
+    font-size: 20px;}
+    .shot-header #screenOptions {
+    width: 25%;
+	}
+	.shot-header {
+    width: 95%;
+    padding-bottom: 45px;
+	}
+	.comments-sidebar .sidebar-annotation{
+		    padding: 27px 20px 30px 20px;
+	}
+	.comments-sidebar .sectionhead{
+		    padding: 20px 0px 0px 20px;
+	}
+	.comments-sidebar {
+    	top: 81px;
+	}
+
 
 }
 @media screen and (max-width:667px) {
 	.prjs_serch {
     	width: 166px;
 	}
+	.commenter .input{
+		    width: calc(100% - 10%);
+	}
+	.commenter .tools {
+    padding: 20px 15px;}
 }
 
 @media screen and (max-width:640px) {
@@ -842,6 +1011,20 @@
 	.share_modalmain:before{
 		left: 47%;
 	}
+	.shot-header .title-container {
+    width: 100%;
+    float: none;
+	}
+	.shot-header #screenOptions {
+    width: 100%;
+    float: none;
+    clear: both;
+	}
+	.shot-header .editable {
+    padding: 15px;
+    height: auto;
+	}
+	.title .version{     margin-left: 0; }
 }
 
 @media screen and (max-width:533px) {
@@ -872,7 +1055,30 @@
 	.sharethum_drop{
 		max-width: 400px;
 	}	
-	
+	.commenter .tools .left,
+	.commenter .tools .right {
+    width: 100%;
+    display: block;
+    text-align: center;
+        height: auto;
+	}
+	.commenter .tools {
+    display: block;
+    text-align: center;
+    height: auto;
+	}
+	.Toolbar .toolbar-container {
+    float: none;
+	}
+	.commenter .tools .left ul,
+	.redo-container {
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+	}
+	.commenter .input{
+		    width: calc(100% - 45px);
+	}
 
 }
 @media screen and (max-width:480px){
@@ -960,6 +1166,10 @@
 	.share_modalmain:before {
     	left: 75%;
 	}	
+	.shot-header .title, .shot-header .editable textarea.title {
+    	font-size: 18px;
+	}
+
 	
 }
 
@@ -1019,6 +1229,20 @@
     .mya_item h1, .mya_item h2 {
     	font-size: 24px;
 	}
+	.surp_page img {
+    max-width: 300px;}
+    .view_fullpage .content {
+    	padding-top: 40px;
+	}
+	.shot-header #screenOptions{ padding-top:0; }
+	#screenOptions>ul { 
+    margin: auto;
+    width: fit-content;
+	}
+	.comments-sidebar {
+    	width: 90%;
+	}
+
 }
 
 @media screen and (max-width:414px) {}

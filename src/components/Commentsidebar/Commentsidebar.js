@@ -16,7 +16,7 @@ class Commentsidebar extends React.Component {
 	render() {
 		if($(".comment-group.active").length){console.log('')
     		$('#commentSidebar').animate({
-		        // scrollTop: $(".comment-group.active").offset().top
+		        //scrollTop: $(".comment-group.active").offset().top - 200
 		    }, 200);
     	}
 		if (this.props.showCommentsidebar) {

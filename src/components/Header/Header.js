@@ -9,17 +9,22 @@ export default class Header extends React.Component {
 	    super(props);
 	    this.handleLogoutClick = this.handleLogoutClick.bind(this);
 	    this.handleScroll = this.handleScroll.bind(this);
-	    this.menuClick = this.menuClick.bind(this);
-	    this.state = {isLoggedIn: false, menuOpen:false, fixedHeader:false};
+	    this.menuClick = this.menuClick.bind(this);	
+	    this.state = {isLoggedIn: false, menuOpen:false, fixedHeader:false, currentPage:'home'};
 	  }
-	  menuClick(b){	  
+	  menuClick(b,p){	  
 	  	this.setState({ menuOpen: b });
+	  	this.setState({ currentPage: p });
 	  }
 	  handleScroll(event) {
 	    let scrollTop = window.scrollY;
 	    this.setState({
 	      fixedHeader: scrollTop>0?true:false
 	    });
+	    if(scrollTop>0)
+	    	document.getElementsByTagName('body')[0].classList.add('fixed_body');
+	    else
+	    	document.getElementsByTagName('body')[0].classList.remove('fixed_body');
 	 }
 
 	  componentDidMount() {
@@ -84,17 +89,18 @@ export default class Header extends React.Component {
 							<div className="navclsbtn" onClick={()=>this.menuClick(false)}> <span>&nbsp;</span></div>
 
 								<ul>
-								<li>
-									<Link className="App-link" to='/'>Projects</Link>
+								<li className={this.state.currentPage=='projects'?'active':''}>
+									<Link className="App-link" to='/' onClick={()=>this.menuClick(false,'projects')}>Projects</Link>
 								</li>
-								<li>
-									<Link className="App-link" to='/singles/'>Singles</Link>
+								<li className={this.state.currentPage=='singles'?'active':''}>
+									<Link className="App-link" to='/singles/' onClick={()=>this.menuClick(false,'singles')}>Singles</Link>
 								</li>
-								<li>
-									<Link className="App-link" to='/team/'>Your team</Link>
+								<li className={this.state.currentPage=='team'?'active':''}>
+									<Link className="App-link" to='/team/' onClick={()=>this.menuClick(false,'team')}>Your team</Link>
 								</li>
-								 <li>
-									<Link className="App-link" to='/pro/new_plans'>Billing</Link>
+								 
+								<li className={this.state.currentPage=='new_plans'?'active':''}>
+									<Link className="App-link" to='/pro/new_plans' onClick={()=>this.menuClick(false,'new_plans')}>Billing</Link>
 								</li>
 								</ul>
 							</div>
@@ -134,14 +140,14 @@ export default class Header extends React.Component {
 							<div className="navclsbtn" onClick={()=>this.menuClick(false)}> <span>&nbsp;</span></div>
 
 								<ul>
-								<li>
-									<Link className="App-link" to='/'>Home</Link>
+								<li className={this.state.currentPage=='home'?'active':''}>
+									<Link className="App-link" to='/' onClick={()=>this.menuClick(false,'home')}>Home</Link>
 								</li>
-								<li>
-									<Link className="App-link" to='/about-us/'>About Us</Link>
+								<li className={this.state.currentPage=='about'?'active':''}>
+									<Link className="App-link" to='/about-us/' onClick={()=>this.menuClick(false,'about')}>About Us</Link>
 								</li>
-								<li>
-									<Link className="App-link" to='/pro/pricing'>Pricing</Link>
+								<li className={this.state.currentPage=='pricing'?'active':''}>
+									<Link className="App-link" to='/pro/pricing' onClick={()=>this.menuClick(false,'pricing')}>Pricing</Link>
 								</li>
 								</ul>
 							</div>

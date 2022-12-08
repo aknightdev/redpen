@@ -448,8 +448,8 @@ export default class Project extends React.Component {
 						</div>;
 			dragbool = false; 
 		}
-		if(!this.state.canAccess) return <div className="page_body2"><div className="page_wrapper"><div className="container2"><p>No access</p></div></div></div>
-		else if(this.state.is_expired) return <div className="page_body2"><div className="page_wrapper"><div className="container2"><p>Expired</p></div></div></div>
+		if(!this.state.canAccess) return <div className="page_body page_body2"><div className="page_wrapper light_bg singles_page plan_exp"><div className="container"> <h2>Projects limit reached</h2> <p>You need to upgrade to premium plan </p> <Link className="App-link btn" to='/pro/new_plans'>Get Billing Plans</Link> </div></div></div>
+		else if(this.state.is_expired) return <div className="page_wrapper light_bg singles_page plan_exp"><div className="container"> <h2>Package Expired</h2> <p>please renewal your plan </p> <Link className="App-link btn" to='/pro/new_plans'>Get Billing Plans</Link> </div></div>
 		else	
 		return (
 			<Dropzone noClick={true} noDrag={dragbool} onDragEnter={this.handleDragEnter} onDragLeave={this.handleDragLeave} onDrop={this.handleDrop}>

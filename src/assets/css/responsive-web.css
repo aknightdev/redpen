@@ -501,7 +501,7 @@
 	.top_menu li{
 		    margin-right: 50px;
 	}
-	.frnt_header, .frnt_header.dash_header {
+	.frnt_header{
     	padding: 30px 0;
 	}
 	.usermenu li a{

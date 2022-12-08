@@ -293,7 +293,7 @@ export default class Home extends React.Component {
 			 			<h1>The fastest feedback tool for visual teams.</h1>
 					<p>From the beginning, our goal has been to make collaboration super-fast.
 					No matter where your colleagues are in the world, if you work with visuals we’ll help you collaborate with your team effortlessly.</p>
-						<Link to='/archived' className="bnr_btn">Get Started Today</Link>
+						<Link to='/register' className="bnr_btn">Get Started Today</Link>
 			 		</div>
 			 		
 
@@ -386,7 +386,9 @@ export default class Home extends React.Component {
 		<div className="ab_right">
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-			<div className="ab_btn"><a href="#">Get Started Today</a></div>
+			<div className="ab_btn">
+			<Link to='/register' className="bnr_btn">Get Started Today</Link>
+			 </div>
 		</div>
 	</div>
 </div>
@@ -405,7 +407,7 @@ export default class Home extends React.Component {
 			<div className="drp_col drp_line">
 				<div className="dc_img"><img src={require('assets/images/people_icon2.png')}/></div>
 				<h3>Highly praised support</h3>
-				<p>As a feedback company, we pride ourselves on giving the best support; and being responsive lightning-fast. <Link to='#'>Drop us a line.</Link></p>
+				<p>As a feedback company, we pride ourselves on giving the best support; and being responsive lightning-fast. <Link to='/Contactus'>Drop us a line.</Link></p>
 			</div>
 
 		</div>

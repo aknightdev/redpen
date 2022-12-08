@@ -24,11 +24,11 @@ export default class Footer extends React.Component {
 						</div>
 						<div className="ftr_menu">
 						<ul>
-							<li><Link to='/archived'>Pricing</Link></li>
-							<li><Link to='/archived'>Contact us</Link></li>
-							<li><Link to='/archived'>Terms & Conditions</Link></li>
-							<li><Link to='/archived'>Privacy Policy</Link></li>
-							<li><Link to='/archived'>FAQ</Link></li>
+							<li><Link to='/pro/pricing'>Pricing</Link></li>
+							<li><Link to='/contactus'>Contact us</Link></li>
+							<li><Link to='/termsofuse'>Terms & Conditions</Link></li>
+							<li><Link to='/Privacypolicy'>Privacy Policy</Link></li>
+							<li><Link to='/faq'>FAQ</Link></li>
 							</ul>
 							</div>
 							<div className="ftr_copy">
