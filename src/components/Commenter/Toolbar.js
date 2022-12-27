@@ -15,7 +15,7 @@ const Toolbar = ({
 }) => {
   useEffect(() => {}, [UI]);
   const buttonStyleActive = {
-    color: 'white'
+    backgroundColor: 'white'
   };
   return (
     <div className="Toolbar">

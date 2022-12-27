@@ -14,10 +14,12 @@ class Commentsidebar extends React.Component {
         this.props.hideComments();
     }
 	render() {
-		if($(".comment-group.active").length){console.log('')
-    		$('#commentSidebar').animate({
-		        //scrollTop: $(".comment-group.active").offset().top - 200
-		    }, 200);
+		if($(".comment-group.active").length){
+			if (this.props.scrTo){
+	    		// $('#commentSidebar').animate({
+			    //     scrollTop: $(".comment-group.active").offset().top - 200
+			    // }, 200);
+		    }
     	}
 		if (this.props.showCommentsidebar) {
 		return (<section id="commentSidebar" className="comments-sidebar transition-enter transition-enter-active">

@@ -71,7 +71,7 @@ const Canvas = ({
       if(polylineCount==0) ctxRef.current.beginPath();
       for (let i = 0; i < polylineCount; i++) {
         ctxRef.current.beginPath();
-        if (polylines[i][0].isStraight===3) {
+        if (polylines[i][0] && polylines[i][0].isStraight===3) {
           for (let j = 0; j < polylines[i].length - 1; j++) {
             ctxRef.current.strokeStyle = polylines[i][j].color;
             ctxRef.current.lineWidth = polylines[i][j].size;
@@ -79,7 +79,7 @@ const Canvas = ({
             ctxRef.current.lineTo(polylines[i][j + 1].x, polylines[i][j + 1].y);
             ctxRef.current.stroke();
           }
-        } else if (polylines[i][0].isStraight===2) {
+        } else if (polylines[i][0] && polylines[i][0].isStraight===2) {
           for (let j = 0; j < polylines[i].length; j++) {
             ctxRef.current.strokeStyle = polylines[i][j].color;
             ctxRef.current.lineWidth = polylines[i][j].size;
@@ -87,7 +87,7 @@ const Canvas = ({
             drawRoundReact(polylines[i][j]);
             ctxRef.current.stroke();
           }
-        } else if (polylines[i][0].isStraight===1) {
+        } else if (polylines[i][0] && polylines[i][0].isStraight===1) {
           for (let j = 0; j < polylines[i].length - 1; j++) {
             ctxRef.current.strokeStyle = polylines[i][j].color;
             ctxRef.current.lineWidth = polylines[i][j].size;

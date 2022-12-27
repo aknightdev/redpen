@@ -198,7 +198,7 @@ export default class Cmenu extends React.Component {
 
 								<div className="ltpr_meta">
 									<span className="prof_pic">
-									<span>{this.props.reply.user?this.props.reply.user.name:'Annon'}</span></span>
+									<span>{this.props.reply.user?this.props.reply.user.name.charAt():'A'}</span></span>
 									<span className="prof_name">
 									{this.props.reply.user?this.props.reply.user.name:'Annon'}</span> &nbsp;
 									<TimeAgo datetime={this.props.reply.created}></TimeAgo>

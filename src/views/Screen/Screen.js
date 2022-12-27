@@ -19,7 +19,7 @@ import Moment from 'react-moment';
 export default class Screen extends React.Component {
 	constructor(props) {
     	super(props);
-    	this.state = {ballonOpen:false, image_id:props.match.params.id, name: '', description:'', version:1, path: '', parent:0, project_id:0,project_name:'',comments:[],versions:[],isHidden:true, top:0, left:0, x_pos:0, y_pos:0, showModal:false, showMenu:false, prominent:false, version_id:'', showShare: false, editTitle: false, canEdit:false, shrink:false, showCommentsidebar: false, nlist:[], canUpload:false, commentId:'', activePolilynes:[], approved:false,updated:new Date()};
+    	this.state = {ballonOpen:false, image_id:props.match.params.id, name: '', description:'', version:1, path: '', parent:0, project_id:0,project_name:'',comments:[],versions:[],isHidden:true, top:0, left:0, x_pos:0, y_pos:0, showModal:false, showMenu:false, prominent:false, version_id:'', showShare: false, editTitle: false, canEdit:false, shrink:false, showCommentsidebar: false, nlist:[], canUpload:false, commentId:'', activePolilynes:[], approved:false,updated:new Date(),scrTo:false};
     	this.image = {};
     	this.prev = {};
     	this.next = {};
@@ -352,7 +352,7 @@ export default class Screen extends React.Component {
 	}
 	showComments(commentId,ck){
 		let cc = this.state.comments.filter(a=>a._id==commentId);
-		this.setState({showCommentsidebar:true,commentId:commentId, activePolilynes:cc[0].polylines});
+		this.setState({showCommentsidebar:true,commentId:commentId, activePolilynes:cc[0].polylines,scrTo:ck});
 		if(!ck) window.scrollTo(cc[0].x_pos-100,cc[0].y_pos);
 		// $('.image').addClass('showing-comments-sidebar');
 		// setTimeout(()=>{
@@ -498,7 +498,7 @@ export default class Screen extends React.Component {
 														<span>Version </span>
 														<span>{key + 1}</span>
 														<span></span>
-														<span>{(key + 1)===this.state.version?'(this one)':''}</span>
+														<span>{(key + 1)===this.state.version?' (this one)':''}</span>
 													</span>
 												</li>
 											</Link>
@@ -535,7 +535,7 @@ export default class Screen extends React.Component {
 				        </Modal>
 				        <Share reloadProject={this.reloadImage} userId={this.authUser.id} showShare={this.state.showShare} handleClose={this.closeModal} imageId={this.state.image_id} projectId={this.state.project_id}>
 				        </Share>
-				        <Commentsidebar sortComments={this.sortComments} hideComments={this.hideComments} showComments={this.showComments} showCommentsidebar={this.state.showCommentsidebar} comments={this.state.comments} commentId={this.state.commentId} projectId={this.state.project_id} loadComments={this.loadComments}></Commentsidebar>
+				        <Commentsidebar sortComments={this.sortComments} hideComments={this.hideComments} showComments={this.showComments} showCommentsidebar={this.state.showCommentsidebar} scrTo={this.state.scrTo} comments={this.state.comments} commentId={this.state.commentId} projectId={this.state.project_id} loadComments={this.loadComments}></Commentsidebar>
 				        <HotKeys keyMap={keyMap} handlers={this.handlersParent}></HotKeys>
 				        <Hotkeys keyName="control+c" onKeyUp={this.toggleComments.bind(this)}></Hotkeys>
 						<input id="fileInput" {...getInputProps()} />
