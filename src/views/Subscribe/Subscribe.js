@@ -80,7 +80,7 @@ export default class Subscribe extends Component {
                   <p>{pkg.subtitle}</p>
                     <div className="pkg_price"><span className="dollar">$</span>{pkg.price}<span className="mth">Per month</span></div>
 
-                    {this.state.currentPlan==pkg.stripe_plan_id?<Link to="#" className="link_btn2 link_btn" onClick={this.cancelStripe}>Cancel</Link>:<Link to="#" className="link_btn2 link_btn" onClick={()=>this.showStripe(pkg.stripe_plan_id)}>Change Plan</Link>}
+                    {this.state.currentPlan==pkg.stripe_plan_id?<Link to="#" className="link_btn2 link_btn" onClick={this.cancelStripe}>Cancel</Link>:<Link to="#" className="link_btn2 link_btn" onClick={()=>this.showStripe(pkg.stripe_plan_id)}>Subscribe</Link>}
 
                     
                     <h3>What’s included:</h3>
