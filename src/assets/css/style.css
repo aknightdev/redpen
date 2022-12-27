@@ -4959,3 +4959,7 @@ letter-spacing: 0.17px;
 .edit-mode{   height:120px; }
 
 .edit-mode textarea{  height:70px !important; }
+
+.popcontent p {
+    line-height: 1.4;
+}
