@@ -869,6 +869,8 @@ box-shadow:         -12px 22px 45px 0px rgba(0, 0, 0, 0.13);
 }
 .shot-header .editable .title {
     border-bottom: dotted 0px #535c5f;
+    display: flex;
+    align-items: center;
 }
 .shot-header #screenOptions{
     padding-top:10px;
