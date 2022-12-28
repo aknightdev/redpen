@@ -49,7 +49,7 @@ export default class Login extends Component {
     })
     .catch(err => {
       console.error(err);
-      toast.error('Invalid details!');
+      toast.error('Invalid details!/Not yet activated');
     });
   }
   render() {
