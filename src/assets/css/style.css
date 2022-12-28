@@ -4954,14 +4954,20 @@ letter-spacing: 0.17px;
     font-family: 'Poppins', sans-serif;
 }
 .plan_exp{
-      display: flex;
-      text-align: center;
-    align-items: center;
+  display: flex;
+  text-align: center;
+  align-items: center;
 }
 .edit-mode{   height:120px; }
 
 .edit-mode textarea{  height:70px !important; }
 
 .popcontent p {
-    line-height: 1.4;
+  line-height: 1.4;
+}
+.message{
+  text-align: center;
+  color: brown;
+  border: 1px solid #ccc;
+  padding: 10px;
 }

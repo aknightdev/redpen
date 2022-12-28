@@ -24,6 +24,7 @@ import Faq from 'views/Faq/Faq.js';
 import Termsofuse from 'views/Termsofuse/Termsofuse.js';
 import Privacypolicy from 'views/Privacypolicy/Privacypolicy.js';
 import Contactus from 'views/Contactus/Contactus.js';
+import Verify from 'views/Verify/Verify.js';
 
 export default function Main() {
   return (
@@ -37,6 +38,7 @@ export default function Main() {
         <Route path='/login' component={Login}/>
         <Route path='/forgot' component={Forgot}/>
         <Route path='/reset/:hash' component={Reset}/>
+        <Route path='/verify/:hash' component={Verify}/>
         <Route path='/register' component={Register}/>
         <Route path='/team' component={Team}/>
         <Route path='/sitemap' component={Sitemap}/>
