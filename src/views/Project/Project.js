@@ -188,7 +188,7 @@ export default class Project extends React.Component {
     		this.loadNotify();
     	}
     	else{
-    		this.setState({is_expired:false});
+    		this.setState({is_expired:false,canAccess:true});
     	}
     }
     onEnterPress = (e) => {
