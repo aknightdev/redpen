@@ -53,35 +53,35 @@ export default class Screen extends React.Component {
     	this.currentComment = '';
     }
     sortComments(s){
-    	let sortedCommentsDsc;
-		if (s.target.value=='desc') {
-		    sortedCommentsDsc= this.state.comments.sort((a,b)=>{
-				  if (a.updated  < b.updated) {
-				    return 1;
-				  }
-				  if (a.updated > b.updated) {
-				    return -1;
-				  }
-				  return 0;
-		    });
-		    this.setState({
-		        comments:sortedCommentsDsc
-		    });
-	    }
-	    else{
-	    	sortedCommentsDsc= this.state.comments.sort((a,b)=>{
-				  if (a.updated  > b.updated) {
-				    return 1;
-				  }
-				  if (a.updated < b.updated) {
-				    return -1;
-				  }
-				  return 0;
-		    });
-		    this.setState({
-		        comments:sortedCommentsDsc
-		    });
-	    }
+    	// let sortedCommentsDsc;
+		// if (s.target.value=='desc') {
+		//     sortedCommentsDsc= this.state.comments.sort((a,b)=>{
+		// 		  if (a.updated  < b.updated) {
+		// 		    return 1;
+		// 		  }
+		// 		  if (a.updated > b.updated) {
+		// 		    return -1;
+		// 		  }
+		// 		  return 0;
+		//     });
+		//     this.setState({
+		//         comments:sortedCommentsDsc
+		//     });
+	    // }
+	    // else{
+	    // 	sortedCommentsDsc= this.state.comments.sort((a,b)=>{
+		// 		  if (a.updated  > b.updated) {
+		// 		    return 1;
+		// 		  }
+		// 		  if (a.updated < b.updated) {
+		// 		    return -1;
+		// 		  }
+		// 		  return 0;
+		//     });
+		//     this.setState({
+		//         comments:sortedCommentsDsc
+		//     });
+	    // }
     }
     toggleComments(){
     	if(!this.state.showCommentsidebar){
@@ -517,13 +517,12 @@ export default class Screen extends React.Component {
 							</header>
 							<div className="image">
 								<div className="image-wrapper">
-								{/*onClick = {this.handleClick}*/}
-								{/*<img id="mainImage" src={this.state.path} alt={this.state.name} />*/}
-								{this.state.path!=''?<Commenter image={this.state.path} imageId={this.state.image_id} versionId={this.state.version_id} isHidden = {this.state.isHidden} ballonOpen = {true} top = {this.state.top} left = {this.state.left} replies = {[]} commentId={0} appendComment={this.appendComment} projectId={this.state.project_id} activePolilynes={this.state.activePolilynes} />:null}
+								<img id="mainImage" src={this.state.path} alt={this.state.name} onClick = {this.handleClick} />
+								{/*this.state.path!=''?<Commenter image={this.state.path} imageId={this.state.image_id} versionId={this.state.version_id} isHidden = {this.state.isHidden} ballonOpen = {true} top = {this.state.top} left = {this.state.left} replies = {[]} commentId={0} appendComment={this.appendComment} projectId={this.state.project_id} activePolilynes={this.state.activePolilynes} />:null*/}
 								{this.state.comments.map((comment,key) => (
 									<Comment showComments={this.showComments} key={key} idx={key} imageId={this.state.image_id} versionId={this.state.version_id} isHidden = {false} ballonOpen = {this.currentComment===comment._id?true:this.state.ballonOpen} color={comment.color} top = {comment.y_pos} left = {comment.x_pos} replies = {comment.replies} commentId={comment._id} appendComment={this.appendComment} projectId={this.state.project_id}/> 
 								))}
-								<Comment imageId={this.state.image_id} versionId={this.state.version_id} isHidden = {this.state.isHidden} ballonOpen = {true} top = {this.state.top} left = {this.state.left} replies = {[]} commentId={0} appendComment={this.appendComment} projectId={this.state.project_id}/> 
+								<Comment idx={this.state.comments.length} imageId={this.state.image_id} versionId={this.state.version_id} isHidden = {this.state.isHidden} ballonOpen = {true} top = {this.state.top} left = {this.state.left} replies = {[]} commentId={0} appendComment={this.appendComment} projectId={this.state.project_id}/> 
 								</div>
 							</div>
 							</div>
@@ -535,7 +534,7 @@ export default class Screen extends React.Component {
 				        </Modal>
 				        <Share reloadProject={this.reloadImage} userId={this.authUser.id} showShare={this.state.showShare} handleClose={this.closeModal} imageId={this.state.image_id} projectId={this.state.project_id}>
 				        </Share>
-				        <Commentsidebar sortComments={this.sortComments} hideComments={this.hideComments} showComments={this.showComments} showCommentsidebar={this.state.showCommentsidebar} scrTo={this.state.scrTo} comments={this.state.comments} commentId={this.state.commentId} projectId={this.state.project_id} loadComments={this.loadComments}></Commentsidebar>
+				        {/*<Commentsidebar sortComments={this.sortComments} hideComments={this.hideComments} showComments={this.showComments} showCommentsidebar={this.state.showCommentsidebar} scrTo={this.state.scrTo} comments={this.state.comments} commentId={this.state.commentId} projectId={this.state.project_id} loadComments={this.loadComments}></Commentsidebar>*/}
 				        <HotKeys keyMap={keyMap} handlers={this.handlersParent}></HotKeys>
 				        <Hotkeys keyName="control+c" onKeyUp={this.toggleComments.bind(this)}></Hotkeys>
 						<input id="fileInput" {...getInputProps()} />

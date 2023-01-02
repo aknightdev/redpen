@@ -33,8 +33,10 @@ export default class Comment extends React.Component {
     	if(this.props.commentId!==0)
     		this.setState({ballonOpen: true});
     }
-    updateComment(){
-
+    updateComment(replyIndex,reply){
+    	let replies = this.state.replies;
+    	replies[replyIndex].reply = reply;
+    	this.setState({replies:replies});
     }
     postComment = (event) =>{
     	fetch(config.url.API_URL+"addcomment", {
@@ -70,11 +72,12 @@ export default class Comment extends React.Component {
 	    if (this.props.isHidden)
 	    	return null
 	    else
-	        return <aside id={'comment_box'+this.props.commentId} style={{top: this.props.top+'px',left: this.props.left+'px'}} className={"annotation comment-group separator-between-all-comments " + (this.props.commentId===0?"pop ":"") + (this.state.ballonOpen?"open":"")} onClick={()=>this.props.showComments(this.props.commentId,1)}>
+	        return <aside id={'comment_box'+this.props.commentId} style={{top: this.props.top+'%',left: this.props.left+'%'}} className={"annotation comment-group separator-between-all-comments " + (this.props.commentId===0?"pop ":"") + (this.state.ballonOpen?"open":"")} onMouseEnter={this.commentHover} onMouseLeave={this.commentLeave}>
+	    {/*onClick={()=>this.props.showComments(this.props.commentId,1)}*/}
 					<i className="marker"><i className="marker-inner" style={{background: this.props.color}}>{this.props.idx+1}</i></i>
-					{/*<div className="balloon">
+					<div className="balloon">
 						{this.state.replies.map((reply,key) => (
-							<Reply key={key} indexVal={key} replyData={reply} commentId={this.props.commentId} />
+							<Reply key={key} indexVal={key} replyData={reply} updateComment={this.updateComment} commentId={this.props.commentId} />
 						))}
 						
 						<div className="comment-clip">
@@ -92,7 +95,7 @@ export default class Comment extends React.Component {
 						<span className="mouse-catcher-l"></span>
 						<span className="mouse-catcher-r"></span>
 						<span className="mouse-catcher-b"></span>
-					</div>*/}
+					</div>
 				</aside>; 
 	}				
 }
