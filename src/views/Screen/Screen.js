@@ -129,7 +129,11 @@ export default class Screen extends React.Component {
 			  }
 		  	}
 		});
-    }
+		document.body.classList = 'singlepage';
+    } 
+  componentWillUnmount() {
+    document.body.classList = '';
+  }
     handleClick = (event) =>{
     	var bounds = event.target.getBoundingClientRect();
     	var x = event.clientX - bounds.left;
@@ -253,6 +257,7 @@ export default class Screen extends React.Component {
 		this.setState({isHidden: true, ballonOpen: false, comments: [...this.state.comments,comment]});
 		//window.localStorage.setItem('comments_'+this.state.version_id,JSON.stringify(this.state.comments));
 	}
+
 	handleDrop = (acceptedFiles) => {
 		let file = acceptedFiles[0];
 		const  fileType = file['type'];
@@ -485,6 +490,8 @@ export default class Screen extends React.Component {
 								{prev} {next}
 							</div>
 							
+							<div className="shotheader_sec">
+
 							<header className="shot-header">
 								<section className="editable">
 								<div className="title-container">
@@ -515,6 +522,9 @@ export default class Screen extends React.Component {
 									</div>*/}
 								</section>
 							</header>
+
+							</div>
+							
 							<div className="image">
 								<div className="image-wrapper">
 								<img id="mainImage" src={this.state.path} alt={this.state.name} onClick = {this.handleClick} />

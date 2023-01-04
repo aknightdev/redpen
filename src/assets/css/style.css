@@ -419,7 +419,7 @@ box-shadow:         -12px 22px 45px 0px rgba(0, 0, 0, 0.13);
   border-radius: 100%;
   border: solid 4px white;
   background-clip: border-box;
-  background: #0b9ed4;
+  background: #00564E;
   -moz-box-shadow: 0 0 0 0px rgba(0,0,0,0.1),0 0 0 8px rgba(0,0,0,0.1),0 2px 8px rgba(0,0,0,0.1);
   -webkit-box-shadow: 0 0 0 0px rgba(0,0,0,0.31), 0 0 0 8px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.1);
   box-shadow: 0 0 0 0px rgba(0,0,0,0.1), 0 0 0 0px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.1);
@@ -436,7 +436,7 @@ box-shadow:         -12px 22px 45px 0px rgba(0, 0, 0, 0.13);
   font-family: 'Inter', sans-serif; 
 }
 .annotation .balloon {
-  background: #f3f3f3;
+  background: #fff;
   position: absolute;
   z-index: 20;
   top: 20px;
@@ -479,8 +479,8 @@ box-shadow:         -12px 22px 45px 0px rgba(0, 0, 0, 0.13);
 .comment-group .taggable-textarea-container .beautifier {
   position: relative;
   z-index: 2;
-  margin-bottom: 4px;
-  margin-left: 1px;
+  margin-bottom: 0px;
+  margin-left: 0px;
   top: 1px;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -3952,7 +3952,7 @@ background-color: #109779;
     background: #fff!important;
     height: 65px;
     overflow-y: auto;
-    margin-top:20px;
+    margin-top:0px;
 }
 .right {
   position: relative;
@@ -4034,8 +4034,8 @@ height: 17px;
     font-family: 'Inter', sans-serif;
     font-weight: 300;
 }
-.ltpr_meta{ width: 60%; }
-.rtpr_meta{ width: 40%; text-align: right; }
+.ltpr_meta{ width: 85%; }
+.rtpr_meta{ width: 15%; text-align: right; }
 .markcmp {
     position: relative; cursor: pointer;
 }
@@ -4973,4 +4973,7 @@ letter-spacing: 0.17px;
 }
 img#mainImage {
     max-width: none;
+}
+body.singlepage {
+    background: #fff;
 }
