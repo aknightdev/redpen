@@ -15,7 +15,7 @@ import $ from 'jquery';
 export default class Project extends React.Component {
 	constructor(props) {
     	super(props);
-    	this.state = {id:props.match.params.id, title: '', description:'', user_id:'', images:[], showModal:false, showShare:false, togSear:false, imagename:'', shared:[], invite:[], canEdit: false, canUpload: false, nlist:[], nlists:[], allimgs:[], is_expired:true, secret_mode:false, canAccess:false};
+    	this.state = {id:props.match.params.id, title: '', description:'', user_id:'', images:[], showModal:false, showShare:false, togSear:false, imagename:'', shared:[], invite:[], canEdit: false, canUpload: false, nlist:[], nlists:[], allimgs:[], is_expired:false, secret_mode:false, canAccess:true};
     	this.handleTitleChange = this.handleTitleChange.bind(this);
     	this.handleDescChange = this.handleDescChange.bind(this);
     	this.handleClick = this.handleClick.bind(this);
@@ -188,7 +188,7 @@ export default class Project extends React.Component {
     		this.loadNotify();
     	}
     	else{
-    		this.setState({is_expired:false,canAccess:true});
+    		this.setState({is_expired:false});
     	}
     }
     onEnterPress = (e) => {
@@ -372,12 +372,16 @@ export default class Project extends React.Component {
 			    	if (this.imagenames[val.name]!==undefined) {this.imagenames[val.name]++;}
 			    	else {this.imagenames[val.name]=1;this.imageids[val.name]=val._id;}
 			    });
+			    let cuexist=false;
 			    result.shared.forEach((v,k)=>{
 			    	if (this.authUser.id===v.user._id && v.access===true) {
 		    			this.setState({canUpload:true});
 		    		}
-		    		if (result.secret_mode && this.authUser.id===v.user._id) {this.setState({canAccess:true});}
+		    		if(this.authUser.id===v.user._id){cuexist=true;}
 		    	});
+		    	if (result.secret_mode && !cuexist){
+		    		this.setState({canAccess:false});
+		    	}
 		    	if (result.user===this.authUser.id || this.state.canUpload) {
 			    	this.setState({canEdit: true}); 
 			    } 
@@ -562,9 +566,9 @@ export default class Project extends React.Component {
 									        			<i className="shadow"></i>
 									        			<aside className="unseen-over-thumb">
 									        			<i className="overlay"></i>
-									        			<strong className="number">1</strong>
+									        			<strong className="number">{this.state.nlists[project._id]?.length}</strong>
 									        			<span>
-										        			<span> This design was added</span>
+										        			<span>{this.state.nlists[project._id]?.length>1?'Unseen things':this.state.nlists[project._id][0] && this.state.nlists[project._id][0]?.message=='design'?'This design was updated':'Unseen thing'}</span>
 									        			</span>
 									        			</aside>
 									        		</div>
