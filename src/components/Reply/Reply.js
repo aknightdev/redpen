@@ -11,6 +11,6 @@ export default class Comment extends React.Component {
         this.props.hideComments();
     }
     render() {
-    	return  <Cmenu isThread={this.props.indexVal===0?true:false} canEdit={this.props.replyData.user._id===this.authUser.id} showEdit={this.showEdit} updateComment={this.props.updateComment} iAgree={this.iAgree} commentId={this.props.commentId} replyIndex={this.props.indexVal} reply={this.props.replyData} ></Cmenu>
+    	return  <Cmenu isThread={this.props.indexVal===0?true:false} canEdit={this.props.replyData?.user?._id===this.authUser.id} showEdit={this.showEdit} updateComment={this.props.updateComment} iAgree={this.iAgree} commentId={this.props.commentId} replyIndex={this.props.indexVal} reply={this.props.replyData} ></Cmenu>
 	}				
 }
