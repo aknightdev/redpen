@@ -47,7 +47,7 @@ class Collabi extends React.Component {
 	  	return (
 	  	<div className="collaborator-container">
 			<span className={cls} title={this.props.share.email} onClick={this.toggleMenu}>
-				<span><img className='pfpic' src={createImageFromInitials(500, this.props.share.email, this.props.share.color)} alt='profile-pic' />{/*this.props.share.email*/}</span>
+				<span>{this.props.share.email.substring(0,2)}</span>
 			    {dpdown}
 				{adminIcon}
 			</span>

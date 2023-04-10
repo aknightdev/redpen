@@ -59,7 +59,7 @@ export default class Nameedit extends React.Component {
         if(this.props.user===this.authUser.id || this.props.canUpload){
             imgTitle =<div className="prj_meta prt_info dash_1">
 
-            <div className="prttitle_left"> <h3 onClick={this.toggleEdit} className="project-title">{this.props.image.name}</h3>
+            <div className="prttitle_left" onClick={()=>this.props.handleClick(this.props.image._id)}><h3 className="project-title" >{this.props.image.name}</h3>
                 <p><Moment format="DD MMM YY hh:mma">{this.props.image.updated}</Moment></p>
                 </div>
                 <div className="prt_right">
@@ -71,7 +71,7 @@ export default class Nameedit extends React.Component {
                 </div>;
         }
         else{
-            imgTitle =<div className="prj_meta"> <h3 className="project-title">{this.props.image.name}{this.props.image.versions.length>1?(<span className="version">,&nbsp;v{this.props.image.versions.length}</span>):''}</h3></div>;
+            imgTitle =<div className="prj_meta" onClick={()=>this.props.handleClick(this.props.image._id)}> <h3 className="project-title">{this.props.image.name}{this.props.image.versions.length>1?(<span className="version">,&nbsp;v{this.props.image.versions.length}</span>):''}</h3></div>;
         }
         if(this.state.showEdit)
     	    return  <div className="prj_meta"><textarea id="imageName" onKeyDown={this.onEnterPress} defaultValue={this.state.name} className="title not-empty" placeholder="Image name" onBlur={this.handleImgTitleChange}></textarea></div>;

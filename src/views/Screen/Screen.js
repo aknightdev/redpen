@@ -37,6 +37,7 @@ export default class Screen extends React.Component {
     	this.showSharepopup = this.showSharepopup.bind(this);
     	this.editToggle = this.editToggle.bind(this);
     	this.handleImgTitleChange = this.handleImgTitleChange.bind(this);
+    	this.handleImgTitleEdit = this.handleImgTitleEdit.bind(this);
     	this.handleImgDescChange = this.handleImgDescChange.bind(this);
     	this.approveScreen = this.approveScreen.bind(this);
     	this.updateScreen = this.updateScreen.bind(this);
@@ -50,7 +51,11 @@ export default class Screen extends React.Component {
     	this.toggleComments = this.toggleComments.bind(this);
     	this.loadComments = this.loadComments.bind(this);
     	this.sortComments = this.sortComments.bind(this);
+    	this.toggleShare = this.toggleShare.bind(this);
     	this.currentComment = '';
+    }
+    toggleShare(){
+    	if(this.state.showShare) this.setState({showShare:false});
     }
     sortComments(s){
     	// let sortedCommentsDsc;
@@ -409,6 +414,23 @@ export default class Screen extends React.Component {
 		    });
 	    }
 	}
+	handleImgTitleEdit = (name) => {
+		this.setState({editTitle:false});
+		if(this.state.name!==name){
+			this.setState({name: name});   
+			fetch(config.url.API_URL+"updatescreen", {
+			  	method: "POST",
+		  		body: JSON.stringify({id:this.props.match.params.id, name:name, version: this.props.match.params.version, version_id: this.state.version_id}),
+		  		headers: {
+			        'Content-Type': 'application/json'
+			    }
+			}).then(function (response) {
+	            return response.json();
+		    }).then( (result) => { 
+		    	
+		    });
+	    }
+	}
 	handleImgDescChange = (event) => {
 		if(this.state.description!==event.target.value){
 		  this.setState({description: event.target.value});   
@@ -471,7 +493,7 @@ export default class Screen extends React.Component {
 		}
 		else{
 			title = <h1 className="title">
-									<span className="ver_bg2">{this.state.versions.length>0?(<button onClick={this.toggleMenu} id="versionButton" className={'version '+ (this.state.prominent?'prominent':'')}>v{this.state.version}</button>):''}</span> <span onClick={this.editToggle}>{this.state.name} <div className="dat_time"><Moment format="DD MMM YY hh:mma">{this.state.updated}</Moment></div></span>
+									<span className="ver_bg2">{this.state.versions.length>0?(<button onClick={this.toggleMenu} id="versionButton" className={'version '+ (this.state.prominent?'prominent':'')}>v{this.state.version}</button>):''}</span> <span >{this.state.name} <div className="dat_time"><Moment format="DD MMM YY hh:mma">{this.state.updated}</Moment></div></span>
 
 										</h1>
 		}
@@ -513,7 +535,7 @@ export default class Screen extends React.Component {
 										</menu>
 										):''}
 									</div>
-									<Sdropdown user={this.user_id} updateScreen={this.updateScreen} deleteScreen={this.deleteScreen} deleteVersion={this.deleteVersion} shrinkScreen={this.shrinkScreen} showComments={this.showComments} copyComments={this.copyComments} version={this.state.version} versions={this.state.versions} shrink={this.state.shrink} project={this.state.project_id} canUpload={this.state.canUpload} approveScreen={this.approveScreen} approved={this.state.approved}></Sdropdown>
+									<Sdropdown name={this.state.name} handleImgTitleEdit={this.handleImgTitleEdit} user={this.user_id} updateScreen={this.updateScreen} deleteScreen={this.deleteScreen} deleteVersion={this.deleteVersion} shrinkScreen={this.shrinkScreen} showComments={this.showComments} copyComments={this.copyComments} version={this.state.version} versions={this.state.versions} shrink={this.state.shrink} project={this.state.project_id} canUpload={this.state.canUpload} approveScreen={this.approveScreen} approved={this.state.approved}></Sdropdown>
 									
 									
 									{/*<div className="description-container">
@@ -542,7 +564,7 @@ export default class Screen extends React.Component {
 						<Modal showModal={this.state.showModal} handleClose={this.handleDragLeave}>
 				          <p>Update this design with new version</p>
 				        </Modal>
-				        <Share reloadProject={this.reloadImage} userId={this.authUser.id} showShare={this.state.showShare} handleClose={this.closeModal} imageId={this.state.image_id} projectId={this.state.project_id}>
+				        <Share reloadProject={this.reloadImage} userId={this.authUser.id} toggleShare={this.toggleShare} showShare={this.state.showShare} handleClose={this.closeModal} imageId={this.state.image_id} projectId={this.state.project_id}>
 				        </Share>
 				        {/*<Commentsidebar sortComments={this.sortComments} hideComments={this.hideComments} showComments={this.showComments} showCommentsidebar={this.state.showCommentsidebar} scrTo={this.state.scrTo} comments={this.state.comments} commentId={this.state.commentId} projectId={this.state.project_id} loadComments={this.loadComments}></Commentsidebar>*/}
 				        <HotKeys keyMap={keyMap} handlers={this.handlersParent}></HotKeys>

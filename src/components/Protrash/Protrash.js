@@ -40,7 +40,7 @@ export default class Protrash extends React.Component {
             delButton = null;
         }
         if(this.state.showDrop)
-    	    return  <div className="gear-confirmation"><div><button className="new-button primary dark" onClick={this.confirmDelete}>I’m serious. Delete it.</button> <span className="cancel new-button primary dark danger" onClick={this.returnDesign}>Return to safety</span></div></div>;
+    	    return  <div className="gear-confirmation"><div><button className="new-button primary dark" onClick={this.confirmDelete}>I’m serious. Delete it.</button> <span className="cancel new-button primary dark danger" onClick={this.returnDesign}>Cancel</span></div></div>;
         else
             return delButton;
 	}	

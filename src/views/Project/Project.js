@@ -11,7 +11,6 @@ import Collabi from 'components/Collabi/Collabi.js';
 import Notifications from 'components/Notifications/Notifications.js';
 import $ from 'jquery';
 
-
 export default class Project extends React.Component {
 	constructor(props) {
     	super(props);
@@ -35,6 +34,7 @@ export default class Project extends React.Component {
     	this.togglePowersi = this.togglePowersi.bind(this);
     	this.removeAccessi = this.removeAccessi.bind(this);
     	this.updateSecretMode = this.updateSecretMode.bind(this);
+    	this.toggleShare = this.toggleShare.bind(this);
     	this.imagenames = [];
     	this.imageids = [];
     	this.file = [];
@@ -43,7 +43,10 @@ export default class Project extends React.Component {
 	    this.searchDesigns = this.searchDesigns.bind(this);
 	    
     }
-    	toggleSearch(){
+    toggleShare(){
+    	if(this.state.showShare) this.setState({showShare:false});
+    }
+	toggleSearch(){
 		this.setState({togSear:!this.state.togSear});
 	}
 		clickShowmore(){
@@ -188,7 +191,12 @@ export default class Project extends React.Component {
     		this.loadNotify();
     	}
     	else{
-    		this.setState({is_expired:false});
+    		if(this.authUser.id){
+    			this.setState({is_expired:false});
+    		}
+    		else{
+    			this.props.history.replace('/login/', this.props.location.state);
+    		}
     	}
     }
     onEnterPress = (e) => {
@@ -452,7 +460,7 @@ export default class Project extends React.Component {
 						</div>;
 			dragbool = false; 
 		}
-		if(!this.state.canAccess) return <div className="page_body page_body2"><div className="page_wrapper light_bg singles_page plan_exp"><div className="container"> <h2>Projects limit reached</h2> <p>You need to upgrade to premium plan </p> <Link className="App-link btn" to='/pro/new_plans'>Get Billing Plans</Link> </div></div></div>
+		if(!this.state.canAccess) return <div className="page_body page_body2"><div className="page_wrapper light_bg singles_page plan_exp"><div className="container"> <h2>Access restricted</h2> <p>You don't have access to view this project</p> </div></div></div>
 		else if(this.state.is_expired) return <div className="page_wrapper light_bg singles_page plan_exp"><div className="container"> <h2>Package Expired</h2> <p>please renewal your plan </p> <Link className="App-link btn" to='/pro/new_plans'>Get Billing Plans</Link> </div></div>
 		else	
 		return (
@@ -495,7 +503,7 @@ export default class Project extends React.Component {
 					        		
 									<span className="add-new" onClick={this.showSharepopup}>+ Share
 
-									<Share reloadProject={this.reloadProject} userId={this.authUser.id} showShare={this.state.showShare} handleClose={this.closeModal} projectId={this.props.match.params.id} updateSecretMode={this.updateSecretMode} secretMode={this.state.secret_mode}>
+									<Share reloadProject={this.reloadProject} userId={this.authUser.id} showShare={this.state.showShare} toggleShare={this.toggleShare} handleClose={this.closeModal} projectId={this.props.match.params.id} updateSecretMode={this.updateSecretMode} secretMode={this.state.secret_mode}>
 				        			</Share>
 									</span>
 									
@@ -557,7 +565,6 @@ export default class Project extends React.Component {
 								        <div className="projects_grid">
 								        <div className="projs_itminner">
 								       
-								        	
 								        	<div className="project-image">
 								        		<img alt="" onClick={() => this.handleClick(project._id)} src={config.url.IMAGE_URL+project.image} />
 								        		{this.state.nlists[project._id]?(
@@ -575,7 +582,7 @@ export default class Project extends React.Component {
 									        	</div>
 									        	):''}
 								        	</div>
-								        	<Nameedit canUpload={this.state.canUpload} user={this.state.user_id} image={project}></Nameedit>
+								        	<Nameedit handleClick={this.handleClick} canUpload={this.state.canUpload} user={this.state.user_id} image={project}></Nameedit>
 								       </div></div>
 								        </div>
 							        ))}

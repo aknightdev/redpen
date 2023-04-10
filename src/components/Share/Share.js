@@ -1,14 +1,18 @@
 import React from 'react';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { config } from 'Constants.js';
+import onClickOutside from "react-onclickoutside";
 
-export default class Share extends React.Component {
+class Share extends React.Component {
 	constructor(props) {
 	    super(props);
 	    this.state = {validEmail:false, copied: false, success: false, email:''}
 	    this.validateEmail = this.validateEmail.bind(this)
 	    this.emailThem = this.emailThem.bind(this)
 	}
+    handleClickOutside = evt => {
+    	this.props.toggleShare();
+    }
 	emailThem = (event) => {
 		fetch(config.url.API_URL+"invite", {
 		  	method: "POST",
@@ -85,3 +89,4 @@ export default class Share extends React.Component {
 	  );
 	}
 };
+export default onClickOutside(Share);
