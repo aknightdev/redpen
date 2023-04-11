@@ -904,6 +904,7 @@
 		}
 		.usermenu {
     	margin-right: 75px;
+			margin-left: auto;
 	}
 	.bnr_circle img {
     margin-top: 0;
@@ -1613,6 +1614,11 @@
 	    margin-right: 0;
 	    float: none;
 	    text-align: center;
+	    margin: 0;
+	}
+	.nav_rt .fl_right {
+		width: 100%;
+    	justify-content: center;
 	}
 	.ftr_menu li {
     	margin: 5px;
@@ -1658,6 +1664,9 @@
 	}
 	.abt_sec1.terms h3 {    
     	line-height: 1.1;
+	}
+	.header_grid {
+		flex-wrap: wrap;
 	}
 }
 

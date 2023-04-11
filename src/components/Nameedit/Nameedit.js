@@ -65,7 +65,7 @@ export default class Nameedit extends React.Component {
                 <div className="prt_right">
                  {/*<span onClick={this.toggleEdit} ><FaPen/></span>*/}
                  <span className="ver_bg">{this.props.image.versions.length>1?(<span className="version">V{this.props.image.versions.length}</span>):''}</span>
-               <span className="delete_bg"> <Trash reloadProject={this.reloadProject} image={this.props.image} user={this.state.user_id} canUpload={this.props.canUpload}></Trash></span>
+               
                 </div> 
                
                 </div>;

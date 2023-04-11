@@ -74,6 +74,8 @@ img {
     width: 90%;
     max-width: 1530px;
     margin: auto;
+    display: flex;
+    align-items: center;
 }
 .frnt_header:after{ content: ""; clear: both; display: table; }
 .logo_lt {
@@ -97,9 +99,9 @@ img {
     font-weight: 400;
 }
 .top_menu {
-    display: inline-block;
+    /*display: inline-block;
     vertical-align: middle;
-    margin-top: 9px;
+    margin-top: 9px;*/
     transition: all .2s ease-in-out;
 }
 .main_logo {
@@ -712,12 +714,12 @@ li.suplink a {
 .fixed_header .main_logo img {
     width: 150px;
 }
-.fixed_header .top_menu {
+/*.fixed_header .top_menu {
     margin-top: 9px;
-}
-.fixed_header .main_logo {
+}*/
+/*.fixed_header .main_logo {
     margin-top: 3px;
-}
+}*/
 .loginouter {
     overflow: hidden;
     height: 100vh;
@@ -1300,6 +1302,13 @@ span.pskeep {
 }
 .abt_sec2 p:last-child{ margin-bottom: 0; }
 
-.pro_meta{ margin-bottom: 16px;    display: flex;
+.pro_meta{
+    margin-bottom: 16px;
+    display: flex;
     align-items: center;
-    justify-content: space-between; }
+    justify-content: space-between;
+}
+.nav_rt .fl_right {
+    display: flex;
+    align-items: center;
+}

@@ -8,6 +8,7 @@ import Sortdd from 'components/Sortdd/Sortdd.js';
 import Nameedit from 'components/Nameedit/Nameedit.js';
 import Collab from 'components/Collab/Collab.js';
 import Collabi from 'components/Collabi/Collabi.js';
+import Trash from 'components/Trash/Trash.js';
 import Notifications from 'components/Notifications/Notifications.js';
 import $ from 'jquery';
 
@@ -564,7 +565,7 @@ export default class Project extends React.Component {
 								       
 								        <div className="projects_grid">
 								        <div className="projs_itminner">
-								       
+								       		<span className="delete_bg"> <Trash projectId={this.props.match.params.id} reloadProject={this.reloadProject} image={project} user={this.state.user_id} canUpload={this.canUpload}></Trash></span>
 								        	<div className="project-image">
 								        		<img alt="" onClick={() => this.handleClick(project._id)} src={config.url.IMAGE_URL+project.image} />
 								        		{this.state.nlists[project._id]?(
