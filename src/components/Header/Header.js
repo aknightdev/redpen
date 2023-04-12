@@ -120,7 +120,7 @@ export default class Header extends React.Component {
 	}
 	else{
 		return (
-			<header className={this.state.fixedHeader?"App-header frnt_header fixed_header":"App-header frnt_header"}>
+			<header className={this.state.fixedHeader?"App-header frnt_header fixed_header dash_header":"App-header frnt_header dash_header"}>
 			<div className="header_grid">
 				<div className="logo_lt">
 					<div className="main_logo">

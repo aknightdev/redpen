@@ -68,7 +68,7 @@ img {
 }
 .page_body {
     /*background: #031b29;*/
-    padding-top: 107px;
+    padding-top: 146px;
 }
 .header_grid {
     width: 90%;
@@ -146,7 +146,7 @@ img {
     border-color: #407f7c;
     color: #fff;
 }
-.ftr_menu li a:hover{    color: #fff;}
+/*.ftr_menu li a:hover{    color: #fff;}*/
 .frnt_header ul {
     margin: 0;
     padding: 0;
@@ -660,7 +660,7 @@ li.suplink a {
     top: 10px;
 }
 .ftr_menu ul {
-    margin: 28px 0 0;
+    margin: 40px 0 0;
 }
 .ftr_copy {
     color: #7fa9a7;
@@ -792,12 +792,10 @@ li.suplink a {
 }
 
 .login_box {
-    box-shadow: 0 0 177px rgba(149, 255, 217, 0.25);
     border-radius: 10px;
     border: 1px solid #cfe1dd;
     background-color: #cfe1dd;
-        padding: 50px;
-    
+    padding: 50px;
 }
 .login_block {
     max-width: 490px;
@@ -930,11 +928,11 @@ span.pskeep {
 }
 .frg_link {
     text-align: center;
-    margin-top: 45px;
+    margin-top: 30px;
 }
 .frg_link a, .frg_link span {
     color: #068466;
-    font-size: 18px;
+    font-size: 17px;
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
@@ -1136,7 +1134,7 @@ span.pskeep {
     text-align: center;
 }
 .loginonly .log_inwrap p{
-    font-weight: bold;
+    font-family: "Graphik-Semibold";
     padding-top: 10px;
     margin-bottom: 5px;
     font-size: 18px;
@@ -1148,7 +1146,7 @@ span.pskeep {
 
 
 .page_top {
-    padding-top: 146px;
+    padding-top: 110px;
 }
 .inner_banner {
     background: #025552;
@@ -1311,4 +1309,8 @@ span.pskeep {
 .nav_rt .fl_right {
     display: flex;
     align-items: center;
+}
+.frg_link p {
+    line-height: 1.5;
+    margin: 0 0 15px;
 }

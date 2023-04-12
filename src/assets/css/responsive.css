@@ -21,6 +21,9 @@
 	.projects_item {
     	padding: 0 20px;
 	}
+	.projects_grid {
+		margin-bottom: 40px;
+	}
 	.all_projects_list {
     	margin: 0 -30px;
 	}
@@ -167,6 +170,9 @@
 	.projects_item {
     padding: 0 20px;
 	}
+	.projects_grid {
+	    margin-bottom: 30px;
+	}
 	.all_projects_list {
     	margin: 0 -20px;
 	}
@@ -218,11 +224,14 @@
     	padding: 0 15px;
 	}
 	.prt_info{
-		    padding: 16px 10px;
+		    padding: 16px 15px;
 	}
 	.project_ct_outer {
 	    margin: 0 auto;
 	    max-width: 960px;
+	}
+	.prjs_srch_outer {
+		margin-bottom: 40px;
 	}
 	.pg_boxwrapper {
     margin-top: 104px;
@@ -264,7 +273,13 @@
 	.mya_item input[type="submit"]{
 		padding: 15.5px 0;
 	}
-
+	.modal-main h2 {
+		font-size: 30px;
+	}
+	.modal-main textarea {
+		padding: 10px 15px !important;
+    	font-size: 16px !important;
+	}
 }
 @media (min-width:992px) and (max-width:1200px) {
 
@@ -309,12 +324,6 @@
 		    padding-right:0;
 	}
  	.shot-header .editable textarea.title{ width:100%; }
- 	.shot-header #screenOptions{
- 		    width: 20%;
- 	}
- 	.shot-header .title-container {
-    	width: 70%;
-	}
 	.title .version{
 		    font-size: 20px;
 	}
@@ -434,7 +443,6 @@
     float: right;
     position: relative;
     display: inline-block;
-    margin-right: 55px;
 	}
 	.user_nm button {
     width: 38px;
@@ -493,11 +501,7 @@
     width: 100%;
 	}
 	.sharethum_drop {
-    width: 95%;
-    padding: 15px;
-    right: 0;
-    left: 0;
-    margin: auto;
+		right: 12%;
 	}
 	.share-link-container label	{    margin-bottom: 12px;}
 	 .share-link{
@@ -574,7 +578,7 @@
     	    font-size: 18px;
     }
 
-     .inv_page table tr:nth-child(1){ display:none; }
+     .inv_page table thead tr { display:none; }
     .inv_page table tr {
     border-bottom: 3px solid #ddd;
     display: block;
@@ -597,6 +601,7 @@
 	    font-weight: bold; 
 	    margin-right: 10px;
 	    color: #01544f;
+	    font-family: "Graphik-Semibold";
 	  }
 	  
 	  .inv_page table td:last-child {
@@ -644,7 +649,7 @@
 	.suprt_page .teammates-list td:before {
     content: attr(data-label);
     float: left;
-    font-weight: bold;
+    font-family: "Graphik-Semibold";
 	}	
 	.suprt_page .teammates-list td span {
     display: inline-block;
@@ -669,12 +674,7 @@
 		    padding-right:0;
 	}
  	.shot-header .editable textarea.title{ width:100%; }
- 	.shot-header #screenOptions{
- 		    width: 20%;
- 	}
- 	.shot-header .title-container {
-    	width: 70%;
-	}
+ 	
 	.title .version{
 		    font-size: 20px;
 	}
@@ -700,7 +700,12 @@
     right: 0;	
     margin: auto;
 	}
-
+	#screenOptions>ul>li {
+		margin-right: 5px;
+	}
+	.shot-header .title-container {
+		max-width: calc(100% - 165px);
+	}
 }
 @media screen and (max-width:768px) {}
 
@@ -896,23 +901,18 @@
     width: 50px;
     height: 50px;
 	}
-	.shot-header .editable {
-    	padding: 22px 17px 5px 17px;
-	}
 	.shot-header .ver_bg2 button:after {
     
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
-    border-top: 6px solid #ffc776;
+    border-top: 6px solid #fff;
     
     top: 23px;
-    left: 37px; 
+    left: 34px; 
 	}
 	.shot-header .title, .shot-header .editable textarea.title {
     font-size: 20px;}
-    .shot-header #screenOptions {
-    width: 25%;
-	}
+    
 	.shot-header {
     width: 95%;
     padding-bottom: 45px;
@@ -926,8 +926,25 @@
 	.comments-sidebar {
     	top: 81px;
 	}
-
-
+	.prjs_srch_outer .link_btn {
+		height: 46px;
+	}
+	.modal-main {
+		padding: 20px;
+		border-radius: 15px;
+	}
+	.modal-main textarea {
+		border-radius: 10px;
+	}
+	.modal-main button {
+		margin: 0 5px;
+	}
+	.frg_link a, .frg_link span {
+		font-size: 16px;
+	}
+	.login_box li label, .frg_link p {
+	    font-size: 15px;
+	}
 }
 @media screen and (max-width:667px) {
 	.prjs_serch {
@@ -937,7 +954,14 @@
 		    width: calc(100% - 10%);
 	}
 	.commenter .tools {
-    padding: 20px 15px;}
+	    padding: 20px 15px;
+	}
+	.modal-main h2 {
+		margin-bottom: 15px;
+	}
+	.modal-main h2 {
+	    font-size: 28px;
+	}
 }
 
 @media screen and (max-width:640px) {
@@ -989,7 +1013,9 @@
 	.left_design .designs {
     	 margin: 12px 10px;
 	}
-
+	.shot-header .editable {
+		padding: 15px;
+	}
 }
 
 @media screen and (max-width:570px) {
@@ -1010,25 +1036,40 @@
    		margin: 8px 15px;
 	}
 	.share_modalmain{
-		    left: -150%;
+		left: -150%;
 	}
 	.share_modalmain:before{
 		left: 47%;
 	}
 	.shot-header .title-container {
-    width: 100%;
-    float: none;
+	    width: 100%;
+	    float: none;
+	    max-width: 100%;
+	    margin-bottom: 15px;
 	}
 	.shot-header #screenOptions {
-    width: 100%;
-    float: none;
-    clear: both;
+	    width: 100%;
+	    float: none;
+	    clear: both;
 	}
 	.shot-header .editable {
-    padding: 15px;
-    height: auto;
+	    padding: 15px;
+	    height: auto;
+	    flex-wrap: wrap;
 	}
-	.title .version{     margin-left: 0; }
+	.title .version {
+		margin-left: 0;
+	}
+	.view_fullpage .content {
+	    padding-top: 30px;
+	}
+	#screenOptions>ul { 
+	    margin: auto;
+	    width: fit-content;
+	}
+	.modal-main button {
+		font-size: 15px;
+	}
 }
 
 @media screen and (max-width:533px) {
@@ -1083,7 +1124,10 @@
 	.commenter .input{
 		    width: calc(100% - 45px);
 	}
-
+	.projects_item {
+	    padding: 0;
+	    width: 100%;
+	}
 }
 @media screen and (max-width:480px){
 
@@ -1174,7 +1218,9 @@
     	font-size: 18px;
 	}
 
-	
+	.sharethum_drop {
+	    right: 17%;
+	}	
 }
 
 @media screen and (max-width:440px) {
@@ -1239,10 +1285,7 @@
     	padding-top: 40px;
 	}
 	.shot-header #screenOptions{ padding-top:0; }
-	#screenOptions>ul { 
-    margin: auto;
-    width: fit-content;
-	}
+	
 	.comments-sidebar {
     	width: 90%;
 	}

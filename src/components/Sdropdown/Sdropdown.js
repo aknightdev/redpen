@@ -15,12 +15,12 @@ class Sdropdown extends React.Component {
         this.handleImgTitleChange = this.handleImgTitleChange.bind(this);
         this.authUser = window.localStorage.getItem('auth_user')==null?{id:null,name:null}:JSON.parse(window.localStorage.getItem('auth_user'));
     }
-    componentDidMount() {
+    /*componentDidMount() {
         $(document).on('click','#screenOptions ul li',()=>{
             this.setState({showDrop:false});
         })
         this.setState({name:this.props.name});
-    }
+    }*/
     handleImgTitleChange(){
         this.props.handleImgTitleEdit(document.getElementById('imageName').value);
         this.showEditTitle();
@@ -30,6 +30,7 @@ class Sdropdown extends React.Component {
     }
     gearClick(){
         this.setState({showDrop:!this.state.showDrop});
+        console.log(this.state.showDrop);
     }
     showEditTitle(){
         this.setState({showModal:!this.state.showModal});
@@ -45,7 +46,7 @@ class Sdropdown extends React.Component {
                 });
             }
             else{
-                delButton = <li className="danger" title="Delete"><FaTrash onClick={this.gearClick} /></li>;
+                delButton = <li onClick={this.gearClick} className="danger" title="Delete"><FaTrash /></li>;
             }
             if(this.props.shrink){
                 shrinkButton = <li onClick={this.props.shrinkScreen}>Enlarge by 150%</li>;
@@ -96,14 +97,14 @@ class Sdropdown extends React.Component {
                     {editTitle}
                     </div>
         else
-            return <div id="screenOptions"><br/>
+            return <div id="screenOptions">
                     <ul>
                     {editBtn}
                     {updateButton}
                     {delButton}
                     {cmpBtn}
-                    {editTitle}
                     </ul>
+                    {editTitle}
                     </div>
 	}				
 }

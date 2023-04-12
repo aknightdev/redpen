@@ -207,6 +207,10 @@ export default class Home extends React.Component {
 				      {this.state.projects.map((project,key) => (
 				      	<div className={project.is_expired?'expired projects_item':'projects_item'} key={key} style={!this.state.showMore && key>7?{display:'none'}:{}}>
 				        <div className="projects_grid" >
+				        	<div className="prt_right">
+		        			 <Sharedropdown projectId={project._id} updateProjects={this.updateProjects} project={project}></Sharedropdown>
+		        			 <div className="delete_bg">{!project.is_expired?<Protrash updateProjects={this.updateProjects} project={project}></Protrash>:null}</div>
+		        			</div>
 				        	{/*<Dropdown updateProjects={this.updateProjects} project={project}></Dropdown>*/}
 				        	<div className="projs_itminner">
 				        	
@@ -236,12 +240,7 @@ export default class Home extends React.Component {
 							        		 
 					        			</p>*/}</Link>
 				        			</div>
-				        			<div className="prt_right">
-				        			 
-				        			 <Sharedropdown projectId={project._id} updateProjects={this.updateProjects} project={project}></Sharedropdown>
-				        			 <div className="delete_bg">{!project.is_expired?<Protrash updateProjects={this.updateProjects} project={project}></Protrash>:null}</div>
-				        			 <div></div>
-				        			</div>
+				        			
 				        		</div>	</div>
 
 				        	 

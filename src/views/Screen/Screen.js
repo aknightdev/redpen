@@ -135,6 +135,9 @@ export default class Screen extends React.Component {
 		  	}
 		});
 		document.body.classList = 'singlepage';
+		document.getElementById('mainImage').addEventListener('load', ()=>{
+			this.shrinkScreen();
+		});
     } 
   componentWillUnmount() {
     document.body.classList = '';
@@ -353,7 +356,7 @@ export default class Screen extends React.Component {
 		this.setState({shrink:!this.state.shrink});
 		setTimeout(()=>{
 			if (this.state.shrink) {
-		        myImg.style.width = (currWidth * 0.5).toFixed(0) + "px";
+		        myImg.style.width = (currWidth * 0.8).toFixed(0) + "px";
 			}
 			else{
 		        myImg.style.width = null;
@@ -520,18 +523,20 @@ export default class Screen extends React.Component {
 										{title}
 										{this.state.showMenu?(
 										<menu className="dropdown-menu on-dark version-menu column-reverse">
-											{this.state.versions.map((version,key) => (
-											<Link key={key} to={'/'+this.state.image_id+'/'+(key + 1)}>
-												<li className="" onClick={this.loadVersion}>
-													<span>
-														<span>Version </span>
-														<span>{key + 1}</span>
-														<span></span>
-														<span>{(key + 1)===this.state.version?' (this one)':''}</span>
-													</span>
-												</li>
-											</Link>
-											))}
+											<ul>
+												{this.state.versions.map((version,key) => (
+													<li className="" onClick={this.loadVersion}>
+														<Link key={key} to={'/'+this.state.image_id+'/'+(key + 1)}>
+																<span>
+																	<span>Version </span>
+																	<span>{key + 1}</span>
+																	<span></span>
+																	<span>{(key + 1)===this.state.version?' (this one)':''}</span>
+																</span>
+														</Link>
+													</li>
+												))}
+											</ul>
 										</menu>
 										):''}
 									</div>

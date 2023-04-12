@@ -43,15 +43,17 @@ class CheckoutForm extends Component {
 
   render() {
     return (
-      <aside className="payment-balloon js-payment-balloon modal large">
-        <span className="close" onClick={this.props.closeStripe}><FaWindowClose /></span>
-        <div className={this.state.loading?'second-pane js-second-pane loading':'second-pane js-second-pane'}>
-          <strong className="heading">Good choice. What are your details?</strong>
-          <input type="hidden" id="plan_id" value="0" />
-          <CardElement options={{hidePostalCode: true}} />
-          <button className="button" onClick={this.submit}>Subscribe Now</button>
-        </div>
-      </aside>
+      <div className="payment_pp">
+        <aside className="payment-balloon js-payment-balloon modal large">
+          <span className="close" onClick={this.props.closeStripe}><FaWindowClose /></span>
+          <div className={this.state.loading?'second-pane js-second-pane loading':'second-pane js-second-pane'}>
+            <strong className="heading">Good choice. What are your details?</strong>
+            <input type="hidden" id="plan_id" value="0" />
+            <CardElement options={{hidePostalCode: true}} />
+            <button className="button" onClick={this.submit}>Subscribe Now</button>
+          </div>
+        </aside>
+      </div>
     );
   }
 }

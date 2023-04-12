@@ -20,7 +20,7 @@ export default class Footer extends React.Component {
 				<div className="footer_sec">
 					<div className="web_container">
 						<div className="ftr_logo">
-							<img src={require('assets/images/ftr_logo.png')}/>
+							<img src={require('assets/images/logo-main.png')}/>
 						</div>
 						<div className="ftr_menu">
 						<ul>

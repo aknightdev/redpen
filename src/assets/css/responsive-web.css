@@ -668,17 +668,15 @@
 	.log_col1 h2 {
     font-size: 40px;
     line-height: 43px;
-    margin: 0 0 19px 0;
     }
     .login_block {
     	width: 75%;
 	}
 	.login_box {
-    	padding: 20px 35px;
+    	padding: 30px;
 	}
 	.login_box h2 {
-    margin: 0 0 12px 0;
-    font-size: 29px;
+    	font-size: 29px;
 	}
 	.gngo_link a:before{
 		width: 30px;
@@ -795,7 +793,12 @@
 	html {
     	--container: 720px;
 	}
-	.header_grid{ width: var(--container); position: relative; }
+	.header_grid{ width: calc(100% - 30px); position: relative; }
+	.nav_rt {
+		width: auto;
+		margin-left: auto;
+		margin-right: 50px;
+	}
 	.top_menu li {
     	margin-right: 35px;
 	}
@@ -805,7 +808,7 @@
     height: 2px;
     position: absolute;
     top: 0;
-    background: #ffc776;
+    background: #fff;
     left: 0;
     pointer-events: none;
 	}
@@ -815,7 +818,7 @@
     height: 2px;
     position: absolute;
     bottom: 0;
-    background: #ffc776;
+    background: #fff;
     right: 0;
     pointer-events: none;
 	}
@@ -823,12 +826,12 @@
     width: 35px;
     height: 2px;
     display: block;
-    background: #ffc776;
+    background: #fff;
 	}
 	.mobinav {
     display: block;
     position: absolute;
-    top: 14px;
+    top: 11px;
     right: 0px;
     cursor: pointer;
     padding: 7px 0;
@@ -1349,9 +1352,6 @@
 	.hw_headblock {
 		padding-top: 20px;
 	}
-	.login_box {
-    	padding: 18px 29px;
-	}
 	.log_col1:after {
 	    width: 85px;
 	    top: 6%;
@@ -1457,6 +1457,9 @@
 	}
 	.abt_sec1.terms h3 {
     	font-size: 22px;
+	}
+	.log_col1 h2 {
+	    font-size: 30px;
 	}
 }
 @media screen and (max-width:667px) {
@@ -1596,10 +1599,6 @@
 	.hw_headblock h2 {
     	font-size: 77px;
 	}
-	.nav_rt {
-	    float: none;
-	    width: 100%;
-	}
 	.logo_lt {
 	    width: 100%;
 	    float: none;
@@ -1715,6 +1714,9 @@
 	}
 	.price_inner h1 br{
 		display: none;
+	}
+	.login_box {
+	    padding: 20px;
 	}
 }
 
@@ -1833,7 +1835,7 @@
 	    font-size: 16px;
 	}
 	.login_box h2 {
-	    margin: 0 0 12px 0;
+	    margin: 0 0 20px;
 	    font-size: 26px;
 	}
 	.login_box input:not([type="submit"]) {
@@ -1856,7 +1858,7 @@
 		width: 150px;
 	}
 	.mobinav {
-		top: 6px;
+		top: 11px;
 	}
 	.usermenu li, .usermenu li:first-child {
 		margin: 0 7px;
