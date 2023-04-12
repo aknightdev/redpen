@@ -29,7 +29,7 @@ class Sortdd extends React.Component {
 				<ul>
                     {this.props.page=='home'?<li onClick={()=>this.sortClick('updated')} class={this.state.activesort == 'updated'?'active':''}><a href="javascript:void(0)">Date updated</a></li>:''}
     				<li onClick={()=>this.sortClick('name')} class={this.state.activesort == 'name'?'active':''}><a href="javascript:void(0)">Name</a></li>
-                    <li onClick={()=>this.sortClick('commented')} class={this.state.activesort == 'commented'?'active':''}><a href="javascript:void(0)">Latest commments</a></li>
+                    <li onClick={()=>this.sortClick('commented')} class={this.state.activesort == 'commented'?'active':''}><a href="javascript:void(0)">Latest comments</a></li>
                 </ul>
     			</div></div>;
         else
