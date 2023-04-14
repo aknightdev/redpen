@@ -1178,8 +1178,9 @@ box-shadow:         -12px 22px 45px 0px rgba(0, 0, 0, 0.13);
   border: 1px solid #b0c7c2;
     cursor: pointer;
     margin-left: 0px; 
-    padding: 12px 37px;
-    vertical-align: middle;font-size: 18px;
+    padding: 8px 25px;
+    vertical-align: middle;
+    font-size: 17px;
     font-weight: 500;
     color: #01564f;
     -moz-transition: opacity 0.5s linear;
@@ -2089,7 +2090,7 @@ ul, ol {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  border-radius: 0px 0px 5px 5px;
+  border-radius: 0px 0px 10px 10px;
 }
 .prt_info:after{ content: ""; clear:both; display: table; }
 .prt_info h2 {
@@ -2157,8 +2158,7 @@ ul, ol {
 .projects_grid .project-image {
     position: relative; overflow: hidden; 
         height: 100%;
-        border: 1px solid #dce7e4;
-        border-radius: 5px;
+        border-radius: 10px;
         cursor: pointer;
 }
 .home .projects_grid:hover{
@@ -3185,7 +3185,7 @@ button.share_button {
 .collaborators>ul {
     display: inline-block;
     vertical-align: middle;
-    margin-right: 30px;
+    margin-right: 15px;
         margin-top: 0;
     margin-bottom: 0;
     padding-left: 10px;
@@ -3217,9 +3217,9 @@ button.share_button {
 }
 
 .projects_item {
-    width: 33.33%;
+    width: 25%;
     float: left;
-    padding: 0 29.5px;
+    padding: 0 15px;
 }
 
 .all_projects_list {
@@ -4337,11 +4337,11 @@ height: 17px;
   color: #353640;
   text-transform: capitalize;
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 500;
   line-height: 24px;
   letter-spacing: 0.28px;
-  padding: 13px 28px;
+  padding: 9px 25px;
   cursor: pointer;
 }
 .prjs_srch_outer .link_btn.sortby svg{
