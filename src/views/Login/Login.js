@@ -9,7 +9,8 @@ export default class Login extends Component {
     super(props)
     this.state = {
       email : '',
-      password: ''
+      password: '',
+      error: ''
     };
   }
   componentDidMount() {
@@ -49,7 +50,10 @@ export default class Login extends Component {
     })
     .catch(err => {
       console.error(err);
-      toast.error('Invalid details!/Not yet activated');
+      this.setState({
+        'error': 'Invalid details!/Not yet activated'
+      });
+      // toast.error('Invalid details!/Not yet activated');
     });
   }
   render() {
@@ -78,7 +82,9 @@ export default class Login extends Component {
       })
       .catch(err => {
         console.error(err);
-        toast.error('Invalid details!');
+        this.setState({
+        'error': 'Invalid details!'
+      });
       });
       }
     }
@@ -93,6 +99,7 @@ export default class Login extends Component {
          <div className="login_box">
             <form onSubmit={this.onSubmit}>
                 <h2>Log In</h2>
+                {this.state.error != ''?<div className="error_block">{this.state.error}</div>:''}
                 {/*<GoogleLogin
                   clientId="582471345809-dctc10pa2bnl3ft128d6kngnme1s4a9d.apps.googleusercontent.com"
                   render={renderProps => (

@@ -50,22 +50,8 @@ export default class Verify extends Component {
     });
   }
   render() {
-    return (<div><div className="loginouter">
-        <div className="log_wrapper log_col1">
-          <div className="logo_login">
-            <Link className="App-link" to='/'> <img src={require('assets/images/logo-main.png')} alt="logo"/></Link>
-          </div>
-          <div className="login_block">
-            <div className="login_box">
-              <div className="message">{this.state.message}</div>
-              <div className="frg_link">
-                <Link to='/login'>Back to login?</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    return (
+      <div class="regpop verify_pop"><img src={require('assets/images/verify-logo.png')} alt="" /><div class="popcontent"><div class="poptop"><h2>Account verified</h2></div><div class="popmiddle"><p>{this.state.message}</p></div><div class="popbottom"><Link to='/login'>Back to login?</Link></div></div><div class="popoverlay"></div></div>
     );
   }
 }

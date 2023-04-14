@@ -706,6 +706,12 @@
 	.shot-header .title-container {
 		max-width: calc(100% - 165px);
 	}
+	.regpop .popcontent .poptop h2 {
+		font-size: 32px;
+	}
+	.regpop .popcontent .popmiddle {
+		padding-bottom: 0;
+	}
 }
 @media screen and (max-width:768px) {}
 
@@ -1016,6 +1022,9 @@
 	.shot-header .editable {
 		padding: 15px;
 	}
+	.regpop .popcontent {
+		max-width: 90%;
+	}
 }
 
 @media screen and (max-width:570px) {
@@ -1069,6 +1078,12 @@
 	}
 	.modal-main button {
 		font-size: 15px;
+	}
+	.regpop .popcontent .popbottom button, .billhead .inner button, .verify_pop a {
+		font-size: 16px;
+	}
+	.regpop .popcontent {
+		padding-bottom: 40px;
 	}
 }
 
@@ -1224,7 +1239,6 @@
 }
 
 @media screen and (max-width:440px) {
-
 	html {
     	--container2: 90%;
 	}
@@ -1306,12 +1320,35 @@
     
     width: 100px;
 	}
+	.regpop .popcontent .popmiddle {
+	    padding: 25px 15px 0;
+	}
+	.popcontent p {
+		font-size: 15px;
+	}
+	.regpop .popcontent .poptop h2 {
+	    font-size: 28px;
+	}
+	.regpop .popcontent {
+	    padding-bottom: 30px;
+	}
+	.regpop .popcontent .poptop {
+		padding: 100px 10px 25px;
+	}
+	.regpop .popcontent .poptop:before {
+		top: 30px;
+	}
+	.regpop .popcontent .popbottom button, .billhead .inner button, .verify_pop a {
+		padding: 8px 40px;
+	}
 }
 
 @media screen and (max-width:414px) {}
 
-@media screen and (max-width:375px) {
-	
+@media screen and (max-width:400px) {
+	.popcontent p br {
+		display: none;
+	}
 }
 
 @media screen and (max-width:360px) {}

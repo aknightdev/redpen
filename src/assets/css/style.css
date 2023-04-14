@@ -4196,32 +4196,29 @@ height: 17px;
 .archived-projects strong{
   color: white;
 }
-.regpop{
-  position: absolute;
-  top: 0;
-  left: 0;
-}
 .regpop .popoverlay{
   position: fixed;
-  z-index: 9998;
   width: 100%;
   height: 100%;
   background: black;
   opacity: 0.5;
+  z-index: 1;
+  top: 0;
+  left: 0;
 }
 .regpop .popcontent{
-  position: fixed;
-  left: 30%;
-  width: 500px;
-  height: 400px;
-  top: 20%;
-  z-index: 9999;
-  background: white;
+  position: relative;
+  z-index: 2;
+  margin: auto;
+  width: 569px;
+  background: #cfe1dd;
   text-align: center;
+  padding-bottom: 50px;
+  border-radius: 13px;
 }
 .regpop .popcontent .poptop{
-  background: #031a27;
-  padding: 10px;
+  background: #005353;
+  padding: 110px 10px 35px;
   color: white;
 }
 .regpop .popcontent .poptop svg {
@@ -4232,22 +4229,18 @@ height: 17px;
   color: #71ff71;
 }
 .regpop .popcontent .popmiddle{
-  padding: 10px 35px;
+  padding: 39px 35px 10px;
 }
 .regpop .popcontent .popbottom{
-  padding: 20px 35px;
-  background: #f4f4f4;
-  position: absolute;
-  width: 100%;
-  bottom: 0;
+  background: #cfe1dd;
 }
-.regpop .popcontent .popbottom button, .billhead .inner button{
+.regpop .popcontent .popbottom button, .billhead .inner button, .verify_pop a{
   border-radius: 5px;
   background-color: #068466;
   color: #fff;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
-  padding: 10px 35px;
+  padding: 14px 56px;
   display: inline-block;
   font-family: 'Poppins', sans-serif;
   border: 0;
@@ -5119,4 +5112,68 @@ body.singlepage {
 .shot-header textarea.title {
     font-weight: 400 !important;
     font-size: 16px !important;
+}
+
+.regpop .popcontent .poptop {
+  position: relative;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+}
+.regpop .popcontent .poptop:before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background-image: url(../images/pp-tick-icon.svg);
+  margin: auto;
+}
+.popcontent p {
+    line-height: 1.5;
+    font-size: 16px;
+    margin: 0 0 23px;
+    font-family: 'Inter', sans-serif;
+    color: #353640;
+    letter-spacing: 0.16px;
+}
+.regpop .popcontent .poptop h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    color: #fff;
+    letter-spacing: -0.72px;
+    margin: 0;
+}
+.verify_outer .logo_login img {
+  width: auto;
+}
+.verify_pop img {
+    position: relative;
+    z-index: 2;
+    margin: 50px auto;
+    display: block;
+}
+.regpp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.error_block {
+  background-color: #a4c3bc;
+  border: 1px solid #068466;
+  text-align: center;
+  font-size: 18px;
+  color: #005350;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.19px;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 22px;
 }

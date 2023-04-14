@@ -11,7 +11,8 @@ export default class Register extends Component {
       email : '',
       password: '',
       error: '',
-      success: false
+      success: false,
+      pperror: ''
     };
   }
   componentDidMount() {
@@ -45,7 +46,9 @@ export default class Register extends Component {
     })
     .catch(err => {
       console.log(err);
-      toast.error('Email address already exists');
+      this.setState({
+        'pperror': 'Email address already exists'
+      });
     });
   }
   render() {
@@ -60,6 +63,7 @@ export default class Register extends Component {
               <form onSubmit={this.onSubmit}>
                 <h2>Create An Account</h2>
                 <p className="sub_text">You’re about to experience the fastest way to get feedback. But first...</p>
+                {this.state.pperror != ''?<div className="error_block">{this.state.pperror}</div>:''}
                 <ul>
                   <li>
                     <label>Name</label>
@@ -87,14 +91,13 @@ export default class Register extends Component {
           </div>
          </div>
         </div>
-        {this.state.success?<div className="regpop">
+        {this.state.success?<div className="regpop regpp">
           <div className="popcontent">
           <div className="poptop">
-            <TiTick />
             <h2>Congratulations!</h2>
           </div>
           <div className="popmiddle">
-            <p>Your account has been successfully created. Please check your mailbox. You are going to receive a verification email.</p>
+            <p>Your account has been successfully created. <br />Please check your mailbox. You are going to <br />receive a verification email.</p>
           </div>
           <div className="popbottom">
             <Link to={'/'}><button>Ok</button></Link>

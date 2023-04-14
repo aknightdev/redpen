@@ -1286,7 +1286,11 @@
 	}
 	
 	.prplan_row {    margin-left:0px; margin-right: 0;}
-
+	.error_block {
+		padding: 15px;
+		font-size: 16px;
+		letter-spacing: 0;
+	}
 }
 @media screen and (max-width:768px) {}
 
@@ -1861,7 +1865,10 @@
 		top: 11px;
 	}
 	.usermenu li, .usermenu li:first-child {
-		margin: 0 7px;
+		margin: 0 5px;
+	}
+	.nav_rt {
+		margin-right: 45px;
 	}
 	.abt_sec1.terms h3 {
       font-size: 20px;   	
@@ -1869,10 +1876,24 @@
 	.abt_sec1.terms p {
     	font-size: 15px;
     }
-
+    .usermenu li a {
+	    font-size: 14px;
+	    width: 80px;
+	    padding: 3px 0 5px;
+	}
 }
 
 
+@media screen and (max-width:400px) {
+	.usermenu {
+		width: 100%;
+		margin: 15px 0 0;
+	}
+	.nav_rt {
+	    margin: 0;
+	    width: 100%;
+	}
+}
 @media screen and (max-width:375px) {
 
 	html {
