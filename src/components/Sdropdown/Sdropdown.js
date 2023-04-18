@@ -38,7 +38,7 @@ class Sdropdown extends React.Component {
     render() {
         let shrinkButton, copyButton, delButton, updateButton, delVersions=[], cmpBtn, editBtn,editTitle;
         if(this.props.user===this.authUser.id || this.props.canUpload){
-            editBtn = <li title="Edit title"><FaEdit onClick={this.showEditTitle} /></li>;
+            editBtn = <li title="Edit title"><div className="edit_link" onClick={this.showEditTitle}><FaEdit /></div></li>;
             if(this.props.versions.length>1){
                 delButton = delButton = <li className="danger" title="Delete"><div class="dd_inner" onClick={this.gearClick}><FaTrash /></div></li>;
                 this.props.versions.forEach((v,k)=>{
@@ -62,12 +62,12 @@ class Sdropdown extends React.Component {
                     copyButton = <li className="disabled">Clone comments from previous version </li>;
                 }
                 updateButton = <li title="Upload new version" onClick={this.props.updateScreen}><FaRedo /></li>;
-                cmpBtn = <li title={this.props.approved?'Disapprove':'Approve'} className={this.props.approved?'active approve':'approve'} onClick={()=>this.props.approveScreen(this.props.version-1)}><TiTick /></li>
+                cmpBtn = <li title={this.props.approved?'Disapprove':'Approve'} className={this.props.approved?'active approve':'approve'} onClick={()=>this.props.approveScreen(this.props.version-1)}>{this.props.approved?'Disapprove':'Approve'}</li>
             }
             else{
                 copyButton = null;
                 updateButton = null;
-                cmpBtn = <li title={this.props.approved?'Disapprove':'Aprove'} className={this.props.approved?'active approve':'approve'} onClick={()=>this.props.approveScreen(this.props.version-1)}><TiTick /></li>
+                cmpBtn = <li title={this.props.approved?'Disapprove':'Aprove'} className={this.props.approved?'active approve':'approve'} onClick={()=>this.props.approveScreen(this.props.version-1)}>{this.props.approved?'Disapprove':'Approve'}</li>
             }
             editTitle=<Modal showModal={this.state.showModal} handleClose={this.handleImgTitleChange}><h2>Edit Title</h2><p><textarea id="imageName" defaultValue={this.props.name} className="title not-empty" placeholder="Image name"></textarea></p><button onClick={this.handleImgTitleChange}>Save</button><button onClick={this.showEditTitle}>Cancel</button></Modal>;
         }

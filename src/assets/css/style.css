@@ -4076,7 +4076,14 @@ background-color: #109779;
   margin-right: 0;
 }
 #screenOptions ul li.approve{
-  font-size: 20px;
+  width: auto;
+  height: auto;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 3px 10px;
+  line-height: 1;
+  font-family: 'Roboto', sans-serif;
 }
 #screenOptions ul li.approve.active{
   background: #0d5c58;
@@ -5359,4 +5366,14 @@ body.singlepage .footer_sec {
 }
 .no_del .sharethum_drop {
   right: 0;
+}
+.edit_link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.prt_right .delete_bg {
+  padding: 0;
 }

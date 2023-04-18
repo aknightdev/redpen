@@ -34,7 +34,7 @@ export default class Protrash extends React.Component {
     render() {
         let delButton;
         if(this.props.project.user===this.authUser.id){
-            delButton =  <FaTrash onClick={this.deleteDesign}/>;
+            delButton =  <div className="dd_inner" onClick={this.deleteDesign}><FaTrash /></div>;
         }
         else{
             delButton = null;

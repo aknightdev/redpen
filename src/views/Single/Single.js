@@ -121,20 +121,21 @@ export default class Single extends React.Component {
 					        {this.state.images.map((image,key) => (
 						        <div className="projects_item" key={key}>
 						        		 <div className="projects_grid">
-						        		 <div className="projs_itminner">
-						        		 	<div className="project-image">
-						        		 		<img alt="" onClick={() => this.handleClick(image._id)} src={config.url.IMAGE_URL+image.image} />
-						        		 	</div>
+							        		 <div className="prt_right"> 
+												 <span className="delete_bg"><Trash reloadProject={this.reloadSingles} image={image} user={this.authUser.id}></Trash></span>
+								        	 </div>
+							        		 <div className="projs_itminner">
+							        		 	<div className="project-image">
+							        		 		<img alt="" onClick={() => this.handleClick(image._id)} src={config.url.IMAGE_URL+image.image} />
+							        		 	</div>
 
-						        		 </div>
+							        		 </div>
 							        	
 							        	 <div className="prj_meta prt_info dash_1"> 
 							        	 	<div className="prttitle_left"> 
 							        	 		<h3 className="project-title">{image.name.replace('.jpg','').replace('_',' ')}</h3>
 								        	 </div>
-								        	 <div className="prt_right"> 
-												 <span className="delete_bg"><Trash reloadProject={this.reloadSingles} image={image} user={this.authUser.id}></Trash></span>
-								        	 </div>
+								        	 
 							        	 </div>
 							        	 
 						        	</div>
