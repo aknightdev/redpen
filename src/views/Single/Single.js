@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Dropzone from 'react-dropzone';
 import { config } from 'Constants.js';
 import Trash from 'components/Trash/Trash.js';
+import Moment from 'react-moment';
 
 export default class Single extends React.Component {
 	constructor(props) {
@@ -134,11 +135,12 @@ export default class Single extends React.Component {
 							        	 <div className="prj_meta prt_info dash_1"> 
 							        	 	<div className="prttitle_left"> 
 							        	 		<h3 className="project-title">{image.name.replace('.jpg','').replace('_',' ')}</h3>
+							        	 		<p><Moment format="DD MMM YY hh:mma">{image.updated}</Moment></p>
 								        	 </div>
 								        	 
 							        	 </div>
 							        	 
-						        	</div>
+						        	</div><div id="ajxloader" className="lds-dual-ring hidden overlay"></div>
 						    	</div>
 					        ))}
 						 
