@@ -32,7 +32,7 @@ export default class Footer extends React.Component {
 							</ul>
 							</div>
 							<div className="ftr_copy">
-							© 2022 Feedbacktool. All Rights Reserved
+							© 2023 Feedbacktool. All Rights Reserved
 							</div>
 					</div>
 				</div>

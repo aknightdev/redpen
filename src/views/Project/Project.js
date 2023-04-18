@@ -15,7 +15,7 @@ import $ from 'jquery';
 export default class Project extends React.Component {
 	constructor(props) {
     	super(props);
-    	this.state = {id:props.match.params.id, title: '', description:'', user_id:'', images:[], showModal:false, showShare:false, togSear:false, imagename:'', shared:[], invite:[], canEdit: false, canUpload: false, nlist:[], nlists:[], allimgs:[], is_expired:false, secret_mode:false, canAccess:true};
+    	this.state = {id:props.match.params.id, title: '', description:'', user_id:'', images:[], showModal:false, showShare:false, togSear:false, imagename:'', shared:[], invite:[], canEdit: false, canUpload: false, nlist:[], nlists:[], allimgs:[], is_expired:false, secret_mode:false, canAccess:true,showsearch:false};
     	this.handleTitleChange = this.handleTitleChange.bind(this);
     	this.handleDescChange = this.handleDescChange.bind(this);
     	this.handleClick = this.handleClick.bind(this);
@@ -36,6 +36,7 @@ export default class Project extends React.Component {
     	this.removeAccessi = this.removeAccessi.bind(this);
     	this.updateSecretMode = this.updateSecretMode.bind(this);
     	this.toggleShare = this.toggleShare.bind(this);
+    	this.toggleSearch = this.toggleSearch.bind(this);
     	this.imagenames = [];
     	this.imageids = [];
     	this.file = [];
@@ -50,7 +51,7 @@ export default class Project extends React.Component {
 	toggleSearch(){
 		this.setState({togSear:!this.state.togSear});
 	}
-		clickShowmore(){
+	clickShowmore(){
 		this.setState({showMore:!this.state.showMore});
 	}
     updateSecretMode(){
@@ -295,6 +296,7 @@ export default class Project extends React.Component {
 		this.doUpload(this.file,'new');
 	}
 	doUpload(file,type){
+		document.getElementById("ajxloader").style.display = "block";
 		const  fileType = file['type'];
 		const  fileSize = file['size'];
 		const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
@@ -306,7 +308,6 @@ export default class Project extends React.Component {
 			alert('Only accept images at this moment. Try uploading a PNG!\nThere\'s good reason we keep website simple and purposeful to maximise efficient, fast feedback from your coleagues.');
 		    return;
 		}
-
 		const formData = new FormData() 
     	formData.append('file', file);
     	formData.append('project_id', this.props.match.params.id);
@@ -343,8 +344,9 @@ export default class Project extends React.Component {
 	    		});
 	    		this.setState({images:imgs});
 	    	}
+	    	document.getElementById("ajxloader").style.display = "none";
 	    });
-	    this.setState({showModal: false});	    				
+	    this.setState({showModal: false});
 	}
 	handleDragEnter = (event) => {
 		document.body.classList.add('dz-drag-hover');
@@ -437,7 +439,8 @@ export default class Project extends React.Component {
 	    	});
 	    	if (result.user===this.authUser.id || this.state.canUpload) {
 		    	this.setState({canEdit: true}); 
-		    } 
+		    }
+         	document.getElementById("ajxloader").style.display = "none";
 	    });
 	}
 
@@ -476,11 +479,13 @@ export default class Project extends React.Component {
 					
 					 
 						 
-						<div className="project_ct_outer">
+						<div className="project_ct_outer pro_single">
 						<div className="project-header">
 						<div className="crtitle_lt">
 <textarea defaultValue={this.state.title} disabled={!this.state.canEdit && this.props.match.params.id!=='create'} onKeyDown={this.onEnterPress} id="projtitle" className="title not-empty" placeholder="Give your project a title..." onBlur={this.handleTitleChange}></textarea>
 						</div>
+						{this.props.match.params.id!=='create'?
+						<div className="crp_top_row">
 						<div className="crtitle_rt">
 							<div className="collaborators-container">
 								 
@@ -516,27 +521,12 @@ export default class Project extends React.Component {
 						   <div className="left_design">
 							<div className="designs">{this.state.images.length} Designs </div>
 							<Sortdd className="link_btn" filterProjects={this.filterDesigns} page="project"></Sortdd>
-							</div>
-
-							{/*<div className="prjs_serch_icon">
+							<div className="prjs_serch_icon">
 							    <div className="ser_icon" onClick={this.toggleSearch}>
 							   		<img src={require('assets/images/search_1.svg')}/>
 							    </div>
-								<div className={this.state.togSear?'show prjs_serch':'prjs_serch'}>
-									<form method="post" onSubmit={this.searchProjects}>
-									 <input
-							          type="search"
-							          name="keyword"
-							          placeholder="Search"
-							          id="keyword"
-							          onKeyUp={this.searchProjects}
-							          />
-							    </form>
-								</div>
-							</div>*/}
-
-							<div className="prjs_serch">
-								<form method="post" onSubmit={this.searchDesigns}>
+								<div className={this.state.togSear?'show prjs_serch':'hide prjs_serch'}>
+									<form method="post" onSubmit={this.searchDesigns}>
 									 <input
 							          type="search"
 							          name="keyword"
@@ -545,10 +535,18 @@ export default class Project extends React.Component {
 							          onKeyUp={this.searchDesigns}
 							          />
 							    </form>
+								</div>
 							</div>
-						</div>
+							</div>
+
 							
 
+							
+						</div>
+							
+						</div>
+
+						:''}
 							 
 							
 						</div>
@@ -565,7 +563,9 @@ export default class Project extends React.Component {
 								       
 								        <div className="projects_grid">
 								        <div className="projs_itminner">
-								       		<span className="delete_bg"> <Trash projectId={this.props.match.params.id} reloadProject={this.reloadProject} image={project} user={this.state.user_id} canUpload={this.canUpload}></Trash></span>
+									        {project.user===this.authUser.id || this.state.canUpload?
+									       		<span className="delete_bg"> <Trash projectId={this.props.match.params.id} reloadProject={this.reloadProject} image={project} user={this.state.user_id} canUpload={this.state.canUpload}></Trash></span>
+									       	: '' }
 								        	<div className="project-image">
 								        		<img alt="" onClick={() => this.handleClick(project._id)} src={config.url.IMAGE_URL+project.image} />
 								        		{this.state.nlists[project._id]?(
@@ -610,7 +610,7 @@ export default class Project extends React.Component {
 						
 						 </div>	 
 
-				    </div> </div>
+				    </div> </div><div id="ajxloader" className="lds-dual-ring hidden overlay"></div>
 				     </div>
 
 			    )}

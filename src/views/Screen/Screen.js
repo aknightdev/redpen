@@ -478,18 +478,18 @@ export default class Screen extends React.Component {
 		}
 		let next=null, prev=null, title=null;
 		if (this.image.project!==undefined) {
-			// if(this.prev){
-			// 	prev = <button><FaArrowLeft/><Link onClick={this.reloadImage} to={'/'+this.prev._id}>Previous design </Link></button>
-			// }
-			// else{
-			// 	prev = <button><FaArrowLeft/><span>Previous design  </span></button>
-			// }
-			// if(this.next){
-			// 	next = <button><Link onClick={this.reloadImage} to={'/'+this.next._id}>Next design<FaArrowRight/></Link></button>
-			// }
-			// else{
-			// 	next = <button><span>Next design<FaArrowRight/></span></button>
-			// }
+			if(this.prev){
+				prev = <button><Link onClick={this.reloadImage} to={'/'+this.prev._id}><FaArrowLeft/>Previous design </Link></button>
+			}
+			else{
+				prev = <button><FaArrowLeft/><span>Previous design  </span></button>
+			}
+			if(this.next){
+				next = <button><Link onClick={this.reloadImage} to={'/'+this.next._id}>Next design<FaArrowRight/></Link></button>
+			}
+			else{
+				next = <button><span>Next design<FaArrowRight/></span></button>
+			}
 		}
 		if (this.state.editTitle) {
 			title = <textarea id="imageName" onKeyDown={this.onEnterPress} defaultValue={this.state.name} className="title not-empty" placeholder="Image name" onBlur={this.handleImgTitleChange}></textarea>
@@ -507,13 +507,11 @@ export default class Screen extends React.Component {
 						<div className="page_wrapper ">
 							<div className="container1">
 
-					<div className="screen fullscreen_view" {...getRootProps()}>
+					<div className="screen des_single fullscreen_view" {...getRootProps()}>
 						 
 						
 						<div className="content" style={{"background":"white"}}>
-							<div className="pagenation">
-								{prev} {next}
-							</div>
+							
 							
 							<div className="shotheader_sec">
 
@@ -550,6 +548,10 @@ export default class Screen extends React.Component {
 								</section>
 							</header>
 
+							</div>
+
+							<div className="pagenation">
+								{prev} {next}
 							</div>
 							
 							<div className="image">

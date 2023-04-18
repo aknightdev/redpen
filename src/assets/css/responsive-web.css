@@ -1889,10 +1889,6 @@
 		width: 100%;
 		margin: 15px 0 0;
 	}
-	.nav_rt {
-	    margin: 0;
-	    width: 100%;
-	}
 }
 @media screen and (max-width:375px) {
 

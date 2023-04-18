@@ -55,7 +55,7 @@ class Share extends React.Component {
 		let ebutton = null;
 		if (this.state.validEmail) {ebutton=<button className="new-button primary light email-button" onClick={this.emailThem}>Email them</button>;}
 		let successpop = null;
-		if (this.state.success) {successpop=<div className="success-balloon"><span>OK. We just emailed them. </span><strong>Invite another?</strong></div>;}
+		if (this.state.success) {successpop=<div className="success-balloon"><span>OK. We just emailed them.</span></div>;}
 	  return (
 	    <div className={this.props.showShare ? "display-block" : "display-none"} id="modalWrapper">
 	      <section className="share_modalmain" id="modalMain">
@@ -64,7 +64,7 @@ class Share extends React.Component {
 				<div className="share-link"><span className="share-link-text">{this.props.projectId!==undefined && this.props.projectId!==0?config.url.BASE_URL+'p/'+this.props.projectId:config.url.BASE_URL+this.props.imageId}</span>
 				<CopyToClipboard text={config.url.BASE_URL+'p/'+this.props.projectId}
 		          onCopy={() => this.setState({copied: true})}>
-		          <button className="new-button primary light">Copy link</button>
+		          <button className="new-button primary light">{this.state.copied?'Copied':'Copy link'}</button>
 		        </CopyToClipboard>
 				</div>
 			</div>
@@ -81,7 +81,7 @@ class Share extends React.Component {
 			        	 
 			        	{successpop}
 			        </div>
-			        <div className="secretmode"><input type="checkbox" name="secretmode" checked={this.props.secretMode} onChange={()=>this.props.updateSecretMode()} id="secretmode" /> <label htmlFor="secretmode">Secret mode: disable the link; only allow people I Invite</label></div>
+			        <div className="secretmode"><input type="checkbox" name="secretmode" onChange={()=>this.props.updateSecretMode()} id="secretmode" /> <label htmlFor="secretmode">Secret mode: disable the link; only allow people I Invite</label></div>
 		        </div>
 	        ):''}
 	      </section>

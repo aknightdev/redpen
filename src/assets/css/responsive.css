@@ -3,7 +3,6 @@
 
 }
 @media screen and (max-width:1700px) {
-
 	.page_wrapper:before {
     left: 5%;
     width: 100px;
@@ -18,20 +17,11 @@
     height: 81px;
     background-size: contain;
 	}
-	.projects_item {
-    	padding: 0 20px;
-	}
 	.projects_grid {
 		margin-bottom: 40px;
 	}
-	.all_projects_list {
-    	margin: 0 -30px;
-	}
 	.pricingpage .page_wrapper:after{
-		    bottom: 40px;
-	}
-	.project-header{
-		padding: 75px 62px 10px 62px;
+		bottom: 40px;
 	}
 }
 @media screen and (max-width:1600px) {
@@ -91,39 +81,41 @@
 	}
 	.mya_row {    padding-top: 67px;}
 
-
+	.project-header {
+		padding: 35px 0 10px;
+	}
+	.view_fullpage .des_single .shot-header {
+    	margin-top: 20px;
+	}
+	.pagenation button {
+		font-size: 16px;
+	}
 }
 @media screen and (max-width:1400px) {
-
 	html {
     	--container2: 1250px;
 	}
 	.pricingpage .page_wrapper:after {
     bottom: 14px;
 	}
- 
-
+	.prj_meta h3.project-title {
+		font-size: 16px;
+	}
 }
 @media screen and (max-width:1300px) {
-
 	html {
     	--container2: 1170px;
 	}
 	.pricingpage .page_wrapper:before{
 		left: 2%;
 	}
-	
-	.prjs_srch_outer .link_btn{
-		padding: 13px 30px;
-	}
-	.prjs_serch{
-		width: 260px;
-	}
 	.project_ct_outer {
 	    margin: 0 auto;
 	    max-width: 1050px;
 	}
-
+	.np_dummy {
+		padding: 100px 0;
+	}
 }
 @media screen and (max-width:1200px){
 
@@ -150,33 +142,18 @@
     width: 125px;
     height: 55px;}
    .project-header textarea.title {
-    font-size: 20px;
-    height: 40px;
-    line-height: 40px;
-	}
-    .project-header {
-    	padding: 20px 23px;
-	}
-	.crtitle_lt {
-    	padding-left: 10px;
-	}
-	.collaborators-container .collaborator-container .collaborator{
-		    font-size: 16px;    width: 50px;
-    height: 50px;
+	    font-size: 20px;
+	    height: 40px;
+	    line-height: 40px;
+	    padding-top: 0;
 	}
 	.project-header {
-    	margin-bottom: 50px;
+    	margin-bottom: 0;
 	}
 	.projects_item {
     padding: 0 20px;
 	}
 	.projects_grid {
-	    margin-bottom: 30px;
-	}
-	.all_projects_list {
-    	margin: 0 -20px;
-	}
-	.projects_grid{
 		margin-bottom: 40px;
 	}
 	.prj_meta{
@@ -184,9 +161,6 @@
 	}
 	.actions span {
     margin-left: 10px;}
-    .collaborators-container .add-new{
-    	font-size: 17px;padding: 10px 32px;
-    }
     .collaborators>ul{
     	    margin-right: 10px;
     	    padding-left: 0px;
@@ -204,6 +178,9 @@
     font-size: 32px;}
     .pkg_price .dollar{
     	top: -16px;
+    }
+    .crtitle_rt {
+    	padding-left: 11px;
     }
     .prplan_item{
     	padding: 0 7px;
@@ -239,9 +216,6 @@
 	.team_page .page_wrapper, .inv_page .page_wrapper,
 	.surp_page .page_wrapper {
     	padding-top: 45px;
-	}
-	.tm_inrow p{
-		font-size: 20px;
 	}
 	.team_page h2, .inv_page h2{
 		    font-size: 35px;
@@ -280,6 +254,25 @@
 		padding: 10px 15px !important;
     	font-size: 16px !important;
 	}
+	.prt_info h2 {
+		font-size: 17px;
+	}
+	.view_fullpage .des_single .shot-header {
+	    margin-top: 35px;
+	}
+	.many_title {
+		font-size: 17px;
+	}
+	.billhead .inner button {
+		font-size: 16px;
+		padding: 14px 25px;
+	}
+	.price .prplan_item .prplan_grid {
+		padding-bottom: 15px;
+	}
+	.price.prplan_row {
+		padding-bottom: 60px;
+	}
 }
 @media (min-width:992px) and (max-width:1200px) {
 
@@ -317,7 +310,6 @@
 		width: 90%;
 		    max-width: 700px;
 		        margin-top: 0;
-		        padding-bottom: 70px;
 	}
 	.shot-header .title, .shot-header .editable textarea.title{
 		    font-size: 22px;
@@ -453,19 +445,9 @@
     .project-header {
     	margin-bottom: 35px;
 	}
-	
-	.project-header {
-    	padding: 15px 20px;
-	}
 	.collaborators-container .add-new {
     font-size: 16px;
     padding: 8px 26px;
-	}
-	.collaborators-container .collaborator-container .collaborator {
-    font-size: 16px;
-    width: 47px;
-    height: 47px;
-    line-height: 45px;
 	}
 	.projects_item {
     padding: 0 10px;
@@ -488,6 +470,9 @@
 	.prplan_grid h3 {
     	margin: 20px 0 16px 0;
 	}
+	.project-thumb-dropdown {
+		left: -58px;
+	}
 	 
 	button.share_button {
     float: none;
@@ -504,31 +489,19 @@
 		right: 12%;
 	}
 	.share-link-container label	{    margin-bottom: 12px;}
-	 .share-link{
-	 	    margin-bottom: 17px;
-	 }
-	 
-	 
-	.prjs_srch_outer .link_btn.sortby{
-		padding: 10px;
-
-
+	.share-link{
+	    margin-bottom: 17px;
+	}
+	.prjs_srch_outer .link_btn.sortby img {
+	    margin-right: 5px;
 	}
 	.prjs_serch input{
 		padding: 16px 40px 14px 15px;
 	}
-	.prjs_srch_outer .link_btn {
-   	 	padding: 13px 20px;
-   	 	height: 50px;
-	}	
-	.prjs_serch {
-   		width: 205px;
-	}
+	
+	
 	.prttitle_left {
     	width: 75%;    
-	}
-	.prt_right {
-    	width: 22%;
 	}
 	.page_body.bg_light {
    		 padding-top: 40px;
@@ -557,9 +530,6 @@
 	}
 	.pg_boxwrapper {
     	margin-top: 78px;
-	}
-	.crtitle_lt{
-		    padding: 6px 30px;
 	}
 	.share_modalmain{
 		    padding: 30px 26px;    max-width: 500px;
@@ -614,7 +584,7 @@
 	}
 	.mya_item h1, .mya_item h2 {
     font-size: 29px;
-    margin: 0 0 11px 0;
+    margin: 0 0 15px;
 	}
 	.mya_item td{
 		    word-break: break-word;
@@ -667,7 +637,6 @@
 		width: 90%;
 		    max-width: 700px;
 		        margin-top: 0;
-		        padding-bottom: 70px;
 	}
 	.shot-header .title, .shot-header .editable textarea.title{
 		    font-size: 22px;
@@ -711,6 +680,24 @@
 	}
 	.regpop .popcontent .popmiddle {
 		padding-bottom: 0;
+	}
+	.left_design {
+		float: right;
+	}
+	.project-thumb-dropdown:before {
+		left: 87px;
+	}
+	.logo_lt {
+		width: 25%;
+	}
+	.sharethum_drop:before {
+		right: 20%;
+	}
+	.billhead .inner button {
+		padding: 12px 25px;
+	}
+	.price.prplan_row {
+	    padding-bottom: 10px;
 	}
 }
 @media screen and (max-width:768px) {}
@@ -777,20 +764,12 @@
     line-height: 41px;
 	}
 	.share_modalmain{
-		padding: 25px 25px;
-	} 
-	 
+		padding: 20px;
+	}
 	.share_orlink span.share-link-text {
-    width: 100%;
-    margin-bottom: 9px;
-    margin-right: 0;
-	}
-	.prjs_serch {
-    	width: 184px;
-	}
-	.prjs_srch_outer .link_btn.sortby {
-   	 padding: 11px 10px;
-   	     height: 46px;
+	    width: 100%;
+	    margin-bottom: 9px;
+	    margin-right: 0;
 	}
 	.prjs_serch input{
 		padding: 15px 40px 14px 15px;
@@ -802,14 +781,8 @@
 		 padding-top: 55px;
 		 margin-bottom: 50px;
 	}
-	.prjs_srch_outer .link_btn {
-    	padding: 12px 15px;
-	}
 	.prttitle_left {
    		 width: 73%;
-	}
-	.prt_right {
-    	width: 75px;
 	}
 	.all_projects_row {
     	padding-bottom: 15px;
@@ -820,9 +793,6 @@
 	.prjs_srch_outer .link_btn{
 		margin-right: 10px;
 	}
-	.project-thumb-dropdown li{
-		padding: 12px 15px;
-	}
 	.project_ct_outer{
 		max-width: 100%;
 		padding: 10px 25px;
@@ -830,9 +800,6 @@
 	.collaborators-container .add-new {
 	    font-size: 15px;
     	padding: 8px 25px;
-	}
-	.project-thumb-dropdown li {
-    	padding: 10px 20px;
 	}
 	.crtitle_rt{
 		width: 36%;
@@ -921,7 +888,6 @@
     
 	.shot-header {
     width: 95%;
-    padding-bottom: 45px;
 	}
 	.comments-sidebar .sidebar-annotation{
 		    padding: 27px 20px 30px 20px;
@@ -931,9 +897,6 @@
 	}
 	.comments-sidebar {
     	top: 81px;
-	}
-	.prjs_srch_outer .link_btn {
-		height: 46px;
 	}
 	.modal-main {
 		padding: 20px;
@@ -951,13 +914,37 @@
 	.login_box li label, .frg_link p {
 	    font-size: 15px;
 	}
+	.shot-header .project-thumb-dropdown {
+		right: 0;
+	}
+	.project-thumb-dropdown:before {
+	    left: 111px;
+	}
+	.all_projects_outer .project-thumb-dropdown:before {
+	    left: 75px;
+	}
+	.shot-header .version-menu:after {
+		margin-left: 15px;
+	}
+	.des_single .project-thumb-dropdown:before {
+	    left: 112px;
+	}
+	.tm_inrow {
+		font-size: 20px;
+	}
+	.tm_inrow .new-button.light.primary {
+		width: auto;
+	}
+	.container2 .pritable_row {
+	    margin-top: 35px;
+	}
+	.billhead .inner button {
+	    font-size: 15px;
+	}
 }
 @media screen and (max-width:667px) {
-	.prjs_serch {
-    	width: 166px;
-	}
 	.commenter .input{
-		    width: calc(100% - 10%);
+		width: calc(100% - 10%);
 	}
 	.commenter .tools {
 	    padding: 20px 15px;
@@ -967,6 +954,24 @@
 	}
 	.modal-main h2 {
 	    font-size: 28px;
+	}
+	.share_modalmain {
+		top: 145%;
+	}
+	.tm_inrow input.rbt-input-main {
+	    padding: 12px 15px;
+	}
+	.teammates-list table td {
+		padding: 10px 20px 20px;
+	}
+	.teammates-list table tr:last-child td {
+		border-bottom: 0;
+	}
+	.billhead .inner .lt {
+	    margin-bottom: 10px;
+	}
+	.billhead {
+	    padding-top: 35px;
 	}
 }
 
@@ -981,17 +986,6 @@
 	.prjs_serch{
 		display: none;
 	}
-	.prjs_serch_icon .show.prjs_serch{
-        display: block;        
-    	position: absolute;
-    	top: 88px;
-    	right: 10px;
-    	z-index: 999;
-    	background-color: #fff;
-    	width: 245px;
-    	box-shadow: 0px 5px 9px #999;
-
-	}
 	.prjs_serch_icon .show.prjs_serch:before{
 		width: 0;
     	height: 0;
@@ -1005,11 +999,7 @@
 	    z-index:999;
 
 	}
-	.ser_icon{
-		padding: 10px 15px;
-		background: #fff;
-		border: 1px solid #e9eef1;
-		border-radius: 5px;
+	.ser_icon {
 		margin-right: 10px;
 	}
 	.prjs_srch_outer {
@@ -1025,20 +1015,37 @@
 	.regpop .popcontent {
 		max-width: 90%;
 	}
+	.prjs_serch_icon .prjs_serch {
+	    right: 10px;
+	}
+	.shot-header .project-thumb-dropdown {
+		top: 60px;
+	}
+	.project-thumb-dropdown:before {
+	    left: 115px;
+	}
+	.pro_single .collaborators-container .add-new {
+		padding: 8px 20px;
+	}
+	.pro_single .share_modalmain:before {
+		left: 37px;
+	}
+	.pro_single .share_modalmain h2 {
+		font-size: 15px;
+	}
+	.des_single .project-thumb-dropdown:before {
+	    left: 117px;
+	}
+	.tm_inrow p {
+		font-size: 17px;
+	}
 }
 
 @media screen and (max-width:570px) {
 	.crtitle_rt {
-		 width: 100%;
-		 text-align: center;
 		 margin-bottom: 15px;
 	}
 	.project-header .collaborators-container{
-		float: none;
-	}
-	.searchbox.prjs_srch_outer{
-		width: 260px;
-		margin: 0 auto;		
 		float: none;
 	}
 	.left_design .designs {    
@@ -1085,25 +1092,38 @@
 	.regpop .popcontent {
 		padding-bottom: 40px;
 	}
+	.shot-header .project-thumb-dropdown {
+	    top: 120px;
+	    right: 174px;
+	}
+	.logo_lt {
+	    width: 30%;
+	}
+	.pro_single .share_modalmain:before {
+	    left: 177px;
+	}
+	.shot-header .version-menu:after {
+	    margin-left: 10px;
+	}
+	.des_single .project-thumb-dropdown:before {
+	    left: 115px;
+	}
 }
 
 @media screen and (max-width:533px) {
-
 	.dash_header .logo_lt {
 	    width: auto;
 	    float: left;
 	    margin-bottom: 0;
 	}
-
 	.crtitle_rt {
-    width: 100%;
-    float: none;
-    text-align: center;
+	    width: 100%;
+	    float: none;
 	}
 	.crtitle_lt {
-   	padding: 0px 10px;
-    width: 100%;
-    float: none;
+	   	padding: 3px 15px 0 15px;
+	    width: 100%;
+	    float: none;
 	}
 	.project-header .collaborators-container {
     	float: none;
@@ -1111,41 +1131,45 @@
 	.project-header {
     	padding: 13px 20px;
 	}
-
 	.sharethum_drop{
 		max-width: 400px;
 	}	
 	.commenter .tools .left,
 	.commenter .tools .right {
-    width: 100%;
-    display: block;
-    text-align: center;
+	    width: 100%;
+	    display: block;
+	    text-align: center;
         height: auto;
 	}
 	.commenter .tools {
-    display: block;
-    text-align: center;
-    height: auto;
+	    display: block;
+	    text-align: center;
+	    height: auto;
 	}
 	.Toolbar .toolbar-container {
-    float: none;
+    	float: none;
 	}
 	.commenter .tools .left ul,
 	.redo-container {
-    width: max-content;
-    margin-left: auto;
-    margin-right: auto;
+	    width: max-content;
+	    margin-left: auto;
+	    margin-right: auto;
 	}
 	.commenter .input{
-		    width: calc(100% - 45px);
+		width: calc(100% - 45px);
 	}
 	.projects_item {
 	    padding: 0;
 	    width: 100%;
 	}
+	.shot-header .project-thumb-dropdown {
+		right: 157px;
+	}
+	.mya_item {
+		padding: 25px 20px;
+	}
 }
 @media screen and (max-width:480px){
-
 	.projects_item {
     padding: 0;
     width: 100%;
@@ -1174,17 +1198,15 @@
     width: auto;
     padding: 6px 27px; 
 	}
- 
 	.share_modalmain {
     	padding: 20px 20px;
 	}
-	 
 	.prjs_srch_outer .link_btn.crate_btn {
 	    font-size: 16px;
 	    position: absolute;
 	    top: 80px;
 	    padding: 8px;
-	    width: 89%;
+	    width: 100%;
 	    text-align: center;
 	    margin-right: 0;
 	}
@@ -1192,19 +1214,11 @@
 	    padding-top: 25px;
 	    margin-bottom: 90px;
 	}
-	.prjs_srch_outer .link_btn.sortby {
-	    padding: 5px 10px;
-	    height: 40px;
-	}
 	.ser_icon{
 		padding: 8px;
 		margin-right: 0;
 	}
-	.prjs_srch_outer .cnt{
-		padding-top: 12px;
-	}
 	.project-thumb-dropdown{
-		top: 39px;
 		left: -86px;
     	width: 200px;
 	}
@@ -1219,12 +1233,7 @@
 	    padding-right: 10px;
 	}
 	.prjs_serch_icon .show.prjs_serch{
-		top: 72px;
-    	right: 0px;
-	}
-
-	.project_ct_outer .share_modalmain {
-    	max-width: 300px;
+    	right: 0;
 	}
 	.share_modalmain:before {
     	left: 75%;
@@ -1232,10 +1241,28 @@
 	.shot-header .title, .shot-header .editable textarea.title {
     	font-size: 18px;
 	}
-
 	.sharethum_drop {
 	    right: 17%;
-	}	
+	}
+	.shot-header .project-thumb-dropdown {
+	    right: 125px;
+	}
+	.all_projects_outer .project-thumb-dropdown:before {
+	    left: 125px;
+	}
+	.sharethum_drop:before {
+	    right: 23%;
+	}
+	.all_projects_outer .prjs_srch_outer {
+		margin-bottom: 70px;
+		position: relative;
+	}
+	.des_single .project-thumb-dropdown:before {
+	    left: 108px;
+	}
+	.no_del .sharethum_drop::before {
+	  right: 14px;
+	}
 }
 
 @media screen and (max-width:440px) {
@@ -1274,15 +1301,15 @@
 	.share_modalmain {
     	padding: 18px 16px;
 	}
-	
 	.team_page h2, .inv_page h2 {
-    font-size: 29px;}
+	    font-size: 29px;
+	}
     .tm_inrow p {
-    font-size: 17px;
-    line-height: 1.1;
+	    font-size: 17px;
+	    line-height: 1.3;
 	}
 	.tm_inrow{
-		    padding: 22px 20px;
+		padding: 22px 20px;
 	}
 	.teammates-list table th {
     	font-size: 17px;    padding: 16px 15px;
@@ -1339,18 +1366,71 @@
 		top: 30px;
 	}
 	.regpop .popcontent .popbottom button, .billhead .inner button, .verify_pop a {
-		padding: 8px 40px;
+		padding: 12px 30px;
+	}
+	.shot-header .project-thumb-dropdown {
+	    right: 94px;
+	}
+	.project_ct_outer {
+		padding: 10px 20px;
+	}
+	.project-header {
+	    padding: 0 20px;
+	}
+	.project_ct_outer .share_modalmain {
+	    max-width: 350px;
+	}
+	.pagenation button:nth-child(1) svg {
+	    margin-right: 10px;
+	}
+	.pagenation button:nth-child(2) svg {
+	    margin-left: 10px;
+	}
+	.pagenation button {
+		padding: 12px 20px;
+		margin: 0 3px;
+	}
+	.mya_item td {
+	    font-size: 16px;
 	}
 }
-
 @media screen and (max-width:414px) {}
-
 @media screen and (max-width:400px) {
 	.popcontent p br {
 		display: none;
 	}
+	.collaborators-container .add-new {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	.shot-header .project-thumb-dropdown {
+	    right: 76px;
+	}
+	.project_ct_outer .share_modalmain {
+	    max-width: 300px;
+	}
+	.des_single .project-thumb-dropdown:before {
+	    left: 108px;
+	}
+	.pagenation button {
+	    font-size: 15px;
+	}
+	.pagenation button:nth-child(1) {
+	    padding-left: 15px;
+	}
+	.pagenation button:nth-child(2) {
+	    padding-right: 15px;
+	}
+	.pagenation button svg {
+	    width: 13px;
+	}
+	.tm_inrow p {
+		font-size: 16px;
+	}
 }
-
-@media screen and (max-width:360px) {}
-
+@media screen and (max-width:360px) {
+	.shot-header .project-thumb-dropdown {
+	    right: 67px;
+	}
+}
 @media screen and (max-width:320px) {}

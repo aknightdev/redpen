@@ -1,8 +1,9 @@
 import React from 'react';
 import { config } from 'Constants.js';
 import { FaTrash } from 'react-icons/fa';
+import onClickOutside from "react-onclickoutside";
 
-export default class Trash extends React.Component {
+class Trash extends React.Component {
     constructor(props) {
         super(props);
         this.state = {showDrop: false};
@@ -11,10 +12,14 @@ export default class Trash extends React.Component {
         this.confirmDelete = this.confirmDelete.bind(this);
         this.authUser = window.localStorage.getItem('auth_user')==null?{id:null,name:null}:JSON.parse(window.localStorage.getItem('auth_user'));
     }
+    handleClickOutside = evt => {
+        this.returnDesign();
+    }
     returnDesign(){
     	this.setState({showDrop:false});
     }
     confirmDelete(){
+        document.getElementById("ajxloader").style.display = "block";
     	fetch(config.url.API_URL+"deletedesign", {
               method: "POST",
               body: JSON.stringify({id:this.props.image._id}),
@@ -25,7 +30,7 @@ export default class Trash extends React.Component {
             return response.json();
         }).then((result)=>{
             this.setState({showDrop:false});
-            this.props.reloadProject();
+            this.props.reloadProject(this.props.projectId);
         });
     }
     deleteDesign(){
@@ -34,7 +39,7 @@ export default class Trash extends React.Component {
     render() {
         let delButton;
         if(this.props.user===this.authUser.id || this.props.canUpload){
-            delButton =  <FaTrash onClick={this.deleteDesign}/>;
+            delButton =  <div className="dd_inner" onClick={this.deleteDesign}><FaTrash /></div>;
         }
         else{
             delButton = null;
@@ -45,3 +50,4 @@ export default class Trash extends React.Component {
             return delButton;
 	}	
 }
+export default onClickOutside(Trash);

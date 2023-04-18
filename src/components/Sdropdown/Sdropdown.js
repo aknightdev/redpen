@@ -40,7 +40,7 @@ class Sdropdown extends React.Component {
         if(this.props.user===this.authUser.id || this.props.canUpload){
             editBtn = <li title="Edit title"><FaEdit onClick={this.showEditTitle} /></li>;
             if(this.props.versions.length>1){
-                delButton = delButton = <li className="danger" title="Delete"><FaTrash onClick={this.gearClick} /></li>;
+                delButton = delButton = <li className="danger" title="Delete"><div class="dd_inner" onClick={this.gearClick}><FaTrash /></div></li>;
                 this.props.versions.forEach((v,k)=>{
                     delVersions.push(v);
                 });
@@ -62,12 +62,12 @@ class Sdropdown extends React.Component {
                     copyButton = <li className="disabled">Clone comments from previous version </li>;
                 }
                 updateButton = <li title="Upload new version" onClick={this.props.updateScreen}><FaRedo /></li>;
-                cmpBtn = <li title={this.props.approved?'Mark as incomplete':'Mark as complete'} className={this.props.approved?'active approve':'approve'} onClick={()=>this.props.approveScreen(this.props.version-1)}><TiTick /></li>
+                cmpBtn = <li title={this.props.approved?'Disapprove':'Approve'} className={this.props.approved?'active approve':'approve'} onClick={()=>this.props.approveScreen(this.props.version-1)}><TiTick /></li>
             }
             else{
                 copyButton = null;
                 updateButton = null;
-                cmpBtn = <li title={this.props.approved?'Mark as incomplete':'Mark as complete'} className={this.props.approved?'active approve':'approve'} onClick={()=>this.props.approveScreen(this.props.version-1)}><TiTick /></li>
+                cmpBtn = <li title={this.props.approved?'Disapprove':'Aprove'} className={this.props.approved?'active approve':'approve'} onClick={()=>this.props.approveScreen(this.props.version-1)}><TiTick /></li>
             }
             editTitle=<Modal showModal={this.state.showModal} handleClose={this.handleImgTitleChange}><h2>Edit Title</h2><p><textarea id="imageName" defaultValue={this.props.name} className="title not-empty" placeholder="Image name"></textarea></p><button onClick={this.handleImgTitleChange}>Save</button><button onClick={this.showEditTitle}>Cancel</button></Modal>;
         }

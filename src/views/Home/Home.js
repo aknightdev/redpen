@@ -166,11 +166,11 @@ export default class Home extends React.Component {
 
 						<div className="prjs_srch_outer">
 							<Link className="link_btn crate_btn" to={this.state.availprojects>0?'/p/create':'/pro/new_plans'}>Create new project</Link>
-							{/*<div className="prjs_serch_icon">
+							<div className="prjs_serch_icon">
 							    <div className="ser_icon" onClick={this.toggleSearch}>
 							   		<img src={require('assets/images/search_1.svg')}/>
 							    </div>
-								<div className={this.state.togSear?'show prjs_serch':'prjs_serch'}>
+								<div className={this.state.togSear?'show prjs_serch':'hide prjs_serch'}>
 									<form method="post" onSubmit={this.searchProjects}>
 									 <input
 							          type="search"
@@ -181,17 +181,6 @@ export default class Home extends React.Component {
 							          />
 							    </form>
 								</div>
-							</div>*/}
-							<div className="prjs_serch">
-								<form method="post" onSubmit={this.searchProjects}>
-								 <input
-						          type="search"
-						          name="keyword"
-						          placeholder="Search"
-						          id="keyword"
-						          onKeyUp={this.searchProjects}
-						          />
-						    </form>
 							</div>
 							<Sortdd className="link_btn" filterProjects={this.filterProjects} page="home"></Sortdd>
 							<div className="cnt">{this.state.projects.length} Projects</div>
@@ -201,15 +190,22 @@ export default class Home extends React.Component {
 
 
 
-					 <div className="all_projects_row">
-					 	{button}
+						<div className="all_projects_row">
+							{this.state.projects.length == 0?
+							<div class="projects_item dropfile">
+								<Link className="np_dummy" to={this.state.availprojects>0?'/p/create':'/pro/new_plans'}><strong>Click here to <br />create new project</strong> <img src={require('assets/images/upload_icon.png')}/></Link>
+								</div>
+								:''}
+					 		{button}
 					 
 				      {this.state.projects.map((project,key) => (
 				      	<div className={project.is_expired?'expired projects_item':'projects_item'} key={key} style={!this.state.showMore && key>7?{display:'none'}:{}}>
 				        <div className="projects_grid" >
-				        	<div className="prt_right">
+				        	<div className={project.user===this.authUser.id?'prt_right':'prt_right no_del'}>
 		        			 <Sharedropdown projectId={project._id} updateProjects={this.updateProjects} project={project}></Sharedropdown>
+		        			 {project.user===this.authUser.id?
 		        			 <div className="delete_bg">{!project.is_expired?<Protrash updateProjects={this.updateProjects} project={project}></Protrash>:null}</div>
+		        			 :''}
 		        			</div>
 				        	{/*<Dropdown updateProjects={this.updateProjects} project={project}></Dropdown>*/}
 				        	<div className="projs_itminner">
