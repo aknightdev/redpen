@@ -9,7 +9,7 @@ export default class Subscribe extends Component {
   constructor(props) {
     super(props);
     this.authUser = window.localStorage.getItem('auth_user')==null?{id:null,name:null}:JSON.parse(window.localStorage.getItem('auth_user'));
-    this.state = {packages:[],openStripe:false,selectedPlan:null,currentPlan:this.authUser.stripe_plan_id};
+    this.state = {packages:[],openStripe:false,selectedPlan:null,currentPlan:this.authUser.stripe_plan_id,error:''};
     this.showStripe = this.showStripe.bind(this);
     this.closeStripe = this.closeStripe.bind(this);
     this.cancelStripe = this.cancelStripe.bind(this);
@@ -22,7 +22,7 @@ export default class Subscribe extends Component {
     this.setState({openStripe:false,selectedPlan:''});
   }
   setCurrentPlan(plan_id){
-    this.setState({currentPlan:plan_id});
+    this.setState({currentPlan:plan_id,error:'You have subscribed successfully!'});
   }
   showStripe(plan_id){
     this.setState({openStripe:true,selectedPlan:plan_id});
@@ -48,7 +48,7 @@ export default class Subscribe extends Component {
     }).then((result)=>{
       this.authUser.stripe_plan_id='';
       window.localStorage.setItem('auth_user',JSON.stringify(this.authUser));
-      this.setState({currentPlan:''});
+      this.setState({currentPlan:'',error:'Subscription cancelled successfully!'});
     });
   }
   render() {
@@ -69,8 +69,8 @@ export default class Subscribe extends Component {
         </div>
         <div className="pritable_row">
 
+          {this.state.error != ''?<div className="error_block">{this.state.error}</div>:''}
           <div className="many_title">All that matters is how many projects you run at once:</div>
-
           <div className="price prplan_row">
             {this.state.packages.map((pkg,key) => (
               <div key={key} className="prplan_item">

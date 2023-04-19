@@ -3,6 +3,7 @@ import { config } from 'Constants.js';
 import $ from 'jquery';
 import Like from 'components/Like/Like.js';
 import { FaPen,FaTrash,FaFolderOpen } from 'react-icons/fa';
+import Moment from 'react-moment';
 import TimeAgo from 'timeago-react';
 import { TiTick } from 'react-icons/ti';
 import { BsFillTrashFill } from 'react-icons/bs';
@@ -201,7 +202,7 @@ export default class Cmenu extends React.Component {
 									<span>{this.props.reply.user?this.props.reply.user.name.charAt():'A'}</span></span>
 									<span className="prof_name">
 									{this.props.reply.user?this.props.reply.user.name:'Annon'}</span> &nbsp;
-									<TimeAgo datetime={this.props.reply.created}></TimeAgo>
+									<Moment format="DD MMM YY hh:mma">{this.props.reply.created}</Moment>
 								</div>
 								<div className="rtpr_meta">
 									<span className={this.state.completed?'active markcmp':'markcmp'} onClick={() => this.iAgree(this.props.commentId,this.props.reply._id)}><span className="mc_text">Mark complete</span> <span className="mc_icon"><TiTick /></span></span>

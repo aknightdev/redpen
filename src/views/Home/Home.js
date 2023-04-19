@@ -217,7 +217,7 @@ export default class Home extends React.Component {
 					        			<div className="inner_unseen_thum"> 
 					        			<strong className="number">{this.state.nlist[project._id].length}</strong>
 					        			<span> Unseen things</span> 
-						        		<TimeAgo datetime={this.state.nlist[project._id][0].created}></TimeAgo>
+						        		<Moment format="DD MMM YY hh:mma" datetime={this.state.nlist[project._id][0].created}></Moment>
 					        			 </div>
 					        	 </div>
 					        	):''}

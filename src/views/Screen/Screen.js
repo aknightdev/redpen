@@ -551,7 +551,7 @@ export default class Screen extends React.Component {
 							</div>
 
 							<div className="pagenation">
-								{prev} {next}
+								<button><Link to={'/p/'+this.state.project_id}><FaArrowLeft/>Back </Link></button> {prev} {next}
 							</div>
 							
 							<div className="image">
