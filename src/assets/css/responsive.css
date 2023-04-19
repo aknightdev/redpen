@@ -1108,6 +1108,10 @@
 	.des_single .project-thumb-dropdown:before {
 	    left: 115px;
 	}
+	.pagenation button {
+		padding: 12px 20px;
+		margin: 0 4px;
+	}
 }
 
 @media screen and (max-width:533px) {
@@ -1263,6 +1267,21 @@
 	.no_del .sharethum_drop::before {
 	  right: 14px;
 	}
+	.pagenation button {
+		padding: 10px 12px;
+		margin: 0 4px;
+		font-size: 15px;
+	}
+	.pagenation button:nth-child(1) svg, .pagenation button:nth-child(2) svg {
+	    margin-right: 7px;
+	}
+	.pagenation button:nth-child(3) svg {
+	    margin-left: 7px;
+	}
+	.pagenation button svg {
+	    width: 15px;
+	    height: 15px;
+	}
 }
 
 @media screen and (max-width:440px) {
@@ -1380,18 +1399,33 @@
 	.project_ct_outer .share_modalmain {
 	    max-width: 350px;
 	}
-	.pagenation button:nth-child(1) svg {
-	    margin-right: 10px;
-	}
-	.pagenation button:nth-child(2) svg {
-	    margin-left: 10px;
-	}
 	.pagenation button {
-		padding: 12px 20px;
 		margin: 0 3px;
+		font-size: 14px;
 	}
 	.mya_item td {
 	    font-size: 16px;
+	}
+	.pagenation button {
+		float: left;
+	}
+	.pagenation button:nth-child(2) {
+		clear: left;
+	    width: 48%;
+	    margin-top: 15px;
+	    margin-bottom: 15px;
+	    display: flex;
+	    justify-content:center;
+	}
+	.pagenation button:nth-child(3) {
+	    width: 48%;
+	    margin-top: 15px;
+	    margin-bottom: 15px;
+	    display: flex;
+	    justify-content:center;
+	}
+	.pagenation {
+		padding: 0 5px;
 	}
 }
 @media screen and (max-width:414px) {}
@@ -1413,7 +1447,7 @@
 	    left: 108px;
 	}
 	.pagenation button {
-	    font-size: 15px;
+	    font-size: 14px;
 	}
 	.pagenation button:nth-child(1) {
 	    padding-left: 15px;

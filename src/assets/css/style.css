@@ -3595,8 +3595,8 @@ background-color: #109779;
 .pagenation button a svg {
   fill: #fff;
 }
-.pagenation button:nth-child(1) svg{ margin-right: 15px; }
-.pagenation button:nth-child(2) svg{ margin-left: 15px; }
+.pagenation button:nth-child(1) svg, .pagenation button:nth-child(2) svg { margin-right: 15px; }
+.pagenation button:nth-child(3) svg{ margin-left: 15px; }
 
 .title .version {
     vertical-align: middle;
