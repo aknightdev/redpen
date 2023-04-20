@@ -361,7 +361,7 @@ export default class Project extends React.Component {
 		//if(window.localStorage.getItem('project_'+this.props.match.params.id)==null){
 			fetch(config.url.API_URL+"project", {
 			  	method: "POST",
-		  		body: JSON.stringify({id:this.props.match.params.id, user_id: this.authUser.id}),
+		  		body: JSON.stringify({id:this.props.match.params.id, user_id: this.authUser.id, user_email: this.authUser.email}),
 		  		headers: {
 			        'Content-Type': 'application/json'
 			    }

@@ -137,8 +137,18 @@ export default class Screen extends React.Component {
 		document.body.classList = 'singlepage';
 		document.getElementById('mainImage').addEventListener('load', ()=>{
 			this.shrinkScreen();
+			//checkcomment
+			let hash = window.location.hash;
+			if(hash!=''){
+				setTimeout(()=>{
+					if($('#comment_box'+hash.replace('#','')).length>0){
+						$('#comment_box'+hash.replace('#','')).addClass('open');
+						window.scrollTo($('#comment_box'+hash.replace('#','')).offset().left,$('#comment_box'+hash.replace('#','')).offset().top - 200);
+					}
+				},2000);
+			}
 		});
-    } 
+  } 
   componentWillUnmount() {
     document.body.classList = '';
   }

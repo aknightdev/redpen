@@ -40,7 +40,7 @@ class Sdropdown extends React.Component {
         if(this.props.user===this.authUser.id || this.props.canUpload){
             editBtn = <li title="Edit title"><div className="edit_link" onClick={this.showEditTitle}><FaEdit /></div></li>;
             if(this.props.versions.length>1){
-                delButton = delButton = <li className="danger" title="Delete"><div class="dd_inner" onClick={this.gearClick}><FaTrash /></div></li>;
+                delButton = delButton = <li className="danger" title="Delete"><div className="dd_inner" onClick={this.gearClick}><FaTrash /></div></li>;
                 this.props.versions.forEach((v,k)=>{
                     delVersions.push(v);
                 });
