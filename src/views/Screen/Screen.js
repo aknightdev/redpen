@@ -334,16 +334,16 @@ export default class Screen extends React.Component {
 	}
 	deleteScreen(){
 		fetch(config.url.API_URL+"deletedesign", {
-              method: "POST",
-              body: JSON.stringify({id:this.state.image_id}),
-              headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(function (response) {
-            return response.json();
-        }).then((result)=>{
-            window.location.replace('/p/'+this.state.project_id);
-        });
+          method: "POST",
+          body: JSON.stringify({id:this.state.image_id}),
+          headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(function (response) {
+        return response.json();
+    }).then((result)=>{
+        window.location.replace('/p/'+this.state.project_id);
+    });
 	}
 	deleteVersion(ind){
 		const imgpath = this.image.versions.length === (ind+1)?this.image.versions[(ind-1)].image:'';

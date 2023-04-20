@@ -34,12 +34,12 @@ class Collabi extends React.Component {
 			cls += ' editable dropdown';
 		}
 		if (this.props.share.access) {
-			cls += ' admin';
+			cls += ' editable admin';
 			adminIcon = <i className="angled-crown"></i>;
 		}
 		if (this.state.menuOpen) {
 			menudiv = <menu className="collaborator-dropdown " style={{backgroundColor:'#cfe1dd'}}>
-						<li className="admin" onClick={()=>this.calltoAction('power')}>{this.props.share.access?'Remove access to this project':'Give full access to this project'}</li>
+						<li className="editableadmin" onClick={()=>this.calltoAction('power')}>{this.props.share.access?'Remove access to this project':'Give full access to this project'}</li>
 						<li className="remove" onClick={()=>this.calltoAction('remove')}>Remove from the project</li>
 					</menu>;
 		}

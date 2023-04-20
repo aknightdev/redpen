@@ -39,7 +39,7 @@ class Collab extends React.Component {
 			}
 		}
 		if (this.props.share.access) {
-			cls += ' admin';
+			cls += ' editable admin';
 			adminIcon = <i className="angledd-crown"></i>;
 		}
 		if (this.state.menuOpen) {
