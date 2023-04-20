@@ -6,12 +6,17 @@ import onClickOutside from "react-onclickoutside";
 class Share extends React.Component {
 	constructor(props) {
 	    super(props);
-	    this.state = {validEmail:false, copied: false, success: false, email:''}
-	    this.validateEmail = this.validateEmail.bind(this)
-	    this.emailThem = this.emailThem.bind(this)
+	    this.state = {validEmail:false, copied: false, success: false, email:'', checked:false}
+	    this.validateEmail = this.validateEmail.bind(this);
+	    this.emailThem = this.emailThem.bind(this);
+	    this.updateChecked = this.updateChecked.bind(this);
 	}
     handleClickOutside = evt => {
     	this.props.toggleShare();
+    }
+    updateChecked = evt => {
+    	this.setState({checked:!this.state.checked});
+    	this.props.updateSecretMode();
     }
 	emailThem = (event) => {
 		fetch(config.url.API_URL+"invite", {
@@ -49,6 +54,9 @@ class Share extends React.Component {
 			  }
 		  	}
 		});
+		setTimeout(()=>{
+			this.setState({checked:!this.props.secretMode});
+		});
     }
     
 	render() {
@@ -81,7 +89,7 @@ class Share extends React.Component {
 			        	 
 			        	{successpop}
 			        </div>
-			        <div className="secretmode"><input type="checkbox" name="secretmode" onChange={()=>this.props.updateSecretMode()} id="secretmode" /> <label htmlFor="secretmode">Secret mode: disable the link; only allow people I Invite</label></div>
+			        <div className="secretmode"><input type="checkbox" checked={this.state.checked} name="secretmode" onChange={this.updateChecked} id="secretmode" /> <label htmlFor="secretmode">Secret mode: disable the link; only allow people I Invite</label></div>
 		        </div>
 	        ):''}
 	      </section>

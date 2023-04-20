@@ -15,7 +15,7 @@ import $ from 'jquery';
 export default class Project extends React.Component {
 	constructor(props) {
     	super(props);
-    	this.state = {id:props.match.params.id, title: '', description:'', user_id:'', images:[], showModal:false, showShare:false, togSear:false, imagename:'', shared:[], invite:[], canEdit: false, canUpload: false, nlist:[], nlists:[], allimgs:[], is_expired:false, secret_mode:false, canAccess:true,showsearch:false};
+    	this.state = {id:props.match.params.id, title: '', description:'', user_id:'', images:[], showModal:false, showShare:false, togSear:false, imagename:'', shared:[], invite:[], canEdit: false, canUpload: false, nlist:[], nlists:[], allimgs:[], is_expired:false, secret_mode:false, canAccess:true,showsearch:false,loginModal:false,email:"",password:"",error:""};
     	this.handleTitleChange = this.handleTitleChange.bind(this);
     	this.handleDescChange = this.handleDescChange.bind(this);
     	this.handleClick = this.handleClick.bind(this);
@@ -43,6 +43,7 @@ export default class Project extends React.Component {
     	this.authUser = window.localStorage.getItem('auth_user')==null?{id:null,name:null}:JSON.parse(window.localStorage.getItem('auth_user'));
     	this.filterDesigns = this.filterDesigns.bind(this);
 	    this.searchDesigns = this.searchDesigns.bind(this);
+	    this.handleInputChange = this.handleInputChange.bind(this);
 	    
     }
     toggleShare(){
@@ -54,6 +55,42 @@ export default class Project extends React.Component {
 	clickShowmore(){
 		this.setState({showMore:!this.state.showMore});
 	}
+	handleInputChange = (event) => {
+	    const { value, name } = event.target;
+	    this.setState({
+	      [name]: value
+	    });
+  	}
+  	onSubmit = (event) => {
+	    event.preventDefault();
+	    fetch(config.url.API_URL+'authenticate', {
+	      method: 'POST',
+	      body: JSON.stringify(this.state),
+	      headers: {
+	        'Content-Type': 'application/json'
+	      }
+	    })
+	    .then(res => {
+	      if (res.status === 200) {
+	        res.json().then(json => {
+	          window.localStorage.setItem('auth_user',JSON.stringify({id:json._id,name:json.name,email:json.email,expiry_date:json.expiry_date,stripe_subscription_id:json.stripe_subscription_id,stripe_plan_id:json.stripe_plan_id,color:json.color}));
+	          setTimeout(()=>{
+	            window.location.reload();
+	          },200);
+	        });
+	        //this.props.history.push('/');
+	      } else {
+	        const error = new Error(res.error);
+	        throw error;
+	      }
+	    })
+	    .catch(err => {
+	      this.setState({
+	        'error': 'Invalid details!/Not yet activated'
+	      });
+	      // toast.error('Invalid details!/Not yet activated');
+	    });
+  	}
     updateSecretMode(){
     	let status = !this.state.secret_mode;
     	this.setState({secret_mode:status});
@@ -191,6 +228,10 @@ export default class Project extends React.Component {
     	if(this.props.match.params.id!=='create'){
     		this.loadProject();
     		this.loadNotify();
+    		if(!this.authUser.id && window.localStorage.getItem('firsttime')==null){
+    			window.localStorage.setItem('firsttime',1);
+    			this.setState({loginModal:true});
+    		}
     	}
     	else{
     		if(this.authUser.id){
@@ -267,7 +308,7 @@ export default class Project extends React.Component {
 		this.setState({ showModal: true });
 	}
 	closeModal = (event) => {
-		this.setState({ showModal: false, showShare: false });
+		this.setState({ showModal: false, showShare: false, loginModal:false });
 	}
 	handleDrop = (acceptedFiles) => {
 		document.body.classList.remove('dz-drag-hover');
@@ -611,6 +652,23 @@ export default class Project extends React.Component {
 						 </div>	 
 
 				    </div> </div><div id="ajxloader" className="lds-dual-ring hidden overlay"></div>
+				    <Modal showModal={this.state.loginModal} handleClose={this.closeModal}>
+						
+						<form onSubmit={this.onSubmit}>
+							<h2>Login</h2>
+							{this.state.error != ''?<div className="error_block">{this.state.error}</div>:''}
+				          	<ul>
+			                  <li>
+			                    <label>Email Address</label>
+			                    <input type="email" name="email" placeholder="Email" value={this.state.email} onChange={this.handleInputChange} required /> 
+			                  </li>
+			                  <li>
+			                    <label>Password</label>
+			                    <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleInputChange} required /> </li>
+			                  <li><input type="submit" value="Log In"/> <input type="button" onClick={this.closeModal} value="Cancel"/></li>
+			                </ul>
+			          	</form>
+			        </Modal>
 				     </div>
 
 			    )}

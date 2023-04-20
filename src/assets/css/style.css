@@ -5381,3 +5381,28 @@ body.singlepage .footer_sec {
 .prt_right .delete_bg {
   padding: 0;
 }
+.teammodal{
+  color: black;
+}
+.teammodal p{
+  text-align: left;
+}
+.teammodal .teammate-checkboxes{
+  text-align: left;
+}
+.contains-input textarea.title {
+    resize: none;
+    overflow-y: hidden;
+    width: 100%;
+    height: 50px;
+    padding: 0;
+    background: none;
+    border: 0;
+    color: #015450;
+    font-size: 22px;
+    font-weight: 400;
+    outline: none;
+    line-height: 50px;
+    padding-top: 3px;
+    font-family: 'Roboto', sans-serif;
+}

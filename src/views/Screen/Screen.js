@@ -19,7 +19,7 @@ import Moment from 'react-moment';
 export default class Screen extends React.Component {
 	constructor(props) {
     	super(props);
-    	this.state = {ballonOpen:false, image_id:props.match.params.id, name: '', description:'', version:1, path: '', parent:0, project_id:0,project_name:'',comments:[],versions:[],isHidden:true, top:0, left:0, x_pos:0, y_pos:0, showModal:false, showMenu:false, prominent:false, version_id:'', showShare: false, editTitle: false, canEdit:false, shrink:false, showCommentsidebar: false, nlist:[], canUpload:false, commentId:'', activePolilynes:[], approved:false,updated:new Date(),scrTo:false};
+    	this.state = {ballonOpen:false, image_id:props.match.params.id, name: '', description:'', version:1, path: '', parent:0, project_id:0,project_name:'',comments:[],versions:[],isHidden:true, top:0, left:0, x_pos:0, y_pos:0, showModal:false, showMenu:false, prominent:false, version_id:'', showShare: false, editTitle: false, canEdit:false, shrink:false, showCommentsidebar: false, nlist:[], canUpload:false, commentId:'', activePolilynes:[], approved:false,updated:new Date(),scrTo:false,loginModal:false,email:"",password:"",error:""};
     	this.image = {};
     	this.prev = {};
     	this.next = {};
@@ -53,10 +53,47 @@ export default class Screen extends React.Component {
     	this.sortComments = this.sortComments.bind(this);
     	this.toggleShare = this.toggleShare.bind(this);
     	this.currentComment = '';
+	    this.handleInputChange = this.handleInputChange.bind(this);
     }
     toggleShare(){
     	if(this.state.showShare) this.setState({showShare:false});
     }
+    handleInputChange = (event) => {
+	    const { value, name } = event.target;
+	    this.setState({
+	      [name]: value
+	    });
+  	}
+    onSubmit = (event) => {
+	    event.preventDefault();
+	    fetch(config.url.API_URL+'authenticate', {
+	      method: 'POST',
+	      body: JSON.stringify(this.state),
+	      headers: {
+	        'Content-Type': 'application/json'
+	      }
+	    })
+	    .then(res => {
+	      if (res.status === 200) {
+	        res.json().then(json => {
+	          window.localStorage.setItem('auth_user',JSON.stringify({id:json._id,name:json.name,email:json.email,expiry_date:json.expiry_date,stripe_subscription_id:json.stripe_subscription_id,stripe_plan_id:json.stripe_plan_id,color:json.color}));
+	          setTimeout(()=>{
+	            window.location.reload();
+	          },200);
+	        });
+	        //this.props.history.push('/');
+	      } else {
+	        const error = new Error(res.error);
+	        throw error;
+	      }
+	    })
+	    .catch(err => {
+	      this.setState({
+	        'error': 'Invalid details!/Not yet activated'
+	      });
+	      // toast.error('Invalid details!/Not yet activated');
+	    });
+  	}
     sortComments(s){
     	// let sortedCommentsDsc;
 		// if (s.target.value=='desc') {
@@ -147,6 +184,11 @@ export default class Screen extends React.Component {
 					}
 				},2000);
 			}
+			//checklogin
+			if(!this.authUser.id && window.localStorage.getItem('firsttime')==null){
+  			window.localStorage.setItem('firsttime',1);
+  			this.setState({loginModal:true});
+  		}
 		});
   } 
   componentWillUnmount() {
@@ -327,7 +369,7 @@ export default class Screen extends React.Component {
     	this.setState({showShare: true});   
     }
     closeModal = (event) => {
-		this.setState({ showModal: false, showShare: false });
+		this.setState({ showModal: false, showShare: false, loginModal:false });
 	}
 	updateScreen(){
 		document.getElementById('fileInput').click();
@@ -578,6 +620,23 @@ export default class Screen extends React.Component {
 						</div>
 						</div>
 						</div>
+						<Modal showModal={this.state.loginModal} handleClose={this.closeModal}>
+						
+						<form onSubmit={this.onSubmit}>
+							<h2>Login</h2>
+							{this.state.error != ''?<div className="error_block">{this.state.error}</div>:''}
+				          	<ul>
+			                  <li>
+			                    <label>Email Address</label>
+			                    <input type="email" name="email" placeholder="Email" value={this.state.email} onChange={this.handleInputChange} required /> 
+			                  </li>
+			                  <li>
+			                    <label>Password</label>
+			                    <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleInputChange} required /> </li>
+			                  <li><input type="submit" value="Log In"/> <input type="button" onClick={this.closeModal} value="Cancel"/></li>
+			                </ul>
+			          	</form>
+			        </Modal>
 						<Modal showModal={this.state.showModal} handleClose={this.handleDragLeave}>
 				          <p>Update this design with new version</p>
 				        </Modal>

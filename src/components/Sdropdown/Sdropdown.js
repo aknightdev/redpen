@@ -9,7 +9,7 @@ class Sdropdown extends React.Component {
     constructor(props) {
         super(props);
 
-	    this.state = {showDrop: false, showModal:false,name:null};
+	    this.state = {showDrop: false, showModal:false,name:null,error:""};
         this.gearClick = this.gearClick.bind(this);
         this.showEditTitle = this.showEditTitle.bind(this);
         this.handleImgTitleChange = this.handleImgTitleChange.bind(this);
@@ -22,8 +22,14 @@ class Sdropdown extends React.Component {
         this.setState({name:this.props.name});
     }*/
     handleImgTitleChange(){
-        this.props.handleImgTitleEdit(document.getElementById('imageName').value);
-        this.showEditTitle();
+        if(document.getElementById('imageName').value.trim()!=''){
+            this.props.handleImgTitleEdit(document.getElementById('imageName').value);
+            this.showEditTitle();
+            this.setState({error:''});
+        }
+        else{
+            this.setState({error:'Enter title'});
+        }
     }
     handleClickOutside = evt => {
         this.setState({showDrop:false});
@@ -69,7 +75,7 @@ class Sdropdown extends React.Component {
                 updateButton = null;
                 cmpBtn = <li title={this.props.approved?'Disapprove':'Aprove'} className={this.props.approved?'active approve':'approve'} onClick={()=>this.props.approveScreen(this.props.version-1)}>{this.props.approved?'Disapprove':'Approve'}</li>
             }
-            editTitle=<Modal showModal={this.state.showModal} handleClose={this.handleImgTitleChange}><h2>Edit Title</h2><p><textarea id="imageName" defaultValue={this.props.name} className="title not-empty" placeholder="Image name"></textarea></p><button onClick={this.handleImgTitleChange}>Save</button><button onClick={this.showEditTitle}>Cancel</button></Modal>;
+            editTitle=<Modal showModal={this.state.showModal} handleClose={this.handleImgTitleChange}><h2>Edit Title</h2><p><textarea id="imageName" defaultValue={this.props.name} className="title not-empty" placeholder="Image name"></textarea>{this.state.error!=""?<div class="error">{this.state.error}</div>:null}</p><button onClick={this.handleImgTitleChange}>Save</button><button onClick={this.showEditTitle}>Cancel</button></Modal>;
         }
         else{
             editBtn = null;

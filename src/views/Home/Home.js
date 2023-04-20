@@ -192,7 +192,7 @@ export default class Home extends React.Component {
 
 						<div className="all_projects_row">
 							{this.state.projects.length == 0?
-							<div class="projects_item dropfile">
+							<div className="projects_item dropfile">
 								<Link className="np_dummy" to={this.state.availprojects>0?'/p/create':'/pro/new_plans'}><strong>Click here to <br />create new project</strong> <img src={require('assets/images/upload_icon.png')}/></Link>
 								</div>
 								:''}

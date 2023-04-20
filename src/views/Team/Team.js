@@ -24,12 +24,12 @@ export default class Team extends React.Component {
 	addTeammate(){
 		this.addTeam(this.state.email,'',this.authUser.id);
 		//this.setState({teammates: [...this.state.teammates,{id:1,name:'“'+this.state.email+'”',email:this.state.email}]});
-		this.typeahead.getInstance().clear();
+		// this.typeahead.getInstance().clear();
 	}
-	showAddButton(val) {
-		let emailValid = val.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+	showAddButton(event) {
+		let emailValid = event.target.value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
     	if (emailValid) {
-    		this.setState({email: val}); 
+    		this.setState({email: event.target.value}); 
     		this.setState({validEmail: true}); 
     	}
     	else{
@@ -145,7 +145,7 @@ export default class Team extends React.Component {
 						<div className="tm_inrow">
 							<p>Collaborate with others in your workspace</p>
 							<div className="contains-input">
-								<Typeahead
+								{/*<Typeahead
 								  id='dpusers'
 								  filterBy={this.filterBy}
 								  placeholder='Email Address'
@@ -160,7 +160,8 @@ export default class Team extends React.Component {
 								    </div>
 								  )}
 								  ref={(typeahead) => this.typeahead = typeahead}
-								/>
+								/>*/}
+								<textarea onKeyUp={this.showAddButton} name="email" className="title input not-empty" placeholder='Email Address'></textarea>
 								{button}
 								{success}
 							</div>
@@ -173,6 +174,7 @@ export default class Team extends React.Component {
 								<tr>
 									<th width="70%">Member</th>
 									<th>Role</th>
+									<th></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -180,6 +182,7 @@ export default class Team extends React.Component {
 								<tr key={key}>
 									<td><span>{teammate.user.name} <span>({teammate.user.email})</span></span></td>
 									<td>{this.authUser.id===teammate.user._id?'Admin':'User'}</td>
+									<td><button className="btn" onClick={()=>this.removeTeammate(key)}>Remove</button></td>
 								</tr>
 								))}
 							</tbody>
@@ -197,16 +200,21 @@ export default class Team extends React.Component {
 					</div>
 				</div>
 				<Modal showModal={this.state.showModal} handleClose={this.closeModal}>
-					<h2>Remove {this.state.teammates[this.state.dindex]?this.state.teammates[this.state.dindex].name:''}?</h2>
-		          	<p>This will remove <b>{this.state.teammates[this.state.dindex]?this.state.teammates[this.state.dindex].name:''}</b>  from the team. They’ll no longer be able to create projects. You can also</p>
-		          	<p className="checkboxes-and-labels teammate-checkboxes">
-		          		<input type="checkbox" id="unfollow_all" />
-		          		<span> </span>
-		          		<label htmlFor="unfollow_all">Remove them from all previous team projects and singles</label>
-		          		<input type="checkbox" id="kill_user" />
-		          		<span> </span><label htmlFor="kill_user">Destroy their account entirely</label>
-		          	</p>
-		          	<button onClick={this.removePeople}>Remove {this.state.teammates[this.state.dindex]?this.state.teammates[this.state.dindex].name:''}</button>
+					<div className="teammodal">
+						<h2>Remove {this.state.teammates[this.state.dindex]?this.state.teammates[this.state.dindex].name:''}?</h2>
+			          	<p>This will remove <b>{this.state.teammates[this.state.dindex]?this.state.teammates[this.state.dindex].name:''}</b>  from the team. They’ll no longer be able to create projects. You can also</p>
+			          	<div className="checkboxes-and-labels teammate-checkboxes">
+			          	<div className="form-group">
+			          		<input type="checkbox" id="unfollow_all" />
+			          		<label htmlFor="unfollow_all">Remove them from all previous team projects and singles</label>
+			          	</div>
+			          	<div className="form-group">
+			          		<input type="checkbox" id="kill_user" />
+			          		<label htmlFor="kill_user">Destroy their account entirely</label>
+			          	</div>
+			          	</div>
+			          	<button onClick={this.removePeople}>Remove {this.state.teammates[this.state.dindex]?this.state.teammates[this.state.dindex].name:''}</button>
+		          	</div>
 		        </Modal>
 			</div>
 			</div>
