@@ -7,7 +7,8 @@ export default class Forgot extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      email : ''
+      email : '',
+      error : ""
     };
   }
   componentDidMount() {
@@ -35,7 +36,10 @@ export default class Forgot extends Component {
       if (res.status === 200) {
         res.json().then(json => {
           this.setState({email:''});
-          toast.success('Reset password link has been sent to you email address!');
+          this.setState({
+            'error': 'Reset password link has been sent to you email address!'
+          });
+          // toast.success('Reset password link has been sent to you email address!');
         });
         //this.props.history.push('/');
       } else {
@@ -45,7 +49,10 @@ export default class Forgot extends Component {
     })
     .catch(err => {
       console.error(err);
-      toast.error('Your email address does not exist!');
+      // toast.error('Your email address does not exist!');
+      this.setState({
+        'error': 'Your email address does not exist!'
+      });
     });
   }
   render() {
@@ -59,6 +66,7 @@ export default class Forgot extends Component {
               <div className="login_box">
                 <form onSubmit={this.onSubmit}>
                   <h2>Forgot Password</h2>
+                  {this.state.error != ''?<div className="error_block">{this.state.error}</div>:''}
                   <ul>
                     <li>
                       <label>Email Address</label>

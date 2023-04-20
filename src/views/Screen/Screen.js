@@ -621,11 +621,12 @@ export default class Screen extends React.Component {
 						</div>
 						</div>
 						<Modal showModal={this.state.loginModal} handleClose={this.closeModal}>
-						
+						<input className="close_popup" type="button" onClick={this.closeModal} value="X"/>
 						<form onSubmit={this.onSubmit}>
+
 							<h2>Login</h2>
 							{this.state.error != ''?<div className="error_block">{this.state.error}</div>:''}
-				          	<ul>
+				          	<ul className="login_popup login_box">
 			                  <li>
 			                    <label>Email Address</label>
 			                    <input type="email" name="email" placeholder="Email" value={this.state.email} onChange={this.handleInputChange} required /> 
@@ -633,7 +634,7 @@ export default class Screen extends React.Component {
 			                  <li>
 			                    <label>Password</label>
 			                    <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleInputChange} required /> </li>
-			                  <li><input type="submit" value="Log In"/> <input type="button" onClick={this.closeModal} value="Cancel"/></li>
+			                  <li><input type="submit" value="Log In"/> </li>
 			                </ul>
 			          	</form>
 			        </Modal>

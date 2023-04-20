@@ -8,7 +8,8 @@ export default class Reset extends Component {
     super(props)
     this.state = {
       hash : props.match.params.hash,
-      password: ''
+      password: '',
+      error:""
     };
   }
   componentDidMount() {
@@ -36,7 +37,10 @@ export default class Reset extends Component {
       if (res.status === 200) {
         res.json().then(json => {
           this.setState({password:''});
-          toast.success('Password updated successfully!');
+          //toast.success('Password updated successfully!');
+          this.setState({
+            'error': 'Password updated successfully!'
+          });
         });
         //this.props.history.push('/');
       } else {
@@ -46,7 +50,10 @@ export default class Reset extends Component {
     })
     .catch(err => {
       console.error(err);
-      toast.error('Reset password link expired/invalid!');
+      this.setState({
+        'error': 'Reset password link expired/invalid!'
+      });
+      //toast.error('Reset password link expired/invalid!');
     });
   }
   render() {
@@ -62,7 +69,7 @@ export default class Reset extends Component {
          <div className="login_box">
             <form onSubmit={this.onSubmit}>
                 <h2>New Password</h2>
-               
+               {this.state.error != ''?<div className="error_block">{this.state.error}</div>:''}
                 <ul>
                   <label>Enter your new password</label>
                   <li><input
