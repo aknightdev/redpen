@@ -245,8 +245,8 @@ export default class Project extends React.Component {
     onEnterPress = (e) => {
     	if(e.keyCode === 13 && e.shiftKey === false) {
 		    e.preventDefault();
-		    this.handleTitleChange(e);
-		    $('#projtitle').blur();
+		    // this.handleTitleChange(e);
+		    // $('#projtitle').blur();
 		}
     }
     async loadNotify(){
