@@ -10,7 +10,7 @@ import {getRandomColor,createImageFromInitials} from 'components/Utils.js'
 export default class Team extends React.Component {
 	constructor(props) {
 	    super(props);
-	    this.state = {success:false, usernames:[], users:[], teammates:[], showModal: false, dindex:-1, validEmail: false, email:''};
+	    this.state = {success:false, usernames:[], users:[], teammates:[], showModal: false, dindex:-1, validEmail: false, email:'',error:""};
 	    this.authUser = window.localStorage.getItem('auth_user')==null?{id:null,name:null,email:null}:JSON.parse(window.localStorage.getItem('auth_user'));
 	    this.filterBy = this.filterBy.bind(this);
 	    this.addSelected = this.addSelected.bind(this);
@@ -58,9 +58,10 @@ export default class Team extends React.Component {
 	removePeople() {
 	  var array = this.state.teammates;
 	  if (this.state.dindex !== -1) {
+	  	let postdata = array[this.state.dindex].user?{user_id: array[this.state.dindex].user._id, email:''}:{email:array[this.state.dindex].email,user_id:''};
 	    fetch(config.url.API_URL+"removeteammate", {
 		  	method: "POST",
-	  		body: JSON.stringify({user_id: array[this.state.dindex].user._id}),
+	  		body: JSON.stringify(postdata),
 	  		headers: {
 		        'Content-Type': 'application/json'
 		    }
@@ -108,6 +109,8 @@ export default class Team extends React.Component {
             return response.json();
 	    }).then( (resp) => {
 	    	this.getTeam();
+	    	this.setState({email: "", validEmail: false, error: "User invited successfully!"}); 
+	    	document.getElementById('teamemail').value = '';
 	    });
 	}
 	async getTeam(){
@@ -161,13 +164,13 @@ export default class Team extends React.Component {
 								  )}
 								  ref={(typeahead) => this.typeahead = typeahead}
 								/>*/}
-								<textarea onKeyUp={this.showAddButton} name="email" className="title input not-empty" placeholder='Email Address'></textarea>
+								<textarea onKeyUp={this.showAddButton} id="teamemail" name="email" className="title input not-empty" placeholder='Email Address'></textarea>
 								{button}
 								{success}
 							</div>
 						</div>
 					
-					
+					{this.state.error != ''?<div className="error_block">{this.state.error}</div>:''}
 					<div className="teammates-list">
 						<table>
 							<thead>
@@ -180,8 +183,8 @@ export default class Team extends React.Component {
 							<tbody>
 								{this.state.teammates.map((teammate,key) => (
 								<tr key={key}>
-									<td><span>{teammate.user.name} <span>({teammate.user.email})</span></span></td>
-									<td>{this.authUser.id===teammate.user._id?'Admin':'User'}</td>
+									<td><span>{teammate.user?teammate.user.name:''} <span>({teammate.user?teammate.user.email:teammate.email})</span></span></td>
+									<td>{teammate.user && this.authUser.id===teammate.user._id?'Admin':'User'}</td>
 									<td><button className="btn" onClick={()=>this.removeTeammate(key)}>Remove</button></td>
 								</tr>
 								))}
