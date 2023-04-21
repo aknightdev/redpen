@@ -86,7 +86,7 @@ export default class Comment extends React.Component {
 						<article className="comment-editing-container new-comment  permanently-uncollapsed">
 							<div className="taggable-textarea-container">
 								<div className="beautifier"><div className="content"><span className="regular">­</span></div></div>
-								<textarea value={this.state.comment} onChange={this.setComment} placeholder="Write comment or @mention…" className="comment-textarea"></textarea>
+								<textarea value={this.state.comment} autoFocus={true} onChange={this.setComment} placeholder="Write comment or @mention…" className="comment-textarea"></textarea>
 								<div className="tag-list" style={{display: 'none'}}></div>
 							</div>
 							<button type="button" className="old-button post-comment bottom-stuck primary" title="Or press Command–Enter to post" onClick={this.postComment} style={{display: this.state.showCommentButton?'block':'none'}}>Post this comment</button>
