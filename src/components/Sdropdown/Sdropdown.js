@@ -4,6 +4,7 @@ import $ from 'jquery';
 import { FaRedo, FaTrash, FaEdit } from 'react-icons/fa';
 import { TiTick } from 'react-icons/ti';
 import Modal from 'components/Modal/Modal.js';
+import Notifications from 'components/Notifications/Notifications.js';
 
 class Sdropdown extends React.Component {
     constructor(props) {
@@ -99,6 +100,7 @@ class Sdropdown extends React.Component {
                         </ul>
                     </li>
                     {cmpBtn}
+                    <Notifications seenAll={this.props.seenAll} nlist={this.props.nlist}></Notifications>
                     </ul>
                     {editTitle}
                     </div>
@@ -109,6 +111,7 @@ class Sdropdown extends React.Component {
                     {updateButton}
                     {delButton}
                     {cmpBtn}
+                    <Notifications seenAll={this.props.seenAll} nlist={this.props.nlist}></Notifications>
                     </ul>
                     {editTitle}
                     </div>

@@ -1116,6 +1116,9 @@
 		padding: 12px 20px;
 		margin: 0 4px;
 	}
+	.notifications-inline {
+		margin-left: 0;
+	}
 }
 
 @media screen and (max-width:533px) {
@@ -1431,6 +1434,9 @@
 	.pagenation {
 		padding: 0 5px;
 	}
+	.left_design .button {
+		font-size: 15px;
+	}
 }
 @media screen and (max-width:414px) {}
 @media screen and (max-width:400px) {
@@ -1464,6 +1470,22 @@
 	}
 	.tm_inrow p {
 		font-size: 16px;
+	}
+	.prjs_srch_outer .link_btn.sortby {
+		padding-left: 14px;
+	}
+	.prjs_srch_outer .link_btn {
+		margin-right: 0;
+	}
+	.left_design .designs {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.left_design {
+		font-size: 14px;
+	}
+	.left_design .button {
+	    font-size: 14px;
 	}
 }
 @media screen and (max-width:360px) {

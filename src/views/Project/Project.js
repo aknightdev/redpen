@@ -11,6 +11,7 @@ import Collabi from 'components/Collabi/Collabi.js';
 import Trash from 'components/Trash/Trash.js';
 import Notifications from 'components/Notifications/Notifications.js';
 import $ from 'jquery';
+import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
 export default class Project extends React.Component {
 	constructor(props) {
@@ -46,6 +47,21 @@ export default class Project extends React.Component {
 	    this.handleInputChange = this.handleInputChange.bind(this);
 	    
     }
+    onSortEnd = ({oldIndex, newIndex}) => {
+	    this.setState(({images}) => ({
+	      images: arrayMove(images, oldIndex, newIndex),
+	    }));
+	    fetch(config.url.API_URL+"updateimagepos", {
+		  	method: "POST",
+	  		body: JSON.stringify({images:this.state.images}),
+	  		headers: {
+		        'Content-Type': 'application/json'
+		    }
+		}).then(function (response) {
+            return response.json();
+	    }).then( (result) => { 
+	    });
+  	};
     toggleShare(){
     	if(this.state.showShare) this.setState({showShare:false});
     }
@@ -486,6 +502,43 @@ export default class Project extends React.Component {
 	}
 
 	render() {
+		const SortableItem = SortableElement(({value}) => <div className="projects_item">
+								       
+								        <div className="projects_grid">
+								        <div className="projs_itminner">
+									        {value.user===this.authUser.id || this.state.canUpload?
+									       		<span className="delete_bg"> <Trash projectId={this.props.match.params.id} reloadProject={this.reloadProject} image={value} user={this.state.user_id} canUpload={this.state.canUpload}></Trash></span>
+									       	: '' }
+								        	<div className="project-image">
+								        		<img alt="" onClick={() => this.handleClick(value._id)} src={config.url.IMAGE_URL+value.image} />
+								        		{this.state.nlists[value._id]?(
+									        	<div className="unseen-over-thumb-container">
+									        		<div className="unseen-animation-wrapper">
+									        			<i className="shadow"></i>
+									        			<aside className="unseen-over-thumb">
+									        			<i className="overlay"></i>
+									        			<strong className="number">{this.state.nlists[value._id]?.length}</strong>
+									        			<span>
+										        			<span>{this.state.nlists[value._id]?.length>1?'Unseen things':this.state.nlists[value._id][0] && this.state.nlists[value._id][0]?.message=='design'?'This design was updated':'Unseen thing'}</span>
+									        			</span>
+									        			</aside>
+									        		</div>
+									        	</div>
+									        	):''}
+								        	</div>
+								        	<Nameedit handleClick={this.handleClick} canUpload={this.state.canUpload} user={this.state.user_id} image={value}></Nameedit>
+								       </div></div>
+								        </div>);
+
+		const SortableList = SortableContainer(({items}) => {
+		  return (
+		    <div className="all_projects_list">
+		      {items.map((value, index) => (
+		        <SortableItem key={`item-${index}`} index={index} value={value} />
+		      ))}
+		    </div>
+		  );
+		});
 		let dropbox = null, dragbool=true;
 
 		if (this.authUser.id===this.state.user_id || this.state.canUpload) {
@@ -553,13 +606,15 @@ export default class Project extends React.Component {
 									<Share reloadProject={this.reloadProject} userId={this.authUser.id} showShare={this.state.showShare} toggleShare={this.toggleShare} handleClose={this.closeModal} projectId={this.props.match.params.id} updateSecretMode={this.updateSecretMode} secretMode={this.state.secret_mode}>
 				        			</Share>
 									</span>
-									
 								</div>
 							</div>
 						</div>
 						<div className="searchbox prjs_srch_outer ">
 
+
+
 						   <div className="left_design">
+						   <button className="button" onClick={()=>{$('input[type="file"]').trigger('click')}}>Upload</button>
 							<div className="designs">{this.state.images.length} Designs </div>
 							<Sortdd className="link_btn" filterProjects={this.filterDesigns} page="project"></Sortdd>
 							<div className="prjs_serch_icon">
@@ -594,41 +649,20 @@ export default class Project extends React.Component {
 
 						 <div className="all_projects_row">
 
-							<div className="all_projects_list">
+							{/*<div className="all_projects_list">
 									<div className="projects_item dropfile">
 							        <input {...getInputProps()} />
 							        {dropbox}
+							        </div>*/}
+							        <SortableList pressDelay={200} axis={'x'} items={this.state.images} onSortEnd={this.onSortEnd} />
+									{/*this.state.images.map((project,key) => (
+										
+							        ))
+							    </div>*/}
+							        <div className="projects_item dropfile">
+							        <input {...getInputProps()} />
+							        {dropbox}
 							        </div>
-									{this.state.images.map((project,key) => (
-										<div className="projects_item" key={key}>
-								       
-								        <div className="projects_grid">
-								        <div className="projs_itminner">
-									        {project.user===this.authUser.id || this.state.canUpload?
-									       		<span className="delete_bg"> <Trash projectId={this.props.match.params.id} reloadProject={this.reloadProject} image={project} user={this.state.user_id} canUpload={this.state.canUpload}></Trash></span>
-									       	: '' }
-								        	<div className="project-image">
-								        		<img alt="" onClick={() => this.handleClick(project._id)} src={config.url.IMAGE_URL+project.image} />
-								        		{this.state.nlists[project._id]?(
-									        	<div className="unseen-over-thumb-container">
-									        		<div className="unseen-animation-wrapper">
-									        			<i className="shadow"></i>
-									        			<aside className="unseen-over-thumb">
-									        			<i className="overlay"></i>
-									        			<strong className="number">{this.state.nlists[project._id]?.length}</strong>
-									        			<span>
-										        			<span>{this.state.nlists[project._id]?.length>1?'Unseen things':this.state.nlists[project._id][0] && this.state.nlists[project._id][0]?.message=='design'?'This design was updated':'Unseen thing'}</span>
-									        			</span>
-									        			</aside>
-									        		</div>
-									        	</div>
-									        	):''}
-								        	</div>
-								        	<Nameedit handleClick={this.handleClick} canUpload={this.state.canUpload} user={this.state.user_id} image={project}></Nameedit>
-								       </div></div>
-								        </div>
-							        ))}
-							    </div>
 
 						</div>
 
@@ -652,6 +686,7 @@ export default class Project extends React.Component {
 						 </div>	 
 
 				    </div> </div><div id="ajxloader" className="lds-dual-ring hidden overlay"></div>
+				    
 				    <Modal showModal={this.state.loginModal} handleClose={this.closeModal}>
 							<input className="close_popup" type="button" onClick={this.closeModal} value="X"/>
 						<form onSubmit={this.onSubmit}>

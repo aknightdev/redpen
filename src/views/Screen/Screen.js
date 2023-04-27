@@ -54,6 +54,8 @@ export default class Screen extends React.Component {
     	this.toggleShare = this.toggleShare.bind(this);
     	this.currentComment = '';
 	    this.handleInputChange = this.handleInputChange.bind(this);
+	    this.seenAll = this.seenAll.bind(this);
+	    this.openComment = this.openComment.bind(this);
     }
     toggleShare(){
     	if(this.state.showShare) this.setState({showShare:false});
@@ -141,9 +143,13 @@ export default class Screen extends React.Component {
 		// },1000);
     }
     async loadNotify(){
-		const notif = await fetch(config.url.API_URL+'notifications',{ method: "POST", body: JSON.stringify({project_id:this.state.project_id, user_id: this.authUser.id}), headers: { 'Content-Type': 'application/json' }});
+			const notif = await fetch(config.url.API_URL+'notifications',{ method: "POST", body: JSON.stringify({image_id:this.state.image_id, user_id: this.authUser.id}), headers: { 'Content-Type': 'application/json' }});
 	    const notifications = await notif.json();
 	    this.setState({nlist:notifications});
+    }
+    seenAll(){
+    	fetch(config.url.API_URL+'seenall',{ method: "POST", body: JSON.stringify({image_id:this.state.image_id, user_id: this.authUser.id}), headers: { 'Content-Type': 'application/json' }});
+    	this.setState({nlist:[]});
     }
     componentDidMount() {
     	const values = queryString.parse(this.props.location.search);
@@ -178,10 +184,7 @@ export default class Screen extends React.Component {
 			let hash = window.location.hash;
 			if(hash!=''){
 				setTimeout(()=>{
-					if($('#comment_box'+hash.replace('#','')).length>0){
-						$('#comment_box'+hash.replace('#','')).addClass('open');
-						window.scrollTo($('#comment_box'+hash.replace('#','')).offset().left,$('#comment_box'+hash.replace('#','')).offset().top - 200);
-					}
+					this.openComment();
 				},2000);
 			}
 			//checklogin
@@ -190,9 +193,18 @@ export default class Screen extends React.Component {
   			this.setState({loginModal:true});
   		}
 		});
+		window.addEventListener("hashchange", this.openComment, false);
   } 
   componentWillUnmount() {
     document.body.classList = '';
+    window.removeEventListener("hashchange", this.openComment, false);
+  }
+  openComment(){
+  	let hash = window.location.hash;
+  	if($('#comment_box'+hash.replace('#','')).length>0){
+			$('#comment_box'+hash.replace('#','')).addClass('open');
+			window.scrollTo($('#comment_box'+hash.replace('#','')).offset().left,$('#comment_box'+hash.replace('#','')).offset().top - 200);
+		}
   }
     handleClick = (event) =>{
     	var bounds = event.target.getBoundingClientRect();
@@ -575,8 +587,8 @@ export default class Screen extends React.Component {
 										<menu className="dropdown-menu on-dark version-menu column-reverse">
 											<ul>
 												{this.state.versions.map((version,key) => (
-													<li className="" onClick={this.loadVersion}>
-														<Link key={key} to={'/'+this.state.image_id+'/'+(key + 1)}>
+													<li key={key} className="" onClick={this.loadVersion}>
+														<Link to={'/'+this.state.image_id+'/'+(key + 1)}>
 																<span>
 																	<span>Version </span>
 																	<span>{key + 1}</span>
@@ -590,7 +602,7 @@ export default class Screen extends React.Component {
 										</menu>
 										):''}
 									</div>
-									<Sdropdown name={this.state.name} handleImgTitleEdit={this.handleImgTitleEdit} user={this.user_id} updateScreen={this.updateScreen} deleteScreen={this.deleteScreen} deleteVersion={this.deleteVersion} shrinkScreen={this.shrinkScreen} showComments={this.showComments} copyComments={this.copyComments} version={this.state.version} versions={this.state.versions} shrink={this.state.shrink} project={this.state.project_id} canUpload={this.state.canUpload} approveScreen={this.approveScreen} approved={this.state.approved}></Sdropdown>
+									<Sdropdown name={this.state.name} handleImgTitleEdit={this.handleImgTitleEdit} user={this.user_id} updateScreen={this.updateScreen} deleteScreen={this.deleteScreen} deleteVersion={this.deleteVersion} shrinkScreen={this.shrinkScreen} showComments={this.showComments} copyComments={this.copyComments} version={this.state.version} versions={this.state.versions} shrink={this.state.shrink} project={this.state.project_id} canUpload={this.state.canUpload} approveScreen={this.approveScreen} approved={this.state.approved} seenAll={this.seenAll} nlist={this.state.nlist}></Sdropdown>
 									
 									
 									{/*<div className="description-container">
@@ -643,7 +655,7 @@ export default class Screen extends React.Component {
 				        </Modal>
 				        <Share reloadProject={this.reloadImage} userId={this.authUser.id} toggleShare={this.toggleShare} showShare={this.state.showShare} handleClose={this.closeModal} imageId={this.state.image_id} projectId={this.state.project_id}>
 				        </Share>
-				        {/*<Commentsidebar sortComments={this.sortComments} hideComments={this.hideComments} showComments={this.showComments} showCommentsidebar={this.state.showCommentsidebar} scrTo={this.state.scrTo} comments={this.state.comments} commentId={this.state.commentId} projectId={this.state.project_id} loadComments={this.loadComments}></Commentsidebar>*/}
+				        <Commentsidebar sortComments={this.sortComments} hideComments={this.hideComments} showComments={this.showComments} showCommentsidebar={this.state.showCommentsidebar} scrTo={this.state.scrTo} comments={this.state.comments} commentId={this.state.commentId} projectId={this.state.project_id} loadComments={this.loadComments}></Commentsidebar>
 				        <HotKeys keyMap={keyMap} handlers={this.handlersParent}></HotKeys>
 				        <Hotkeys keyName="control+c" onKeyUp={this.toggleComments.bind(this)}></Hotkeys>
 						<input id="fileInput" {...getInputProps()} />
