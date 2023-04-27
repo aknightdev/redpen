@@ -945,6 +945,13 @@
 	.billhead .inner button {
 	    font-size: 15px;
 	}
+	.teammates-list tr, .teammates-list tr td {
+	    display: block;
+	    width: 100%;
+	}
+	.teammates-list thead {
+		display: none;
+	}
 }
 @media screen and (max-width:667px) {
 	.commenter .input{
@@ -1436,6 +1443,10 @@
 	}
 	.left_design .button {
 		font-size: 15px;
+	}
+	.tm_inrow textarea {
+		font-size: 16px !important;
+		padding: 0 15px !important;
 	}
 }
 @media screen and (max-width:414px) {}

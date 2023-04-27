@@ -5487,3 +5487,9 @@ ul.login_popup {
 .expanded-notifications-balloon article:first-of-type {
   box-shadow: none !important;
 }
+.tm_inrow textarea {
+    background-color: #fff !important;
+    padding: 0 20px !important;
+    font-size: 18px !important;
+    margin-top: 15px;
+}
