@@ -199,7 +199,7 @@ export default class Home extends React.Component {
 					 		{button}
 					 
 				      {this.state.projects.map((project,key) => (
-				      	<div className={project.is_expired?'expired projects_item':'projects_item'} key={key} style={!this.state.showMore && key>7?{display:'none'}:{}}>
+				      	<div className={project.is_expired?'expired projects_item':'projects_item'} key={key}>
 				        <div className="projects_grid" >
 				        	<div className={project.user===this.authUser.id?'prt_right':'prt_right no_del'}>
 		        			 <Sharedropdown projectId={project._id} updateProjects={this.updateProjects} project={project}></Sharedropdown>
@@ -251,16 +251,16 @@ export default class Home extends React.Component {
 				    
 				</div>
 					
-				<div className="arc_btns_row">
+				{/*<div className="arc_btns_row">
 						<ul>
 
-						{/*<li>{this.state.archived>0?(
+						<li>{this.state.archived>0?(
 						 <Link to='/archived'>Archived projects..</Link> 
-						):''}</li>*/}
+						):''}</li>
 						<li> {this.state.projects.length>8?(<Link onClick={this.clickShowmore}>Load {this.state.showMore?'Less':'More'}</Link>):""} </li>
 						</ul>
 						
-				</div></div>
+				</div>*/}</div>
 
 		    </div></div>
 		);
