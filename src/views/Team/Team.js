@@ -114,9 +114,14 @@ export default class Team extends React.Component {
 		}).then(function (response) {
             return response.json();
 	    }).then( (resp) => {
-	    	this.getTeam();
-	    	this.setState({email: "", validEmail: false, error: "User invited successfully!"}); 
-	    	document.getElementById('teamemail').value = '';
+	    	if(resp.status=='success'){
+		    	this.getTeam();
+		    	this.setState({email: "", validEmail: false, error: "User invited successfully!"}); 
+		    	document.getElementById('teamemail').value = '';
+	    	}
+	    	else{
+	    		this.setState({error: "User already added to team"}); 
+	    	}
 	    });
 	}
 	async getTeam(){
