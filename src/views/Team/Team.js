@@ -10,7 +10,7 @@ import {getRandomColor,createImageFromInitials} from 'components/Utils.js'
 export default class Team extends React.Component {
 	constructor(props) {
 	    super(props);
-	    this.state = {success:false, usernames:[], users:[], teammates:[], showModal: false, dindex:-1, validEmail: false, email:'',error:"",emails:[],rtp:'user'};
+	    this.state = {success:false, usernames:[], users:[], teammates:[], showModal: false, dindex:-1, validEmail: false, email:'',error:""};
 	    this.authUser = window.localStorage.getItem('auth_user')==null?{id:null,name:null,email:null}:JSON.parse(window.localStorage.getItem('auth_user'));
 	    this.filterBy = this.filterBy.bind(this);
 	    this.addSelected = this.addSelected.bind(this);
@@ -55,17 +55,16 @@ export default class Team extends React.Component {
 		}
 		this.typeahead.getInstance().clear();
 	}
-	removeTeammate(ind,tp){
-		this.setState({dindex:ind, showModal:true,rtp:tp});
+	removeTeammate(ind){
+		this.setState({dindex:ind, showModal:true});
 	}
 	closeModal(){
 		this.setState({dindex:-1, showModal:false});
 	}
 	removePeople() {
 	  var array = this.state.teammates;
-	  var array1 = this.state.emails;
 	  if (this.state.dindex !== -1) {
-	  	let postdata = this.state.rtp=='user'?{user_id: array[this.state.dindex]._id, email:''}:{email:array1[this.state.dindex],user_id:''};
+	  	let postdata = array[this.state.dindex].user?{user_id: array[this.state.dindex].user._id, email:''}:{email:array[this.state.dindex].email,user_id:''};
 	    fetch(config.url.API_URL+"removeteammate", {
 		  	method: "POST",
 	  		body: JSON.stringify(postdata),
@@ -75,14 +74,8 @@ export default class Team extends React.Component {
 		}).then(function (response) {
             return response.json();
 	    }).then( (resp) => {
-	    	if(this.state.rtp=='user'){
-		    	array.splice(this.state.dindex, 1);
-		    	this.setState({teammates: array, showModal:false, dindex:-1});
-	    	}
-	    	else{
-	    		array1.splice(this.state.dindex, 1);
-		    	this.setState({emails: array1, showModal:false, dindex:-1});
-	    	}
+	    	array.splice(this.state.dindex, 1);
+	    	this.setState({teammates: array, showModal:false, dindex:-1});
 	    });
 	  }
 	}
@@ -141,9 +134,6 @@ export default class Team extends React.Component {
 	    else{
 	    	// this.addTeam('','',this.authUser.id);
 	    }
-	    if(result.emails){
-	    	this.setState({emails:result.emails});
-	    }
 	}
 	render() {
 		var success = null, button=null;
@@ -198,16 +188,9 @@ export default class Team extends React.Component {
 							<tbody>
 								{this.state.teammates.map((teammate,key) => (
 								<tr key={key}>
-									<td><span>{teammate.name} <span>({teammate.email})</span></span></td>
-									<td>{'User'}</td>
-									<td><button className="btn" onClick={()=>this.removeTeammate(key,'user')}>Remove</button></td>
-								</tr>
-								))}
-								{this.state.emails.map((email,key) => (
-								<tr key={'e'+key}>
-									<td><span><span>({email})</span></span></td>
-									<td>{'User'}</td>
-									<td><button className="btn" onClick={()=>this.removeTeammate(key,'email')}>Remove</button></td>
+									<td><span>{teammate.user?teammate.user.name:''} <span>({teammate.user?teammate.user.email:teammate.email})</span></span></td>
+									<td>{teammate.user && this.authUser.id===teammate.user._id?'Admin':'User'}</td>
+									<td><button className="btn" onClick={()=>this.removeTeammate(key)}>Remove</button></td>
 								</tr>
 								))}
 							</tbody>
