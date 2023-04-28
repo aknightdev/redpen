@@ -120,7 +120,7 @@ export default class Team extends React.Component {
 		    	document.getElementById('teamemail').value = '';
 	    	}
 	    	else{
-	    		this.setState({error: "User already added to team"}); 
+	    		this.setState({error: "You can't add this member to your team!"}); 
 	    	}
 	    });
 	}
@@ -152,6 +152,7 @@ export default class Team extends React.Component {
 			<div className="pg_boxwrapper team_page">
 			<div className="page_wrapper light_bg">
 			<div className="container2 home">
+				{(this.authUser.stripe_subscription_id=="" || this.authUser.stripe_subscription_id==null)?<div className="page_wrapper light_bg singles_page plan_exp"><div className="container"> <h2>Upgrade</h2> <p>Please upgrade your membership to add team </p> <Link className="App-link btn" to='/pro/new_plans'>Get Billing Plans</Link> </div></div>:
 				<div className="team_row">
 					<div className="team">
 					<h2>Team members</h2>
@@ -211,7 +212,7 @@ export default class Team extends React.Component {
 						</ul>*/}
 					</div>
 					</div>
-				</div>
+				</div>}
 				<Modal showModal={this.state.showModal} handleClose={this.closeModal}>
 					<div className="teammodal">
 						<h2>Remove {this.state.teammates[this.state.dindex]?this.state.teammates[this.state.dindex].name:''}?</h2>

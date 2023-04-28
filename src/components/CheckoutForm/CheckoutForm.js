@@ -28,6 +28,7 @@ class CheckoutForm extends Component {
       this.setState({loading:false});
       if (result.status==='active') {
         this.authUser.stripe_plan_id = this.props.selectedPlan;
+        this.authUser.stripe_subscription_id = result.id;
         let expiry_date = new Date();
         expiry_date.setDate(expiry_date.getDate() + 1);
         this.authUser.expiry_date = expiry_date;
