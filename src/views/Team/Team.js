@@ -10,7 +10,7 @@ import {getRandomColor,createImageFromInitials} from 'components/Utils.js'
 export default class Team extends React.Component {
 	constructor(props) {
 	    super(props);
-	    this.state = {success:false, usernames:[], users:[], teammates:[], showModal: false, dindex:-1, validEmail: false, email:'',error:""};
+	    this.state = {success:false, usernames:[], users:[], teammates:[], showModal: false, dindex:-1, validEmail: false, email:'',error:"",emails:[],rtp:'user'};
 	    this.authUser = window.localStorage.getItem('auth_user')==null?{id:null,name:null,email:null}:JSON.parse(window.localStorage.getItem('auth_user'));
 	    this.filterBy = this.filterBy.bind(this);
 	    this.addSelected = this.addSelected.bind(this);
@@ -22,7 +22,12 @@ export default class Team extends React.Component {
 	    this.typeahead = null;
 	}
 	addTeammate(){
-		this.addTeam(this.state.email,'',this.authUser.id);
+		if(this.state.validEmail){
+			this.addTeam(this.state.email,'',this.authUser.id);
+		}
+		else{
+			this.setState({error: $('#teamemail').val()==""?"Enter email address":"Invalid email address"}); 
+		}
 		//this.setState({teammates: [...this.state.teammates,{id:1,name:'“'+this.state.email+'”',email:this.state.email}]});
 		// this.typeahead.getInstance().clear();
 	}
@@ -31,6 +36,7 @@ export default class Team extends React.Component {
     	if (emailValid) {
     		this.setState({email: event.target.value}); 
     		this.setState({validEmail: true}); 
+    		this.setState({error: ""}); 
     	}
     	else{
     		this.setState({validEmail: false}); 
@@ -49,16 +55,17 @@ export default class Team extends React.Component {
 		}
 		this.typeahead.getInstance().clear();
 	}
-	removeTeammate(ind){
-		this.setState({dindex:ind, showModal:true});
+	removeTeammate(ind,tp){
+		this.setState({dindex:ind, showModal:true,rtp:tp});
 	}
 	closeModal(){
 		this.setState({dindex:-1, showModal:false});
 	}
 	removePeople() {
 	  var array = this.state.teammates;
+	  var array1 = this.state.emails;
 	  if (this.state.dindex !== -1) {
-	  	let postdata = array[this.state.dindex].user?{user_id: array[this.state.dindex].user._id, email:''}:{email:array[this.state.dindex].email,user_id:''};
+	  	let postdata = this.state.rtp=='user'?{user_id: array[this.state.dindex]._id, email:''}:{email:array1[this.state.dindex],user_id:''};
 	    fetch(config.url.API_URL+"removeteammate", {
 		  	method: "POST",
 	  		body: JSON.stringify(postdata),
@@ -68,8 +75,14 @@ export default class Team extends React.Component {
 		}).then(function (response) {
             return response.json();
 	    }).then( (resp) => {
-	    	array.splice(this.state.dindex, 1);
-	    	this.setState({teammates: array, showModal:false, dindex:-1});
+	    	if(this.state.rtp=='user'){
+		    	array.splice(this.state.dindex, 1);
+		    	this.setState({teammates: array, showModal:false, dindex:-1});
+	    	}
+	    	else{
+	    		array1.splice(this.state.dindex, 1);
+		    	this.setState({emails: array1, showModal:false, dindex:-1});
+	    	}
 	    });
 	  }
 	}
@@ -77,19 +90,19 @@ export default class Team extends React.Component {
 		if (this.authUser.id!=null) {
 			this.setState({usernames: [...this.state.usernames,this.authUser.name]});
 			this.setState({users: [...this.state.users,{id:this.authUser.id, name: this.authUser.name, email: this.authUser.email}]});
-			//this.setState({users: [...this.state.users,{id:'1', name: 'Test', email: 'test@gmail.com'}]});
-			fetch(config.url.API_URL+"users", {
-			  	method: "GET",
-		  		headers: {
-			        'Content-Type': 'application/json'
-			    }
-			}).then(function (response) {
-	            return response.json();
-		    }).then( (resp) => {
-		    	resp.forEach((usr)=>{
-		    		this.setState({users: [...this.state.users,{id:usr.id, name: usr.name, email: usr.email}]});
-		    	});
-		    });
+			// this.setState({users: [...this.state.users,{id:'1', name: 'Test', email: 'test@gmail.com'}]});
+			// fetch(config.url.API_URL+"users", {
+			//   	method: "GET",
+		  	// 	headers: {
+			//         'Content-Type': 'application/json'
+			//     }
+			// }).then(function (response) {
+	        //     return response.json();
+		    // }).then( (resp) => {
+		    // 	resp.forEach((usr)=>{
+		    // 		this.setState({users: [...this.state.users,{id:usr.id, name: usr.name, email: usr.email}]});
+		    // 	});
+		    // });
 			this.getTeam();
 		}
 		$(document).mouseup(e => {
@@ -123,11 +136,13 @@ export default class Team extends React.Component {
 		});
 	    let result = await response.json();
 	    if(result.team){
-	    	this.setState({teammates:result.team.team});
-	    	console.log(this.state.teammates);
+	    	this.setState({teammates:result.team});
 	    }
 	    else{
-	    	this.addTeam('','',this.authUser.id);
+	    	// this.addTeam('','',this.authUser.id);
+	    }
+	    if(result.emails){
+	    	this.setState({emails:result.emails});
 	    }
 	}
 	render() {
@@ -135,9 +150,9 @@ export default class Team extends React.Component {
 		if (this.state.success) {
 			success = <aside className="success-balloon "><span>Okay then. We’ve emailed them the good news. </span><strong>Add another?</strong></aside>;
 		}
-		if (this.state.validEmail) {
+		// if (this.state.validEmail) {
 			button = <button className="new-button primary light email-button" onClick={this.addTeammate}>Invite team member</button>;
-		}
+		// }
 		return (
 			<div className="pg_boxwrapper team_page">
 			<div className="page_wrapper light_bg">
@@ -183,9 +198,16 @@ export default class Team extends React.Component {
 							<tbody>
 								{this.state.teammates.map((teammate,key) => (
 								<tr key={key}>
-									<td><span>{teammate.user?teammate.user.name:''} <span>({teammate.user?teammate.user.email:teammate.email})</span></span></td>
-									<td>{teammate.user && this.authUser.id===teammate.user._id?'Admin':'User'}</td>
-									<td><button className="btn" onClick={()=>this.removeTeammate(key)}>Remove</button></td>
+									<td><span>{teammate.name} <span>({teammate.email})</span></span></td>
+									<td>{'User'}</td>
+									<td><button className="btn" onClick={()=>this.removeTeammate(key,'user')}>Remove</button></td>
+								</tr>
+								))}
+								{this.state.emails.map((email,key) => (
+								<tr key={'e'+key}>
+									<td><span><span>({email})</span></span></td>
+									<td>{'User'}</td>
+									<td><button className="btn" onClick={()=>this.removeTeammate(key,'email')}>Remove</button></td>
 								</tr>
 								))}
 							</tbody>
@@ -211,10 +233,10 @@ export default class Team extends React.Component {
 			          		<input type="checkbox" id="unfollow_all" />
 			          		<label htmlFor="unfollow_all">Remove them from all previous team projects and singles</label>
 			          	</div>
-			          	<div className="form-group">
+			          	{/*<div className="form-group">
 			          		<input type="checkbox" id="kill_user" />
 			          		<label htmlFor="kill_user">Destroy their account entirely</label>
-			          	</div>
+			          	</div>*/}
 			          	</div>
 			          	<button onClick={this.removePeople}>Remove {this.state.teammates[this.state.dindex]?this.state.teammates[this.state.dindex].name:''}</button>
 		          	</div>
