@@ -43,7 +43,7 @@ class Notifications extends React.Component {
 				</aside>);
 		}
 		else{
-			return <li onClick={this.showNotifypopup} className="notifications-inline on-light " title="Notifications for this project">
+			return <li onClick={this.showNotifypopup} className="notifications-inline on-light " title="Notifications for this design">
 						<FaRegBell />
 						<i className="bubble"></i>
 					</li>;
