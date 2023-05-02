@@ -543,13 +543,13 @@ export default class Screen extends React.Component {
 		let next=null, prev=null, title=null;
 		if (this.image.project!==undefined) {
 			if(this.prev){
-				prev = <button><Link onClick={this.reloadImage} to={'/'+this.prev._id}><FaArrowLeft/>Previous design </Link></button>
+				prev = <button><Link onClick={() => window.location.href='/'+this.prev._id} to={'/'+this.prev._id}><FaArrowLeft/>Previous design </Link></button>
 			}
 			else{
 				prev = <button><FaArrowLeft/><span>Previous design  </span></button>
 			}
 			if(this.next){
-				next = <button><Link onClick={this.reloadImage} to={'/'+this.next._id}>Next design<FaArrowRight/></Link></button>
+				next = <button><Link onClick={() => window.location.href='/'+this.next._id} to={'/'+this.next._id}>Next design<FaArrowRight/></Link></button>
 			}
 			else{
 				next = <button><span>Next design<FaArrowRight/></span></button>
