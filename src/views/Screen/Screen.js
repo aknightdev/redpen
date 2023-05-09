@@ -19,7 +19,7 @@ import Moment from 'react-moment';
 export default class Screen extends React.Component {
 	constructor(props) {
     	super(props);
-    	this.state = {ballonOpen:false, image_id:props.match.params.id, name: '', description:'', version:1, path: '', parent:0, project_id:0,project_name:'',comments:[],versions:[],isHidden:true, top:0, left:0, x_pos:0, y_pos:0, showModal:false, showMenu:false, prominent:false, version_id:'', showShare: false, editTitle: false, canEdit:false, shrink:false, showCommentsidebar: false, nlist:[], canUpload:false, commentId:'', activePolilynes:[], approved:false,updated:new Date(),scrTo:false,loginModal:false,email:"",password:"",error:""};
+    	this.state = {ballonOpen:false, image_id:props.match.params.id, name: '', description:'', version:1, path: '', parent:0, project_id:0,project_name:'',comments:[],versions:[],isHidden:true, top:0, left:0, x_pos:0, y_pos:0, showModal:false, showMenu:false, prominent:false, version_id:'', showShare: false, editTitle: false, canEdit:false, shrink:false, showCommentsidebar: false, nlist:[], canUpload:false, commentId:'', activePolilynes:[], approved:false,updated:new Date(),scrTo:false,loginModal:false,email:"",password:"",error:"",zoomLevel:0.8};
     	this.image = {};
     	this.prev = {};
     	this.next = {};
@@ -56,6 +56,26 @@ export default class Screen extends React.Component {
 	    this.handleInputChange = this.handleInputChange.bind(this);
 	    this.seenAll = this.seenAll.bind(this);
 	    this.openComment = this.openComment.bind(this);
+	    this.zoomIn = this.zoomIn.bind(this);
+	    this.zoomOut = this.zoomOut.bind(this);
+    }
+    zoomOut(){
+    	if(this.state.zoomLevel<1){
+	    	var myImg = document.getElementById("mainImage");
+				var currWidth = myImg.naturalWidth;
+				let zoomLevel = this.state.zoomLevel + 0.1;
+				myImg.style.width = (currWidth * zoomLevel).toFixed(0) + "px";
+				this.setState({zoomLevel:zoomLevel});
+			}
+    }
+    zoomIn(){
+    	if(this.state.zoomLevel>0.2){
+	    	var myImg = document.getElementById("mainImage");
+				var currWidth = myImg.naturalWidth;
+				let zoomLevel = this.state.zoomLevel - 0.1;
+				myImg.style.width = (currWidth * zoomLevel).toFixed(0) + "px";
+				this.setState({zoomLevel:zoomLevel});
+			}
     }
     toggleShare(){
     	if(this.state.showShare) this.setState({showShare:false});
@@ -420,7 +440,7 @@ export default class Screen extends React.Component {
 		this.setState({shrink:!this.state.shrink});
 		setTimeout(()=>{
 			if (this.state.shrink) {
-		        myImg.style.width = (currWidth * 0.8).toFixed(0) + "px";
+		        myImg.style.width = (currWidth * this.state.zoomLevel).toFixed(0) + "px";
 			}
 			else{
 		        myImg.style.width = null;
@@ -615,7 +635,7 @@ export default class Screen extends React.Component {
 							</div>
 
 							<div className="pagenation">
-								<button><Link to={'/p/'+this.state.project_id}><FaArrowLeft/>Back </Link></button> {prev} {next}
+								<button><Link to={'/p/'+this.state.project_id}><FaArrowLeft/>Back </Link></button> {prev} {next} <div className="zoom_btns"><button title="Zoom In" onClick={this.zoomIn}>-</button> <button title="Zoom Out" onClick={this.zoomOut}>+</button> </div>
 							</div>
 							
 							<div className="image">
@@ -623,9 +643,9 @@ export default class Screen extends React.Component {
 								<img id="mainImage" src={this.state.path} alt={this.state.name} onClick = {this.handleClick} />
 								{/*this.state.path!=''?<Commenter image={this.state.path} imageId={this.state.image_id} versionId={this.state.version_id} isHidden = {this.state.isHidden} ballonOpen = {true} top = {this.state.top} left = {this.state.left} replies = {[]} commentId={0} appendComment={this.appendComment} projectId={this.state.project_id} activePolilynes={this.state.activePolilynes} />:null*/}
 								{this.state.comments.map((comment,key) => (
-									<Comment showComments={this.showComments} key={key} idx={key} imageId={this.state.image_id} versionId={this.state.version_id} isHidden = {false} ballonOpen = {this.currentComment===comment._id?true:this.state.ballonOpen} color={comment.color} top = {comment.y_pos} left = {comment.x_pos} replies = {comment.replies} commentId={comment._id} appendComment={this.appendComment} projectId={this.state.project_id}/> 
+									<Comment showComments={this.showComments} key={key} idx={key} imageId={this.state.image_id} versionId={this.state.version_id} isHidden = {false} ballonOpen = {this.currentComment===comment._id?true:this.state.ballonOpen} color={comment.color} top = {comment.y_pos} left = {comment.x_pos} replies = {comment.replies} commentId={comment._id} zoomLevel={this.state.zoomLevel} appendComment={this.appendComment} projectId={this.state.project_id}/> 
 								))}
-								<Comment idx={this.state.comments.length} imageId={this.state.image_id} versionId={this.state.version_id} isHidden = {this.state.isHidden} ballonOpen = {true} top = {this.state.top} left = {this.state.left} replies = {[]} commentId={0} appendComment={this.appendComment} projectId={this.state.project_id}/> 
+								<Comment idx={this.state.comments.length} imageId={this.state.image_id} versionId={this.state.version_id} isHidden = {this.state.isHidden} ballonOpen = {true} top = {this.state.top} left = {this.state.left} replies = {[]} commentId={0} zoomLevel={this.state.zoomLevel} appendComment={this.appendComment} projectId={this.state.project_id}/> 
 								</div>
 							</div>
 							</div>

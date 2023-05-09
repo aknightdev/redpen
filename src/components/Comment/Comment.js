@@ -72,7 +72,7 @@ export default class Comment extends React.Component {
 	    if (this.props.isHidden)
 	    	return null
 	    else
-	        return <aside id={'comment_box'+this.props.commentId} style={{top: this.props.top+'%',left: this.props.left+'%'}} className={"annotation comment-group separator-between-all-comments " + (this.props.commentId===0?"pop ":"") + (this.state.ballonOpen?"open":"")} onMouseEnter={this.commentHover} onMouseLeave={this.commentLeave}>
+	        return <aside id={'comment_box'+this.props.commentId} style={{top: this.props.top+'%',left: this.props.left+'%',transform: 'scale('+(parseFloat(this.props.zoomLevel)+0.2)+')'}} className={"annotation comment-group separator-between-all-comments " + (this.props.commentId===0?"pop ":"") + (this.state.ballonOpen?"open":"")} onMouseEnter={this.commentHover} onMouseLeave={this.commentLeave}>
 	    {/*onClick={()=>this.props.showComments(this.props.commentId,1)}*/}
 					<i className="marker"><i className="marker-inner" style={{background: this.props.color}}>{this.props.idx+1}</i></i>
 					<div className="balloon">

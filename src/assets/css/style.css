@@ -5493,3 +5493,24 @@ ul.login_popup {
     font-size: 18px !important;
     margin-top: 15px;
 }
+.pagenation .zoom_btns {
+    display: inline-block;
+}
+
+@media screen and (max-width:768px){
+  .pagenation .zoom_btns {
+      display: inline-block;
+      position: fixed;
+      bottom: 20px;
+      z-index: 999;
+      width: 40px;
+      right: 20px;
+  }
+  .pagenation .zoom_btns button {
+      width: 100% !important;
+      margin: 10px 0 0 !important;
+      padding: 0;
+      height: 40px;
+      line-height: 40px;
+  }
+}
