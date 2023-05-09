@@ -635,7 +635,7 @@ export default class Screen extends React.Component {
 							</div>
 
 							<div className="pagenation">
-								<button><Link to={'/p/'+this.state.project_id}><FaArrowLeft/>Back </Link></button> {prev} {next} <div className="zoom_btns"><button title="Zoom In" onClick={this.zoomIn}>-</button> <button title="Zoom Out" onClick={this.zoomOut}>+</button> </div>
+								<button><Link to={'/p/'+this.state.project_id}><FaArrowLeft/>Back </Link></button> {prev} {next} <div className="zoom_btns"><button title="Zoom In" className="zoom_in" onClick={this.zoomIn}>-</button> <button className="zoom_out" title="Zoom Out" onClick={this.zoomOut}>+</button> </div>
 							</div>
 							
 							<div className="image">
