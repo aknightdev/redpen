@@ -5546,3 +5546,7 @@ ul.login_popup {
     bottom: 15px;
   }
 }
+#sidenotify time{
+  display: block;
+  font-size: 10px;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import onClickOutside from "react-onclickoutside";
 import { FaRegBell } from 'react-icons/fa';
 import { config } from 'Constants.js';
+import Moment from 'react-moment';
 import $ from 'jquery';
 
 class Notifications extends React.Component {
@@ -31,12 +32,10 @@ class Notifications extends React.Component {
 						<figcaption>
 							<span>
 								<strong>
-									<span>{notify.user?notify.user.name:'Annon'}</span>
-									<span> </span>
+									<span><a href={config.url.BASE_URL+notify.image._id+'#'+notify.comment._id}><span>{notify.comment.replies[notify.comment.replies.length-1].reply.substring(0, 20)}...</span></a></span>
 								</strong>
-								<span> added </span>
-								<span>a <a href={config.url.BASE_URL+notify.image._id+'#'+notify.comment}>{notify.message}</a></span>
 							</span>
+							<Moment format="DD MMM YY hh:mma">{notify.comment.replies[notify.comment.replies.length-1].created}</Moment>
 						</figcaption>
 					</article>
 					))}

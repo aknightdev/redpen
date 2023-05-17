@@ -163,7 +163,7 @@ export default class Screen extends React.Component {
 		// },1000);
     }
     async loadNotify(){
-			const notif = await fetch(config.url.API_URL+'notifications',{ method: "POST", body: JSON.stringify({image_id:this.state.image_id, user_id: this.authUser.id}), headers: { 'Content-Type': 'application/json' }});
+			const notif = await fetch(config.url.API_URL+'notifications',{ method: "POST", body: JSON.stringify({image_id:this.state.image_id, user_id: this.authUser.id, version_id:this.state.version_id}), headers: { 'Content-Type': 'application/json' }});
 	    const notifications = await notif.json();
 	    this.setState({nlist:notifications});
     }
