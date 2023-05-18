@@ -198,15 +198,17 @@ export default class Cmenu extends React.Component {
 							<div className="pro_meta">
 
 								<div className="ltpr_meta">
-									<span className="prof_pic">
-									<span>{this.props.reply.user?this.props.reply.user.name.charAt():'A'}</span></span>
-									<span className="prof_name">
-									{this.props.reply.user?this.props.reply.user.name:'Annon'}</span> &nbsp;
-									<Moment format="DD MMM YY hh:mma">{this.props.reply.created}</Moment>
+									<div className="pp_left">
+										<span className="prof_pic"><span>{this.props.reply.user?this.props.reply.user.name.charAt():'A'}</span></span>
+									</div>
+									<div className="pp_right">
+										<span className="prof_name">{this.props.reply.user?this.props.reply.user.name:'Annon'}</span>
+										<Moment format="DD MMM YY hh:mma">{this.props.reply.created}</Moment>
+									</div>
 								</div>
-								<div className="rtpr_meta">
+								{/*<div className="rtpr_meta">
 									<span className={this.state.completed?'active markcmp':'markcmp'} onClick={() => this.iAgree(this.props.commentId,this.props.reply._id)}><span className="mc_text">Mark complete</span> <span className="mc_icon"><TiTick /></span></span>
-								</div>
+								</div>*/}
 
 
 						
