@@ -33,14 +33,14 @@ class Notifications extends React.Component {
 						<span className="subtitle">Updates in this design</span>
 						<button className="command button" onClick={()=>{this.props.seenAll();this.setState({showNotify:false});}} title="Mark all notifications as ‘seen’">I’ve seen all</button>
 					</strong>
-					{this.props.nlist.map((notify,key) => (
+					{this.props.comments.map((notify,key) => (
 					<article key={key} className="">
 						<figcaption>
-							<span className={'circle sidecomment'+notify.comment._id}>{this.getCnumber(notify.comment._id)}</span>
+							<span className={'circle sidecomment'+notify._id}>{key+1}</span>
 							<strong>
-								<span><a href={config.url.BASE_URL+notify.image._id+'#'+notify.comment._id}><span>{notify.comment.replies[notify.comment.replies.length-1].reply.substring(0, 20)}...</span></a></span>
+								<span><a href={'#'+notify._id}><span>{notify.replies[notify.replies.length-1].reply.substring(0, 20)}...</span></a></span>
 							</strong>
-							<Moment format="DD MMM YY hh:mma">{notify.comment.replies[notify.comment.replies.length-1].created}</Moment>
+							<Moment format="DD MMM YY hh:mma">{notify.replies[notify.replies.length-1].created}</Moment>
 						</figcaption>
 					</article>
 					))}
