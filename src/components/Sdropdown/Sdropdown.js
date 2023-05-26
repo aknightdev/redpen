@@ -100,7 +100,7 @@ class Sdropdown extends React.Component {
                         </ul>
                     </li>
                     {cmpBtn}
-                    <Notifications seenAll={this.props.seenAll} nlist={this.props.nlist}></Notifications>
+                    <Notifications seenAll={this.props.seenAll} comments={this.props.comments} nlist={this.props.nlist}></Notifications>
                     </ul>
                     {editTitle}
                     </div>
@@ -111,7 +111,7 @@ class Sdropdown extends React.Component {
                     {updateButton}
                     {delButton}
                     {cmpBtn}
-                    <Notifications seenAll={this.props.seenAll} nlist={this.props.nlist}></Notifications>
+                    <Notifications seenAll={this.props.seenAll} comments={this.props.comments}  nlist={this.props.nlist}></Notifications>
                     </ul>
                     {editTitle}
                     </div>

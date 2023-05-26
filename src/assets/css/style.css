@@ -5554,3 +5554,11 @@ ul.login_popup {
   border-bottom: rgba(0,0,0,0.1) 1px solid;
   padding-bottom: 5px;
 }
+span.circle {
+  padding: 1px 5px;
+  border: 2px solid #FFF;
+  border-radius: 50%;
+  margin-right: 4px;
+  font-size: 12px;
+  background: red;
+}

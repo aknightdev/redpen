@@ -10,6 +10,12 @@ class Notifications extends React.Component {
     	super(props);
     	this.state = {showNotify:false};
     	this.showNotifypopup = this.showNotifypopup.bind(this);
+    	this.getCnumber = this.getCnumber.bind(this);
+    }
+    getCnumber = (v) => {
+    	return this.props.comments.findIndex((obj)=>{
+    		return obj._id === v;
+    	}) + 1;
     }
     showNotifypopup() {
     	this.setState({showNotify: true});  
@@ -30,11 +36,10 @@ class Notifications extends React.Component {
 					{this.props.nlist.map((notify,key) => (
 					<article key={key} className="">
 						<figcaption>
-							<span>
-								<strong>
-									<span><a href={config.url.BASE_URL+notify.image._id+'#'+notify.comment._id}><span>{notify.comment.replies[notify.comment.replies.length-1].reply.substring(0, 20)}...</span></a></span>
-								</strong>
-							</span>
+							<span className={'circle sidecomment'+notify.comment._id}>{this.getCnumber(notify.comment._id)}</span>
+							<strong>
+								<span><a href={config.url.BASE_URL+notify.image._id+'#'+notify.comment._id}><span>{notify.comment.replies[notify.comment.replies.length-1].reply.substring(0, 20)}...</span></a></span>
+							</strong>
 							<Moment format="DD MMM YY hh:mma">{notify.comment.replies[notify.comment.replies.length-1].created}</Moment>
 						</figcaption>
 					</article>

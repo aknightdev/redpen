@@ -222,6 +222,7 @@ export default class Screen extends React.Component {
   openComment(){
   	let hash = window.location.hash;
   	if($('#comment_box'+hash.replace('#','')).length>0){
+  		$('.comment-group').removeClass('open');
 			$('#comment_box'+hash.replace('#','')).addClass('open');
 			window.scrollTo($('#comment_box'+hash.replace('#','')).offset().left,$('#comment_box'+hash.replace('#','')).offset().top - 200);
 		}
@@ -622,7 +623,7 @@ export default class Screen extends React.Component {
 										</menu>
 										):''}
 									</div>
-									<Sdropdown name={this.state.name} handleImgTitleEdit={this.handleImgTitleEdit} user={this.user_id} updateScreen={this.updateScreen} deleteScreen={this.deleteScreen} deleteVersion={this.deleteVersion} shrinkScreen={this.shrinkScreen} showComments={this.showComments} copyComments={this.copyComments} version={this.state.version} versions={this.state.versions} shrink={this.state.shrink} project={this.state.project_id} canUpload={this.state.canUpload} approveScreen={this.approveScreen} approved={this.state.approved} seenAll={this.seenAll} nlist={this.state.nlist}></Sdropdown>
+									<Sdropdown name={this.state.name} handleImgTitleEdit={this.handleImgTitleEdit} user={this.user_id} updateScreen={this.updateScreen} deleteScreen={this.deleteScreen} deleteVersion={this.deleteVersion} shrinkScreen={this.shrinkScreen} showComments={this.showComments} copyComments={this.copyComments} version={this.state.version} versions={this.state.versions} shrink={this.state.shrink} project={this.state.project_id} canUpload={this.state.canUpload} approveScreen={this.approveScreen} approved={this.state.approved} seenAll={this.seenAll} nlist={this.state.nlist} comments={this.state.comments}></Sdropdown>
 									
 									
 									{/*<div className="description-container">

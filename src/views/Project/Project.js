@@ -382,23 +382,29 @@ export default class Project extends React.Component {
 		}).then(function (response) {
             return response.json();
 	    }).then( (image) => {
+	    	let imgs = this.state.images; let imgex=0;
+    		imgs.forEach((val,key)=>{
+    			if(val.name===image.name){
+    				imgs[key]['versions'] = image.versions;
+    				imgex++;
+    			}
+    		});
 	    	if(type==='new' || type===''){
-	    		this.setState({images: [...this.state.images,image]});  
-	    		if(type==='new'){
-	    			this.imagenames[image.name]++;
+	    		if(imgex==0){
+		    		this.setState({images: [...this.state.images,image]});  
+		    		if(type==='new'){
+		    			this.imagenames[image.name]++;
+		    		}
+		    		else{
+		    			this.imageids[image.name]=image._id;
+		    			this.imagenames[image.name]=1;
+		    		}
 	    		}
 	    		else{
-	    			this.imageids[image.name]=image._id;
-	    			this.imagenames[image.name]=1;
+	    			this.setState({images:imgs});
 	    		}
 	    	}
 	    	else{
-	    		let imgs = this.state.images;
-	    		imgs.forEach((val,key)=>{
-	    			if(val.name===image.name){
-	    				imgs[key]['versions'] = image.versions;
-	    			}
-	    		});
 	    		this.setState({images:imgs});
 	    	}
 	    	document.getElementById("ajxloader").style.display = "none";
