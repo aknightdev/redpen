@@ -117,7 +117,7 @@ export default class Cmenu extends React.Component {
 	        }).then((result)=>{
 	        	let st = !this.state.completed;
 	            this.setState({completed:st});
-	            this.props.toggleCompleted(this.props.replyIndex,st);
+	            // this.props.toggleCompleted(this.props.replyIndex,st);
 	        });
         }
     }
@@ -187,6 +187,7 @@ export default class Cmenu extends React.Component {
 				menuDd = <div className="gear-container" onMouseEnter={this.commentmenuHover} onMouseLeave={this.commentmenuLeave}><i className="gear"></i></div>
 			}
 		}*/
+		if (this.authUser.id) { menuDd = <div className="gear-container" style={{cursor:'pointer'}} onClick={() => this.iAgree(this.props.commentId,this.props.reply._id)}>{this.state.completed?'Mark as read':'Mark as unread'}</div> }
 		if (this.state.confirm) {
 			menuDd = <button onClick={this.deleteReply} className={this.props.isThread?'delete-comment thread confirm':'delete-comment confirm'} title="Delete Thread"><i className="trash"></i></button>
 		}
