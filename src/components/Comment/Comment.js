@@ -5,12 +5,13 @@ import { config } from 'Constants.js';
 export default class Comment extends React.Component {
 	constructor(props) {
     	super(props);
-    	this.state = {ballonOpen:this.props.ballonOpen, comment:'', showCommentButton:false, replies:this.props.replies};
+    	this.state = {ballonOpen:this.props.ballonOpen, comment:'', showCommentButton:false, replies:this.props.replies, seen:true};
     	this.setComment = this.setComment.bind(this);
     	this.postComment = this.postComment.bind(this);
     	this.updateComment = this.updateComment.bind(this);
     	this.commentHover = this.commentHover.bind(this);
     	this.commentLeave = this.commentLeave.bind(this);
+    	this.toggleCompleted = this.toggleCompleted.bind(this);
     	this.authUser = window.localStorage.getItem('auth_user')==null?{id:null,name:null}:JSON.parse(window.localStorage.getItem('auth_user'));
     }
     componentDidMount() {
@@ -29,14 +30,50 @@ export default class Comment extends React.Component {
     	if(this.props.commentId!==0)
     		this.setState({ballonOpen: false});
     }
-    commentHover(){
+    async commentHover(){
     	if(this.props.commentId!==0)
     		this.setState({ballonOpen: true});
+    	const index = await new Promise(resolve => {
+    		this.props.notification.forEach(async (d,k)=>{
+	    		if(d.comment._id===this.props.commentId){
+	    			resolve(k)
+	    		}
+	    	});
+    	});
+    	this.setState({seen:true});
+    	if(!this.props.notification[index].read && this.props.commentId!==0){
+    		this.props.updateNotification(index);
+    		fetch(config.url.API_URL+"iagree", {
+	            method: "POST",
+	            body: JSON.stringify({id:this.props.commentId, user_id: this.authUser.id, reply_id: 0, completed:true}),
+	            headers: {
+	                'Content-Type': 'application/json'
+	            }
+	        }).then(function (response) {
+	            return response.json();
+	        }).then((result)=>{
+
+	        });
+    	}
     }
     updateComment(replyIndex,reply){
     	let replies = this.state.replies;
     	replies[replyIndex].reply = reply;
     	this.setState({replies:replies});
+    }
+	toggleCompleted(replyIndex,st){
+    	this.setState({seen:false});
+    	fetch(config.url.API_URL+"iagree", {
+            method: "POST",
+            body: JSON.stringify({id:this.props.commentId, user_id: this.authUser.id, reply_id: 0, completed:false}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function (response) {
+            return response.json();
+        }).then((result)=>{
+
+        });
     }
     postComment = (event) =>{
     	fetch(config.url.API_URL+"addcomment", {
@@ -77,7 +114,7 @@ export default class Comment extends React.Component {
 					<i className="marker"><i className="marker-inner" style={{background: this.props.color}}>{this.props.idx+1}</i></i>
 					<div className="balloon">
 						{this.state.replies.map((reply,key) => (
-							<Reply key={key} indexVal={key} replyData={reply} updateComment={this.updateComment} commentId={this.props.commentId} />
+							<Reply toggleCompleted={this.toggleCompleted} key={key} indexVal={key} replyData={reply} updateComment={this.updateComment} notification={this.props.notification} commentId={this.props.commentId} seen={this.state.seen} />
 						))}
 						
 						<div className="comment-clip">

@@ -58,6 +58,7 @@ export default class Screen extends React.Component {
 	    this.openComment = this.openComment.bind(this);
 	    this.zoomIn = this.zoomIn.bind(this);
 	    this.zoomOut = this.zoomOut.bind(this);
+	    this.updateNotification = this.updateNotification.bind(this);
     }
     zoomOut(){
     	if(this.state.zoomLevel<1){
@@ -166,6 +167,11 @@ export default class Screen extends React.Component {
 			const notif = await fetch(config.url.API_URL+'notifications',{ method: "POST", body: JSON.stringify({image_id:this.state.image_id, user_id: this.authUser.id, version_id:this.state.version_id}), headers: { 'Content-Type': 'application/json' }});
 	    const notifications = await notif.json();
 	    this.setState({nlist:notifications});
+    }
+    updateNotification(i){
+    	let notifications2 = this.state.nlist;
+    	notifications2[i].read = true;
+    	this.setState({nlist:notifications2});
     }
     seenAll(){
     	fetch(config.url.API_URL+'seenall',{ method: "POST", body: JSON.stringify({image_id:this.state.image_id, user_id: this.authUser.id}), headers: { 'Content-Type': 'application/json' }});
@@ -644,9 +650,9 @@ export default class Screen extends React.Component {
 								<img id="mainImage" src={this.state.path} alt={this.state.name} onClick = {this.handleClick} />
 								{/*this.state.path!=''?<Commenter image={this.state.path} imageId={this.state.image_id} versionId={this.state.version_id} isHidden = {this.state.isHidden} ballonOpen = {true} top = {this.state.top} left = {this.state.left} replies = {[]} commentId={0} appendComment={this.appendComment} projectId={this.state.project_id} activePolilynes={this.state.activePolilynes} />:null*/}
 								{this.state.comments.map((comment,key) => (
-									<Comment showComments={this.showComments} key={key} idx={key} imageId={this.state.image_id} versionId={this.state.version_id} isHidden = {false} ballonOpen = {this.currentComment===comment._id?true:this.state.ballonOpen} color={comment.color} top = {comment.y_pos} left = {comment.x_pos} replies = {comment.replies} commentId={comment._id} zoomLevel={this.state.zoomLevel} appendComment={this.appendComment} projectId={this.state.project_id}/> 
+									<Comment showComments={this.showComments} key={key} idx={key} imageId={this.state.image_id} versionId={this.state.version_id} isHidden = {false} ballonOpen = {this.currentComment===comment._id?true:this.state.ballonOpen} color={comment.color} top = {comment.y_pos} left = {comment.x_pos} replies = {comment.replies} commentId={comment._id} notification={this.state.nlist} zoomLevel={this.state.zoomLevel} appendComment={this.appendComment} projectId={this.state.project_id} updateNotification={this.updateNotification} /> 
 								))}
-								<Comment idx={this.state.comments.length} imageId={this.state.image_id} versionId={this.state.version_id} isHidden = {this.state.isHidden} ballonOpen = {true} top = {this.state.top} left = {this.state.left} replies = {[]} commentId={0} zoomLevel={this.state.zoomLevel} appendComment={this.appendComment} projectId={this.state.project_id}/> 
+								<Comment idx={this.state.comments.length} imageId={this.state.image_id} versionId={this.state.version_id} isHidden = {this.state.isHidden} ballonOpen = {true} top = {this.state.top} left = {this.state.left} replies = {[]} commentId={0} notification={[]} zoomLevel={this.state.zoomLevel} appendComment={this.appendComment} projectId={this.state.project_id}/> 
 								</div>
 							</div>
 							</div>

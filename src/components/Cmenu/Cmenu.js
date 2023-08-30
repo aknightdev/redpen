@@ -11,7 +11,7 @@ import { BsFillTrashFill } from 'react-icons/bs';
 export default class Cmenu extends React.Component {
 	constructor(props) {
     	super(props);
-    	this.state = {menuOpen:false, editMode:false, name:this.props.reply.reply, confirm:false, completed:this.props.reply.completed};
+    	this.state = {menuOpen:false, editMode:false, name:this.props.reply.reply, confirm:false};
     	this.commentmenuLeave = this.commentmenuLeave.bind(this);
     	this.commentmenuHover = this.commentmenuHover.bind(this);
     	this.showEdit = this.showEdit.bind(this);
@@ -106,19 +106,20 @@ export default class Cmenu extends React.Component {
 		    //    setTimeout(()=>{
 		    //    	$('.like-container').removeClass('selected');
 		    //    },2000)
-		    fetch(config.url.API_URL+"iagree", {
-	            method: "POST",
-	            body: JSON.stringify({id:comment_id, user_id: this.authUser.id, reply_id: reply_id, completed:!this.state.completed}),
-	            headers: {
-	                'Content-Type': 'application/json'
-	            }
-	        }).then(function (response) {
-	            return response.json();
-	        }).then((result)=>{
-	        	let st = !this.state.completed;
-	            this.setState({completed:st});
-	            // this.props.toggleCompleted(this.props.replyIndex,st);
-	        });
+		    // fetch(config.url.API_URL+"iagree", {
+	        //     method: "POST",
+	        //     body: JSON.stringify({id:comment_id, user_id: this.authUser.id, reply_id: reply_id, completed:!this.state.completed}),
+	        //     headers: {
+	        //         'Content-Type': 'application/json'
+	        //     }
+	        // }).then(function (response) {
+	        //     return response.json();
+	        // }).then((result)=>{
+	        // 	let st = !this.state.completed;
+	        //     // this.setState({completed:st});
+	        //     this.props.toggleCompleted(this.props.replyIndex,st);
+	        // });
+	        this.props.toggleCompleted(this.props.replyIndex,1);
         }
     }
     commentmenuLeave(){
@@ -187,7 +188,7 @@ export default class Cmenu extends React.Component {
 				menuDd = <div className="gear-container" onMouseEnter={this.commentmenuHover} onMouseLeave={this.commentmenuLeave}><i className="gear"></i></div>
 			}
 		}*/
-		if (this.authUser.id) { menuDd = <div className="gear-container" style={{cursor:'pointer'}} onClick={() => this.iAgree(this.props.commentId,this.props.reply._id)}>{this.state.completed?'Mark as read':'Mark as unread'}</div> }
+		if (this.authUser.id) { menuDd = <div className="gear-container" style={{cursor:'pointer'}} onClick={() => this.iAgree(this.props.commentId,this.props.reply._id)}>{!this.props.seen?null:'Mark as unread'}</div> }
 		if (this.state.confirm) {
 			menuDd = <button onClick={this.deleteReply} className={this.props.isThread?'delete-comment thread confirm':'delete-comment confirm'} title="Delete Thread"><i className="trash"></i></button>
 		}
