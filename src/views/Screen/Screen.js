@@ -397,6 +397,7 @@ export default class Screen extends React.Component {
 			let v = this.image.versions[this.props.match.params.version-1];
 			this.setState({image_id: this.image._id, description: v.description, version: parseInt(this.props.match.params.version), path: config.url.IMAGE_URL+v.image, ballonOpen:false, version_id: v._id, approved: v.approved, updated:v.created});
 			this.loadComments();
+			this.loadNotify();
 		},500);
 		setTimeout(()=>{
 	    	this.setState({prominent:false});
