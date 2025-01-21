@@ -41,7 +41,7 @@ export default class Sidecomment extends React.Component {
     postComment = () =>{
     	fetch(config.url.API_URL+"addcomment", {
 		  	method: "POST",
-	  		body: JSON.stringify({ image_id:this.state.comment.image, version_id:this.state.comment.version, comment_id:this.state.comment._id, x_pos:0, y_pos:0, comment:this.state.commentText, user_id: this.authUser.id, project_id: this.props.projectId}),
+	  		body: JSON.stringify({ image_id:this.state.comment.image, version_id:this.state.comment.version, comment_id:this.state.comment._id, x_pos:0, y_pos:0, comment:this.state.commentText, user_id: this.authUser.id, project_id: this.props.projectId, user_name:window.localStorage.getItem('firsttime')}),
 		    headers: {
 		        'Content-Type': 'application/json'
 		    }

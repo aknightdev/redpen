@@ -78,7 +78,7 @@ export default class Comment extends React.Component {
     postComment = (event) =>{
     	fetch(config.url.API_URL+"addcomment", {
 		  	method: "POST",
-	  		body: JSON.stringify({ image_id:this.props.imageId, version_id:this.props.versionId, comment_id:this.props.commentId, x_pos:this.props.left, y_pos:this.props.top, comment:this.state.comment, user_id: this.authUser.id, project_id: this.props.projectId}),
+	  		body: JSON.stringify({ image_id:this.props.imageId, version_id:this.props.versionId, comment_id:this.props.commentId, x_pos:this.props.left, y_pos:this.props.top, comment:this.state.comment, user_id: this.authUser.id, project_id: this.props.projectId, user_name:window.localStorage.getItem('firsttime')}),
 		    headers: {
 		        'Content-Type': 'application/json'
 		    }

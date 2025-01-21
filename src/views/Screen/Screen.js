@@ -19,7 +19,7 @@ import Moment from 'react-moment';
 export default class Screen extends React.Component {
 	constructor(props) {
     	super(props);
-    	this.state = {ballonOpen:false, image_id:props.match.params.id, name: '', description:'', version:1, path: '', parent:0, project_id:0,project_name:'',comments:[],versions:[],isHidden:true, top:0, left:0, x_pos:0, y_pos:0, showModal:false, showMenu:false, prominent:false, version_id:'', showShare: false, editTitle: false, canEdit:false, shrink:false, showCommentsidebar: false, nlist:[], canUpload:false, commentId:'', activePolilynes:[], approved:false,updated:new Date(),scrTo:false,loginModal:false,email:"",password:"",error:"",zoomLevel:1};
+    	this.state = {ballonOpen:false, image_id:props.match.params.id, name: '', description:'', version:1, path: '', parent:0, project_id:0,project_name:'',comments:[],versions:[],isHidden:true, top:0, left:0, x_pos:0, y_pos:0, showModal:false, showMenu:false, prominent:false, version_id:'', showShare: false, editTitle: false, canEdit:false, shrink:false, showCommentsidebar: false, nlist:[], canUpload:false, commentId:'', activePolilynes:[], approved:false,updated:new Date(),scrTo:false,loginModal:false,email:"",password:"",error:"",zoomLevel:1,user_name:''};
     	this.image = {};
     	this.prev = {};
     	this.next = {};
@@ -116,6 +116,13 @@ export default class Screen extends React.Component {
 	      });
 	      // toast.error('Invalid details!/Not yet activated');
 	    });
+  	}
+  	onSubmitGuest = (event) => {
+	    event.preventDefault();
+	    if(this.state.user_name.trim()!==''){
+	    	window.localStorage.setItem('firsttime',this.state.user_name);
+	    	this.setState({loginModal:false});
+	    }
   	}
     sortComments(s){
     	// let sortedCommentsDsc;
@@ -215,7 +222,6 @@ export default class Screen extends React.Component {
 			}
 			//checklogin
 			if(!this.authUser.id && window.localStorage.getItem('firsttime')==null){
-  			window.localStorage.setItem('firsttime',1);
   			this.setState({loginModal:true});
   		}
 		});
@@ -661,7 +667,7 @@ export default class Screen extends React.Component {
 						</div>
 						</div>
 						<Modal showModal={this.state.loginModal} handleClose={this.closeModal}>
-						<input className="close_popup" type="button" onClick={this.closeModal} value="X"/>
+						{/*<input className="close_popup" type="button" onClick={this.closeModal} value="X"/>*/}
 						<form onSubmit={this.onSubmit}>
 
 							<h2>Login</h2>
@@ -675,6 +681,16 @@ export default class Screen extends React.Component {
 			                    <label>Password</label>
 			                    <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleInputChange} required /> </li>
 			                  <li><input type="submit" value="Log In"/> </li>
+			                </ul>
+			          	</form>
+			          	<p>(OR)</p>
+			          	<form onSubmit={this.onSubmitGuest}>
+			          		<ul className="login_popup login_box">
+			                  <li>
+			                    <label>Name</label>
+			                    <input type="text" name="user_name" placeholder="Name" value={this.state.user_name} onChange={this.handleInputChange} required /> 
+			                  </li>
+			                  <li><input type="submit" value="Submit"/> </li>
 			                </ul>
 			          	</form>
 			        </Modal>

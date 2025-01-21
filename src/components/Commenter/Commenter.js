@@ -49,7 +49,7 @@ class Commenter extends React.Component {
     postComment = (event) =>{
     	fetch(config.url.API_URL+"addcomment", {
 		  	method: "POST",
-	  		body: JSON.stringify({ image_id:this.props.imageId, version_id:this.props.versionId, comment_id:this.props.commentId, x_pos:this.state.x_pos, y_pos:this.state.y_pos, comment:document.getElementById('comment').value, user_id: this.authUser.id, project_id: this.props.projectId, polylines: this.state.polylines, color: this.state.color}),
+	  		body: JSON.stringify({ image_id:this.props.imageId, version_id:this.props.versionId, comment_id:this.props.commentId, x_pos:this.state.x_pos, y_pos:this.state.y_pos, comment:document.getElementById('comment').value, user_id: this.authUser.id, project_id: this.props.projectId, polylines: this.state.polylines, color: this.state.color, user_name:window.localStorage.getItem('firsttime')}),
 		    headers: {
 		        'Content-Type': 'application/json'
 		    }
