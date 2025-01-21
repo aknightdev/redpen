@@ -683,7 +683,7 @@ export default class Screen extends React.Component {
 			                  <li><input type="submit" value="Log In"/> </li>
 			                </ul>
 			          	</form>
-			          	<p>(OR)</p>
+			          	<h4>(OR)</h4>
 			          	<form onSubmit={this.onSubmitGuest}>
 			          		<ul className="login_popup login_box">
 			                  <li>

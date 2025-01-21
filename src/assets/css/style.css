@@ -798,6 +798,15 @@ box-shadow:         -12px 22px 45px 0px rgba(0, 0, 0, 0.13);
   font-weight: 600;
   line-height: normal;
 }
+.modal-main h4 {
+  color: #03504e;
+  font-size: 24px;
+  margin: 40px 0 25px;
+  text-align: center;
+  font-family: Poppins,sans-serif;
+  font-weight: 600;
+  line-height: normal;
+}
 .modal-main textarea {
     background-color: #fff !important;
     border-radius: 15px;
