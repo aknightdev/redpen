@@ -33,7 +33,7 @@ export default class Home extends React.Component {
 			    this.setState({archived:projects.archived});
 			    this.setState({availprojects:projects.availprojects});
 
-			    this.filterProjects('updated');
+			    this.filterProjects('commented');
 
 			    const notif = await fetch(config.url.API_URL+'notifications',{ method: "POST", body: JSON.stringify({user_id: this.authUser.id}), headers: { 'Content-Type': 'application/json' }});
 			    const notifications = await notif.json();

@@ -6,7 +6,7 @@ import { BiSort } from 'react-icons/bi';
 class Sortdd extends React.Component {
     constructor(props) {
         super(props);
-	    this.state = {showDrop: false, activesort: 'updated'};
+	    this.state = {showDrop: false, activesort: 'commented'};
         this.gearClick = this.gearClick.bind(this);
         this.sortClick = this.sortClick.bind(this);
         this.authUser = window.localStorage.getItem('auth_user')==null?{id:null,name:null}:JSON.parse(window.localStorage.getItem('auth_user'));
