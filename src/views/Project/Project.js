@@ -245,7 +245,7 @@ export default class Project extends React.Component {
     		this.loadProject();
     		this.loadNotify();
     		if(!this.authUser.id && window.localStorage.getItem('firsttime')==null){
-    			window.localStorage.setItem('firsttime',1);
+    			// window.localStorage.setItem('firsttime',1);
     			this.setState({loginModal:true});
     		}
     	}
@@ -420,6 +420,13 @@ export default class Project extends React.Component {
 	handleClick = (k) =>{
 		this.props.history.push('/'+k)
 	}
+	onSubmitGuest = (event) => {
+	    event.preventDefault();
+	    if(this.state.user_name.trim()!==''){
+	    	window.localStorage.setItem('firsttime',this.state.user_name);
+	    	this.setState({loginModal:false});
+	    }
+  	}
 	async loadProject(){
 		//if(window.localStorage.getItem('project_'+this.props.match.params.id)==null){
 			fetch(config.url.API_URL+"project", {
@@ -694,7 +701,7 @@ export default class Project extends React.Component {
 				    </div> </div><div id="ajxloader" className="lds-dual-ring hidden overlay"></div>
 				    
 				    <Modal showModal={this.state.loginModal} handleClose={this.closeModal}>
-							<input className="close_popup" type="button" onClick={this.closeModal} value="X"/>
+							{/*<input className="close_popup" type="button" onClick={this.closeModal} value="X"/>*/}
 						<form onSubmit={this.onSubmit}>
 							<h2>Login</h2>
 							{this.state.error != ''?<div className="error_block">{this.state.error}</div>:''}
@@ -707,6 +714,16 @@ export default class Project extends React.Component {
 			                    <label>Password</label>
 			                    <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleInputChange} required /> </li>
 			                  <li><input type="submit" value="Log In"/> </li>
+			                </ul>
+			          	</form>
+			          	<h4>(OR)</h4>
+			          	<form onSubmit={this.onSubmitGuest}>
+			          		<ul className="login_popup login_box">
+			                  <li>
+			                    <label>Name</label>
+			                    <input type="text" name="user_name" placeholder="Name" value={this.state.user_name} onChange={this.handleInputChange} required /> 
+			                  </li>
+			                  <li><input type="submit" value="Submit"/> </li>
 			                </ul>
 			          	</form>
 			        </Modal>
